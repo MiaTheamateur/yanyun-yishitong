@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#eef1f3">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob:; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'none'; media-src 'self' data: blob:; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>燕云衣事通</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar topbar-compact">
+      <div class="brand-identity">
+        <h1 class="brand-wordmark"><span>燕云</span><b>衣事通</b></h1>
+      </div>
+      <div class="tool-meta">
+<p class="tool-version">V0.16.3</p>
+        <p class="tool-creator">制作者：薄荷小鹿（燕云十六声）</p>
+      </div>
+    </header>
+
+    <main>
+      <section class="page is-active" id="calendarPage" data-page="calendar">
+        <div class="page-heading">
+          <div>
+            <h2>服装日历</h2>
+          </div>
+          <span class="count-chip"><b id="paidCount">0</b> 项正式外观</span>
+        </div>
+
+        <div class="subview-toolbar">
+          <span class="subview-label">浏览方式</span>
+          <div class="view-switch" id="viewSwitch" role="group" aria-label="服装日历浏览模式">
+            <button type="button" class="is-active" data-view="calendar"><i aria-hidden="true">◷</i>日历</button>
+            <button type="button" data-view="list"><i aria-hidden="true">☷</i>列表</button>
+          </div>
+        </div>
+
+        <section id="calendarView" class="mode-view">
+          <article class="calendar-card">
+            <div class="calendar-head">
+              <div>
+                <p id="calendarYearLabel">2025 · 外观档期</p>
+                <div class="calendar-month-controls">
+                  <button id="previousMonthButton" type="button" aria-label="上个月">‹</button>
+                  <label class="calendar-month-picker">
+                    <span class="sr-only">选择年月</span>
+                    <input id="calendarMonthPicker" type="month" min="2024-12" value="2025-03" aria-label="选择日历年月">
+                  </label>
+                  <button id="nextMonthButton" type="button" aria-label="下个月">›</button>
+                </div>
+              </div>
+              <button id="monthOverviewButton" class="month-overview-button is-active" type="button">月总览</button>
+            </div>
+            <div class="week-row" aria-hidden="true">
+              <span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span>
+            </div>
+            <div class="calendar-grid" id="calendarGrid" aria-label="2025年3月服装日历"></div>
+            <div class="calendar-legend">
+              <div class="calendar-legend-keys">
+                <span class="outfit-info-legend"><i></i> 有服装信息</span>
+                <span class="preview-info-legend"><i></i> 预告</span>
+              </div>
+              <button class="calendar-today-button" id="calendarTodayButton" type="button">回到今日</button>
+            </div>
+          </article>
+
+          <div class="calendar-month-stats" aria-label="本月档期摘要">
+            <div><strong id="monthStartCount">0</strong><span>本月上新</span></div>
+            <div><strong id="monthEndCount">0</strong><span>已下架</span></div>
+          </div>
+
+          <div class="section-row">
+            <h3 id="calendarSelectionTitle">3月总览</h3>
+            <p id="calendarSelectionHint">按上架日期排列</p>
+          </div>
+          <div class="schedule-list" id="scheduleList"></div>
+          <div class="empty-state calendar-empty" id="calendarEmpty" hidden>这个月暂时没有服装档期。</div>
+        </section>
+
+        <section id="listView" class="mode-view" hidden>
+          <span id="recordProgress" class="sr-only">0/0</span>
+          <div class="paid-list-tools">
+            <label class="paid-search"><span class="sr-only">搜索服装</span><input id="paidSearchInput" type="search" placeholder="搜索名字或风格"></label>
+            <select id="paidRangeFilter" aria-label="筛选上架时间"><option value="all">全部时间</option><option value="month">本月</option><option value="quarter">本季度</option><option value="year">本年</option><option value="custom">自定义</option></select>
+            <select id="paidStatusFilter" aria-label="筛选在架状态"><option value="all">全部状态</option><option value="常驻">常驻</option><option value="返场中">返场中</option><option value="已下架">已下架</option></select>
+            <div class="paid-method-picker">
+              <button class="paid-method-trigger" id="paidMethodFilter" type="button" aria-label="筛选获取途径" aria-expanded="false" aria-controls="paidMethodPanel"><span>获取</span></button>
+              <div class="paid-method-panel" id="paidMethodPanel" hidden>
+                <div class="paid-method-panel-head"><strong>获取途径</strong><button id="clearPaidMethodsButton" type="button">清空选择</button></div>
+                <div class="paid-method-options" id="paidMethodOptions"></div>
+                <div class="paid-method-refinements" id="paidMethodRefinements" hidden>
+                  <fieldset class="paid-method-refinement" id="paidWheelRefinement" hidden>
+                    <legend>转盘细分</legend>
+                    <label class="paid-method-toggle"><input id="paidWheelVariantHair" type="checkbox" checked><span>包含异色发</span></label>
+                  </fieldset>
+                  <fieldset class="paid-method-refinement" id="paidListeningRefinement" hidden>
+                    <legend>聆音类型 <small>不选则全部</small></legend>
+                    <div class="paid-refinement-options" id="paidListeningOptions">
+                      <label><input type="checkbox" value="大套"><span>大套</span></label>
+                      <label><input type="checkbox" value="小套"><span>小套</span></label>
+                      <label><input type="checkbox" value="异色发"><span>异色发</span></label>
+                    </div>
+                  </fieldset>
+                  <fieldset class="paid-method-refinement" id="paidRetailRefinement" hidden>
+                    <legend>原价直售档位 <small>不选则全部</small></legend>
+                    <div class="paid-refinement-options" id="paidRetailPriceOptions"></div>
+                  </fieldset>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="paid-custom-range" id="paidCustomRange" hidden>
+            <label><span>开始日期</span><input id="paidStartDate" type="date" min="2024-12-01"></label>
+            <i aria-hidden="true">至</i>
+            <label><span>结束日期</span><input id="paidEndDate" type="date" min="2024-12-01"></label>
+            <button id="applyPaidRangeButton" type="button">应用</button>
+            <p id="paidRangeError" role="alert" hidden></p>
+          </div>
+          <p class="paid-method-summary" id="paidMethodSummary" aria-live="polite" hidden></p>
+          <p class="paid-result-hint" id="paidResultHint">共 0 项</p>
+          <div class="status-summary" id="statusSummary" aria-label="记录汇总"></div>
+          <div class="paid-list-scroll-region">
+            <div class="outfit-list" id="paidList"></div>
+            <div class="empty-state paid-list-empty" id="paidListEmpty" hidden>这个时间范围暂时没有服装记录。</div>
+          </div>
+<button class="share-filter-fab" id="generateShareButton" type="button" aria-label="分享本次筛选" hidden>
+            <i aria-hidden="true">↗</i><span>分享本次筛选</span>
+          </button>
+        </section>
+      </section>
+
+      <section class="page" id="freePage" data-page="free" hidden>
+        <div class="free-fixed-panel">
+        <section class="free-command-panel" aria-label="免费风华浏览设置">
+        <div class="page-heading free-page-heading">
+          <div class="free-page-title">
+            <h2>免费风华</h2>
+            <small>男女号对应的外观存在差异</small>
+          </div>
+          <div class="free-heading-tools">
+            <span class="count-chip"><b id="freeCount">0</b> 件 · <b id="freeSetCount">0</b> 套</span>
+            <div class="character-gender-switch" id="freeGenderSwitch" role="group" aria-label="选择当前角色性别">
+              <button type="button" class="is-active" data-free-gender="F" aria-pressed="true"><b>女号</b></button>
+              <button type="button" data-free-gender="M" aria-pressed="false"><b>男号</b></button>
+            </div>
+          </div>
+        </div>
+        <div class="free-mode-switch" id="freeModeSwitch" role="group" aria-label="免费风华浏览方式">
+          <button type="button" class="is-active" data-free-mode="catalog" aria-pressed="true"><b>图鉴预览</b><small>收藏与展示</small></button>
+          <button type="button" data-free-mode="lookup" aria-pressed="false"><b>快速查找</b><small>分类找外观</small></button>
+        </div>
+        </section>
+        <section class="free-mission-card" id="freeMissionCard" aria-label="当前可补免费风华" aria-live="polite" hidden>
+          <div><span>当前还可补</span><strong><b id="freeMissionMissingCount">0</b> 件</strong></div>
+          <i></i>
+          <div><span>预计增加</span><strong><b id="freeMissionMissingCharm">0</b> 风华</strong></div>
+          <small id="freeMissionHint">已自动排除不可获取内容</small>
+        </section>
+        <section class="free-progress-card" id="freeProgressCard" aria-labelledby="freeProgressLabel" aria-live="polite" hidden>
+          <div class="free-progress-head">
+            <p id="freeProgressLabel">当前可得风华</p>
+            <div class="free-progress-switch" id="freeProgressScope" role="group" aria-label="风华统计范围">
+              <button type="button" class="is-active" data-progress-scope="current" aria-pressed="true">当前可得</button>
+              <button type="button" data-progress-scope="all" aria-pressed="false">全部图鉴</button>
+            </div>
+          </div>
+          <div class="free-progress-main">
+            <div>
+              <span class="sr-only" id="freeProgressTotalLabel">当前可得总风华</span>
+              <div class="free-progress-number"><strong id="freeCharmTotal">0</strong><span>风华</span></div>
+            </div>
+            <div class="free-progress-count"><strong><span id="freeOwnedCount">0</span>/<span id="freeTotalCount">0</span></strong><small>件已获得</small></div>
+          </div>
+          <div class="free-progress-track" role="progressbar" aria-label="免费风华收集进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <i id="freeCharmBar"></i>
+          </div>
+          <div class="free-progress-footer"><span class="free-progress-earned"><span>已获得风华</span><b id="freeCharmEarned">0</b></span><span id="freeProgressPercent">当前进度 0%</span></div>
+        </section>
+        <section class="free-route-panel" id="freeRoutePanel" aria-labelledby="freeRouteTitle">
+          <div class="free-route-heading"><div><span>主要入口</span><h3 id="freeRouteTitle">从获取途径开始找</h3></div><small>数字为当前未获得</small></div>
+          <div class="free-route-grid" id="freeRouteOptions" role="group" aria-label="选择获取途径"></div>
+        </section>
+        <div class="free-search-row" id="freeSearchRow" hidden>
+          <label class="free-search-box"><span aria-hidden="true">⌕</span><input id="freeSearchInput" type="search" placeholder="搜索名字、套装或获取方式" autocomplete="off"></label>
+          <button class="free-missing-toggle is-active" id="freeMissingToggle" type="button" aria-pressed="true">仅看未获得</button>
+        </div>
+        <div class="free-availability-segment" id="freeAvailabilityFilters" role="group" aria-label="免费风华获取状态" hidden>
+          <button type="button" class="is-active" data-free-availability="all">全部</button>
+          <button type="button" data-free-availability="limited">限时</button>
+          <button type="button" data-free-availability="permanent">常驻</button>
+          <button type="button" data-free-availability="ended">不可获取</button>
+        </div>
+        <div class="free-result-toolbar" id="freeCatalogToolbar" hidden>
+          <button class="category-picker-button" id="categoryPickerButton" type="button" aria-expanded="false" aria-controls="categoryInlinePanel">
+             <span class="category-picker-mark" aria-hidden="true">筛</span>
+             <span id="selectedFreeCategoryLabel">全部分类</span>
+            <i aria-hidden="true">⌄</i>
+          </button>
+          <div class="free-result-actions">
+             <span id="freeFilterKindLabel">外观大类</span>
+            <button id="selectFreeCategoryButton" type="button">全选当前</button>
+          </div>
+        </div>
+        <div class="category-inline-panel" id="categoryInlinePanel" hidden>
+          <div class="category-grid" id="freeFilters" role="group" aria-label="按外观大类筛选免费风华">
+            <button type="button" class="category-option is-active" data-free-filter="all"><span>全部分类</span><i>✓</i></button>
+          </div>
+          <p class="category-filter-note" id="freeFilterNote">按套装、发型、服装、首饰、配饰等浏览</p>
+        </div>
+        <div class="free-context-row">
+          <div><span id="freeResultTitle">全部途径</span><small id="freeResultSubtitle">当前可获得且尚未标记的道具</small></div>
+          <b id="freeResultCount">共 0 件</b>
+        </div>
+        </div>
+        <div class="free-scroll-region" id="freeScrollRegion" tabindex="0" aria-label="免费风华道具列表">
+          <div class="free-list" id="freeList"></div>
+          <button class="free-load-more" id="freeLoadMoreButton" type="button" hidden>继续加载</button>
+          <div class="empty-state" id="freeEmpty" hidden>这个分类暂时没有测试数据</div>
+        </div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="主要模块">
+      <button class="nav-item is-active" type="button" data-tab="calendar">
+        <span aria-hidden="true">◷</span><b>服装日历</b>
+      </button>
+      <button class="nav-item" type="button" data-tab="free">
+        <span aria-hidden="true">✦</span><b>免费风华</b>
+      </button>
+    </nav>
+  </div>
+
+  <div class="sheet-backdrop" id="shareBackdrop" hidden>
+    <article class="share-sheet" role="dialog" aria-modal="true" aria-labelledby="shareTitle">
+      <div class="sheet-handle" aria-hidden="true"></div>
+      <div class="sheet-title-row">
+        <div><p class="section-kicker">3:4 分享图</p><h2 id="shareTitle">分享本次筛选</h2></div>
+        <button id="closeShareButton" class="icon-button" type="button" aria-label="关闭分享图">×</button>
+      </div>
+      <p class="share-hint">严格使用当前列表的时间、状态、获取途径和搜索条件；首图为总结，后续逐页展示外观和评论。</p>
+      <div class="share-page-bar">
+        <button id="previousSharePage" class="share-page-button" type="button" aria-label="上一张">‹</button>
+        <div><b id="sharePageTitle">总结报告</b><span id="sharePageLabel">1 / 1</span></div>
+        <button id="nextSharePage" class="share-page-button" type="button" aria-label="下一张">›</button>
+      </div>
+      <div class="canvas-wrap"><canvas id="shareCanvas" width="1080" height="1440" aria-label="服装记录分享图"></canvas></div>
+      <img id="shareImage" class="share-image" alt="已生成的服装记录分享图" draggable="false" hidden>
+      <div class="share-actions">
+        <button class="secondary-button" id="saveShareButton" type="button">保存当前页</button>
+        <button class="primary-button" id="saveAllShareButton" type="button">保存全部 1 张</button>
+      </div>
+    </article>
+  </div>
+
+  <div class="image-preview-backdrop" id="imagePreviewBackdrop" role="dialog" aria-modal="true" aria-labelledby="imagePreviewCaption" hidden>
+    <button class="image-preview-close" id="closeImagePreviewButton" type="button" aria-label="关闭大图">×</button>
+    <figure class="image-preview-figure">
+      <img id="imagePreviewImage" alt="" draggable="false">
+      <figcaption id="imagePreviewCaption"></figcaption>
+    </figure>
+    <p class="image-preview-tip">点击空白处关闭</p>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="./data.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
