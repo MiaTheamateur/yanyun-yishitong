@@ -737,7 +737,7 @@ img, canvas { -webkit-user-select: none; user-select: none; -webkit-user-drag: n
 .free-route-grid {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: 102px;
+  grid-auto-columns: 124px;
   grid-template-rows: repeat(2, 50px);
   gap: 6px;
   padding-bottom: 2px;
@@ -833,7 +833,7 @@ img, canvas { -webkit-user-select: none; user-select: none; -webkit-user-drag: n
   .free-mode-switch button small { font-size: 8px; }
   .free-mission-card { gap: 8px; padding-right: 10px; padding-left: 10px; }
   .free-mission-card strong b { font-size: 20px; }
-  .free-route-grid { grid-auto-columns: 96px; }
+  .free-route-grid { grid-auto-columns: 118px; }
   .free-missing-toggle { padding-right: 8px; padding-left: 8px; font-size: 10px; }
 }
 
@@ -1834,9 +1834,364 @@ body { font-size: 14px; line-height: 1.5; }
 .free-availability-segment button[data-free-availability="ended"].is-active { color: #8c5960; box-shadow: 0 3px 9px rgba(104,61,67,.06), inset 0 -2px #b98a90; }
 .category-option { justify-content: flex-start; border-radius: 10px 3px 10px 3px; background: rgba(255,253,248,.88); }
 .category-option.is-active { border-color: rgba(36,88,155,.45); background: #e7edf4; color: var(--brand-blue); box-shadow: inset 0 -2px rgba(180,129,47,.65); }
+.share-filter-fab[hidden] { display: none !important; }
 
 @media (max-height: 900px) {
   .app-shell.is-free-active .free-progress-card { min-height: 128px; margin-bottom: 7px; padding: 10px 14px 9px; }
   .app-shell.is-free-active .free-progress-main { min-height: 49px; }
   .app-shell.is-free-active .free-progress-number strong { font-size: 43px; }
+}
+
+/* V0.17.0 — mobile density reset.
+   The document is the only mobile scroll owner; the bottom navigation alone stays fixed. */
+@media (max-width: 600px) {
+  html,
+  body {
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .app-shell,
+  .app-shell.is-paid-list-active,
+  .app-shell.is-free-active {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 100dvh;
+    overflow: visible;
+    padding: calc(7px + env(safe-area-inset-top)) 10px calc(66px + env(safe-area-inset-bottom));
+  }
+
+  .app-shell.is-paid-list-active main,
+  .app-shell.is-free-active main,
+  .app-shell.is-paid-list-active #calendarPage,
+  .app-shell.is-free-active #freePage,
+  .app-shell.is-paid-list-active #listView {
+    display: block;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+  }
+
+  .app-shell.is-paid-list-active .paid-list-scroll-region,
+  .free-scroll-region {
+    display: block;
+    height: auto;
+    max-height: none;
+    min-height: 0;
+    margin: 0;
+    padding: 4px 0 8px;
+    overflow: visible;
+    border-top: 0;
+    overscroll-behavior: auto;
+  }
+
+  .free-fixed-panel { position: static; }
+
+  /* Compact wordmark: still branded, but no longer a hero banner. */
+  .topbar-compact,
+  .app-shell.is-free-active .topbar,
+  .app-shell.is-paid-list-active .topbar {
+    min-height: 43px;
+    gap: 8px;
+    margin: 0 0 8px;
+    padding: 3px 4px 9px;
+    border-radius: 10px 10px 0 0;
+  }
+  .brand-identity { gap: 0; }
+  .brand-wordmark { font-size: 21px; letter-spacing: .035em; }
+  .brand-wordmark::before { width: 3px; height: 20px; margin-right: 3px; }
+  .topbar-compact h1 { font-size: 21px; letter-spacing: .035em; }
+  .tool-meta { gap: 1px; }
+  .tool-version { padding: 2px 6px 1px; font-size: 8px; letter-spacing: .09em; }
+  .tool-creator { font-size: 7.5px; line-height: 1.25; }
+  .topbar::after { right: 4px; left: 4px; height: 1px; }
+
+  /* Page title and mode controls form one compact control header. */
+  .page-heading,
+  .app-shell.is-free-active .page-heading {
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .page-heading h2,
+  .free-command-panel .free-page-title h2 { font-size: 21px; line-height: 1.15; }
+  .count-chip,
+  .free-command-panel .count-chip {
+    min-height: 30px;
+    padding: 5px 8px;
+    font-size: 10px;
+  }
+  .count-chip b,
+  .free-command-panel .count-chip b { font-size: 13px; }
+  .subview-toolbar {
+    gap: 8px;
+    margin: 0 0 8px;
+    padding: 0 0 7px;
+  }
+  .subview-label { font-size: 10px; }
+  .view-switch { grid-template-columns: repeat(2, 66px); padding: 2px; }
+  .view-switch button { min-height: 36px; padding: 0 7px; font-size: 11px; }
+  .view-switch button i { font-size: 12px; }
+
+  /* Calendar is a monthly index, not a full-screen poster. */
+  .calendar-card {
+    padding: 10px 9px 8px;
+    border-radius: 15px 5px 15px 5px;
+    box-shadow: 0 6px 18px rgba(28,43,58,.05);
+  }
+  .calendar-card::before { width: 48px; }
+  .calendar-head { align-items: center; gap: 8px; margin-bottom: 8px; }
+  .calendar-head p { font-size: 10px; letter-spacing: .12em; }
+  .calendar-month-controls {
+    grid-template-columns: 36px minmax(118px, 1fr) 36px;
+    gap: 3px;
+    margin-top: 4px;
+  }
+  .calendar-month-controls > button,
+  .calendar-month-picker input { width: 100%; height: 36px; border-radius: 9px; }
+  .calendar-month-controls > button { font-size: 17px; }
+  .calendar-month-picker input { padding: 0 5px; font-size: 13px; }
+  .month-overview-button { min-height: 36px; padding: 0 10px; border-radius: 9px; font-size: 10px; }
+  .week-row { margin-bottom: 1px; font-size: 9px; }
+  .calendar-day { min-height: 33px; font-size: 12px; }
+  .calendar-day.is-today span,
+  .calendar-day.is-selected span { width: 27px; height: 27px; }
+  .calendar-day.has-event::after { bottom: 1px; width: 8px; height: 3px; }
+  .calendar-legend { gap: 7px; margin-top: 5px; padding-top: 6px; font-size: 9px; }
+  .calendar-today-button { min-height: 34px; padding: 0 9px; font-size: 10px; }
+  .calendar-month-stats { margin-top: 7px; }
+  .calendar-month-stats div { padding: 7px 4px; }
+  .calendar-month-stats strong { font-size: 16px; }
+  .calendar-month-stats span { margin-top: 2px; font-size: 9px; }
+  .section-row { margin: 12px 2px 6px; }
+  .section-row h3 { font-size: 17px; }
+  .section-row p { font-size: 9.5px; }
+  .schedule-list { gap: 6px; }
+  .schedule-item { grid-template-columns: 44px 1fr auto; min-height: 58px; gap: 7px; padding: 7px 9px; border-radius: 11px; }
+  .schedule-copy strong { font-size: 13px; }
+  .schedule-copy span { font-size: 10px; }
+
+  /* Paid list controls: compact stack, with a slim summary strip. */
+  .paid-list-tools,
+  .paid-list-tools:has(.paid-search) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 5px;
+    margin: 4px 0;
+  }
+  .paid-search { grid-column: 1 / -1; }
+  .paid-list-tools input,
+  .paid-list-tools select,
+  .paid-method-trigger { min-height: 38px; font-size: 11px; }
+  .paid-list-tools input { padding: 0 9px; }
+  .paid-list-tools select,
+  .paid-method-trigger { padding: 0 6px; }
+  .paid-result-hint { margin: 2px 1px 4px; font-size: 9.5px; }
+  .status-summary { gap: 4px; margin: 5px 0 7px; }
+  .summary-cell { min-height: 49px; padding: 5px 2px; border-radius: 8px; }
+  .summary-cell strong { font-size: 16px; line-height: 1.1; }
+  .summary-cell span { font-size: 9px; line-height: 1.15; }
+
+  /* Paid cards: keep the imagery, remove presentation-scale spacing. */
+  .outfit-list,
+  .free-list { gap: 7px; }
+  .outfit-card { border-radius: 12px; box-shadow: 0 5px 15px rgba(28,43,58,.045); }
+  .outfit-core {
+    grid-template-columns: 94px minmax(0, 1fr);
+    gap: 8px;
+    padding: 8px;
+  }
+  .outfit-card .outfit-core > .item-visual {
+    height: 112px;
+    min-height: 112px;
+    border-radius: 9px;
+  }
+  .item-title-row { gap: 5px; }
+  .item-title-row h3 { margin-bottom: 2px; font-size: 15px; line-height: 1.2; }
+  .listing-pill { padding: 3px 5px; font-size: 9px; }
+  .item-date { margin-bottom: 5px; font-size: 10px; line-height: 1.25; }
+  .paid-keyfacts { gap: 3px; }
+  .paid-keyfact { grid-template-columns: 48px minmax(0, 1fr); gap: 4px; }
+  .paid-keyfact dt,
+  .paid-keyfact dd.is-empty { padding-top: 2px; font-size: 9.5px; line-height: 1.25; }
+  .paid-keyfact dd { gap: 3px; }
+  .paid-keyfact dd span { min-height: 19px; padding: 2px 5px; font-size: 9.5px; }
+  .choice-row { gap: 4px; padding: 0 8px 7px; }
+  .choice-button { min-height: 38px; padding: 4px 1px; border-radius: 8px; font-size: 11px; }
+  .review-row,
+  .paid-record-summary { gap: 5px; padding: 7px 8px; }
+  .review-row label { font-size: 10px; }
+  .review-row input { height: 38px; padding: 0 8px; font-size: 11px; }
+  .review-row small { font-size: 9px; }
+  .paid-complete-button,
+  .paid-edit-button { min-height: 38px; padding: 0 8px; font-size: 10px; }
+
+  /* Free module: a dense catalogue header followed by content, never a locked dashboard. */
+  .free-command-panel {
+    margin-bottom: 6px;
+    padding: 8px 9px 7px;
+    border-radius: 13px 4px 13px 4px;
+  }
+  .free-command-panel .free-page-heading { margin-bottom: 6px; }
+  .free-command-panel .free-page-title h2 { margin-bottom: 1px; }
+  .free-command-panel .free-page-title small { font-size: 8.5px; }
+  .free-command-panel .free-heading-tools { gap: 3px; }
+  .character-gender-switch { grid-template-columns: repeat(2, 50px); padding: 2px; }
+  .character-gender-switch button { min-height: 34px; padding: 0 6px; }
+  .character-gender-switch button b { font-size: 10.5px; }
+  .free-command-panel .free-mode-switch { margin: 0; padding: 2px; }
+  .free-command-panel .free-mode-switch button { min-height: 38px; padding: 3px 5px; }
+  .free-command-panel .free-mode-switch button b { font-size: 11.5px; }
+  .free-command-panel .free-mode-switch button small { margin-top: 0; font-size: 8px; }
+
+  .free-progress-card,
+  .app-shell.is-free-active .free-progress-card {
+    min-height: 0;
+    margin-bottom: 6px;
+    padding: 8px 10px 7px;
+    border-radius: 13px 4px 13px 4px;
+  }
+  .free-progress-head { gap: 6px; margin-bottom: 3px; }
+  .free-progress-head p { font-size: 9.5px; letter-spacing: .07em; }
+  .free-progress-switch { padding: 1px; }
+  .free-progress-switch button { min-height: 30px; padding: 0 7px; font-size: 9px; }
+  .free-progress-main,
+  .app-shell.is-free-active .free-progress-main { min-height: 34px; }
+  .free-progress-number { gap: 4px; }
+  .free-progress-number strong,
+  .app-shell.is-free-active .free-progress-number strong { font-size: 31px; }
+  .free-progress-number span { font-size: 10px; }
+  .free-progress-count { gap: 0; padding-bottom: 0; }
+  .free-progress-count strong { font-size: 16px; }
+  .free-progress-count small { font-size: 8.5px; }
+  .free-progress-track { height: 4px; margin: 5px 0 4px; }
+  .free-progress-footer,
+  .free-progress-earned span { font-size: 8.5px; }
+  .free-progress-earned b { font-size: 14px; }
+
+  .free-route-panel { margin-bottom: 6px; padding: 8px; border-radius: 13px 4px 13px 4px; }
+  .free-route-heading { margin-bottom: 5px; }
+  .free-route-heading span,
+  .free-route-heading small { font-size: 8px; }
+  .free-route-heading h3 { font-size: 13px; }
+  .free-route-grid { grid-template-rows: repeat(2, 40px); gap: 4px; }
+  .free-route-option { padding: 4px 6px; }
+  .free-search-row { gap: 5px; margin-bottom: 5px; }
+  .free-search-box input,
+  .free-missing-toggle { min-height: 38px; font-size: 10.5px; }
+  .free-availability-segment,
+  .app-shell.is-free-active .free-availability-segment { gap: 2px; margin: 2px 0 6px; padding: 3px; }
+  .free-availability-segment button,
+  .app-shell.is-free-active .free-availability-segment button { min-height: 36px; font-size: 10px; }
+  .free-result-toolbar { gap: 6px; margin-bottom: 5px; }
+  .category-picker-button,
+  .free-result-actions button { min-height: 38px; font-size: 10.5px; }
+  .free-result-actions > span { font-size: 9px; }
+  .free-context-row { align-items: center; margin: 1px 2px 4px; }
+  .free-context-row span { font-size: 12px; }
+  .free-context-row small { margin-top: 0; font-size: 8.5px; }
+  .free-context-row > b { font-size: 9px; }
+
+  .free-card {
+    grid-template-columns: 90px minmax(0, 1fr);
+    gap: 8px;
+    padding: 8px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(28,43,58,.045);
+  }
+  .free-card .item-visual { min-height: 98px; border-radius: 9px; }
+  .free-card h3 { margin: 1px 0 4px; font-size: 15px; line-height: 1.2; }
+  .free-charm-pill,
+  .meta-pill { font-size: 9.5px; }
+  .free-path { margin-top: 5px; font-size: 10px; line-height: 1.35; }
+  .free-owned-button { min-height: 38px; font-size: 11px; }
+  .free-set-hero {
+    grid-template-columns: 90px minmax(0, 1fr);
+    gap: 8px;
+    padding: 8px;
+  }
+  .free-set-hero .item-visual { height: 118px; }
+  .set-owned-progress { font-size: 10px; }
+  .set-card-actions { gap: 5px; padding: 0 8px 8px; }
+  .set-card-actions button { min-height: 38px; font-size: 10.5px; }
+
+  /* Keep the persistent navigation useful without letting it consume a card row. */
+  .bottom-nav {
+    gap: 5px;
+    width: 100%;
+    padding: 4px 10px calc(4px + env(safe-area-inset-bottom));
+  }
+  .nav-item { min-height: 46px; padding: 3px 7px; border-radius: 11px; }
+  .nav-item span { font-size: 15px; line-height: 17px; }
+  .nav-item b { font-size: 10.5px; }
+  .nav-item.is-active::before { top: -4px; height: 2px; }
+}
+
+/* V0.17.1 — the formal 20 labels are presented as a complete 9-group archive index. */
+.free-route-grid.is-grouped {
+  grid-auto-flow: row;
+  grid-auto-columns: auto;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-rows: none;
+  gap: 5px;
+  overflow: visible;
+}
+.free-route-option.is-group {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  min-height: 46px;
+  padding: 5px 3px;
+  text-align: center;
+}
+.free-route-option.is-group span { display: grid; place-items: center; gap: 2px; }
+.free-route-option.is-group b {
+  display: block;
+  overflow: visible;
+  font-size: 10px;
+  line-height: 1.12;
+  text-overflow: clip;
+  white-space: normal;
+}
+.free-route-option.is-group small { margin: 0; font-size: 8px; line-height: 1; }
+.free-route-subgroups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
+  gap: 4px;
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(36,88,155,.13);
+}
+.free-route-subgroups[hidden] { display: none !important; }
+.free-route-suboption {
+  display: flex;
+  min-width: 0;
+  min-height: 34px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 4px 5px;
+  border: 1px solid #d9d4ca;
+  border-radius: 8px 3px 8px 3px;
+  background: rgba(255,253,248,.86);
+  color: #52606a;
+  font-size: 9px;
+  cursor: pointer;
+}
+.free-route-suboption span { min-width: 0; line-height: 1.15; }
+.free-route-suboption small { color: #8a8d8d; font-size: 8px; }
+.free-route-suboption.is-active {
+  border-color: rgba(36,88,155,.5);
+  background: #e8eef5;
+  color: #17395f;
+  box-shadow: inset 0 -2px rgba(180,129,47,.72);
+}
+
+@media (max-width: 600px) {
+  .free-route-grid.is-grouped { grid-template-rows: none; gap: 4px; }
+  .free-route-option.is-group { min-height: 40px; padding: 4px 2px; }
+  .free-route-option.is-group b { font-size: 9px; }
+  .free-route-option.is-group small { font-size: 7.5px; }
+  .free-route-subgroups { margin-top: 5px; padding-top: 5px; }
+  .free-route-suboption { min-height: 32px; font-size: 8.5px; }
 }

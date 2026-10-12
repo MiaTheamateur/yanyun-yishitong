@@ -6,21 +6,24 @@
   var REVIEW_RED = '#9b3f45';
   var FREE_CATALOG_TYPE_ORDER = ['套装', '发型', '衣服', '首饰', '配饰', '帽子', '披挂', '武器'];
   var FREE_CATALOG_TYPE_LABELS = { '衣服': '服装' };
-  var FREE_CLASSIFICATION_ORDER = ['不错小店', '和鸣累抽奖励', '和鸣池内奖励', '常驻玉池', '限定玉池', '门派玩法', '探索玩法', '剧情任务', 'PVE战斗', '不肝商店', '逐战商店', '家业玩法', '社交商店', '限时活动', 'PVP战斗', '天精地华商店', '悬赏商店', '其他活动', '成就奖励', '常驻玩法', '野外首领'];
+  var FREE_CLASSIFICATION_ALIASES = { '逐战商店': '常驻玩法', '2026/12/25': '野外首领' };
+  var FREE_CLASSIFICATION_GROUPS = [
+    { label: '不错小店', tags: ['不错小店'], children: [] },
+    { label: '不肝商店', tags: ['不肝商店'], children: [] },
+    { label: '社交商店', tags: ['社交商店'], children: [] },
+    { label: '剧情探索成就', tags: ['成就奖励', '探索玩法', '剧情任务', '野外首领'], children: ['成就奖励', '探索玩法', '剧情任务', '野外首领'] },
+    { label: '和鸣', tags: ['和鸣累抽奖励', '和鸣池内奖励', '天精地华商店'], children: ['和鸣累抽奖励', '和鸣池内奖励', '天精地华商店'] },
+    { label: '玉池', tags: ['常驻玉池', '限定玉池'], children: ['常驻玉池', '限定玉池'] },
+    { label: '战斗', tags: ['PVE战斗', 'PVP战斗'], children: ['PVE战斗', 'PVP战斗'] },
+    { label: '常驻玩法', tags: ['常驻玩法', '门派玩法', '悬赏商店', '家业玩法'], children: ['门派玩法', '悬赏商店', '家业玩法'] },
+    { label: '活动', tags: ['限时活动', '其他活动'], children: ['限时活动', '其他活动'] }
+  ];
   var data = Array.isArray(window.OUTFIT_DATA) ? window.OUTFIT_DATA : [];
   var paidItems = data.filter(function (item) { return item.acquisitionType === '付费'; });
   var paidListItems = paidItems.filter(function (item) { return item.listingStatus !== '预告'; });
   var freeItems = data.filter(function (item) { return item.acquisitionType === '免费'; });
   var freeSets = freeItems.filter(function (item) { return item.recordShape === '套装'; });
   var freeCollectibles = freeItems.filter(function (item) { return item.recordShape !== '套装'; });
-  var freeClassificationOptions = Array.from(new Set(freeCollectibles.flatMap(function (item) {
-    return (item.tags || []).filter(function (tag) { return tag && tag !== '套装' && tag !== '套装部件'; });
-  }))).sort(function (a, b) {
-    var aRank = FREE_CLASSIFICATION_ORDER.indexOf(a); var bRank = FREE_CLASSIFICATION_ORDER.indexOf(b);
-    if (aRank < 0) aRank = FREE_CLASSIFICATION_ORDER.length;
-    if (bRank < 0) bRank = FREE_CLASSIFICATION_ORDER.length;
-    return aRank - bRank || String(a).localeCompare(String(b), 'zh-CN');
-  });
   var freeSetById = {};
   var freeItemById = {};
   freeSets.forEach(function (item) { freeSetById[item.id] = item; });
@@ -31,14 +34,12 @@
     var groupId = 'exclusive-' + groupIndex;
     freeCollectibles.filter(function (item) { return names.indexOf(item.name) >= 0; }).forEach(function (item) { freeExclusiveGroupById[item.id] = groupId; });
   });
-  var FREE_CHANNEL_ORDER = ['活动', '兑换', '探索', '任务', '成就', '和鸣', '收集', '其他'];
-  var FREE_CHANNEL_MARKS = { '活动': '时', '兑换': '换', '探索': '探', '任务': '任', '成就': '成', '和鸣': '鸣', '收集': '集', '其他': '其' };
   var state = loadState();
   var initialCalendarDate = getReferenceDate();
   var FREE_PAGE_SIZE = 18;
   var CALENDAR_MINIMUM = '2024-12';
   var view = {
-    mode: 'calendar', page: 'calendar', paidSearch: '', paidRange: 'all', paidStartDate: '', paidEndDate: '', paidStatus: 'all', paidMethods: [], paidWheelIncludeVariantHair: true, paidListeningTypes: [], paidRetailPrices: [], freeMode: 'catalog', freeChannel: 'all', freeSearch: '', freeMissingOnly: false, freeCatalogFilter: 'all', freeLookupFilter: 'all', freeAvailability: 'all', freeProgressScope: 'all', freeGender: state.freeGender === 'M' ? 'M' : 'F', freeVisibleLimit: FREE_PAGE_SIZE, selectedDate: '', editingPaid: {}, expandedSets: {},
+    mode: 'calendar', page: 'calendar', paidSearch: '', paidRange: 'all', paidStartDate: '', paidEndDate: '', paidStatus: 'all', paidMethods: [], paidWheelIncludeVariantHair: true, paidListeningTypes: [], paidRetailPrices: [], freeMode: 'catalog', freeLookupClassification: 'all', freeSearch: '', freeMissingOnly: false, freeCatalogFilter: 'all', freeAvailability: 'all', freeProgressScope: 'all', freeGender: state.freeGender === 'M' ? 'M' : 'F', freeVisibleLimit: FREE_PAGE_SIZE, selectedDate: '', editingPaid: {}, expandedSets: {},
     calendarYear: initialCalendarDate.getFullYear(), calendarMonth: initialCalendarDate.getMonth()
   };
   var shareState = { page: 0, pages: [], dataUrls: [], filterLabel: '全部时间' };
@@ -58,7 +59,7 @@
     paidCustomRange: document.getElementById('paidCustomRange'), paidStartDate: document.getElementById('paidStartDate'), paidEndDate: document.getElementById('paidEndDate'), applyPaidRangeButton: document.getElementById('applyPaidRangeButton'), paidRangeError: document.getElementById('paidRangeError'), paidResultHint: document.getElementById('paidResultHint'), paidListEmpty: document.getElementById('paidListEmpty'),
     monthStartCount: document.getElementById('monthStartCount'), monthEndCount: document.getElementById('monthEndCount'),
     recordProgress: document.getElementById('recordProgress'), statusSummary: document.getElementById('statusSummary'),
-    freePage: document.getElementById('freePage'), freeModeSwitch: document.getElementById('freeModeSwitch'), freeMissionCard: document.getElementById('freeMissionCard'), freeMissionMissingCount: document.getElementById('freeMissionMissingCount'), freeMissionMissingCharm: document.getElementById('freeMissionMissingCharm'), freeMissionHint: document.getElementById('freeMissionHint'), freeProgressCard: document.getElementById('freeProgressCard'), freeRoutePanel: document.getElementById('freeRoutePanel'), freeRouteOptions: document.getElementById('freeRouteOptions'), freeSearchRow: document.getElementById('freeSearchRow'), freeSearchInput: document.getElementById('freeSearchInput'), freeMissingToggle: document.getElementById('freeMissingToggle'), freeCatalogToolbar: document.getElementById('freeCatalogToolbar'), freeResultTitle: document.getElementById('freeResultTitle'), freeResultSubtitle: document.getElementById('freeResultSubtitle'),
+    freePage: document.getElementById('freePage'), freeModeSwitch: document.getElementById('freeModeSwitch'), freeMissionCard: document.getElementById('freeMissionCard'), freeMissionMissingCount: document.getElementById('freeMissionMissingCount'), freeMissionMissingCharm: document.getElementById('freeMissionMissingCharm'), freeMissionHint: document.getElementById('freeMissionHint'), freeProgressCard: document.getElementById('freeProgressCard'), freeRoutePanel: document.getElementById('freeRoutePanel'), freeRouteOptions: document.getElementById('freeRouteOptions'), freeRouteSubgroups: document.getElementById('freeRouteSubgroups'), freeSearchRow: document.getElementById('freeSearchRow'), freeSearchInput: document.getElementById('freeSearchInput'), freeMissingToggle: document.getElementById('freeMissingToggle'), freeCatalogToolbar: document.getElementById('freeCatalogToolbar'), freeResultTitle: document.getElementById('freeResultTitle'), freeResultSubtitle: document.getElementById('freeResultSubtitle'),
     freeFilters: document.getElementById('freeFilters'), freeAvailabilityFilters: document.getElementById('freeAvailabilityFilters'), freeGenderSwitch: document.getElementById('freeGenderSwitch'),
     categoryPickerButton: document.getElementById('categoryPickerButton'), selectedFreeCategoryLabel: document.getElementById('selectedFreeCategoryLabel'), freeFilterKindLabel: document.getElementById('freeFilterKindLabel'), freeFilterNote: document.getElementById('freeFilterNote'),
     freeResultCount: document.getElementById('freeResultCount'), categoryInlinePanel: document.getElementById('categoryInlinePanel'),
@@ -500,7 +501,7 @@
 
   function setPaidMethodPanelOpen(open) {
     el.paidMethodPanel.hidden = !open;
-    el.generateShareButton.hidden = open;
+    el.generateShareButton.hidden = true;
     el.paidMethodFilter.setAttribute('aria-expanded', open ? 'true' : 'false');
   }
 
@@ -549,7 +550,34 @@
 
   function freeClassification(item) {
     var tags = (item && item.tags || []).filter(function (tag) { return tag && tag !== '套装' && tag !== '套装部件'; });
-    return tags[0] || '未分类';
+    var classification = tags[0] || '未分类';
+    return FREE_CLASSIFICATION_ALIASES[classification] || classification;
+  }
+
+  function freeClassificationGroupValue(group) {
+    return group.tags.length === 1 ? group.tags[0] : 'group:' + group.label;
+  }
+
+  function freeClassificationGroupForSelection(selection) {
+    if (!selection || selection === 'all') return null;
+    var groupLabel = selection.indexOf('group:') === 0 ? selection.slice(6) : '';
+    return FREE_CLASSIFICATION_GROUPS.find(function (group) {
+      return groupLabel ? group.label === groupLabel : group.tags.indexOf(selection) >= 0;
+    }) || null;
+  }
+
+  function matchesFreeClassificationSelection(item, selection) {
+    if (!selection || selection === 'all') return true;
+    var classification = freeClassification(item);
+    if (selection.indexOf('group:') !== 0) return classification === selection;
+    var group = freeClassificationGroupForSelection(selection);
+    return !!group && group.tags.indexOf(classification) >= 0;
+  }
+
+  function freeClassificationSelectionLabel(selection) {
+    if (!selection || selection === 'all') return '全部分类组';
+    var group = freeClassificationGroupForSelection(selection);
+    return selection.indexOf('group:') === 0 && group ? group.label : selection;
   }
 
   function freeCatalogType(item) {
@@ -558,12 +586,12 @@
   }
 
   function activeFreeFilter() {
-    return view.freeMode === 'lookup' ? view.freeLookupFilter : view.freeCatalogFilter;
+    return view.freeCatalogFilter;
   }
 
   function freeFilterLabel(value) {
     if (value === 'all') return '全部分类';
-    return view.freeMode === 'catalog' ? (FREE_CATALOG_TYPE_LABELS[value] || value) : value;
+    return FREE_CATALOG_TYPE_LABELS[value] || value;
   }
 
   function matchesFreeGender(item) {
@@ -676,11 +704,11 @@
     return sourceItems.filter(function (item) {
       if (!matchesFreeGender(item) || !freeSearchMatches(item)) return false;
       if (view.freeMode === 'lookup') {
-        if (view.freeChannel !== 'all' && item.channel !== view.freeChannel) return false;
+        if (!matchesFreeClassificationSelection(item, view.freeLookupClassification)) return false;
         if (view.freeMissingOnly && isFreeRequirementComplete(item)) return false;
       }
       var selectedFilter = activeFreeFilter();
-      var itemFilter = view.freeMode === 'lookup' ? freeClassification(item) : freeCatalogType(item);
+      var itemFilter = freeCatalogType(item);
       var matchesCategory = selectedFilter === 'all' || itemFilter === selectedFilter;
       var matchesAvailability = view.freeAvailability === 'all' || freeGroup(item) === view.freeAvailability;
       return matchesCategory && matchesAvailability;
@@ -935,51 +963,71 @@
     var progress = getFreeCharmProgress();
     el.freeMissionMissingCount.textContent = progress.remainingCount;
     el.freeMissionMissingCharm.textContent = formatNumber(progress.remainingCharm);
-    el.freeMissionHint.textContent = '先选获取途径，再按分类和状态快速查找';
+    el.freeMissionHint.textContent = '先选分类标签，再按外观大类和状态快速查找';
   }
 
   function renderFreeFilterOptions() {
     var sourceItems = freeItems.filter(function (item) { return item.recordShape !== '套装部件' && matchesFreeGender(item); });
-    var catalogMode = view.freeMode === 'catalog';
+    if (view.freeMode === 'lookup' && view.freeLookupClassification !== 'all') {
+      sourceItems = sourceItems.filter(function (item) { return matchesFreeClassificationSelection(item, view.freeLookupClassification); });
+    }
     var selectedFilter = activeFreeFilter();
-    var classifications = ['all'].concat(catalogMode ? FREE_CATALOG_TYPE_ORDER : freeClassificationOptions);
+    var classifications = ['all'].concat(FREE_CATALOG_TYPE_ORDER);
     el.freeFilters.replaceChildren();
     classifications.forEach(function (classification) {
       var count = classification === 'all' ? sourceItems.length : sourceItems.filter(function (item) {
-        return (catalogMode ? freeCatalogType(item) : freeClassification(item)) === classification;
+        return freeCatalogType(item) === classification;
       }).length;
       if (classification !== 'all' && count === 0) return;
       var button = document.createElement('button'); button.type = 'button'; button.dataset.freeFilter = classification;
-      button.className = 'category-option' + (catalogMode && classification === '套装' ? ' category-option-set' : '') + (selectedFilter === classification ? ' is-active' : '');
-      button.innerHTML = '<span>' + escapeHtml(classification === 'all' ? '全部分类' : (catalogMode ? (FREE_CATALOG_TYPE_LABELS[classification] || classification) : classification)) + '</span><small>' + count + '</small><i>✓</i>';
+      button.className = 'category-option' + (classification === '套装' ? ' category-option-set' : '') + (selectedFilter === classification ? ' is-active' : '');
+      button.innerHTML = '<span>' + escapeHtml(classification === 'all' ? '全部分类' : (FREE_CATALOG_TYPE_LABELS[classification] || classification)) + '</span><small>' + count + '</small><i>✓</i>';
       el.freeFilters.appendChild(button);
     });
-    el.freeFilterKindLabel.textContent = catalogMode ? '外观大类' : '正式分类标签';
-    el.freeFilterNote.textContent = catalogMode ? '按套装、发型、服装、首饰、配饰等浏览' : '分类来自《免费外观道具汇总_20261012》正式字段';
-    el.freeFilters.setAttribute('aria-label', catalogMode ? '按外观大类筛选免费风华' : '按正式分类标签筛选免费风华');
+    el.freeFilterKindLabel.textContent = '外观大类';
+    el.freeFilterNote.textContent = '按套装、发型、服装、首饰、配饰等浏览';
+    el.freeFilters.setAttribute('aria-label', '按外观大类筛选免费风华');
   }
 
   function renderFreeRouteOptions() {
     var missing = currentMissingFreeItems();
-    var channels = ['all'].concat(FREE_CHANNEL_ORDER);
+    var selectedGroup = freeClassificationGroupForSelection(view.freeLookupClassification);
     el.freeRouteOptions.replaceChildren();
-    channels.forEach(function (channel) {
-      var items = channel === 'all' ? missing : missing.filter(function (item) { return item.channel === channel; });
+    [{ label: '全部', value: 'all' }].concat(FREE_CLASSIFICATION_GROUPS.map(function (group) {
+      return { label: group.label, value: freeClassificationGroupValue(group), group: group };
+    })).forEach(function (option) {
+      var items = option.value === 'all' ? missing : missing.filter(function (item) { return matchesFreeClassificationSelection(item, option.value); });
       var remaining = summarizeFreeItems(items).remainingCount;
-      var button = document.createElement('button'); button.type = 'button'; button.dataset.freeChannel = channel;
-      button.className = 'free-route-option' + (view.freeChannel === channel ? ' is-active' : '');
-      button.setAttribute('aria-pressed', view.freeChannel === channel ? 'true' : 'false');
-      button.innerHTML = '<i aria-hidden="true">' + (channel === 'all' ? '全' : FREE_CHANNEL_MARKS[channel]) + '</i><span><b>' + (channel === 'all' ? '全部途径' : channel) + '</b><small>未获得 ' + remaining + '</small></span>';
+      var isActive = option.value === 'all' ? view.freeLookupClassification === 'all' : !!selectedGroup && selectedGroup.label === option.label;
+      var button = document.createElement('button'); button.type = 'button'; button.dataset.freeClassification = option.value;
+      button.className = 'free-route-option is-group' + (isActive ? ' is-active' : '');
+      button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      button.innerHTML = '<span><b>' + escapeHtml(option.label) + '</b><small>' + remaining + '</small></span>';
       el.freeRouteOptions.appendChild(button);
     });
+    el.freeRouteSubgroups.replaceChildren();
+    if (!selectedGroup || !selectedGroup.children.length) {
+      el.freeRouteSubgroups.hidden = true;
+      return;
+    }
+    selectedGroup.children.forEach(function (classification) {
+      var items = missing.filter(function (item) { return freeClassification(item) === classification; });
+      var remaining = summarizeFreeItems(items).remainingCount;
+      var button = document.createElement('button'); button.type = 'button'; button.dataset.freeClassification = classification;
+      button.className = 'free-route-suboption' + (view.freeLookupClassification === classification ? ' is-active' : '');
+      button.setAttribute('aria-pressed', view.freeLookupClassification === classification ? 'true' : 'false');
+      button.innerHTML = '<span>' + escapeHtml(classification) + '</span><small>' + remaining + '</small>';
+      el.freeRouteSubgroups.appendChild(button);
+    });
+    el.freeRouteSubgroups.hidden = false;
   }
 
   function freeModeCopy(visible) {
     var selectedFilter = activeFreeFilter();
     var selectedLabel = freeFilterLabel(selectedFilter);
     if (view.freeMode === 'lookup') return {
-      title: view.freeChannel === 'all' ? selectedLabel : view.freeChannel + ' · ' + selectedLabel,
-      subtitle: view.freeMissingOnly ? '仅显示尚未标记获得的结果' : '按途径、状态和正式分类标签快速查找'
+      title: view.freeLookupClassification === 'all' ? selectedLabel : freeClassificationSelectionLabel(view.freeLookupClassification) + ' · ' + selectedLabel,
+      subtitle: view.freeMissingOnly ? '仅显示尚未标记获得的结果' : '按分类标签、外观大类和状态快速查找'
     };
     return { title: selectedFilter === 'all' ? '全部图鉴' : selectedLabel, subtitle: '按外观大类与风华值浏览已收录外观' };
   }
@@ -1409,9 +1457,9 @@
   el.freeModeSwitch.addEventListener('click', function (event) {
     var button = event.target.closest('[data-free-mode]'); if (button) switchFreeMode(button.dataset.freeMode);
   });
-  el.freeRouteOptions.addEventListener('click', function (event) {
-    var button = event.target.closest('[data-free-channel]'); if (!button) return;
-    view.freeChannel = button.dataset.freeChannel; view.freeVisibleLimit = FREE_PAGE_SIZE; renderFreeList();
+  el.freeRoutePanel.addEventListener('click', function (event) {
+    var button = event.target.closest('[data-free-classification]'); if (!button) return;
+    view.freeLookupClassification = button.dataset.freeClassification; view.freeVisibleLimit = FREE_PAGE_SIZE; renderFreeList();
   });
   el.freeSearchInput.addEventListener('input', function () {
     view.freeSearch = el.freeSearchInput.value.trim(); view.freeVisibleLimit = FREE_PAGE_SIZE; renderFreeList();
@@ -1421,8 +1469,7 @@
   });
   el.freeFilters.addEventListener('click', function (event) {
     var button = event.target.closest('[data-free-filter]'); if (!button) return;
-    if (view.freeMode === 'lookup') view.freeLookupFilter = button.dataset.freeFilter;
-    else view.freeCatalogFilter = button.dataset.freeFilter;
+    view.freeCatalogFilter = button.dataset.freeFilter;
     view.freeVisibleLimit = FREE_PAGE_SIZE;
     el.freeFilters.querySelectorAll('button').forEach(function (entry) { entry.classList.toggle('is-active', entry === button); }); renderFreeList(); setCategoryPanelOpen(false); el.categoryPickerButton.focus();
   });
@@ -1490,7 +1537,7 @@
   });
   renderCalendar(); renderPaidList(); renderFreeList();
   window.__OUTFIT_APP__ = {
-version: '0.16.3-first-release-package', storageKey: STORAGE_KEY, paidCount: paidListItems.length, paidListCount: paidListItems.length, calendarPaidCount: paidItems.length, freeCount: freeCollectibles.length, freeDatabaseRows: freeItems.length, freeSetCount: freeSets.length,
+	version: '0.17.1-grouped-free-classifications', storageKey: STORAGE_KEY, paidCount: paidListItems.length, paidListCount: paidListItems.length, calendarPaidCount: paidItems.length, freeCount: freeCollectibles.length, freeDatabaseRows: freeItems.length, freeSetCount: freeSets.length,
     getState: function () { return JSON.parse(JSON.stringify(state)); }, getCounts: getCounts,
     setStatus: setStatus, setReview: setReview, switchMode: switchMode, switchPage: switchPage,
     getScopedPaidItems: getScopedPaidItems, getFilteredPaidItems: getFilteredPaidItems, paidItemMatchesMethodRefinements: paidItemMatchesMethodRefinements, buildSharePages: buildSharePages, drawSharePage: drawSharePage,
