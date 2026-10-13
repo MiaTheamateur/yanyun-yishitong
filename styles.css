@@ -1450,6 +1450,31 @@ h1 { margin-bottom: 5px; color: #18201d; font: 700 29px/1.08 var(--display); let
   .set-card-actions { grid-template-columns: minmax(0, 1fr) 96px; }
 }
 
+/* V0.17.9 — 免费风华数量与角色切换合并为同一行，减少头部占高。 */
+.free-command-panel .free-heading-tools {
+  min-width: 0;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+.free-command-panel .free-heading-tools .count-chip {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+.free-command-panel .free-heading-tools .character-gender-switch {
+  width: 104px;
+  flex: 0 0 104px;
+}
+
+@media (max-width: 360px) {
+  .free-command-panel .free-page-heading { gap: 6px; }
+  .free-command-panel .free-page-title small { max-width: 106px; white-space: normal; }
+  .free-command-panel .free-heading-tools { gap: 4px; }
+  .free-command-panel .free-heading-tools .count-chip { padding-right: 6px; padding-left: 6px; font-size: 9px; }
+  .free-command-panel .free-heading-tools .count-chip b { font-size: 12px; }
+  .free-command-panel .free-heading-tools .character-gender-switch { width: 100px; flex-basis: 100px; }
+}
+
 /* MVP 0.11.0 — “蓝羽金莲”品牌视觉体系。 */
 :root {
   --ink: #15191d;

@@ -102,6 +102,13 @@
     return 28 + (sum % 72);
   }
 
+  function prepareListImage(image, index) {
+    image.loading = index < 2 ? 'eager' : 'lazy';
+    image.decoding = 'async';
+    image.draggable = false;
+    return image;
+  }
+
   function imageOrPlaceholder(item, index, gender) {
     var wrap = document.createElement('div');
     wrap.className = 'item-visual';
@@ -111,7 +118,7 @@
       if (selectedSource) {
         var selectedImage = document.createElement('img');
         var selectedLabel = item.commonImage ? '男女通用外观图' : (gender === 'F' ? '女号外观图' : '男号外观图');
-        selectedImage.src = selectedSource; selectedImage.alt = item.name + selectedLabel; selectedImage.draggable = false;
+        selectedImage.src = selectedSource; selectedImage.alt = item.name + selectedLabel; prepareListImage(selectedImage, index);
         wrap.appendChild(createImagePreviewButton(selectedImage, selectedSource, selectedImage.alt));
       } else {
         wrap.classList.add('is-placeholder');
@@ -121,19 +128,19 @@
       }
     } else if (item.commonImage) {
       var commonImage = document.createElement('img');
-      commonImage.src = item.commonImage; commonImage.alt = item.name + '通用外观图'; commonImage.draggable = false;
+      commonImage.src = item.commonImage; commonImage.alt = item.name + '通用外观图'; prepareListImage(commonImage, index);
       wrap.appendChild(createImagePreviewButton(commonImage, item.commonImage, commonImage.alt));
     } else if (item.femaleImage && item.maleImage) {
       wrap.classList.add('is-dual');
       [['女', item.femaleImage], ['男', item.maleImage]].forEach(function (entry) {
         var shot = document.createElement('button'); shot.type = 'button'; shot.className = 'gender-shot image-preview-button';
         shot.dataset.action = 'image-preview'; shot.dataset.previewSrc = entry[1]; shot.dataset.previewAlt = item.name + entry[0] + '号外观图';
-        var genderImage = document.createElement('img'); genderImage.src = entry[1]; genderImage.alt = item.name + entry[0] + '号外观图'; genderImage.draggable = false;
+        var genderImage = document.createElement('img'); genderImage.src = entry[1]; genderImage.alt = item.name + entry[0] + '号外观图'; prepareListImage(genderImage, index);
         shot.appendChild(genderImage); wrap.appendChild(shot);
       });
     } else if (item.femaleImage || item.maleImage) {
       var image = document.createElement('img');
-      image.src = item.femaleImage || item.maleImage; image.alt = item.name + '外观图'; image.draggable = false;
+      image.src = item.femaleImage || item.maleImage; image.alt = item.name + '外观图'; prepareListImage(image, index);
       wrap.appendChild(createImagePreviewButton(image, image.src, image.alt));
     } else {
       wrap.classList.add('is-placeholder');
@@ -218,6 +225,7 @@
   }
 
   // 同一天档期较多时，使用固定的“价值／活动捆绑”顺序，避免每次加载顺序漂移。
+  // 直售类共享一个价格优先区间：先按最终价格降序，同价时再按售卖方式顺序。
   var PAID_VALUE_ORDER = ['画舫套装', '氪条奖励', '周年转盘', '聆音', '聆音预热战令', '和鸣大套', '八音发', '转盘', '战令', '原价直售', '限时折扣直售', '限时半价', '折扣直售', '6r小战令'];
   // 获取筛选沿用服装价值顺序，但把八音发拆成双八音发与单八音发。
   var PAID_FILTER_ORDER = ['画舫套装', '氪条奖励', '周年转盘', '聆音', '聆音预热战令', '和鸣大套', '双八音发', '单八音发', '转盘', '战令', '原价直售', '限时折扣直售', '限时半价', '折扣直售', '6r小战令'];
@@ -273,17 +281,21 @@
     return bundle ? bundle.price : (Number(String(item.priceOriginal || '').replace(/\D/g, '')) || 0);
   }
   function comparePaidSameDate(a, b) {
+    var bundleA = paidBundleInfo(a.item);
+    var bundleB = paidBundleInfo(b.item);
+    var directA = Boolean(bundleA || isDirectSale(a.item));
+    var directB = Boolean(bundleB || isDirectSale(b.item));
     var rankDiff = paidValueRank(a.item) - paidValueRank(b.item);
-    if (rankDiff) return rankDiff;
+    if (directA && directB) {
+      var retailPriceDiff = paidEffectiveRetailPrice(b.item) - paidEffectiveRetailPrice(a.item);
+      if (retailPriceDiff) return retailPriceDiff;
+      if (rankDiff) return rankDiff;
+    } else if (rankDiff) {
+      return rankDiff;
+    }
     if (a.item.saleMethod === '聆音' && b.item.saleMethod === '聆音') {
       var listeningDiff = paidListeningRank(a.item) - paidListeningRank(b.item);
       if (listeningDiff) return listeningDiff;
-    }
-    var bundleA = paidBundleInfo(a.item);
-    var bundleB = paidBundleInfo(b.item);
-    if ((bundleA || isDirectSale(a.item)) && (bundleB || isDirectSale(b.item))) {
-      var retailPriceDiff = paidEffectiveRetailPrice(b.item) - paidEffectiveRetailPrice(a.item);
-      if (retailPriceDiff) return retailPriceDiff;
     }
     if (bundleA || bundleB) {
       var orderA = Number(bundleA ? bundleA.sourceOrder : a.item.sourceOrder) || 0;
@@ -737,8 +749,7 @@
     return searchable.indexOf(view.freeSearch.toLowerCase()) >= 0;
   }
 
-  function freeActionRank(item) {
-    if (isFreeRequirementComplete(item)) return 9;
+  function freeAvailabilityRank(item) {
     var group = freeGroup(item);
     if (group === 'limited') return 0;
     if (group === 'permanent') return 1;
@@ -760,7 +771,7 @@
       var matchesAvailability = view.freeAvailability === 'all' || freeGroup(item) === view.freeAvailability;
       return matchesCategory && matchesAvailability;
     }).sort(function (a, b) {
-      return charmValue(b) - charmValue(a) || freeActionRank(a) - freeActionRank(b) || String(a.name).localeCompare(String(b.name), 'zh-CN');
+      return charmValue(b) - charmValue(a) || freeAvailabilityRank(a) - freeAvailabilityRank(b) || String(a.name).localeCompare(String(b.name), 'zh-CN');
     });
   }
 
@@ -1597,12 +1608,12 @@
   });
   renderCalendar(); renderPaidList(); renderFreeList(); scheduleFreeDateRefresh();
   window.__OUTFIT_APP__ = {
-    version: '0.17.7-half-price-refinement', storageKey: STORAGE_KEY, paidCount: paidListItems.length, paidListCount: paidListItems.length, calendarPaidCount: paidItems.length, freeCount: freeCollectibles.length, freeDatabaseRows: freeItems.length, freeSetCount: freeSets.length,
+    version: '0.18.1-direct-price-sort', storageKey: STORAGE_KEY, paidCount: paidListItems.length, paidListCount: paidListItems.length, calendarPaidCount: paidItems.length, freeCount: freeCollectibles.length, freeDatabaseRows: freeItems.length, freeSetCount: freeSets.length,
     getState: function () { return JSON.parse(JSON.stringify(state)); }, getCounts: getCounts,
     setStatus: setStatus, setReview: setReview, switchMode: switchMode, switchPage: switchPage,
     getScopedPaidItems: getScopedPaidItems, getFilteredPaidItems: getFilteredPaidItems, paidItemMatchesMethodRefinements: paidItemMatchesMethodRefinements, buildSharePages: buildSharePages, drawSharePage: drawSharePage,
     setCalendarMonth: setCalendarMonth, selectCalendarDate: selectCalendarDate, goToToday: goToToday, paidEventsForMonth: paidEventsForMonth, paidValueRank: paidValueRank, comparePaidSameDate: comparePaidSameDate, getPaidBundleMap: getPaidBundleMap, paidFilterMethod: paidFilterMethod, paidItemMatchesRange: paidItemMatchesRange, applyCustomPaidRange: applyCustomPaidRange, toggleFreeCategorySelection: toggleFreeCategorySelection,
-    getFreeCharmProgress: getFreeCharmProgress, getFreeOwnedCount: getFreeOwnedCount, setFreeOwnedCount: setFreeOwnedCount, summarizeFreeItems: summarizeFreeItems, switchFreeMode: switchFreeMode, switchFreeProgressScope: switchFreeProgressScope, switchFreeGender: switchFreeGender, toggleFreeOwned: toggleFreeOwned, toggleFreeCopy: toggleFreeCopy, toggleFreeSetParts: toggleFreeSetParts, childrenForSet: childrenForSet, freeDaysRemaining: freeDaysRemaining, effectiveFreeStatus: effectiveFreeStatus, freeStatusLabel: freeStatusLabel,
+    getVisibleFreeItems: getVisibleFreeItems, getFreeCharmProgress: getFreeCharmProgress, getFreeOwnedCount: getFreeOwnedCount, setFreeOwnedCount: setFreeOwnedCount, summarizeFreeItems: summarizeFreeItems, switchFreeMode: switchFreeMode, switchFreeProgressScope: switchFreeProgressScope, switchFreeGender: switchFreeGender, toggleFreeOwned: toggleFreeOwned, toggleFreeCopy: toggleFreeCopy, toggleFreeSetParts: toggleFreeSetParts, childrenForSet: childrenForSet, freeDaysRemaining: freeDaysRemaining, effectiveFreeStatus: effectiveFreeStatus, freeStatusLabel: freeStatusLabel,
     completePaidRecord: completePaidRecord, editPaidRecord: editPaidRecord, openImagePreview: openImagePreview, closeImagePreview: closeImagePreview
   };
 }());
