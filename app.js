@@ -39,11 +39,12 @@
   var FREE_PAGE_SIZE = 18;
   var CALENDAR_MINIMUM = '2024-12';
   var view = {
-    mode: 'calendar', page: 'calendar', paidSearch: '', paidRange: 'all', paidStartDate: '', paidEndDate: '', paidStatus: 'all', paidMethods: [], paidWheelIncludeVariantHair: true, paidListeningTypes: [], paidRetailPrices: [], freeMode: 'catalog', freeLookupClassification: 'all', freeSearch: '', freeMissingOnly: false, freeCatalogFilter: 'all', freeAvailability: 'all', freeProgressScope: 'all', freeGender: state.freeGender === 'M' ? 'M' : 'F', freeVisibleLimit: FREE_PAGE_SIZE, selectedDate: '', editingPaid: {}, expandedSets: {},
+    mode: 'calendar', page: 'calendar', paidSearch: '', paidRange: 'all', paidStartDate: '', paidEndDate: '', paidStatus: 'all', paidRecordStatus: 'all', paidMethods: [], paidWheelIncludeVariantHair: true, paidListeningTypes: [], paidRetailPrices: [], paidHalfPricePrices: [], freeMode: 'catalog', freeLookupClassification: 'all', freeSearch: '', freeMissingOnly: false, freeCatalogFilter: 'all', freeAvailability: 'all', freeProgressScope: 'all', freeGender: state.freeGender === 'M' ? 'M' : 'F', freeVisibleLimit: FREE_PAGE_SIZE, selectedDate: '', editingPaid: {}, expandedSets: {},
     calendarYear: initialCalendarDate.getFullYear(), calendarMonth: initialCalendarDate.getMonth()
   };
   var shareState = { page: 0, pages: [], dataUrls: [], filterLabel: '全部时间' };
   var toastTimer = 0;
+  var freeDateRefreshTimer = 0;
   var imagePreviewReturnFocus = null;
 
   var el = {
@@ -55,7 +56,7 @@
     monthOverviewButton: document.getElementById('monthOverviewButton'), calendarSelectionTitle: document.getElementById('calendarSelectionTitle'),
     calendarSelectionHint: document.getElementById('calendarSelectionHint'), calendarEmpty: document.getElementById('calendarEmpty'),
     scheduleList: document.getElementById('scheduleList'), paidList: document.getElementById('paidList'), paidSearchInput: document.getElementById('paidSearchInput'),
-    paidRangeFilter: document.getElementById('paidRangeFilter'), paidStatusFilter: document.getElementById('paidStatusFilter'), paidMethodFilter: document.getElementById('paidMethodFilter'), paidMethodSummary: document.getElementById('paidMethodSummary'), paidMethodPanel: document.getElementById('paidMethodPanel'), paidMethodOptions: document.getElementById('paidMethodOptions'), clearPaidMethodsButton: document.getElementById('clearPaidMethodsButton'), paidMethodRefinements: document.getElementById('paidMethodRefinements'), paidWheelRefinement: document.getElementById('paidWheelRefinement'), paidWheelVariantHair: document.getElementById('paidWheelVariantHair'), paidListeningRefinement: document.getElementById('paidListeningRefinement'), paidListeningOptions: document.getElementById('paidListeningOptions'), paidRetailRefinement: document.getElementById('paidRetailRefinement'), paidRetailPriceOptions: document.getElementById('paidRetailPriceOptions'),
+    paidRangeFilter: document.getElementById('paidRangeFilter'), paidStatusFilter: document.getElementById('paidStatusFilter'), paidMethodFilter: document.getElementById('paidMethodFilter'), paidMethodSummary: document.getElementById('paidMethodSummary'), paidMethodPanel: document.getElementById('paidMethodPanel'), paidMethodOptions: document.getElementById('paidMethodOptions'), clearPaidMethodsButton: document.getElementById('clearPaidMethodsButton'), paidMethodRefinements: document.getElementById('paidMethodRefinements'), paidWheelRefinement: document.getElementById('paidWheelRefinement'), paidWheelVariantHair: document.getElementById('paidWheelVariantHair'), paidListeningRefinement: document.getElementById('paidListeningRefinement'), paidListeningOptions: document.getElementById('paidListeningOptions'), paidRetailRefinement: document.getElementById('paidRetailRefinement'), paidRetailPriceOptions: document.getElementById('paidRetailPriceOptions'), paidHalfPriceRefinement: document.getElementById('paidHalfPriceRefinement'), paidHalfPriceOptions: document.getElementById('paidHalfPriceOptions'),
     paidCustomRange: document.getElementById('paidCustomRange'), paidStartDate: document.getElementById('paidStartDate'), paidEndDate: document.getElementById('paidEndDate'), applyPaidRangeButton: document.getElementById('applyPaidRangeButton'), paidRangeError: document.getElementById('paidRangeError'), paidResultHint: document.getElementById('paidResultHint'), paidListEmpty: document.getElementById('paidListEmpty'),
     monthStartCount: document.getElementById('monthStartCount'), monthEndCount: document.getElementById('monthEndCount'),
     recordProgress: document.getElementById('recordProgress'), statusSummary: document.getElementById('statusSummary'),
@@ -168,7 +169,7 @@
   }
 
   function listingClass(status) {
-    if (status === '已下架') return ' is-ended';
+    if (status === '已下架' || status === '不可获取') return ' is-ended';
     if (status === '即将下架') return ' is-urgent';
     if (status === '预告') return ' is-preview';
     return '';
@@ -305,11 +306,8 @@
     monthEvents.forEach(function (event) { if (!eventsByDate[event.date]) eventsByDate[event.date] = []; eventsByDate[event.date].push(event); });
     el.monthStartCount.textContent = monthEvents.length;
     var endedItemIds = {};
-    paidItems.forEach(function (item) {
-      [item.offSaleDate, item.returnEndDate].filter(Boolean).forEach(function (date) {
-        var parts = parseItemDate(date);
-        if (parts && parts.year === year && parts.month === month) endedItemIds[item.id] = true;
-      });
+    monthEvents.forEach(function (event) {
+      if (event.item.listingStatus === '已下架') endedItemIds[event.item.id] = true;
     });
     el.monthEndCount.textContent = Object.keys(endedItemIds).length;
     var currentMonthKey = year + '-' + padNumber(month + 1);
@@ -445,14 +443,15 @@
     el.paidResultHint.textContent = paidRangeLabel(view.paidRange) + ' · 显示 ' + visible.length + '/' + paidListItems.length + ' 项';
     el.paidListEmpty.hidden = visible.length > 0;
     el.generateShareButton.disabled = visible.length === 0;
-    renderStatusSummary(visible);
+    renderStatusSummary(getFilteredPaidItems(true));
   }
 
-  function getFilteredPaidItems() {
+  function getFilteredPaidItems(ignoreRecordStatus) {
     var query = view.paidSearch.toLowerCase();
     return paidListItems.filter(function (item) {
-      var searchable = [item.name].concat(item.styleTags || []).join(' ').toLowerCase();
-      return paidItemMatchesRange(item, view.paidRange) && (!query || searchable.indexOf(query) >= 0) && (view.paidStatus === 'all' || item.listingStatus === view.paidStatus) && (!view.paidMethods.length || view.paidMethods.indexOf(paidFilterMethod(item)) >= 0) && paidItemMatchesMethodRefinements(item);
+      var searchable = [item.name, item.priceOriginal].concat(item.styleTags || []).filter(Boolean).join(' ').toLowerCase();
+      var matchesRecordStatus = ignoreRecordStatus || view.paidRecordStatus === 'all' || ensureItemState(item.id).status === view.paidRecordStatus;
+      return paidItemMatchesRange(item, view.paidRange) && (!query || searchable.indexOf(query) >= 0) && (view.paidStatus === 'all' || item.listingStatus === view.paidStatus) && matchesRecordStatus && (!view.paidMethods.length || view.paidMethods.indexOf(paidFilterMethod(item)) >= 0) && paidItemMatchesMethodRefinements(item);
     }).sort(function (a, b) { return Number(b.sourceOrder || 0) - Number(a.sourceOrder || 0); });
   }
 
@@ -463,6 +462,7 @@
     if (filterMethod === '转盘' && !view.paidWheelIncludeVariantHair && tags.indexOf('异色发') >= 0) return false;
     if (filterMethod === '聆音' && view.paidListeningTypes.length && !view.paidListeningTypes.some(function (type) { return tags.indexOf(type) >= 0; })) return false;
     if (filterMethod === '原价直售' && view.paidRetailPrices.length && view.paidRetailPrices.indexOf(item.priceOriginal) < 0) return false;
+    if (filterMethod === '限时半价' && view.paidHalfPricePrices.length && view.paidHalfPricePrices.indexOf(item.priceOriginal) < 0) return false;
     return true;
   }
 
@@ -494,7 +494,7 @@
     el.statusSummary.replaceChildren();
     Object.keys(STATUS).forEach(function (key) {
       var cell = document.createElement('button'); cell.type = 'button'; cell.className = 'summary-cell'; cell.dataset.statusFilter = key;
-      cell.setAttribute('aria-pressed', view.paidStatus === key ? 'true' : 'false');
+      cell.setAttribute('aria-pressed', view.paidRecordStatus === key ? 'true' : 'false');
       cell.innerHTML = '<strong>' + counts[key] + '</strong><span>' + STATUS[key] + '</span>'; el.statusSummary.appendChild(cell);
     });
   }
@@ -510,6 +510,7 @@
       if (method === '转盘' && !view.paidWheelIncludeVariantHair) return '转盘（不含异色发）';
       if (method === '聆音' && view.paidListeningTypes.length) return '聆音（' + view.paidListeningTypes.join('、') + '）';
       if (method === '原价直售' && view.paidRetailPrices.length) return '原价直售（' + view.paidRetailPrices.join('、') + '）';
+      if (method === '限时半价' && view.paidHalfPricePrices.length) return '限时半价（' + view.paidHalfPricePrices.join('、') + '）';
       return method;
     });
     el.paidMethodSummary.hidden = !labels.length;
@@ -521,13 +522,16 @@
     var wheel = view.paidMethods.indexOf('转盘') >= 0;
     var listening = view.paidMethods.indexOf('聆音') >= 0;
     var retail = view.paidMethods.indexOf('原价直售') >= 0;
-    el.paidMethodRefinements.hidden = !(wheel || listening || retail);
+    var halfPrice = view.paidMethods.indexOf('限时半价') >= 0;
+    el.paidMethodRefinements.hidden = !(wheel || listening || retail || halfPrice);
     el.paidWheelRefinement.hidden = !wheel;
     el.paidListeningRefinement.hidden = !listening;
     el.paidRetailRefinement.hidden = !retail;
+    el.paidHalfPriceRefinement.hidden = !halfPrice;
     el.paidWheelVariantHair.checked = view.paidWheelIncludeVariantHair;
     el.paidListeningOptions.querySelectorAll('input').forEach(function (input) { input.checked = view.paidListeningTypes.indexOf(input.value) >= 0; });
     el.paidRetailPriceOptions.querySelectorAll('input').forEach(function (input) { input.checked = view.paidRetailPrices.indexOf(input.value) >= 0; });
+    el.paidHalfPriceOptions.querySelectorAll('input').forEach(function (input) { input.checked = view.paidHalfPricePrices.indexOf(input.value) >= 0; });
   }
 
   function applyCustomPaidRange() {
@@ -541,11 +545,54 @@
     view.paidStartDate = start; view.paidEndDate = end; el.paidRangeError.hidden = true; renderPaidList();
   }
 
-  function freeGroup(item) {
-    if (item.listingStatus === '不可获取' || item.listingStatus === '已下架') return 'ended';
-    if (item.listingStatus === '常驻') return 'permanent';
-    if (item.listingStatus === '限时') return 'limited';
+  function hongKongDateKey(timestamp) {
+    var shifted = new Date((timestamp == null ? Date.now() : timestamp) + 8 * 60 * 60 * 1000);
+    return shifted.getUTCFullYear() + '-' + padNumber(shifted.getUTCMonth() + 1) + '-' + padNumber(shifted.getUTCDate());
+  }
+
+  function normaliseDateKey(value) {
+    var match = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(value || ''));
+    return match ? match[1] + '-' + match[2] + '-' + match[3] : '';
+  }
+
+  function dateKeyDayNumber(value) {
+    var parts = parseItemDate(normaliseDateKey(value));
+    return parts ? Math.floor(Date.UTC(parts.year, parts.month, parts.day) / 86400000) : null;
+  }
+
+  function freeDaysRemaining(item, todayKey) {
+    if (!item || item.listingStatus !== '限时') return null;
+    var endDay = dateKeyDayNumber(item.endDate);
+    var today = dateKeyDayNumber(todayKey || hongKongDateKey());
+    return endDay == null || today == null ? null : endDay - today;
+  }
+
+  function effectiveFreeStatus(item, todayKey) {
+    if (!item) return '';
+    if (item.listingStatus === '限时') {
+      var remaining = freeDaysRemaining(item, todayKey);
+      return remaining != null && remaining < 0 ? '不可获取' : '限时';
+    }
+    return item.listingStatus;
+  }
+
+  function freeGroup(item, todayKey) {
+    var status = effectiveFreeStatus(item, todayKey);
+    if (status === '不可获取' || status === '已下架') return 'ended';
+    if (status === '常驻') return 'permanent';
+    if (status === '限时') return 'limited';
     return 'unknown';
+  }
+
+  function scheduleFreeDateRefresh() {
+    if (freeDateRefreshTimer) clearTimeout(freeDateRefreshTimer);
+    var now = Date.now();
+    var shifted = new Date(now + 8 * 60 * 60 * 1000);
+    var nextHongKongMidnight = Date.UTC(shifted.getUTCFullYear(), shifted.getUTCMonth(), shifted.getUTCDate() + 1) - 8 * 60 * 60 * 1000;
+    freeDateRefreshTimer = setTimeout(function () {
+      renderFreeList();
+      scheduleFreeDateRefresh();
+    }, Math.max(1000, nextHongKongMidnight - now + 1000));
   }
 
   function freeClassification(item) {
@@ -839,12 +886,21 @@
     showToast(gender === 'F' ? '已切换为女号外观' : '已切换为男号外观');
   }
 
-  function freeStatusLabel(item) {
-    var group = freeGroup(item);
+  function freeStatusLabel(item, todayKey) {
+    var group = freeGroup(item, todayKey);
     if (group === 'permanent') return '常驻';
     if (group === 'ended') return '不可获取';
-    if (group === 'limited') return '限时可得';
+    if (group === 'limited') {
+      var remaining = freeDaysRemaining(item, todayKey);
+      if (remaining === 0) return '限时 · 今日结束';
+      if (remaining > 0) return '限时 · 剩' + remaining + '天';
+      return '限时可得';
+    }
     return '待标注';
+  }
+
+  function freeStatusPillClass(item) {
+    return listingClass(effectiveFreeStatus(item));
   }
 
   function createFreeToggle(item, labelWhenOff, labelWhenOn, extraClass) {
@@ -896,7 +952,7 @@
     var card = document.createElement('article'); card.className = 'free-card free-set-card' + (isExpanded ? ' is-expanded' : ''); card.dataset.id = item.id;
     var hero = document.createElement('div'); hero.className = 'free-set-hero'; hero.appendChild(imageOrPlaceholder(item, index, view.freeGender));
     var info = document.createElement('div'); info.className = 'free-set-info';
-    info.innerHTML = '<div class="item-title-row"><h3>' + escapeHtml(item.name) + '</h3><span class="listing-pill' + listingClass(item.listingStatus) + '">' + freeStatusLabel(item) + '</span></div>';
+    info.innerHTML = '<div class="item-title-row"><h3>' + escapeHtml(item.name) + '</h3><span class="listing-pill' + freeStatusPillClass(item) + '">' + freeStatusLabel(item) + '</span></div>';
     var meta = document.createElement('div'); meta.className = 'meta-row';
     var charm = document.createElement('span'); charm.className = 'free-charm-pill'; charm.textContent = '✦ ' + formatNumber(charmValue(item)) + ' 风华'; meta.appendChild(charm);
     meta.appendChild(makeMeta(item.rawType || item.type));
@@ -941,7 +997,7 @@
     var multiCopy = maxFreeCopies(item) > 1;
     var card = document.createElement('article'); card.className = 'free-card' + (multiCopy ? ' is-multi-copy' : '') + (getFreeOwnedCount(item) > 0 && !isFreeOwned(item) ? ' is-partially-owned' : ''); card.dataset.id = item.id; card.appendChild(imageOrPlaceholder(item, index, view.freeGender));
     var info = document.createElement('div'); info.className = 'item-info';
-    info.innerHTML = '<div class="item-title-row"><h3>' + escapeHtml(item.name) + '</h3><span class="listing-pill' + listingClass(item.listingStatus) + '">' + freeStatusLabel(item) + '</span></div>';
+    info.innerHTML = '<div class="item-title-row"><h3>' + escapeHtml(item.name) + '</h3><span class="listing-pill' + freeStatusPillClass(item) + '">' + freeStatusLabel(item) + '</span></div>';
     var meta = document.createElement('div'); meta.className = 'meta-row';
     var charm = document.createElement('span'); charm.className = 'free-charm-pill'; charm.textContent = '✦ ' + formatNumber(charmValue(item)) + ' 风华'; meta.appendChild(charm);
     meta.appendChild(makeMeta(item.rawType || item.type));
@@ -985,7 +1041,7 @@
       el.freeFilters.appendChild(button);
     });
     el.freeFilterKindLabel.textContent = '外观大类';
-    el.freeFilterNote.textContent = '按套装、发型、服装、首饰、配饰等浏览';
+    el.freeFilterNote.textContent = '套装内的组件不计入其他筛选';
     el.freeFilters.setAttribute('aria-label', '按外观大类筛选免费风华');
   }
 
@@ -1419,8 +1475,7 @@
     var cell = event.target.closest('[data-status-filter]');
     if (!cell) return;
     var next = cell.dataset.statusFilter;
-    view.paidStatus = view.paidStatus === next ? 'all' : next;
-    el.paidStatusFilter.value = view.paidStatus;
+    view.paidRecordStatus = view.paidRecordStatus === next ? 'all' : next;
     renderPaidList();
   });
   el.paidMethodFilter.addEventListener('click', function () { setPaidMethodPanelOpen(el.paidMethodPanel.hidden); });
@@ -1432,11 +1487,12 @@
     if (event.target === el.paidWheelVariantHair) view.paidWheelIncludeVariantHair = el.paidWheelVariantHair.checked;
     view.paidListeningTypes = Array.from(el.paidListeningOptions.querySelectorAll('input:checked')).map(function (input) { return input.value; });
     view.paidRetailPrices = Array.from(el.paidRetailPriceOptions.querySelectorAll('input:checked')).map(function (input) { return input.value; });
+    view.paidHalfPricePrices = Array.from(el.paidHalfPriceOptions.querySelectorAll('input:checked')).map(function (input) { return input.value; });
     renderPaidMethodSummary(); renderPaidList();
   });
   el.clearPaidMethodsButton.addEventListener('click', function () {
     el.paidMethodOptions.querySelectorAll('input').forEach(function (input) { input.checked = false; });
-    view.paidMethods = []; view.paidWheelIncludeVariantHair = true; view.paidListeningTypes = []; view.paidRetailPrices = [];
+    view.paidMethods = []; view.paidWheelIncludeVariantHair = true; view.paidListeningTypes = []; view.paidRetailPrices = []; view.paidHalfPricePrices = [];
     renderPaidMethodSummary(); renderPaidMethodRefinements(); renderPaidList();
   });
   el.applyPaidRangeButton.addEventListener('click', applyCustomPaidRange);
@@ -1530,19 +1586,23 @@
     var label = document.createElement('label'); var input = document.createElement('input'); var text = document.createElement('span');
     input.type = 'checkbox'; input.value = price; text.textContent = price; label.appendChild(input); label.appendChild(text); el.paidRetailPriceOptions.appendChild(label);
   });
+  Array.from(new Set(paidListItems.filter(function (item) { return paidFilterMethod(item) === '限时半价'; }).map(function (item) { return item.priceOriginal; }).filter(Boolean))).sort(function (a, b) { return Number(b.replace(/\D/g, '')) - Number(a.replace(/\D/g, '')); }).forEach(function (price) {
+    var label = document.createElement('label'); var input = document.createElement('input'); var text = document.createElement('span');
+    input.type = 'checkbox'; input.value = price; text.textContent = price; label.appendChild(input); label.appendChild(text); el.paidHalfPriceOptions.appendChild(label);
+  });
   renderPaidMethodSummary(); renderPaidMethodRefinements();
   el.freeGenderSwitch.querySelectorAll('[data-free-gender]').forEach(function (button) {
     var active = button.dataset.freeGender === view.freeGender;
     button.classList.toggle('is-active', active); button.setAttribute('aria-pressed', active ? 'true' : 'false');
   });
-  renderCalendar(); renderPaidList(); renderFreeList();
+  renderCalendar(); renderPaidList(); renderFreeList(); scheduleFreeDateRefresh();
   window.__OUTFIT_APP__ = {
-	version: '0.17.1-grouped-free-classifications', storageKey: STORAGE_KEY, paidCount: paidListItems.length, paidListCount: paidListItems.length, calendarPaidCount: paidItems.length, freeCount: freeCollectibles.length, freeDatabaseRows: freeItems.length, freeSetCount: freeSets.length,
+    version: '0.17.7-half-price-refinement', storageKey: STORAGE_KEY, paidCount: paidListItems.length, paidListCount: paidListItems.length, calendarPaidCount: paidItems.length, freeCount: freeCollectibles.length, freeDatabaseRows: freeItems.length, freeSetCount: freeSets.length,
     getState: function () { return JSON.parse(JSON.stringify(state)); }, getCounts: getCounts,
     setStatus: setStatus, setReview: setReview, switchMode: switchMode, switchPage: switchPage,
     getScopedPaidItems: getScopedPaidItems, getFilteredPaidItems: getFilteredPaidItems, paidItemMatchesMethodRefinements: paidItemMatchesMethodRefinements, buildSharePages: buildSharePages, drawSharePage: drawSharePage,
     setCalendarMonth: setCalendarMonth, selectCalendarDate: selectCalendarDate, goToToday: goToToday, paidEventsForMonth: paidEventsForMonth, paidValueRank: paidValueRank, comparePaidSameDate: comparePaidSameDate, getPaidBundleMap: getPaidBundleMap, paidFilterMethod: paidFilterMethod, paidItemMatchesRange: paidItemMatchesRange, applyCustomPaidRange: applyCustomPaidRange, toggleFreeCategorySelection: toggleFreeCategorySelection,
-    getFreeCharmProgress: getFreeCharmProgress, getFreeOwnedCount: getFreeOwnedCount, setFreeOwnedCount: setFreeOwnedCount, summarizeFreeItems: summarizeFreeItems, switchFreeMode: switchFreeMode, switchFreeProgressScope: switchFreeProgressScope, switchFreeGender: switchFreeGender, toggleFreeOwned: toggleFreeOwned, toggleFreeCopy: toggleFreeCopy, toggleFreeSetParts: toggleFreeSetParts, childrenForSet: childrenForSet,
+    getFreeCharmProgress: getFreeCharmProgress, getFreeOwnedCount: getFreeOwnedCount, setFreeOwnedCount: setFreeOwnedCount, summarizeFreeItems: summarizeFreeItems, switchFreeMode: switchFreeMode, switchFreeProgressScope: switchFreeProgressScope, switchFreeGender: switchFreeGender, toggleFreeOwned: toggleFreeOwned, toggleFreeCopy: toggleFreeCopy, toggleFreeSetParts: toggleFreeSetParts, childrenForSet: childrenForSet, freeDaysRemaining: freeDaysRemaining, effectiveFreeStatus: effectiveFreeStatus, freeStatusLabel: freeStatusLabel,
     completePaidRecord: completePaidRecord, editPaidRecord: editPaidRecord, openImagePreview: openImagePreview, closeImagePreview: closeImagePreview
   };
 }());

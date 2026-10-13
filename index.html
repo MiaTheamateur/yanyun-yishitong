@@ -15,7 +15,7 @@
         <h1 class="brand-wordmark"><span>燕云</span><b>衣事通</b></h1>
       </div>
       <div class="tool-meta">
-        <p class="tool-version">V0.17.1</p>
+      <p class="tool-version">V0.17.7</p>
         <p class="tool-creator">制作者：薄荷小鹿（燕云十六声）</p>
       </div>
     </header>
@@ -82,7 +82,7 @@
         <section id="listView" class="mode-view" hidden>
           <span id="recordProgress" class="sr-only">0/0</span>
           <div class="paid-list-tools">
-            <label class="paid-search"><span class="sr-only">搜索服装</span><input id="paidSearchInput" type="search" placeholder="搜索名字或风格"></label>
+            <label class="paid-search"><span class="sr-only">搜索服装名字、直售价格或风格</span><input id="paidSearchInput" type="search" placeholder="搜索名字、直售价格或风格"></label>
             <select id="paidRangeFilter" aria-label="筛选上架时间"><option value="all">全部时间</option><option value="month">本月</option><option value="quarter">本季度</option><option value="year">本年</option><option value="custom">自定义</option></select>
             <select id="paidStatusFilter" aria-label="筛选在架状态"><option value="all">全部状态</option><option value="常驻">常驻</option><option value="返场中">返场中</option><option value="已下架">已下架</option></select>
             <div class="paid-method-picker">
@@ -106,6 +106,10 @@
                   <fieldset class="paid-method-refinement" id="paidRetailRefinement" hidden>
                     <legend>原价直售档位 <small>不选则全部</small></legend>
                     <div class="paid-refinement-options" id="paidRetailPriceOptions"></div>
+                  </fieldset>
+                  <fieldset class="paid-method-refinement" id="paidHalfPriceRefinement" hidden>
+                    <legend>限时半价档位 <small>不选则全部</small></legend>
+                    <div class="paid-refinement-options" id="paidHalfPriceOptions"></div>
                   </fieldset>
                 </div>
               </div>
@@ -208,7 +212,7 @@
           <div class="category-grid" id="freeFilters" role="group" aria-label="按外观大类筛选免费风华">
             <button type="button" class="category-option is-active" data-free-filter="all"><span>全部分类</span><i>✓</i></button>
           </div>
-          <p class="category-filter-note" id="freeFilterNote">按套装、发型、服装、首饰、配饰等浏览</p>
+          <p class="category-filter-note" id="freeFilterNote">套装内的组件不计入其他筛选</p>
         </div>
         <div class="free-context-row">
           <div><span id="freeResultTitle">全部途径</span><small id="freeResultSubtitle">当前可获得且尚未标记的道具</small></div>
