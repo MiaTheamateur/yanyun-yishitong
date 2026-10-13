@@ -39,7 +39,7 @@
   var FREE_PAGE_SIZE = 18;
   var CALENDAR_MINIMUM = '2024-12';
   var view = {
-    mode: 'calendar', page: 'calendar', paidSearch: '', paidRange: 'all', paidStartDate: '', paidEndDate: '', paidStatus: 'all', paidRecordStatus: 'all', paidMethods: [], paidWheelIncludeVariantHair: true, paidListeningTypes: [], paidRetailPrices: [], paidHalfPricePrices: [], freeMode: 'catalog', freeLookupClassification: 'all', freeSearch: '', freeMissingOnly: false, freeCatalogFilter: 'all', freeAvailability: 'all', freeProgressScope: 'all', freeGender: state.freeGender === 'M' ? 'M' : 'F', freeVisibleLimit: FREE_PAGE_SIZE, selectedDate: '', editingPaid: {}, expandedSets: {},
+    mode: 'calendar', page: 'calendar', paidSearch: '', paidRange: 'all', paidStartDate: '', paidEndDate: '', paidStatus: 'all', paidRecordStatus: 'all', paidMethods: [], paidWheelIncludeVariantHair: true, paidListeningTypes: [], paidRetailPrices: [], paidHalfPricePrices: [], freeMode: 'catalog', freeLookupClassification: 'all', freeSearch: '', freeMissingOnly: false, freeCatalogFilter: 'all', freeAvailability: 'all', freeProgressScope: 'current', freeGender: state.freeGender === 'M' ? 'M' : 'F', freeVisibleLimit: FREE_PAGE_SIZE, selectedDate: '', editingPaid: {}, expandedSets: {},
     calendarYear: initialCalendarDate.getFullYear(), calendarMonth: initialCalendarDate.getMonth()
   };
   var shareState = { page: 0, pages: [], dataUrls: [], filterLabel: '全部时间' };
@@ -112,6 +112,9 @@
   function imageOrPlaceholder(item, index, gender) {
     var wrap = document.createElement('div');
     wrap.className = 'item-visual';
+    if (String(item.sourceCommonImage || '').replace(/\\/g, '/').indexOf('/需要右移处理/') >= 0) {
+      wrap.classList.add('is-shifted-right');
+    }
     wrap.style.setProperty('--hue', hueFor(item, index));
     if (gender === 'F' || gender === 'M') {
       var selectedSource = item.commonImage || (gender === 'F' ? item.femaleImage : item.maleImage);
@@ -734,6 +737,13 @@
     return Boolean(exclusiveGroupFor(item) && exclusiveSelectedItem(item));
   }
 
+  function hasAnyFreeOwnership(item) {
+    if (item.recordShape === '套装') {
+      return childrenForSet(item.id, true).some(function (child) { return getFreeOwnedCount(child) > 0; });
+    }
+    return getFreeOwnedCount(item) > 0 || Boolean(exclusiveGroupFor(item) && exclusiveSelectedItem(item));
+  }
+
   function setFreeOwned(item, target) {
     if (item.recordShape === '套装') {
       childrenForSet(item.id, true).forEach(function (child) { setFreeOwnedCount(child, target ? maxFreeCopies(child) : 0); });
@@ -759,6 +769,8 @@
 
   function getVisibleFreeItems() {
     var sourceItems = freeItems.filter(function (item) { return item.recordShape !== '套装部件'; });
+    var prioritiseDeadline = view.freeAvailability === 'limited';
+    var todayKey = prioritiseDeadline ? hongKongDateKey() : '';
     return sourceItems.filter(function (item) {
       if (!matchesFreeGender(item) || !freeSearchMatches(item)) return false;
       if (view.freeMode === 'lookup') {
@@ -771,6 +783,12 @@
       var matchesAvailability = view.freeAvailability === 'all' || freeGroup(item) === view.freeAvailability;
       return matchesCategory && matchesAvailability;
     }).sort(function (a, b) {
+      if (prioritiseDeadline) {
+        var aRemaining = freeDaysRemaining(a, todayKey);
+        var bRemaining = freeDaysRemaining(b, todayKey);
+        var deadlineDifference = (aRemaining == null ? Infinity : aRemaining) - (bRemaining == null ? Infinity : bRemaining);
+        if (deadlineDifference) return deadlineDifference;
+      }
       return charmValue(b) - charmValue(a) || freeAvailabilityRank(a) - freeAvailabilityRank(b) || String(a.name).localeCompare(String(b.name), 'zh-CN');
     });
   }
@@ -852,6 +870,11 @@
   function renderFreeCharmProgress() {
     var progress = getFreeCharmProgress();
     var isAll = view.freeProgressScope === 'all';
+    el.freeProgressScope.querySelectorAll('[data-progress-scope]').forEach(function (button) {
+      var active = button.dataset.progressScope === view.freeProgressScope;
+      button.classList.toggle('is-active', active);
+      button.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
     var shown = isAll ? {
       earned: progress.allEarned,
       total: progress.allTotal,
@@ -1140,16 +1163,18 @@
     var remaining = Math.max(0, visible.length - rendered.length);
     el.freeLoadMoreButton.hidden = remaining === 0;
     el.freeLoadMoreButton.textContent = remaining > 0 ? '继续加载 ' + Math.min(FREE_PAGE_SIZE, remaining) + ' 件 · 还剩 ' + remaining + ' 件' : '已显示全部';
-    var allOwned = visible.length > 0 && visible.every(isFreeOwned);
-    el.selectFreeCategoryButton.disabled = visible.length === 0; el.selectFreeCategoryButton.classList.toggle('is-complete', allOwned);
-    el.selectFreeCategoryButton.textContent = allOwned ? '取消全选' : '全选当前';
+    var allOwned = visible.length > 0 && visible.every(isFreeRequirementComplete);
+    var anyOwned = visible.some(hasAnyFreeOwnership);
+    el.selectFreeCategoryButton.disabled = visible.length === 0;
+    el.selectFreeCategoryButton.classList.toggle('is-complete', allOwned);
+    el.selectFreeCategoryButton.classList.toggle('is-mixed', anyOwned && !allOwned);
+    el.selectFreeCategoryButton.textContent = allOwned ? '取消全选' : (anyOwned ? '反选当前' : '全选当前');
     renderFreeModeChrome(visible);
   }
 
   function switchFreeMode(mode) {
     if (['catalog', 'lookup'].indexOf(mode) < 0) return;
     view.freeMode = mode; view.freeVisibleLimit = FREE_PAGE_SIZE;
-    if (mode === 'catalog') switchFreeProgressScope('all');
     setCategoryPanelOpen(false);
     renderFreeList();
   }
@@ -1229,21 +1254,31 @@
   function toggleFreeCategorySelection() {
     var visible = getVisibleFreeItems(); if (!visible.length) return;
     var before = getFreeCharmProgress().allEarned;
-    var target = !visible.every(isFreeOwned);
-    var chosenGroups = {};
+    var allOwnedBefore = visible.every(isFreeRequirementComplete);
+    var anyOwnedBefore = visible.some(hasAnyFreeOwnership);
+    var processedGroups = {};
     visible.forEach(function (item) {
       var group = exclusiveGroupFor(item);
-      if (target && group) {
-        if (chosenGroups[group]) return;
-        chosenGroups[group] = true;
+      if (group) {
+        if (processedGroups[group]) return;
+        processedGroups[group] = true;
         var selected = exclusiveSelectedItem(item);
-        setFreeOwned(selected || item, true);
+        if (selected) setFreeOwned(selected, false);
+        else setFreeOwned(item, true);
         return;
       }
-      setFreeOwned(item, target);
+      if (item.recordShape === '套装') {
+        childrenForSet(item.id, true).forEach(function (child) {
+          setFreeOwnedCount(child, getFreeOwnedCount(child) > 0 ? 0 : maxFreeCopies(child));
+        });
+        return;
+      }
+      setFreeOwnedCount(item, getFreeOwnedCount(item) > 0 ? 0 : maxFreeCopies(item));
     }); persist(); renderFreeList();
     var delta = Math.abs(getFreeCharmProgress().allEarned - before);
-    showToast(target ? '本类已记录 · +' + formatNumber(delta) + ' 图鉴风华' : '已取消本类 · ' + formatNumber(delta) + ' 图鉴风华');
+    if (!anyOwnedBefore) showToast('本类已全选 · +' + formatNumber(delta) + ' 图鉴风华');
+    else if (allOwnedBefore) showToast('已取消本类 · ' + formatNumber(delta) + ' 图鉴风华');
+    else showToast('已反选当前范围 · 变动 ' + formatNumber(delta) + ' 图鉴风华');
   }
 
   function switchPage(page) {
@@ -1608,7 +1643,7 @@
   });
   renderCalendar(); renderPaidList(); renderFreeList(); scheduleFreeDateRefresh();
   window.__OUTFIT_APP__ = {
-    version: '0.18.1-direct-price-sort', storageKey: STORAGE_KEY, paidCount: paidListItems.length, paidListCount: paidListItems.length, calendarPaidCount: paidItems.length, freeCount: freeCollectibles.length, freeDatabaseRows: freeItems.length, freeSetCount: freeSets.length,
+    version: '1.0.0-formal-release', storageKey: STORAGE_KEY, paidCount: paidListItems.length, paidListCount: paidListItems.length, calendarPaidCount: paidItems.length, freeCount: freeCollectibles.length, freeDatabaseRows: freeItems.length, freeSetCount: freeSets.length,
     getState: function () { return JSON.parse(JSON.stringify(state)); }, getCounts: getCounts,
     setStatus: setStatus, setReview: setReview, switchMode: switchMode, switchPage: switchPage,
     getScopedPaidItems: getScopedPaidItems, getFilteredPaidItems: getFilteredPaidItems, paidItemMatchesMethodRefinements: paidItemMatchesMethodRefinements, buildSharePages: buildSharePages, drawSharePage: drawSharePage,

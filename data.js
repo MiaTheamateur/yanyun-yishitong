@@ -2,12 +2,12 @@
   'use strict';
 
   window.OUTFIT_DATA_META = {
-  "version": "0.18.1-direct-price-sort",
+  "version": "1.0.0-formal-release",
   "source": "飞书《燕云外观上架情况整理》＋《免费外观道具汇总_20261012》",
-  "sourceRevision": 1849,
-  "generatedAt": "2026-10-13T06:07:43.233Z",
-  "importedCount": 1000,
-  "paidCount": 200,
+  "sourceRevision": 1881,
+  "generatedAt": "2026-10-13T16:22:15.668Z",
+  "importedCount": 1003,
+  "paidCount": 203,
   "freeDatabaseRows": 800,
   "freeCollectibleCount": 730,
   "freeSetCount": 70,
@@ -35,11 +35,11 @@
     "currentCharm": 18200,
     "unavailableItems": 183
   },
-  "paidDatabaseRows": 199,
+  "paidDatabaseRows": 202,
   "paidLatestDate": "2026-10-23",
   "paidImagesEnabled": true,
-  "paidImageRecords": 199,
-  "paidImageAssets": 324,
+  "paidImageRecords": 202,
+  "paidImageAssets": 328,
   "freeSourceRevision": 1211
 };
 
@@ -56,7 +56,7 @@
     "commonImage": "./assets/paid/paid-0021-common.webp",
     "sourceFemaleImage": "",
     "sourceMaleImage": "",
-    "sourceCommonImage": "没有男女区分的整张图/赤沙.png",
+    "sourceCommonImage": "没有男女区分的整张图/需要右移处理/赤沙.png",
     "onSaleDate": "2024-12-27",
     "offSaleDate": "",
     "returnStartDate": "",
@@ -81,11 +81,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0152",
@@ -122,11 +122,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/r4yAKOPSHxAsIDmKvtsvBA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0184",
@@ -140,7 +140,7 @@
     "commonImage": "./assets/paid/paid-0184-common.webp",
     "sourceFemaleImage": "",
     "sourceMaleImage": "",
-    "sourceCommonImage": "没有男女区分的整张图/舞花间.png",
+    "sourceCommonImage": "没有男女区分的整张图/需要右移处理/舞花间.png",
     "onSaleDate": "2024-12-27",
     "offSaleDate": "",
     "returnStartDate": "",
@@ -163,11 +163,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0185",
@@ -181,7 +181,7 @@
     "commonImage": "./assets/paid/paid-0185-common.webp",
     "sourceFemaleImage": "",
     "sourceMaleImage": "",
-    "sourceCommonImage": "没有男女区分的整张图/梨花泪.png",
+    "sourceCommonImage": "没有男女区分的整张图/需要右移处理/梨花泪.png",
     "onSaleDate": "2024-12-27",
     "offSaleDate": "",
     "returnStartDate": "",
@@ -204,11 +204,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0186",
@@ -222,7 +222,7 @@
     "commonImage": "./assets/paid/paid-0186-common.webp",
     "sourceFemaleImage": "",
     "sourceMaleImage": "",
-    "sourceCommonImage": "没有男女区分的整张图/剑影藏心.png",
+    "sourceCommonImage": "没有男女区分的整张图/需要右移处理/剑影藏心.png",
     "onSaleDate": "2024-12-27",
     "offSaleDate": "",
     "returnStartDate": "",
@@ -245,11 +245,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0187",
@@ -263,7 +263,7 @@
     "commonImage": "./assets/paid/paid-0187-common.webp",
     "sourceFemaleImage": "",
     "sourceMaleImage": "",
-    "sourceCommonImage": "没有男女区分的整张图/金池鲤.png",
+    "sourceCommonImage": "没有男女区分的整张图/需要右移处理/金池鲤.png",
     "onSaleDate": "2024-12-27",
     "offSaleDate": "",
     "returnStartDate": "",
@@ -286,11 +286,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0022",
@@ -304,7 +304,7 @@
     "commonImage": "./assets/paid/paid-0022-common.webp",
     "sourceFemaleImage": "",
     "sourceMaleImage": "",
-    "sourceCommonImage": "没有男女区分的整张图/金鳞阙.png",
+    "sourceCommonImage": "没有男女区分的整张图/需要右移处理/金鳞阙.png",
     "onSaleDate": "2024-12-27",
     "offSaleDate": "",
     "returnStartDate": "",
@@ -329,11 +329,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0188",
@@ -347,7 +347,7 @@
     "commonImage": "./assets/paid/paid-0188-common.webp",
     "sourceFemaleImage": "",
     "sourceMaleImage": "",
-    "sourceCommonImage": "没有男女区分的整张图/蝉翼未来.png",
+    "sourceCommonImage": "没有男女区分的整张图/需要右移处理/蝉翼未来.png",
     "onSaleDate": "2024-12-27",
     "offSaleDate": "",
     "returnStartDate": "",
@@ -370,11 +370,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0189",
@@ -388,7 +388,7 @@
     "commonImage": "./assets/paid/paid-0189-common.webp",
     "sourceFemaleImage": "",
     "sourceMaleImage": "",
-    "sourceCommonImage": "没有男女区分的整张图/西凉鬼啸.png",
+    "sourceCommonImage": "没有男女区分的整张图/需要右移处理/西凉鬼啸.png",
     "onSaleDate": "2024-12-27",
     "offSaleDate": "",
     "returnStartDate": "",
@@ -411,11 +411,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0190",
@@ -429,7 +429,7 @@
     "commonImage": "./assets/paid/paid-0190-common.webp",
     "sourceFemaleImage": "",
     "sourceMaleImage": "",
-    "sourceCommonImage": "没有男女区分的整张图/争戈.png",
+    "sourceCommonImage": "没有男女区分的整张图/需要右移处理/争戈.png",
     "onSaleDate": "2024-12-27",
     "offSaleDate": "",
     "returnStartDate": "",
@@ -452,11 +452,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0191",
@@ -470,7 +470,7 @@
     "commonImage": "./assets/paid/paid-0191-common.webp",
     "sourceFemaleImage": "",
     "sourceMaleImage": "",
-    "sourceCommonImage": "没有男女区分的整张图/骊山猎.png",
+    "sourceCommonImage": "没有男女区分的整张图/需要右移处理/骊山猎.png",
     "onSaleDate": "2024-12-27",
     "offSaleDate": "",
     "returnStartDate": "",
@@ -493,11 +493,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0192",
@@ -511,7 +511,7 @@
     "commonImage": "./assets/paid/paid-0192-common.webp",
     "sourceFemaleImage": "",
     "sourceMaleImage": "",
-    "sourceCommonImage": "没有男女区分的整张图/雪狸儿.png",
+    "sourceCommonImage": "没有男女区分的整张图/需要右移处理/雪狸儿.png",
     "onSaleDate": "2024-12-27",
     "offSaleDate": "",
     "returnStartDate": "",
@@ -534,11 +534,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0023",
@@ -552,7 +552,7 @@
     "commonImage": "./assets/paid/paid-0023-common.webp",
     "sourceFemaleImage": "",
     "sourceMaleImage": "",
-    "sourceCommonImage": "没有男女区分的整张图/龙凤缠.png",
+    "sourceCommonImage": "没有男女区分的整张图/需要右移处理/龙凤缠.png",
     "onSaleDate": "2024-12-27",
     "offSaleDate": "",
     "returnStartDate": "",
@@ -577,11 +577,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0193",
@@ -595,7 +595,7 @@
     "commonImage": "./assets/paid/paid-0193-common.webp",
     "sourceFemaleImage": "",
     "sourceMaleImage": "",
-    "sourceCommonImage": "没有男女区分的整张图/暗香.png",
+    "sourceCommonImage": "没有男女区分的整张图/需要右移处理/暗香.png",
     "onSaleDate": "2024-12-27",
     "offSaleDate": "",
     "returnStartDate": "",
@@ -618,11 +618,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0194",
@@ -636,7 +636,7 @@
     "commonImage": "./assets/paid/paid-0194-common.webp",
     "sourceFemaleImage": "",
     "sourceMaleImage": "",
-    "sourceCommonImage": "没有男女区分的整张图/青阳.png",
+    "sourceCommonImage": "没有男女区分的整张图/需要右移处理/青阳.png",
     "onSaleDate": "2024-12-27",
     "offSaleDate": "",
     "returnStartDate": "",
@@ -659,11 +659,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0195",
@@ -677,7 +677,7 @@
     "commonImage": "./assets/paid/paid-0195-common.webp",
     "sourceFemaleImage": "",
     "sourceMaleImage": "",
-    "sourceCommonImage": "没有男女区分的整张图/红尘书.png",
+    "sourceCommonImage": "没有男女区分的整张图/需要右移处理/红尘书.png",
     "onSaleDate": "2024-12-27",
     "offSaleDate": "",
     "returnStartDate": "",
@@ -700,11 +700,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0196",
@@ -718,7 +718,7 @@
     "commonImage": "./assets/paid/paid-0196-common.webp",
     "sourceFemaleImage": "",
     "sourceMaleImage": "",
-    "sourceCommonImage": "没有男女区分的整张图/风花雾.png",
+    "sourceCommonImage": "没有男女区分的整张图/需要右移处理/风花雾.png",
     "onSaleDate": "2024-12-27",
     "offSaleDate": "",
     "returnStartDate": "",
@@ -741,11 +741,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0197",
@@ -759,7 +759,7 @@
     "commonImage": "./assets/paid/paid-0197-common.webp",
     "sourceFemaleImage": "",
     "sourceMaleImage": "",
-    "sourceCommonImage": "没有男女区分的整张图/阮郎归.png",
+    "sourceCommonImage": "没有男女区分的整张图/需要右移处理/阮郎归.png",
     "onSaleDate": "2024-12-27",
     "offSaleDate": "",
     "returnStartDate": "",
@@ -782,11 +782,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0198",
@@ -800,7 +800,7 @@
     "commonImage": "./assets/paid/paid-0198-common.webp",
     "sourceFemaleImage": "",
     "sourceMaleImage": "",
-    "sourceCommonImage": "没有男女区分的整张图/蓬莱翎.png",
+    "sourceCommonImage": "没有男女区分的整张图/需要右移处理/蓬莱翎.png",
     "onSaleDate": "2024-12-27",
     "offSaleDate": "",
     "returnStartDate": "",
@@ -823,11 +823,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0199",
@@ -841,7 +841,7 @@
     "commonImage": "./assets/paid/paid-0199-common.webp",
     "sourceFemaleImage": "",
     "sourceMaleImage": "",
-    "sourceCommonImage": "没有男女区分的整张图/墨沉丹朱.png",
+    "sourceCommonImage": "没有男女区分的整张图/需要右移处理/墨沉丹朱.png",
     "onSaleDate": "2024-12-27",
     "offSaleDate": "",
     "returnStartDate": "",
@@ -864,16 +864,16 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0200",
     "sourceRecordId": "reczz28MEei6Wt25",
-    "sourceOrder": 21,
+    "sourceOrder": 23,
     "name": "人间仙",
     "type": "套装",
     "acquisitionType": "付费",
@@ -882,7 +882,7 @@
     "commonImage": "./assets/paid/paid-0200-common.webp",
     "sourceFemaleImage": "",
     "sourceMaleImage": "",
-    "sourceCommonImage": "没有男女区分的整张图/人间仙.png",
+    "sourceCommonImage": "没有男女区分的整张图/需要右移处理/人间仙.png",
     "onSaleDate": "2024-12-27",
     "offSaleDate": "",
     "returnStartDate": "",
@@ -902,16 +902,98 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
+  },
+  {
+    "id": "paid-0201",
+    "sourceRecordId": "reczz28Mo8gK0M7S",
+    "sourceOrder": 22,
+    "name": "无间无相",
+    "type": "套装",
+    "acquisitionType": "付费",
+    "femaleImage": "",
+    "maleImage": "",
+    "commonImage": "./assets/paid/paid-0201-common.webp",
+    "sourceFemaleImage": "",
+    "sourceMaleImage": "",
+    "sourceCommonImage": "和鸣聆音转盘/无间无相.jpg",
+    "onSaleDate": "2024-12-27",
+    "offSaleDate": "2025-03-27",
+    "returnStartDate": "",
+    "returnEndDate": "",
+    "availabilityRaw": "已下架",
+    "listingStatus": "已下架",
+    "saleMethod": "和鸣大套",
+    "priceOriginal": "",
+    "priceTier": "",
+    "channel": "和鸣商店",
+    "styleTags": [
+      "Boss同款"
+    ],
+    "tags": [
+      "和鸣大套",
+      "Boss同款"
+    ],
+    "series": "Boss同款",
+    "infoStatus": "已确认",
+    "charmValue": 0,
+    "source": "",
+    "secondarySource": "",
+    "verifiedAt": "2026-10-14",
+    "note": "限时90天上架",
+    "imageMatchStatus": "已匹配（活动海报）",
+    "validationNote": "本地索引图已唯一匹配",
+    "updatedAt": "2026-10-14"
+  },
+  {
+    "id": "paid-0202",
+    "sourceRecordId": "reczz28Mo8gK4Fek",
+    "sourceOrder": 21,
+    "name": "乐神师延",
+    "type": "套装",
+    "acquisitionType": "付费",
+    "femaleImage": "",
+    "maleImage": "",
+    "commonImage": "./assets/paid/paid-0202-common.webp",
+    "sourceFemaleImage": "",
+    "sourceMaleImage": "",
+    "sourceCommonImage": "和鸣聆音转盘/乐神师延.jpg",
+    "onSaleDate": "2024-12-27",
+    "offSaleDate": "2025-03-27",
+    "returnStartDate": "",
+    "returnEndDate": "",
+    "availabilityRaw": "已下架",
+    "listingStatus": "已下架",
+    "saleMethod": "和鸣大套",
+    "priceOriginal": "",
+    "priceTier": "",
+    "channel": "和鸣商店",
+    "styleTags": [
+      "原创和鸣"
+    ],
+    "tags": [
+      "和鸣大套",
+      "原创和鸣"
+    ],
+    "series": "原创和鸣",
+    "infoStatus": "已确认",
+    "charmValue": 0,
+    "source": "",
+    "secondarySource": "",
+    "verifiedAt": "2026-10-14",
+    "note": "限时90天上架",
+    "imageMatchStatus": "已匹配（活动海报）",
+    "validationNote": "本地索引图已唯一匹配",
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0003",
     "sourceRecordId": "reczz28Ld1So9ah8",
-    "sourceOrder": 24,
+    "sourceOrder": 26,
     "name": "翠羽顾",
     "type": "外观",
     "acquisitionType": "付费",
@@ -940,16 +1022,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/dtd53tN0vd0TaG4Lh2ysdA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0001",
     "sourceRecordId": "reczz28Ld1So9NfK",
-    "sourceOrder": 22,
+    "sourceOrder": 24,
     "name": "九间当铺",
     "type": "外观",
     "acquisitionType": "付费",
@@ -981,16 +1063,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/dtd53tN0vd0TaG4Lh2ysdA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时1280上架七天后恢复2580",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0002",
     "sourceRecordId": "reczz28Ld1So9YaP",
-    "sourceOrder": 23,
+    "sourceOrder": 25,
     "name": "燃金明",
     "type": "外观",
     "acquisitionType": "付费",
@@ -1022,16 +1104,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/dtd53tN0vd0TaG4Lh2ysdA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0004",
     "sourceRecordId": "reczz28Ld1So9dGI",
-    "sourceOrder": 25,
+    "sourceOrder": 27,
     "name": "南疆秘语",
     "type": "外观",
     "acquisitionType": "付费",
@@ -1060,16 +1142,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/XOsTM5sICn4AzDbV8E3SZw",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0005",
     "sourceRecordId": "reczz28Ld1So9eLq",
-    "sourceOrder": 26,
+    "sourceOrder": 28,
     "name": "穿云游雪",
     "type": "外观",
     "acquisitionType": "付费",
@@ -1101,16 +1183,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/a__S2y2VMODvvInshhiavg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0006",
     "sourceRecordId": "reczz28LfC5keamj",
-    "sourceOrder": 27,
+    "sourceOrder": 29,
     "name": "丹雀",
     "type": "套装",
     "acquisitionType": "付费",
@@ -1142,16 +1224,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/GcHVixsNs6EdkXVKU7oFBA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0007",
     "sourceRecordId": "reczz28LfCeXbcXp",
-    "sourceOrder": 28,
+    "sourceOrder": 30,
     "name": "沧海龙吟",
     "type": "套装",
     "acquisitionType": "付费",
@@ -1183,16 +1265,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/GcHVixsNs6EdkXVKU7oFBA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0008",
     "sourceRecordId": "reczz28LfCfQzeTq",
-    "sourceOrder": 29,
+    "sourceOrder": 31,
     "name": "西极坠日",
     "type": "套装",
     "acquisitionType": "付费",
@@ -1224,16 +1306,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/GcHVixsNs6EdkXVKU7oFBA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0009",
     "sourceRecordId": "reczz28LfCg9H6Aa",
-    "sourceOrder": 30,
+    "sourceOrder": 32,
     "name": "蜀戏春",
     "type": "外观",
     "acquisitionType": "付费",
@@ -1267,16 +1349,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/GcHVixsNs6EdkXVKU7oFBA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "专属拾音券折扣，最高5折",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0010",
     "sourceRecordId": "reczz28LfIcAZ7Fg",
-    "sourceOrder": 31,
+    "sourceOrder": 33,
     "name": "朔风雪",
     "type": "发型",
     "acquisitionType": "付费",
@@ -1308,16 +1390,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/GcHVixsNs6EdkXVKU7oFBA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0011",
     "sourceRecordId": "reczz28LfId4gvov",
-    "sourceOrder": 32,
+    "sourceOrder": 34,
     "name": "上青云",
     "type": "外观",
     "acquisitionType": "付费",
@@ -1346,16 +1428,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/sZzNiYWOEl6tbKy7dRCcSg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0012",
     "sourceRecordId": "reczz28LfIdv7hVX",
-    "sourceOrder": 33,
+    "sourceOrder": 35,
     "name": "鹊衔夜",
     "type": "外观",
     "acquisitionType": "付费",
@@ -1387,16 +1469,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/8bslGjaiIJvX3APRyWt9dA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0013",
     "sourceRecordId": "reczz28LfIfEr6Cf",
-    "sourceOrder": 34,
+    "sourceOrder": 36,
     "name": "封侯",
     "type": "外观",
     "acquisitionType": "付费",
@@ -1425,16 +1507,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/8bslGjaiIJvX3APRyWt9dA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0014",
     "sourceRecordId": "reczz28LfIgF2P2S",
-    "sourceOrder": 35,
+    "sourceOrder": 37,
     "name": "云遥鹤影",
     "type": "外观",
     "acquisitionType": "付费",
@@ -1463,16 +1545,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/8bslGjaiIJvX3APRyWt9dA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0015",
     "sourceRecordId": "reczz28LfIh1zoaz",
-    "sourceOrder": 36,
+    "sourceOrder": 38,
     "name": "白衣修罗",
     "type": "外观",
     "acquisitionType": "付费",
@@ -1501,16 +1583,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/ltg5LdGrUVFA2ezhwFCrhw",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0016",
     "sourceRecordId": "reczz28LfIhpu1rZ",
-    "sourceOrder": 37,
+    "sourceOrder": 39,
     "name": "白龙",
     "type": "外观",
     "acquisitionType": "付费",
@@ -1542,16 +1624,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/hxovChmVRKrka4HMRslWNw",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0017",
     "sourceRecordId": "reczz28LfIikUwas",
-    "sourceOrder": 38,
+    "sourceOrder": 40,
     "name": "瀚海千山",
     "type": "发型",
     "acquisitionType": "付费",
@@ -1583,16 +1665,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/B7eaBgkOSMTnVtCb3ZTM9w",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0018",
     "sourceRecordId": "reczz28LfIjWerh5",
-    "sourceOrder": 39,
+    "sourceOrder": 41,
     "name": "雪满川",
     "type": "套装",
     "acquisitionType": "付费",
@@ -1624,16 +1706,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/B7eaBgkOSMTnVtCb3ZTM9w",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0019",
     "sourceRecordId": "reczz28Lfki5xKqg",
-    "sourceOrder": 40,
+    "sourceOrder": 42,
     "name": "松花玉兰",
     "type": "外观",
     "acquisitionType": "付费",
@@ -1662,16 +1744,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/t_S99Pj-ZpBpZakEQnvM2g",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0020",
     "sourceRecordId": "reczz28LflGXd9oZ",
-    "sourceOrder": 41,
+    "sourceOrder": 43,
     "name": "浣溪沙",
     "type": "外观",
     "acquisitionType": "付费",
@@ -1700,16 +1782,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/t_S99Pj-ZpBpZakEQnvM2g",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0024",
     "sourceRecordId": "reczz28Lgi9IxpRT",
-    "sourceOrder": 42,
+    "sourceOrder": 44,
     "name": "清音晓",
     "type": "外观",
     "acquisitionType": "付费",
@@ -1738,16 +1820,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/cPZZycs-14CTvjl3HUCs2A",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0025",
     "sourceRecordId": "reczz28LgiAGECzw",
-    "sourceOrder": 43,
+    "sourceOrder": 45,
     "name": "铁马金戈",
     "type": "外观",
     "acquisitionType": "付费",
@@ -1779,16 +1861,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/_jxmP01sYx-OyTO3Ts0GNQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0026",
     "sourceRecordId": "reczz28LgiB0QYzH",
-    "sourceOrder": 44,
+    "sourceOrder": 46,
     "name": "青丘千岁",
     "type": "套装",
     "acquisitionType": "付费",
@@ -1820,16 +1902,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/_jxmP01sYx-OyTO3Ts0GNQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时90天上架   本期和鸣3月28号开启~5月23日结束，结束后仍然可以兑换，直到6月26日   后来有公告说：本期【和鸣-大音希声】将延长至5月30日5:00后更新下架",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0027",
     "sourceRecordId": "reczz28LgiBp6hJ6",
-    "sourceOrder": 45,
+    "sourceOrder": 47,
     "name": "弄清影",
     "type": "发型",
     "acquisitionType": "付费",
@@ -1861,16 +1943,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/_jxmP01sYx-OyTO3Ts0GNQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0028",
     "sourceRecordId": "reczz28LgiCZXY0k",
-    "sourceOrder": 46,
+    "sourceOrder": 48,
     "name": "青玉案",
     "type": "外观",
     "acquisitionType": "付费",
@@ -1899,16 +1981,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/NQ28TyjSShsVhHR-abE7Tg",
     "secondarySource": "https://mp.weixin.qq.com/s/4jFe4uGRyGtAB6P5VJUA7A",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "返场了1次",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0029",
     "sourceRecordId": "reczz28LgiDQ167W",
-    "sourceOrder": 47,
+    "sourceOrder": 49,
     "name": "紫薇阙",
     "type": "外观",
     "acquisitionType": "付费",
@@ -1937,16 +2019,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/_Txm9d72OGIgSJkee8ue7g",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0030",
     "sourceRecordId": "reczz28LgiES7hFz",
-    "sourceOrder": 48,
+    "sourceOrder": 50,
     "name": "蝎心蛟影",
     "type": "外观",
     "acquisitionType": "付费",
@@ -1978,16 +2060,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/ENI05blcSHVjKu3x0TaY6Q",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时半价，2025年4月25日后恢复原价",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0031",
     "sourceRecordId": "reczz28LhT1jwUzH",
-    "sourceOrder": 49,
+    "sourceOrder": 51,
     "name": "芳时歇",
     "type": "外观",
     "acquisitionType": "付费",
@@ -2016,16 +2098,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/yNiI3qwbjxbfNFm3wRIotg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0032",
     "sourceRecordId": "reczz28LhXBz9Kxc",
-    "sourceOrder": 52,
+    "sourceOrder": 54,
     "name": "瑞鹤仙",
     "type": "套装",
     "acquisitionType": "付费",
@@ -2054,16 +2136,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/p3qiW5hTDyPqAy1rmwOfEg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时活动【鹤鸣九皋】",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0033",
     "sourceRecordId": "reczz28LhXCkm8EB",
-    "sourceOrder": 53,
+    "sourceOrder": 55,
     "name": "玉霜翎",
     "type": "发型",
     "acquisitionType": "付费",
@@ -2095,16 +2177,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/p3qiW5hTDyPqAy1rmwOfEg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时活动【鹤鸣九皋】",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0034",
     "sourceRecordId": "reczz28LhT2xNyFu",
-    "sourceOrder": 50,
+    "sourceOrder": 52,
     "name": "夜郎幽问",
     "type": "外观",
     "acquisitionType": "付费",
@@ -2136,16 +2218,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/p3qiW5hTDyPqAy1rmwOfEg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0035",
     "sourceRecordId": "reczz28LhXB8WpTY",
-    "sourceOrder": 51,
+    "sourceOrder": 53,
     "name": "栖彤霞",
     "type": "发型",
     "acquisitionType": "付费",
@@ -2177,16 +2259,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/p3qiW5hTDyPqAy1rmwOfEg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0036",
     "sourceRecordId": "reczz28LhikgHvls",
-    "sourceOrder": 54,
+    "sourceOrder": 56,
     "name": "鹊踏枝",
     "type": "外观",
     "acquisitionType": "付费",
@@ -2215,16 +2297,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/F_ffI1MM2vFcZdDZbDvIEw",
     "secondarySource": "https://mp.weixin.qq.com/s/J9PFUVfF9m6FeGf9E_hwCg",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "返场了1次",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0037",
     "sourceRecordId": "reczz28Lhildl3O8",
-    "sourceOrder": 55,
+    "sourceOrder": 57,
     "name": "贺新词",
     "type": "外观",
     "acquisitionType": "付费",
@@ -2256,16 +2338,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/JxveADrZVaqkyhQtZ64n-A",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "原价680「长鸣珠」日常300「长鸣珠」折扣价购得",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0038",
     "sourceRecordId": "reczz28LhimYmlIm",
-    "sourceOrder": 56,
+    "sourceOrder": 58,
     "name": "螭骨",
     "type": "外观",
     "acquisitionType": "付费",
@@ -2294,16 +2376,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/DJG5siXBFw7srpqpZgXyaA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0039",
     "sourceRecordId": "reczz28LhinKRKjg",
-    "sourceOrder": 57,
+    "sourceOrder": 59,
     "name": "月中天阙",
     "type": "套装",
     "acquisitionType": "付费",
@@ -2335,16 +2417,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/taoypHvAtZYJFs4BlhvZXQ",
     "secondarySource": "https://mp.weixin.qq.com/s/5AinVe8kC13dyFPdAL9EPQ",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "本期和鸣5月30号开启~8月15日结束，结束后仍然可以兑换，直到8月28日",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0040",
     "sourceRecordId": "reczz28LhioEjdNf",
-    "sourceOrder": 58,
+    "sourceOrder": 60,
     "name": "午风清",
     "type": "外观",
     "acquisitionType": "付费",
@@ -2376,16 +2458,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/taoypHvAtZYJFs4BlhvZXQ",
     "secondarySource": "https://mp.weixin.qq.com/s/5AinVe8kC13dyFPdAL9EPQ",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0041",
     "sourceRecordId": "reczz28Lhiq9svpN",
-    "sourceOrder": 59,
+    "sourceOrder": 61,
     "name": "花月天真",
     "type": "外观",
     "acquisitionType": "付费",
@@ -2417,16 +2499,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/lWkAgfXL0-6II68VRlns2g",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0042",
     "sourceRecordId": "reczz28Li7T48mF7",
-    "sourceOrder": 60,
+    "sourceOrder": 62,
     "name": "梦鎏金",
     "type": "发型",
     "acquisitionType": "付费",
@@ -2458,16 +2540,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/lWkAgfXL0-6II68VRlns2g",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0043",
     "sourceRecordId": "reczz28Li7WXKeLY",
-    "sourceOrder": 61,
+    "sourceOrder": 63,
     "name": "雁还乡",
     "type": "外观",
     "acquisitionType": "付费",
@@ -2499,16 +2581,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/os_-yWRlzum3wZu_KDlcMg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "原价680「长鸣珠」日常300「长鸣珠」折扣价购得",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0044",
     "sourceRecordId": "reczz28Li7YQpEKV",
-    "sourceOrder": 62,
+    "sourceOrder": 64,
     "name": "射虎南山",
     "type": "外观",
     "acquisitionType": "付费",
@@ -2537,16 +2619,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/zM_9VsC8fZL4kzy7kaiyHw",
     "secondarySource": "https://mp.weixin.qq.com/s/MZiNEaXUMwwHGS6aj4R2WA",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0045",
     "sourceRecordId": "reczz28Li7iwALCr",
-    "sourceOrder": 63,
+    "sourceOrder": 65,
     "name": "宿露轻盈",
     "type": "外观",
     "acquisitionType": "付费",
@@ -2580,16 +2662,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/rMGD_9QvaBDVOiGEmFzogA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0046",
     "sourceRecordId": "reczz28Li7k7nDYp",
-    "sourceOrder": 64,
+    "sourceOrder": 66,
     "name": "雨停荷",
     "type": "外观",
     "acquisitionType": "付费",
@@ -2618,16 +2700,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/s1C0OQkGrMBkWz91VpFfKw",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0047",
     "sourceRecordId": "reczz28LiNCsWxk2",
-    "sourceOrder": 65,
+    "sourceOrder": 67,
     "name": "青草原",
     "type": "外观",
     "acquisitionType": "付费",
@@ -2656,16 +2738,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/3w8MJI2ls7qpW5F49NK0sw",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0048",
     "sourceRecordId": "reczz28LmjpDeDA9",
-    "sourceOrder": 66,
+    "sourceOrder": 68,
     "name": "云深归处",
     "type": "发型",
     "acquisitionType": "付费",
@@ -2697,16 +2779,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/3w8MJI2ls7qpW5F49NK0sw",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0049",
     "sourceRecordId": "reczz28LmjtJXJap",
-    "sourceOrder": 67,
+    "sourceOrder": 69,
     "name": "快哉风",
     "type": "套装",
     "acquisitionType": "付费",
@@ -2738,16 +2820,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/hDEKCXME1GTC2CfrL-5F3w",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "「聆音惊蝉」活动   限时优惠价600「长鸣珠」购得，后续恢复原价1280「长鸣珠」",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0050",
     "sourceRecordId": "reczz28LmjuY5pOS",
-    "sourceOrder": 68,
+    "sourceOrder": 70,
     "name": "南风熏",
     "type": "外观",
     "acquisitionType": "付费",
@@ -2776,16 +2858,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/5k6pGuHsI9srcvKrLFwPxA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0051",
     "sourceRecordId": "reczz28Lmk0QzI8u",
-    "sourceOrder": 70,
+    "sourceOrder": 72,
     "name": "将星入命",
     "type": "套装",
     "acquisitionType": "付费",
@@ -2817,16 +2899,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/eL6rOeonPx-o11vJzi3W7w",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0052",
     "sourceRecordId": "reczz28Lmk1VU1LN",
-    "sourceOrder": 71,
+    "sourceOrder": 73,
     "name": "我自擎天",
     "type": "发型",
     "acquisitionType": "付费",
@@ -2858,16 +2940,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/eL6rOeonPx-o11vJzi3W7w",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0053",
     "sourceRecordId": "reczz28Ln0oSAUxf",
-    "sourceOrder": 69,
+    "sourceOrder": 71,
     "name": "天上白玉京",
     "type": "套装",
     "acquisitionType": "付费",
@@ -2899,16 +2981,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/nNSN_1qJgxbZ2J540pv7ew",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0054",
     "sourceRecordId": "reczz28Lmk5hQ06G",
-    "sourceOrder": 72,
+    "sourceOrder": 74,
     "name": "鲤传尺素",
     "type": "外观",
     "acquisitionType": "付费",
@@ -2937,16 +3019,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/nNSN_1qJgxbZ2J540pv7ew",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0055",
     "sourceRecordId": "reczz28Lmk8VDvZz",
-    "sourceOrder": 73,
+    "sourceOrder": 75,
     "name": "芙蓉泣露",
     "type": "发型",
     "acquisitionType": "付费",
@@ -2978,16 +3060,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/nNSN_1qJgxbZ2J540pv7ew",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0056",
     "sourceRecordId": "reczz28Lmk9M4dAx",
-    "sourceOrder": 74,
+    "sourceOrder": 76,
     "name": "驰走西风",
     "type": "外观",
     "acquisitionType": "付费",
@@ -3016,16 +3098,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/LQ5WQlZMu0phwltpkfFFCA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0057",
     "sourceRecordId": "reczz28LmkAVfJSD",
-    "sourceOrder": 75,
+    "sourceOrder": 77,
     "name": "月如银",
     "type": "外观",
     "acquisitionType": "付费",
@@ -3054,16 +3136,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/m3dT05O6OtoEr7RtY3L0Fg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "【商店】以折扣价300「长鸣珠」购得，两周后将恢复原价680「长鸣珠」",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0058",
     "sourceRecordId": "reczz28LmkBPz1ly",
-    "sourceOrder": 76,
+    "sourceOrder": 78,
     "name": "梦寻虎跑",
     "type": "外观",
     "acquisitionType": "付费",
@@ -3092,16 +3174,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/bezfjPUNfuFQgafek2TglA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0059",
     "sourceRecordId": "reczz28LmkCNUPsy",
-    "sourceOrder": 77,
+    "sourceOrder": 79,
     "name": "浮云卷霭",
     "type": "发型",
     "acquisitionType": "付费",
@@ -3133,16 +3215,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/bezfjPUNfuFQgafek2TglA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0060",
     "sourceRecordId": "reczz28LmkDMZviP",
-    "sourceOrder": 78,
+    "sourceOrder": 80,
     "name": "如碎霜天",
     "type": "套装",
     "acquisitionType": "付费",
@@ -3174,16 +3256,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/jLde7SdPisfLQ1LD0_ilpQ",
     "secondarySource": "https://mp.weixin.qq.com/s/MnemxhBgPNmNMoG5k9Hefw",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0061",
     "sourceRecordId": "reczz28LmkE0wYiU",
-    "sourceOrder": 79,
+    "sourceOrder": 81,
     "name": "风吟彼岸",
     "type": "套装",
     "acquisitionType": "付费",
@@ -3215,16 +3297,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/jLde7SdPisfLQ1LD0_ilpQ",
     "secondarySource": "https://mp.weixin.qq.com/s/MnemxhBgPNmNMoG5k9Hefw",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0062",
     "sourceRecordId": "reczz28LmkEleqRn",
-    "sourceOrder": 80,
+    "sourceOrder": 82,
     "name": "相思曲",
     "type": "外观",
     "acquisitionType": "付费",
@@ -3253,16 +3335,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/MnemxhBgPNmNMoG5k9Hefw",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0063",
     "sourceRecordId": "reczz28LmkK42LfH",
-    "sourceOrder": 82,
+    "sourceOrder": 84,
     "name": "鹊桥仙",
     "type": "发型",
     "acquisitionType": "付费",
@@ -3294,16 +3376,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/zzt9q60YSVns5nK7YKzGAQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0064",
     "sourceRecordId": "reczz28LmkK44gU7",
-    "sourceOrder": 81,
+    "sourceOrder": 83,
     "name": "卿知吾心",
     "type": "外观",
     "acquisitionType": "付费",
@@ -3335,16 +3417,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/zzt9q60YSVns5nK7YKzGAQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0065",
     "sourceRecordId": "reczz28LmkK42IHa",
-    "sourceOrder": 83,
+    "sourceOrder": 85,
     "name": "岁时安",
     "type": "外观",
     "acquisitionType": "付费",
@@ -3373,16 +3455,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/iQofMJN4dhxE45iGJB0Sjg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "价格存疑",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0066",
     "sourceRecordId": "reczz28LmkK41lVz",
-    "sourceOrder": 84,
+    "sourceOrder": 86,
     "name": "望乡客",
     "type": "外观",
     "acquisitionType": "付费",
@@ -3411,16 +3493,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/ZSOVzjhJ01m8ZW4b-iYOJw",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0067",
     "sourceRecordId": "reczz28LmkK41PSC",
-    "sourceOrder": 85,
+    "sourceOrder": 87,
     "name": "啸月",
     "type": "外观",
     "acquisitionType": "付费",
@@ -3449,16 +3531,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/szC6m-bSXubDIzCl313BOg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "此优惠价将于2025年10月3日5:00结束",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0068",
     "sourceRecordId": "reczz28LmkK43O6s",
-    "sourceOrder": 86,
+    "sourceOrder": 88,
     "name": "赤霄",
     "type": "发型",
     "acquisitionType": "付费",
@@ -3490,16 +3572,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/szC6m-bSXubDIzCl313BOg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0069",
     "sourceRecordId": "reczz28LmkK431P5",
-    "sourceOrder": 90,
+    "sourceOrder": 92,
     "name": "句芒",
     "type": "外观",
     "acquisitionType": "付费",
@@ -3531,16 +3613,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/pjQwY4eXbcHS6dmoQrWRRw",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0070",
     "sourceRecordId": "reczz28LmkK43o1g",
-    "sourceOrder": 88,
+    "sourceOrder": 90,
     "name": "醉蓬莱",
     "type": "套装",
     "acquisitionType": "付费",
@@ -3569,16 +3651,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/pjQwY4eXbcHS6dmoQrWRRw",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0071",
     "sourceRecordId": "reczz28LmkK44nvk",
-    "sourceOrder": 89,
+    "sourceOrder": 91,
     "name": "倾芳樽",
     "type": "发型",
     "acquisitionType": "付费",
@@ -3610,16 +3692,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/pjQwY4eXbcHS6dmoQrWRRw",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0072",
     "sourceRecordId": "reczz28LmkK44yEL",
-    "sourceOrder": 87,
+    "sourceOrder": 89,
     "name": "云中锦书",
     "type": "外观",
     "acquisitionType": "付费",
@@ -3648,16 +3730,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/7zAKmuDbUuq7vtBXyky8yQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0073",
     "sourceRecordId": "reczz28LndkwbiVT",
-    "sourceOrder": 91,
+    "sourceOrder": 93,
     "name": "天志明鬼",
     "type": "发型",
     "acquisitionType": "付费",
@@ -3689,16 +3771,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/pjQwY4eXbcHS6dmoQrWRRw",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0074",
     "sourceRecordId": "reczz28LndpIMKNp",
-    "sourceOrder": 93,
+    "sourceOrder": 95,
     "name": "扶光",
     "type": "发型",
     "acquisitionType": "付费",
@@ -3730,16 +3812,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/BQ57p7vnWHGT2cqdpP7fpA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0075",
     "sourceRecordId": "reczz28LndpIPNbl",
-    "sourceOrder": 92,
+    "sourceOrder": 94,
     "name": "金滟玉团",
     "type": "外观",
     "acquisitionType": "付费",
@@ -3771,16 +3853,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/BQ57p7vnWHGT2cqdpP7fpAv",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "10月6日5:00起限时上架30天",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0076",
     "sourceRecordId": "reczz28LndpIMrqM",
-    "sourceOrder": 94,
+    "sourceOrder": 96,
     "name": "寂夜铃",
     "type": "外观",
     "acquisitionType": "付费",
@@ -3809,16 +3891,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/g4G9ZLrKWoUm1rd4IxQ4oQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时优惠价300「长鸣珠」购得。此优惠价将于2025年10月25日5:00结束，届时将恢复原价680「长鸣珠」",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0077",
     "sourceRecordId": "reczz28LndpIODET",
-    "sourceOrder": 95,
+    "sourceOrder": 97,
     "name": "惜芳时",
     "type": "外观",
     "acquisitionType": "付费",
@@ -3847,16 +3929,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/p7nphwCAYpwuZpZUzHJ8Ow",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0078",
     "sourceRecordId": "reczz28LndpIMqlN",
-    "sourceOrder": 97,
+    "sourceOrder": 99,
     "name": "万顷琉璃",
     "type": "发型",
     "acquisitionType": "付费",
@@ -3888,16 +3970,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/JMIcrmrrOhOtwy0pGZ8Qag",
     "secondarySource": "https://mp.weixin.qq.com/s/g1Hjz3QyJiv8sfd0rwd8OQ",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时87天上架",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0079",
     "sourceRecordId": "reczz28LndpIMqt2",
-    "sourceOrder": 98,
+    "sourceOrder": 100,
     "name": "风入画",
     "type": "外观",
     "acquisitionType": "付费",
@@ -3926,16 +4008,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/JMIcrmrrOhOtwy0pGZ8Qag",
     "secondarySource": "https://mp.weixin.qq.com/s/g1Hjz3QyJiv8sfd0rwd8OQ",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0080",
     "sourceRecordId": "reczz28LndpINE08",
-    "sourceOrder": 96,
+    "sourceOrder": 98,
     "name": "有狐绥绥",
     "type": "套装",
     "acquisitionType": "付费",
@@ -3967,16 +4049,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/JMIcrmrrOhOtwy0pGZ8Qag",
     "secondarySource": "https://mp.weixin.qq.com/s/g1Hjz3QyJiv8sfd0rwd8OQ",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时87天上架",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0081",
     "sourceRecordId": "reczz28LndpIP8pB",
-    "sourceOrder": 100,
+    "sourceOrder": 102,
     "name": "祭火",
     "type": "发型",
     "acquisitionType": "付费",
@@ -4008,16 +4090,16 @@
     "charmValue": 0,
     "source": "http://mp.weixin.qq.com/s?__biz=Mzk0NTQwMTA2Ng==&mid=2247493045&idx=1&sn=aeca0c8d2029fba120acfd3adf4b187d&chksm=c2ac8b460720ea8ac3bd09d3cda4ee041bb40805a185596008317278c5945b00efe8a17bb512&scene=126&sessionid=1791651932&subscene=7&clicktime=1791656597&enterid=1791656597#rd",
     "secondarySource": "https://mp.weixin.qq.com/s/bDHCV__31U7YqMzpu68x8Q",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0082",
     "sourceRecordId": "reczz28LndpIPzgp",
-    "sourceOrder": 99,
+    "sourceOrder": 101,
     "name": "幽明既通",
     "type": "外观",
     "acquisitionType": "付费",
@@ -4046,16 +4128,16 @@
     "charmValue": 0,
     "source": "http://mp.weixin.qq.com/s?__biz=Mzk0NTQwMTA2Ng==&mid=2247493045&idx=1&sn=aeca0c8d2029fba120acfd3adf4b187d&chksm=c2ac8b460720ea8ac3bd09d3cda4ee041bb40805a185596008317278c5945b00efe8a17bb512&scene=126&sessionid=1791651932&subscene=7&clicktime=1791656597&enterid=1791656597#rd",
     "secondarySource": "https://mp.weixin.qq.com/s/bDHCV__31U7YqMzpu68x8Q",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0083",
     "sourceRecordId": "reczz28LndpINgQf",
-    "sourceOrder": 101,
+    "sourceOrder": 103,
     "name": "山君啸林",
     "type": "外观",
     "acquisitionType": "付费",
@@ -4084,16 +4166,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/IUW6MGTwpZnhOcUvh36Rlg",
     "secondarySource": "https://mp.weixin.qq.com/s/PUpUvRnUxIvJoWHApBqCZw",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "本期更新后，「战令购买」及「战令任务」的结束时间将延长至当前赛季最后一周的周五 4:59:59。",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0084",
     "sourceRecordId": "reczz28LndpIQDZf",
-    "sourceOrder": 102,
+    "sourceOrder": 104,
     "name": "天地行",
     "type": "外观",
     "acquisitionType": "付费",
@@ -4122,16 +4204,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/Yc9_DeA3p_7qSu_SDq3L0Q",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "此优惠价将于2025年11月28日5:00结束，届时将恢复原价680「长鸣珠」。",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0085",
     "sourceRecordId": "reczz28LndpIN76n",
-    "sourceOrder": 104,
+    "sourceOrder": 106,
     "name": "醉云醒雨",
     "type": "外观",
     "acquisitionType": "付费",
@@ -4160,16 +4242,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/DX_4Mn0soyhryKEZgtPnCQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0086",
     "sourceRecordId": "reczz28LndpINkqE",
-    "sourceOrder": 103,
+    "sourceOrder": 105,
     "name": "蓬山万重",
     "type": "套装",
     "acquisitionType": "付费",
@@ -4201,16 +4283,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/DX_4Mn0soyhryKEZgtPnCQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0087",
     "sourceRecordId": "reczz28LndpIPj53",
-    "sourceOrder": 105,
+    "sourceOrder": 107,
     "name": "浮岚",
     "type": "发型",
     "acquisitionType": "付费",
@@ -4242,16 +4324,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/DX_4Mn0soyhryKEZgtPnCQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0088",
     "sourceRecordId": "reczz28LndpIPsqX",
-    "sourceOrder": 106,
+    "sourceOrder": 108,
     "name": "剑羽雕翎",
     "type": "外观",
     "acquisitionType": "付费",
@@ -4280,16 +4362,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/Kvi6rS8SPyZRvwJ9IuaGSA",
     "secondarySource": "https://mp.weixin.qq.com/s/URN68q9KKv6A-KbNRT81_Q",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0089",
     "sourceRecordId": "reczz28LndpIMew0",
-    "sourceOrder": 107,
+    "sourceOrder": 109,
     "name": "燕燕于飞",
     "type": "外观",
     "acquisitionType": "付费",
@@ -4318,16 +4400,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/v9kkasrXJyGGbri6xPiDSQ",
     "secondarySource": "https://mp.weixin.qq.com/s/TNwWQP5slLQJn7Hf9cmp1Q",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0090",
     "sourceRecordId": "reczz28LndpIOpr5",
-    "sourceOrder": 108,
+    "sourceOrder": 110,
     "name": "孔雀谣",
     "type": "外观",
     "acquisitionType": "付费",
@@ -4359,16 +4441,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/EMjwoKUHxqfUe-P4jo2Grw",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0091",
     "sourceRecordId": "reczz28LndpIPq5f",
-    "sourceOrder": 110,
+    "sourceOrder": 112,
     "name": "露华",
     "type": "发型",
     "acquisitionType": "付费",
@@ -4400,16 +4482,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/EcwZU0P8-Y69wGDMpxBz_A",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0092",
     "sourceRecordId": "reczz28LndpIPUSS",
-    "sourceOrder": 109,
+    "sourceOrder": 111,
     "name": "飞白成诗",
     "type": "外观",
     "acquisitionType": "付费",
@@ -4438,16 +4520,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/EcwZU0P8-Y69wGDMpxBz_A",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0093",
     "sourceRecordId": "reczz28LndpINydP",
-    "sourceOrder": 111,
+    "sourceOrder": 113,
     "name": "游子衣",
     "type": "外观",
     "acquisitionType": "付费",
@@ -4476,16 +4558,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/EcwZU0P8-Y69wGDMpxBz_A",
     "secondarySource": "http://mp.weixin.qq.com/s?__biz=Mzk0NTQwMTA2Ng==&mid=2247494522&idx=1&sn=d3a628f6d33485b56b7921602e9dd4f3&chksm=c2f26fbbd07c2a98531b766c88c48a8d0cc986b0d93c3f54c53f4a5879c9a78e1f5484825c0e&scene=126&sessionid=1791651923&subscene=7&clicktime=1791658536&enterid=1791658536#rd",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0094",
     "sourceRecordId": "reczz28LndpIOCnY",
-    "sourceOrder": 117,
+    "sourceOrder": 119,
     "name": "岁华·瑶天悬光",
     "type": "套装",
     "acquisitionType": "付费",
@@ -4517,16 +4599,16 @@
     "charmValue": 0,
     "source": "http://mp.weixin.qq.com/s?__biz=Mzk0NTQwMTA2Ng==&mid=2247494432&idx=1&sn=e337577385b64b6f19ee9442c92d3dc6&chksm=c2bd7fb860a73cfce12908983def87815d0088974f96bc57887925cb0762bc0a93188262761b&scene=126&sessionid=1791651923&subscene=7&clicktime=1791658532&enterid=1791658532#rd",
     "secondarySource": "https://mp.weixin.qq.com/s/EcwZU0P8-Y69wGDMpxBz_A",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "周年限定活动「清籁回响」",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0095",
     "sourceRecordId": "reczz28LndpIP0rk",
-    "sourceOrder": 118,
+    "sourceOrder": 120,
     "name": "君临重霄",
     "type": "套装",
     "acquisitionType": "付费",
@@ -4555,16 +4637,16 @@
     "charmValue": 0,
     "source": "http://mp.weixin.qq.com/s?__biz=Mzk0NTQwMTA2Ng==&mid=2247494432&idx=1&sn=e337577385b64b6f19ee9442c92d3dc6&chksm=c2bd7fb860a73cfce12908983def87815d0088974f96bc57887925cb0762bc0a93188262761b&scene=126&sessionid=1791651923&subscene=7&clicktime=1791658532&enterid=1791658532#rd",
     "secondarySource": "http://mp.weixin.qq.com/s?__biz=Mzk0NTQwMTA2Ng==&mid=2247494522&idx=1&sn=d3a628f6d33485b56b7921602e9dd4f3&chksm=c2f26fbbd07c2a98531b766c88c48a8d0cc986b0d93c3f54c53f4a5879c9a78e1f5484825c0e&scene=126&sessionid=1791651923&subscene=7&clicktime=1791658536&enterid=1791658536#rd",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0096",
     "sourceRecordId": "reczz28LndpIP1mJ",
-    "sourceOrder": 116,
+    "sourceOrder": 118,
     "name": "灵鲛织梦",
     "type": "套装",
     "acquisitionType": "付费",
@@ -4596,16 +4678,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/JOVyqDeBNdrOOiD4gVTUCA",
     "secondarySource": "http://mp.weixin.qq.com/s?__biz=Mzk0NTQwMTA2Ng==&mid=2247494522&idx=1&sn=d3a628f6d33485b56b7921602e9dd4f3&chksm=c2f26fbbd07c2a98531b766c88c48a8d0cc986b0d93c3f54c53f4a5879c9a78e1f5484825c0e&scene=126&sessionid=1791651923&subscene=7&clicktime=1791658536&enterid=1791658536#rd",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0097",
     "sourceRecordId": "reczz28LndpIPOhH",
-    "sourceOrder": 113,
+    "sourceOrder": 115,
     "name": "雀临华台",
     "type": "外观",
     "acquisitionType": "付费",
@@ -4637,16 +4719,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/EcwZU0P8-Y69wGDMpxBz_A",
     "secondarySource": "http://mp.weixin.qq.com/s?__biz=Mzk0NTQwMTA2Ng==&mid=2247494522&idx=1&sn=d3a628f6d33485b56b7921602e9dd4f3&chksm=c2f26fbbd07c2a98531b766c88c48a8d0cc986b0d93c3f54c53f4a5879c9a78e1f5484825c0e&scene=126&sessionid=1791651923&subscene=7&clicktime=1791658536&enterid=1791658536#rd",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0098",
     "sourceRecordId": "reczz28LndpIPUaW",
-    "sourceOrder": 112,
+    "sourceOrder": 114,
     "name": "焰卷残夜",
     "type": "外观",
     "acquisitionType": "付费",
@@ -4675,16 +4757,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/EcwZU0P8-Y69wGDMpxBz_A",
     "secondarySource": "http://mp.weixin.qq.com/s?__biz=Mzk0NTQwMTA2Ng==&mid=2247494522&idx=1&sn=d3a628f6d33485b56b7921602e9dd4f3&chksm=c2f26fbbd07c2a98531b766c88c48a8d0cc986b0d93c3f54c53f4a5879c9a78e1f5484825c0e&scene=126&sessionid=1791651923&subscene=7&clicktime=1791658536&enterid=1791658536#rd",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0099",
     "sourceRecordId": "reczz28LndpIPVmz",
-    "sourceOrder": 115,
+    "sourceOrder": 117,
     "name": "柿柿如意",
     "type": "外观",
     "acquisitionType": "付费",
@@ -4713,16 +4795,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/JOVyqDeBNdrOOiD4gVTUCA",
     "secondarySource": "http://mp.weixin.qq.com/s?__biz=Mzk0NTQwMTA2Ng==&mid=2247494522&idx=1&sn=d3a628f6d33485b56b7921602e9dd4f3&chksm=c2f26fbbd07c2a98531b766c88c48a8d0cc986b0d93c3f54c53f4a5879c9a78e1f5484825c0e&scene=126&sessionid=1791651923&subscene=7&clicktime=1791658536&enterid=1791658536#rd",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0100",
     "sourceRecordId": "reczz28LohRbjYDI",
-    "sourceOrder": 114,
+    "sourceOrder": 116,
     "name": "束华年",
     "type": "发型",
     "acquisitionType": "付费",
@@ -4754,16 +4836,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/EcwZU0P8-Y69wGDMpxBz_A",
     "secondarySource": "http://mp.weixin.qq.com/s?__biz=Mzk0NTQwMTA2Ng==&mid=2247494522&idx=1&sn=d3a628f6d33485b56b7921602e9dd4f3&chksm=c2f26fbbd07c2a98531b766c88c48a8d0cc986b0d93c3f54c53f4a5879c9a78e1f5484825c0e&scene=126&sessionid=1791651923&subscene=7&clicktime=1791658536&enterid=1791658536#rd",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0101",
     "sourceRecordId": "reczz28LndpIMsYZ",
-    "sourceOrder": 119,
+    "sourceOrder": 121,
     "name": "岁寒香",
     "type": "外观",
     "acquisitionType": "付费",
@@ -4792,16 +4874,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/EcwZU0P8-Y69wGDMpxBz_A",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "原价680长鸣珠，届时游侠可前往【商店】以折扣价300长鸣珠购得，此优惠价将于2026年1月15日5:00:00结束。",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0102",
     "sourceRecordId": "reczz28LndpIPsUl",
-    "sourceOrder": 120,
+    "sourceOrder": 122,
     "name": "百诡志异",
     "type": "外观",
     "acquisitionType": "付费",
@@ -4833,16 +4915,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/GOI0TiVsLizg6_cfsdVhWw",
     "secondarySource": "https://mp.weixin.qq.com/s/RIzClVzrOwxIlf0fEYB0-A",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "「幽岚诡画」活动。限时优惠价600「长鸣珠」购得套装【百诡志异】。此优惠价将于2026年1月23日5:00:00结束，届时将上架【商店】，并恢复原价1280「长鸣珠」。",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0103",
     "sourceRecordId": "reczz28LndpIPY1Z",
-    "sourceOrder": 124,
+    "sourceOrder": 126,
     "name": "赤心一寸",
     "type": "套装",
     "acquisitionType": "付费",
@@ -4874,16 +4956,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/qyqiHQ7QBw2qWfAu8Lcsng",
     "secondarySource": "https://mp.weixin.qq.com/s/luVvBIUKW6K8a6oRf3VFXg",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0104",
     "sourceRecordId": "reczz28LndpIMzY8",
-    "sourceOrder": 121,
+    "sourceOrder": 123,
     "name": "猎白羽",
     "type": "外观",
     "acquisitionType": "付费",
@@ -4912,16 +4994,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/Ghs_BhbcAbdBl4cxZ2_7gA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时优惠价300长鸣珠购得。温馨提示，此优惠价将于2026年1月30日5:00:00结束，届时将恢复原价680长鸣珠。",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0105",
     "sourceRecordId": "reczz28LndpIMkNZ",
-    "sourceOrder": 122,
+    "sourceOrder": 124,
     "name": "明河载雪",
     "type": "外观",
     "acquisitionType": "付费",
@@ -4950,16 +5032,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/OV8pZqx2E2KyDHds4gp6qg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0106",
     "sourceRecordId": "reczz28LndpIO1q0",
-    "sourceOrder": 123,
+    "sourceOrder": 125,
     "name": "寒英",
     "type": "发型",
     "acquisitionType": "付费",
@@ -4991,16 +5073,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/OV8pZqx2E2KyDHds4gp6qg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0107",
     "sourceRecordId": "reczz28LndpIMval",
-    "sourceOrder": 125,
+    "sourceOrder": 127,
     "name": "龙腾岁宴",
     "type": "套装",
     "acquisitionType": "付费",
@@ -5032,16 +5114,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/soQSlZOP-xbhBxOm-TeHYg",
     "secondarySource": "https://mp.weixin.qq.com/s/EXC8dueilXO4hkQva9igCA",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0108",
     "sourceRecordId": "reczz28LndpIN2W9",
-    "sourceOrder": 129,
+    "sourceOrder": 131,
     "name": "青锋映雪",
     "type": "外观",
     "acquisitionType": "付费",
@@ -5070,16 +5152,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/soQSlZOP-xbhBxOm-TeHYg",
     "secondarySource": "https://mp.weixin.qq.com/s/EXC8dueilXO4hkQva9igCA",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0109",
     "sourceRecordId": "reczz28LndpIOlzy",
-    "sourceOrder": 126,
+    "sourceOrder": 128,
     "name": "鸣鹿寻春",
     "type": "套装",
     "acquisitionType": "付费",
@@ -5111,16 +5193,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/soQSlZOP-xbhBxOm-TeHYg",
     "secondarySource": "https://mp.weixin.qq.com/s/EXC8dueilXO4hkQva9igCA",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0110",
     "sourceRecordId": "reczz28LndpIQ1SX",
-    "sourceOrder": 128,
+    "sourceOrder": 130,
     "name": "丹渊寰宇",
     "type": "外观",
     "acquisitionType": "付费",
@@ -5152,16 +5234,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/soQSlZOP-xbhBxOm-TeHYg",
     "secondarySource": "https://mp.weixin.qq.com/s/EXC8dueilXO4hkQva9igCA",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0111",
     "sourceRecordId": "reczz28LpJOyAnwz",
-    "sourceOrder": 127,
+    "sourceOrder": 129,
     "name": "轻霞",
     "type": "发型",
     "acquisitionType": "付费",
@@ -5193,16 +5275,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/EXC8dueilXO4hkQva9igCA",
     "secondarySource": "https://mp.weixin.qq.com/s/EXC8dueilXO4hkQva9igCA",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0112",
     "sourceRecordId": "reczz28LndpIO1mm",
-    "sourceOrder": 130,
+    "sourceOrder": 132,
     "name": "探梅逢春",
     "type": "外观",
     "acquisitionType": "付费",
@@ -5234,16 +5316,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/0f4GDsh63pc7kEA2kRN0Ug",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0113",
     "sourceRecordId": "reczz28LndpIOpC2",
-    "sourceOrder": 132,
+    "sourceOrder": 134,
     "name": "马上有乾",
     "type": "外观",
     "acquisitionType": "付费",
@@ -5275,16 +5357,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/KIdb20bcGwpcNxaXXD3cvQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "专属拾音券折扣，最高5折",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0114",
     "sourceRecordId": "reczz28LndpIPzdy",
-    "sourceOrder": 133,
+    "sourceOrder": 135,
     "name": "聆春声",
     "type": "发型",
     "acquisitionType": "付费",
@@ -5316,16 +5398,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/KIdb20bcGwpcNxaXXD3cvQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0115",
     "sourceRecordId": "reczz28LndpIQ1yT",
-    "sourceOrder": 131,
+    "sourceOrder": 133,
     "name": "空山寻梅",
     "type": "发型",
     "acquisitionType": "付费",
@@ -5357,16 +5439,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/0f4GDsh63pc7kEA2kRN0Ug",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0116",
     "sourceRecordId": "reczz28LndpIP02j",
-    "sourceOrder": 134,
+    "sourceOrder": 136,
     "name": "财星高照",
     "type": "外观",
     "acquisitionType": "付费",
@@ -5395,16 +5477,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/KIdb20bcGwpcNxaXXD3cvQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "初五",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0117",
     "sourceRecordId": "reczz28LndpIMSw4",
-    "sourceOrder": 136,
+    "sourceOrder": 138,
     "name": "青鸾瑶音",
     "type": "发型",
     "acquisitionType": "付费",
@@ -5436,16 +5518,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/tqYlJxJcjcNoDDQtFC4arg",
     "secondarySource": "https://mp.weixin.qq.com/s/0HcIZywM-_3WRB7R9d8m1Q",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时87天上架",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0118",
     "sourceRecordId": "reczz28LndpINWc2",
-    "sourceOrder": 135,
+    "sourceOrder": 137,
     "name": "莲渡幽罗",
     "type": "套装",
     "acquisitionType": "付费",
@@ -5477,16 +5559,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/tqYlJxJcjcNoDDQtFC4arg",
     "secondarySource": "https://mp.weixin.qq.com/s/0HcIZywM-_3WRB7R9d8m1Q",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时87天上架",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0119",
     "sourceRecordId": "reczz28LndpIOoSk",
-    "sourceOrder": 137,
+    "sourceOrder": 139,
     "name": "万壑清响",
     "type": "外观",
     "acquisitionType": "付费",
@@ -5515,16 +5597,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/tqYlJxJcjcNoDDQtFC4arg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "原价680长鸣珠，届时游侠可前往商店以折扣价300长鸣珠购得。此优惠价将于2026年3月13日5:00:00结束。",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0120",
     "sourceRecordId": "reczz28LndpININk",
-    "sourceOrder": 139,
+    "sourceOrder": 141,
     "name": "金风玉露",
     "type": "发型",
     "acquisitionType": "付费",
@@ -5556,16 +5638,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/eQanJ_2iceSaJy6oK5gcEA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0121",
     "sourceRecordId": "reczz28LndpIQNeU",
-    "sourceOrder": 138,
+    "sourceOrder": 140,
     "name": "锦鳞送瑞",
     "type": "外观",
     "acquisitionType": "付费",
@@ -5597,16 +5679,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/eQanJ_2iceSaJy6oK5gcEA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0122",
     "sourceRecordId": "reczz28LndpIPAtf",
-    "sourceOrder": 140,
+    "sourceOrder": 142,
     "name": "幽夜尘影",
     "type": "外观",
     "acquisitionType": "付费",
@@ -5635,16 +5717,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/L2TRJWKW3bIlRFSpxMTC8w",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0123",
     "sourceRecordId": "reczz28LndpIO7iK",
-    "sourceOrder": 141,
+    "sourceOrder": 143,
     "name": "天曜肃威",
     "type": "套装",
     "acquisitionType": "付费",
@@ -5676,16 +5758,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/lriqBwdq0CrlisTy5LuIow",
     "secondarySource": "https://mp.weixin.qq.com/s/0uSHFV78H_fhk6D_741tcg",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时91天上架",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0124",
     "sourceRecordId": "reczz28LndpIO9oc",
-    "sourceOrder": 142,
+    "sourceOrder": 144,
     "name": "流沙问蛊",
     "type": "外观",
     "acquisitionType": "付费",
@@ -5717,16 +5799,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/lqUultaWL5QXOM4UcnBNDA",
     "secondarySource": "https://mp.weixin.qq.com/s/0uSHFV78H_fhk6D_741tcg",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0125",
     "sourceRecordId": "reczz28LpdnPL0Ul",
-    "sourceOrder": 144,
+    "sourceOrder": 146,
     "name": "武陵春",
     "type": "发型",
     "acquisitionType": "付费",
@@ -5758,16 +5840,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/xZSfxGrZQKwFZNBhihDh2g",
     "secondarySource": "https://mp.weixin.qq.com/s/EvBQHzGK16XymS6UF7NQLw",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0126",
     "sourceRecordId": "reczz28LpdnPNzc8",
-    "sourceOrder": 143,
+    "sourceOrder": 145,
     "name": "芳菲春华",
     "type": "外观",
     "acquisitionType": "付费",
@@ -5799,16 +5881,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/xZSfxGrZQKwFZNBhihDh2g",
     "secondarySource": "https://mp.weixin.qq.com/s/EvBQHzGK16XymS6UF7NQLw",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0127",
     "sourceRecordId": "reczz28LpdnPMW2t",
-    "sourceOrder": 145,
+    "sourceOrder": 147,
     "name": "颂吉呈祥",
     "type": "外观",
     "acquisitionType": "付费",
@@ -5840,16 +5922,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/rKhW_QGdNqVvilH7q_q7TA",
     "secondarySource": "https://mp.weixin.qq.com/s/-jZilOGZtsyR8LQLAhWTbg",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "680【长鸣珠】购得肯德基活动主题套装【颂吉祥】，支持使用【折音券】或【销音券】，膨胀成【定向销音券】后只需 380【长鸣珠",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0128",
     "sourceRecordId": "reczz28LpdnPNMOH",
-    "sourceOrder": 146,
+    "sourceOrder": 148,
     "name": "忆春山",
     "type": "外观",
     "acquisitionType": "付费",
@@ -5878,16 +5960,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/ql5EaAX2L0FTeGByPLCnww",
     "secondarySource": "https://mp.weixin.qq.com/s/-jZilOGZtsyR8LQLAhWTbg",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0129",
     "sourceRecordId": "reczz28LpdnPKgsf",
-    "sourceOrder": 147,
+    "sourceOrder": 149,
     "name": "青霄掠影",
     "type": "外观",
     "acquisitionType": "付费",
@@ -5916,16 +5998,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/SqXErNSwKaf47583P9yIoQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0130",
     "sourceRecordId": "reczz28LpdnPNvKt",
-    "sourceOrder": 148,
+    "sourceOrder": 150,
     "name": "洗素华",
     "type": "外观",
     "acquisitionType": "付费",
@@ -5954,16 +6036,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/SsYaHohfaBZ3au8yS78fJQ",
     "secondarySource": "https://mp.weixin.qq.com/s/r69UErhLw0KYu-pLZqZWDw",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "新活动【祓禊流觞】",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0131",
     "sourceRecordId": "reczz28LpdnPMww0",
-    "sourceOrder": 150,
+    "sourceOrder": 152,
     "name": "春鸢",
     "type": "发型",
     "acquisitionType": "付费",
@@ -5995,16 +6077,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/0BhJHu0ZB9VqaxKJJvdu7w",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0132",
     "sourceRecordId": "reczz28LpdnPMwxn",
-    "sourceOrder": 149,
+    "sourceOrder": 151,
     "name": "轻鸢入画",
     "type": "外观",
     "acquisitionType": "付费",
@@ -6033,16 +6115,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/0BhJHu0ZB9VqaxKJJvdu7w",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0133",
     "sourceRecordId": "reczz28LpdnPKarA",
-    "sourceOrder": 152,
+    "sourceOrder": 154,
     "name": "少年行",
     "type": "外观",
     "acquisitionType": "付费",
@@ -6071,16 +6153,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/6hLyNVVjtyBxsvx0Losdtg",
     "secondarySource": "https://mp.weixin.qq.com/s/g62v6Q7M5fPsEXDHG2pDeA",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "此优惠价将于2026年5月8日5:00:00结束，届时将恢复原价680长鸣珠。",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0134",
     "sourceRecordId": "reczz28LpdnPKmzI",
-    "sourceOrder": 151,
+    "sourceOrder": 153,
     "name": "玄骨在渊",
     "type": "套装",
     "acquisitionType": "付费",
@@ -6112,16 +6194,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/6hLyNVVjtyBxsvx0Losdtg",
     "secondarySource": "https://mp.weixin.qq.com/s/g62v6Q7M5fPsEXDHG2pDeA",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时94天上架",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0135",
     "sourceRecordId": "reczz28LpdnPNBgd",
-    "sourceOrder": 153,
+    "sourceOrder": 155,
     "name": "无生蛊",
     "type": "发型",
     "acquisitionType": "付费",
@@ -6153,16 +6235,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/5SS4k8-0-E8gb1OefZCQSA",
     "secondarySource": "https://mp.weixin.qq.com/s/g62v6Q7M5fPsEXDHG2pDeA",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时94天上架",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0136",
     "sourceRecordId": "reczz28LpdnPMinj",
-    "sourceOrder": 154,
+    "sourceOrder": 156,
     "name": "渡瑶津",
     "type": "套装",
     "acquisitionType": "付费",
@@ -6191,16 +6273,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/KNY5tr9PNg1Hk3bo5IqpiQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0137",
     "sourceRecordId": "reczz28Lq9njCMY4",
-    "sourceOrder": 155,
+    "sourceOrder": 157,
     "name": "清涟",
     "type": "发型",
     "acquisitionType": "付费",
@@ -6232,16 +6314,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/KNY5tr9PNg1Hk3bo5IqpiQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0138",
     "sourceRecordId": "reczz28LpdnPLgk1",
-    "sourceOrder": 156,
+    "sourceOrder": 158,
     "name": "点春瓯",
     "type": "外观",
     "acquisitionType": "付费",
@@ -6273,16 +6355,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/o8vn-JyI8cW1hueHrszcsA",
     "secondarySource": "https://mp.weixin.qq.com/s/KNY5tr9PNg1Hk3bo5IqpiQ",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0139",
     "sourceRecordId": "reczz28LpdnPLM1O",
-    "sourceOrder": 157,
+    "sourceOrder": 159,
     "name": "芝兰自芳",
     "type": "外观",
     "acquisitionType": "付费",
@@ -6311,16 +6393,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/BQe7mbqHoPZCW9sfr64qLg",
     "secondarySource": "https://mp.weixin.qq.com/s/2bBKxr8QcJmYqGECkUBDew",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0140",
     "sourceRecordId": "reczz28LpdnPMGs6",
-    "sourceOrder": 158,
+    "sourceOrder": 160,
     "name": "南冥幽梦",
     "type": "外观",
     "acquisitionType": "付费",
@@ -6349,16 +6431,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/TAGGp8d9d2zRKyZNljD5yg",
     "secondarySource": "https://mp.weixin.qq.com/s/f7kZXO_25R02BFbgZKeNzA",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0141",
     "sourceRecordId": "reczz28LpdnPOKJs",
-    "sourceOrder": 159,
+    "sourceOrder": 161,
     "name": "渡尘华",
     "type": "发型",
     "acquisitionType": "付费",
@@ -6390,16 +6472,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/TAGGp8d9d2zRKyZNljD5yg",
     "secondarySource": "https://mp.weixin.qq.com/s/f7kZXO_25R02BFbgZKeNzA",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0142",
     "sourceRecordId": "reczz28LpdnPLXkl",
-    "sourceOrder": 160,
+    "sourceOrder": 162,
     "name": "熊有成竹",
     "type": "外观",
     "acquisitionType": "付费",
@@ -6428,16 +6510,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/f7kZXO_25R02BFbgZKeNzA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时上架30天  价680长鸣珠。届时游侠可前往商店，以折扣价60长鸣珠购得",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0143",
     "sourceRecordId": "reczz28LpdnPLPlC",
-    "sourceOrder": 161,
+    "sourceOrder": 163,
     "name": "茯尘无寄",
     "type": "外观",
     "acquisitionType": "付费",
@@ -6469,16 +6551,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/xxwEsm9edDAg1cX3f83Vfg",
     "secondarySource": "https://mp.weixin.qq.com/s/IbZsJEbAdge6NCNL2D2drg",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "原价1280长鸣珠。届时游侠前往商店，即可以优惠价680长鸣珠购得。",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0144",
     "sourceRecordId": "reczz28LpdnPOfbT",
-    "sourceOrder": 162,
+    "sourceOrder": 164,
     "name": "卧思鹅",
     "type": "外观",
     "acquisitionType": "付费",
@@ -6510,16 +6592,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/xxwEsm9edDAg1cX3f83Vfg",
     "secondarySource": "https://mp.weixin.qq.com/s/IbZsJEbAdge6NCNL2D2drg",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "原价680长鸣珠，将支持上下装拆分和染色。届时游侠前往商店，即可以限时优惠价300长鸣珠购得，此优惠价将于6月15日0点结束。",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0145",
     "sourceRecordId": "reczz28LpdnPLhcj",
-    "sourceOrder": 163,
+    "sourceOrder": 165,
     "name": "一举夺魁",
     "type": "外观",
     "acquisitionType": "付费",
@@ -6551,16 +6633,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/81tSHc847CVSggy5yfTFFA",
     "secondarySource": "https://mp.weixin.qq.com/s/2jaF24_NXYAcYQ4VypLH5g",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "原价1280长鸣珠。届时游侠前往商店，即可以限时优惠价680长鸣珠购得。限时折扣持续两周，将于2026年6月19日05:00恢复原价。",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0146",
     "sourceRecordId": "reczz28LpdnPMx1R",
-    "sourceOrder": 165,
+    "sourceOrder": 167,
     "name": "金缕生兰",
     "type": "外观",
     "acquisitionType": "付费",
@@ -6592,16 +6674,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/CM6hibYOhy8N6xhcpcKUvQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0147",
     "sourceRecordId": "reczz28LpdnPO1fQ",
-    "sourceOrder": 164,
+    "sourceOrder": 166,
     "name": "鬼手焚莲",
     "type": "套装",
     "acquisitionType": "付费",
@@ -6633,16 +6715,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/CoIx_uvuZ7S7WqO8yMPvTA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时94天上架",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0148",
     "sourceRecordId": "reczz28LpdnPOi34",
-    "sourceOrder": 166,
+    "sourceOrder": 168,
     "name": "霜月引",
     "type": "发型",
     "acquisitionType": "付费",
@@ -6674,16 +6756,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/CM6hibYOhy8N6xhcpcKUvQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0149",
     "sourceRecordId": "reczz28LpdnPMnDb",
-    "sourceOrder": 167,
+    "sourceOrder": 169,
     "name": "粽叶青黄",
     "type": "外观",
     "acquisitionType": "付费",
@@ -6715,16 +6797,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/enE13_VKXMuDh5sHUZGTWA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0150",
     "sourceRecordId": "reczz28LpdnPNm25",
-    "sourceOrder": 168,
+    "sourceOrder": 170,
     "name": "金乌御日",
     "type": "套装",
     "acquisitionType": "付费",
@@ -6756,16 +6838,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/9X1PGJmRsZTP6DThHTOQOA",
     "secondarySource": "https://mp.weixin.qq.com/s/KY1462xXTI8YluPd49bETQ",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时94天上架",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0151",
     "sourceRecordId": "reczz28LpdnPOVB4",
-    "sourceOrder": 169,
+    "sourceOrder": 171,
     "name": "翰墨丹青",
     "type": "外观",
     "acquisitionType": "付费",
@@ -6794,16 +6876,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/9X1PGJmRsZTP6DThHTOQOA",
     "secondarySource": "https://mp.weixin.qq.com/s/KY1462xXTI8YluPd49bETQ",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0153",
     "sourceRecordId": "reczz28LpdnPLwe0",
-    "sourceOrder": 170,
+    "sourceOrder": 172,
     "name": "莲台鹤",
     "type": "外观",
     "acquisitionType": "付费",
@@ -6835,16 +6917,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/FoM3saU5nnqW9VLT0bgpkw",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0154",
     "sourceRecordId": "reczz28LpdnPMtWz",
-    "sourceOrder": 171,
+    "sourceOrder": 173,
     "name": "渡风涛",
     "type": "外观",
     "acquisitionType": "付费",
@@ -6876,16 +6958,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/XqqxhXZAI674lCUxLB-U-w",
     "secondarySource": "https://mp.weixin.qq.com/s/4jFe4uGRyGtAB6P5VJUA7A",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0155",
     "sourceRecordId": "reczz28LpdnPKqLV",
-    "sourceOrder": 172,
+    "sourceOrder": 174,
     "name": "丹心",
     "type": "套装",
     "acquisitionType": "付费",
@@ -6917,16 +6999,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/T24so7UlF75Ui1bu_QwZzA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "此优惠价将于8月17日5点结束，届时将上架商店，并恢复原价1280长鸣珠。",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0156",
     "sourceRecordId": "reczz28LpdnPKwGU",
-    "sourceOrder": 175,
+    "sourceOrder": 177,
     "name": "一庐烟霞",
     "type": "发型",
     "acquisitionType": "付费",
@@ -6958,16 +7040,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/MXo-Pz22QoQEZer1fr4o6g",
     "secondarySource": "https://mp.weixin.qq.com/s/pEebNoX6Q_NjaqLeJG4G5A",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0157",
     "sourceRecordId": "reczz28LpdnPMf9p",
-    "sourceOrder": 173,
+    "sourceOrder": 175,
     "name": "银浦流云",
     "type": "套装",
     "acquisitionType": "付费",
@@ -6999,16 +7081,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/pEebNoX6Q_NjaqLeJG4G5A",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0158",
     "sourceRecordId": "reczz28LpdnPMmgG",
-    "sourceOrder": 174,
+    "sourceOrder": 176,
     "name": "遥思汉阙",
     "type": "套装",
     "acquisitionType": "付费",
@@ -7040,16 +7122,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/MXo-Pz22QoQEZer1fr4o6g",
     "secondarySource": "https://mp.weixin.qq.com/s/pEebNoX6Q_NjaqLeJG4G5A",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0159",
     "sourceRecordId": "reczz28LpdnPM6mR",
-    "sourceOrder": 176,
+    "sourceOrder": 178,
     "name": "紫萸香慢",
     "type": "外观",
     "acquisitionType": "付费",
@@ -7078,16 +7160,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/MXo-Pz22QoQEZer1fr4o6g",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0160",
     "sourceRecordId": "reczz28LpdnPLkaN",
-    "sourceOrder": 177,
+    "sourceOrder": 179,
     "name": "千年有待",
     "type": "外观",
     "acquisitionType": "付费",
@@ -7119,16 +7201,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/GO30xuNnZY_1eCRtiD5USg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0161",
     "sourceRecordId": "reczz28LpdnPLmEc",
-    "sourceOrder": 178,
+    "sourceOrder": 180,
     "name": "白首同舟",
     "type": "发型",
     "acquisitionType": "付费",
@@ -7160,16 +7242,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/GO30xuNnZY_1eCRtiD5USg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0162",
     "sourceRecordId": "reczz28LpdnPN3CG",
-    "sourceOrder": 179,
+    "sourceOrder": 181,
     "name": "青鳞拂雨",
     "type": "外观",
     "acquisitionType": "付费",
@@ -7201,16 +7283,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/GO30xuNnZY_1eCRtiD5USg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0163",
     "sourceRecordId": "reczz28LpdnPNAKZ",
-    "sourceOrder": 180,
+    "sourceOrder": 182,
     "name": "青波棹歌",
     "type": "发型",
     "acquisitionType": "付费",
@@ -7242,16 +7324,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/GO30xuNnZY_1eCRtiD5USg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0164",
     "sourceRecordId": "reczz28LpdnPMINy",
-    "sourceOrder": 181,
+    "sourceOrder": 183,
     "name": "枕寒流",
     "type": "外观",
     "acquisitionType": "付费",
@@ -7280,16 +7362,16 @@
     "charmValue": 0,
     "source": "http://mp.weixin.qq.com/s?__biz=Mzk0NTQwMTA2Ng==&mid=2247498712&idx=1&sn=3b6fa2df89dd95e16fe792fbb1e20502&chksm=c2a745c4ba3cb74faa71a0ce8d5ae3ec393b61a08b90ab4d04f62540414ed6597dfe906264c9&scene=126&sessionid=1791651894&subscene=7&clicktime=1791667361&enterid=1791667361#rd",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0165",
     "sourceRecordId": "reczz28LpdnPLD6c",
-    "sourceOrder": 182,
+    "sourceOrder": 184,
     "name": "疏桐流响",
     "type": "外观",
     "acquisitionType": "付费",
@@ -7321,16 +7403,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/HVLyP_IjnTrdUlZS-wWpwg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "此优惠价将于2026年8月28日5点结束，届时将恢复原价2580长鸣珠。",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0166",
     "sourceRecordId": "reczz28LpdnPLfG6",
-    "sourceOrder": 183,
+    "sourceOrder": 185,
     "name": "秋露晴",
     "type": "发型",
     "acquisitionType": "付费",
@@ -7362,16 +7444,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/HVLyP_IjnTrdUlZS-wWpwg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时90天",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0167",
     "sourceRecordId": "reczz28LpdnPLNmV",
-    "sourceOrder": 184,
+    "sourceOrder": 186,
     "name": "梧桐引凤",
     "type": "外观",
     "acquisitionType": "付费",
@@ -7403,16 +7485,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/5x5Q_aR7O-1LiiD99WC0aw",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0168",
     "sourceRecordId": "reczz28LpdnPMAN2",
-    "sourceOrder": 185,
+    "sourceOrder": 187,
     "name": "半卷风烟",
     "type": "外观",
     "acquisitionType": "付费",
@@ -7441,16 +7523,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/r4yAKOPSHxAsIDmKvtsvBA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0169",
     "sourceRecordId": "reczz28LpdnPNTuL",
-    "sourceOrder": 186,
+    "sourceOrder": 188,
     "name": "怪无常",
     "type": "外观",
     "acquisitionType": "付费",
@@ -7479,16 +7561,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/6BlSIJefCLHEPwUPR5w-wg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "全新套装【怪无常】将于8月27日0点至9月26日5点期间限时上架，支持新版上下装拆分及染色，原价680长鸣珠。9月10日5点前游侠前往商店，即可以限时优惠价300长鸣珠购得。",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0170",
     "sourceRecordId": "reczz28LpdnPM9Ox",
-    "sourceOrder": 187,
+    "sourceOrder": 189,
     "name": "飞容清响",
     "type": "套装",
     "acquisitionType": "付费",
@@ -7520,16 +7602,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/SDDzk4_JYP69SmgUAVReUA",
     "secondarySource": "https://mp.weixin.qq.com/s/t3zzpEwbY4p2GcUEiAZh3g",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时87天上架",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0171",
     "sourceRecordId": "reczz28LpdnPLxZ3",
-    "sourceOrder": 189,
+    "sourceOrder": 191,
     "name": "萦空",
     "type": "发型",
     "acquisitionType": "付费",
@@ -7561,16 +7643,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/YRgck5YILKn9hyfRxtKcQQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时上架90天",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0172",
     "sourceRecordId": "reczz28LpdnPM2bD",
-    "sourceOrder": 188,
+    "sourceOrder": 190,
     "name": "如是愿",
     "type": "外观",
     "acquisitionType": "付费",
@@ -7599,16 +7681,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/YRgck5YILKn9hyfRxtKcQQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0173",
     "sourceRecordId": "reczz28LpdnPL2qM",
-    "sourceOrder": 190,
+    "sourceOrder": 192,
     "name": "醉魂濯玉",
     "type": "套装",
     "acquisitionType": "付费",
@@ -7640,16 +7722,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/4D6j10pfoGzQeDkQTK7TLA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时87天上架",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0174",
     "sourceRecordId": "reczz28LpdnPOlKk",
-    "sourceOrder": 191,
+    "sourceOrder": 193,
     "name": "步秋庭",
     "type": "外观",
     "acquisitionType": "付费",
@@ -7681,16 +7763,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/4D6j10pfoGzQeDkQTK7TLA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0175",
     "sourceRecordId": "reczz28LpdnPLV6s",
-    "sourceOrder": 193,
+    "sourceOrder": 195,
     "name": "拟形·京华流芳",
     "type": "外观",
     "acquisitionType": "付费",
@@ -7722,16 +7804,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/7Pg4rInd48DJTPh9dRQJHQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0176",
     "sourceRecordId": "reczz28LpdnPO8j3",
-    "sourceOrder": 192,
+    "sourceOrder": 194,
     "name": "拟形·匡定千秋",
     "type": "外观",
     "acquisitionType": "付费",
@@ -7763,16 +7845,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/7Pg4rInd48DJTPh9dRQJHQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0177",
     "sourceRecordId": "reczz28LndpIO62m",
-    "sourceOrder": 194,
+    "sourceOrder": 196,
     "name": "金昭玉",
     "type": "套装",
     "acquisitionType": "付费",
@@ -7801,16 +7883,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/Zn_7q-bFo-uO_eGlc-Mi_w",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0178",
     "sourceRecordId": "reczz28LrhC7zjpf",
-    "sourceOrder": 197,
+    "sourceOrder": 199,
     "name": "玉桂珊珊",
     "type": "外观",
     "acquisitionType": "付费",
@@ -7842,16 +7924,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/yNU9TYkX7BzQFdtxqdlNlA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0179",
     "sourceRecordId": "reczz28LrhC80esi",
-    "sourceOrder": 195,
+    "sourceOrder": 197,
     "name": "金玉梦",
     "type": "发型",
     "acquisitionType": "付费",
@@ -7883,16 +7965,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/Zn_7q-bFo-uO_eGlc-Mi_w",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0180",
     "sourceRecordId": "reczz28LrhC817OF",
-    "sourceOrder": 196,
+    "sourceOrder": 198,
     "name": "红叶萧萧",
     "type": "外观",
     "acquisitionType": "付费",
@@ -7921,16 +8003,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/Zn_7q-bFo-uO_eGlc-Mi_w",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0181",
     "sourceRecordId": "reczz28LrhC82XWy",
-    "sourceOrder": 198,
+    "sourceOrder": 200,
     "name": "舜华",
     "type": "发型",
     "acquisitionType": "付费",
@@ -7962,16 +8044,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/yNU9TYkX7BzQFdtxqdlNlA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0182",
     "sourceRecordId": "reczz28LrhC83Hqd",
-    "sourceOrder": 199,
+    "sourceOrder": 201,
     "name": "朱鸾顾晴",
     "type": "外观",
     "acquisitionType": "付费",
@@ -8003,16 +8085,57 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/vuVGt0tPSfJTwnhBqsAejA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-13",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-13"
+    "updatedAt": "2026-10-14"
+  },
+  {
+    "id": "paid-0203",
+    "sourceRecordId": "reczz28LrhC832Eb",
+    "sourceOrder": 203,
+    "name": "江涵秋影",
+    "type": "外观",
+    "acquisitionType": "付费",
+    "femaleImage": "./assets/paid/paid-0203-female.webp",
+    "maleImage": "./assets/paid/paid-0203-male.webp",
+    "commonImage": "",
+    "sourceFemaleImage": "F/衣服/江涵秋影.png",
+    "sourceMaleImage": "M/衣服/江涵秋影.png",
+    "sourceCommonImage": "",
+    "onSaleDate": "2026-10-16",
+    "offSaleDate": "2026-11-15",
+    "returnStartDate": "",
+    "returnEndDate": "",
+    "availabilityRaw": "限时在架",
+    "listingStatus": "限时在架",
+    "saleMethod": "限时直售",
+    "priceOriginal": "1280珠",
+    "priceTier": "1280珠",
+    "channel": "商城",
+    "styleTags": [
+      "重阳节主题"
+    ],
+    "tags": [
+      "限时直售",
+      "重阳节主题"
+    ],
+    "series": "重阳节主题",
+    "infoStatus": "已确认",
+    "charmValue": 0,
+    "source": "https://mp.weixin.qq.com/s/mpCaP1eLUQi3CGs56jDlAw",
+    "secondarySource": "",
+    "verifiedAt": "2026-10-14",
+    "note": "",
+    "imageMatchStatus": "已匹配（F/M）",
+    "validationNote": "本地索引图已唯一匹配",
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "paid-0183",
     "sourceRecordId": "reczz28LrhC83cUc",
-    "sourceOrder": 200,
+    "sourceOrder": 202,
     "name": "版本纪念套装",
     "type": "外观",
     "acquisitionType": "付费",
@@ -8041,11 +8164,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/rsljYYE7FPsIMKR87phG6A",
     "secondarySource": "",
-    "verifiedAt": "2026-10-12",
+    "verifiedAt": "2026-10-14",
     "note": "",
     "imageMatchStatus": "预告待补图",
     "validationNote": "仅日历展示，不进入服装列表",
-    "updatedAt": "2026-10-12"
+    "updatedAt": "2026-10-14"
   },
   {
     "id": "set-0001",
