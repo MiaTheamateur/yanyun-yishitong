@@ -1,6 +1,10 @@
 (function () {
   'use strict';
 
+  var appShell = document.querySelector('.app-shell');
+  var isXhsContainer = Boolean(window.xhs && window.xhs.miniTool);
+  if (appShell) appShell.classList.toggle('is-xhs-container', isXhsContainer);
+
   var STORAGE_KEY = 'yanyun-outfit-book-state-v3';
   var STATUS = { bought: '已入手', notBought: '放弃 / 忍住', regret: '后悔买', missed: '求返场' };
   var REVIEW_RED = '#9b3f45';
@@ -229,16 +233,14 @@
 
   // 同一天档期较多时，使用固定的“价值／活动捆绑”顺序，避免每次加载顺序漂移。
   // 直售类共享一个价格优先区间：先按最终价格降序，同价时再按售卖方式顺序。
-  var PAID_VALUE_ORDER = ['画舫套装', '氪条奖励', '周年转盘', '聆音', '聆音预热战令', '和鸣大套', '八音发', '转盘', '战令', '原价直售', '限时折扣直售', '限时半价', '折扣直售', '6r小战令'];
+  var PAID_VALUE_ORDER = ['画舫套装', '氪条奖励', '周年转盘', '聆音', '聆音预热战令', '和鸣大套', '八音发', '转盘', '战令', '原价直售', '折扣直售', '限时直售', '限时折扣直售', '限时半价', '6r小战令'];
   // 获取筛选沿用服装价值顺序，但把八音发拆成双八音发与单八音发。
-  var PAID_FILTER_ORDER = ['画舫套装', '氪条奖励', '周年转盘', '聆音', '聆音预热战令', '和鸣大套', '双八音发', '单八音发', '转盘', '战令', '原价直售', '限时折扣直售', '限时半价', '折扣直售', '6r小战令'];
+  var PAID_FILTER_ORDER = ['画舫套装', '氪条奖励', '周年转盘', '聆音', '聆音预热战令', '和鸣大套', '双八音发', '单八音发', '转盘', '战令', '原价直售', '折扣直售', '限时直售', '限时半价', '6r小战令'];
   var paidBundleMap = null;
-  function isBaseRetail(item) { return item.saleMethod === '原价直售' || item.saleMethod === '限时直售'; }
   function isDirectSale(item) { return ['原价直售', '限时直售', '限时折扣直售', '限时半价', '折扣直售'].indexOf(item.saleMethod) >= 0; }
   function paidMethodRank(item) {
     var method = String(item.saleMethod || '');
     if (method === '待确认') return 99;
-    if (isBaseRetail(item)) return PAID_VALUE_ORDER.indexOf('原价直售');
     var index = PAID_VALUE_ORDER.indexOf(method);
     if (index >= 0) return index;
     var tagText = (item.styleTags || []).join('、');
@@ -248,7 +250,7 @@
   }
   function paidFilterMethod(item) {
     var method = visibleSaleMethod(item);
-    if (method === '限时直售') return '原价直售';
+    if (method === '限时折扣直售') return '限时直售';
     if (method !== '八音发') return method;
     return (item.styleTags || []).indexOf('双八音发') >= 0 ? '双八音发' : '单八音发';
   }
@@ -1164,11 +1166,10 @@
     el.freeLoadMoreButton.hidden = remaining === 0;
     el.freeLoadMoreButton.textContent = remaining > 0 ? '继续加载 ' + Math.min(FREE_PAGE_SIZE, remaining) + ' 件 · 还剩 ' + remaining + ' 件' : '已显示全部';
     var allOwned = visible.length > 0 && visible.every(isFreeRequirementComplete);
-    var anyOwned = visible.some(hasAnyFreeOwnership);
     el.selectFreeCategoryButton.disabled = visible.length === 0;
     el.selectFreeCategoryButton.classList.toggle('is-complete', allOwned);
-    el.selectFreeCategoryButton.classList.toggle('is-mixed', anyOwned && !allOwned);
-    el.selectFreeCategoryButton.textContent = allOwned ? '取消全选' : (anyOwned ? '反选当前' : '全选当前');
+    el.selectFreeCategoryButton.classList.remove('is-mixed');
+    el.selectFreeCategoryButton.textContent = allOwned ? '取消全选' : '全选当前';
     renderFreeModeChrome(visible);
   }
 
@@ -1255,7 +1256,7 @@
     var visible = getVisibleFreeItems(); if (!visible.length) return;
     var before = getFreeCharmProgress().allEarned;
     var allOwnedBefore = visible.every(isFreeRequirementComplete);
-    var anyOwnedBefore = visible.some(hasAnyFreeOwnership);
+    var targetOwned = !allOwnedBefore;
     var processedGroups = {};
     visible.forEach(function (item) {
       var group = exclusiveGroupFor(item);
@@ -1263,22 +1264,21 @@
         if (processedGroups[group]) return;
         processedGroups[group] = true;
         var selected = exclusiveSelectedItem(item);
-        if (selected) setFreeOwned(selected, false);
-        else setFreeOwned(item, true);
+        if (targetOwned && !selected) setFreeOwned(item, true);
+        if (!targetOwned && selected) setFreeOwned(selected, false);
         return;
       }
       if (item.recordShape === '套装') {
         childrenForSet(item.id, true).forEach(function (child) {
-          setFreeOwnedCount(child, getFreeOwnedCount(child) > 0 ? 0 : maxFreeCopies(child));
+          setFreeOwnedCount(child, targetOwned ? maxFreeCopies(child) : 0);
         });
         return;
       }
-      setFreeOwnedCount(item, getFreeOwnedCount(item) > 0 ? 0 : maxFreeCopies(item));
+      setFreeOwnedCount(item, targetOwned ? maxFreeCopies(item) : 0);
     }); persist(); renderFreeList();
     var delta = Math.abs(getFreeCharmProgress().allEarned - before);
-    if (!anyOwnedBefore) showToast('本类已全选 · +' + formatNumber(delta) + ' 图鉴风华');
-    else if (allOwnedBefore) showToast('已取消本类 · ' + formatNumber(delta) + ' 图鉴风华');
-    else showToast('已反选当前范围 · 变动 ' + formatNumber(delta) + ' 图鉴风华');
+    if (targetOwned) showToast('本类已全选 · +' + formatNumber(delta) + ' 图鉴风华');
+    else showToast('已取消本类 · ' + formatNumber(delta) + ' 图鉴风华');
   }
 
   function switchPage(page) {
@@ -1651,4 +1651,6 @@
     getVisibleFreeItems: getVisibleFreeItems, getFreeCharmProgress: getFreeCharmProgress, getFreeOwnedCount: getFreeOwnedCount, setFreeOwnedCount: setFreeOwnedCount, summarizeFreeItems: summarizeFreeItems, switchFreeMode: switchFreeMode, switchFreeProgressScope: switchFreeProgressScope, switchFreeGender: switchFreeGender, toggleFreeOwned: toggleFreeOwned, toggleFreeCopy: toggleFreeCopy, toggleFreeSetParts: toggleFreeSetParts, childrenForSet: childrenForSet, freeDaysRemaining: freeDaysRemaining, effectiveFreeStatus: effectiveFreeStatus, freeStatusLabel: freeStatusLabel,
     completePaidRecord: completePaidRecord, editPaidRecord: editPaidRecord, openImagePreview: openImagePreview, closeImagePreview: closeImagePreview
   };
+  var appBoot = document.getElementById('appBoot');
+  if (appBoot) appBoot.hidden = true;
 }());
