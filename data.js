@@ -5,7 +5,7 @@
   "version": "1.1.0-formal-release",
   "source": "飞书《燕云外观上架情况整理》＋《免费外观道具汇总_20261012》",
   "sourceRevision": 1892,
-  "generatedAt": "2026-10-15T11:42:10.637Z",
+  "generatedAt": "2026-10-15T12:31:30.728Z",
   "importedCount": 1004,
   "paidCount": 204,
   "freeDatabaseRows": 800,

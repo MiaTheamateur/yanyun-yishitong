@@ -2,8 +2,25 @@
   'use strict';
 
   var appShell = document.querySelector('.app-shell');
-  var isXhsContainer = Boolean(window.xhs && window.xhs.miniTool);
-  if (appShell) appShell.classList.toggle('is-xhs-container', isXhsContainer);
+
+  function syncContainerPlatform() {
+    if (!appShell) return false;
+    var packagedPlatform = appShell.dataset.packagePlatform || '';
+    var isXhsContainer = packagedPlatform
+      ? packagedPlatform === 'xiaohongshu'
+      : Boolean(window.xhs && window.xhs.miniTool);
+    appShell.classList.toggle('is-xhs-container', isXhsContainer);
+    return isXhsContainer;
+  }
+
+  syncContainerPlatform();
+  [50, 150, 350, 750, 1500, 3000].forEach(function (delay) {
+    window.setTimeout(syncContainerPlatform, delay);
+  });
+  window.addEventListener('pageshow', syncContainerPlatform);
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden) syncContainerPlatform();
+  });
 
   var STORAGE_KEY = 'yanyun-outfit-book-state-v3';
   var STATUS = { bought: '已入手', regret: '后悔买', wishlist: '心愿单', abandoned: '放弃' };
@@ -1220,6 +1237,27 @@
     renderFreeModeChrome(visible);
   }
 
+  function freeRenderAnchorId(id) {
+    var item = freeItemById[id];
+    return item && item.parentSetId ? item.parentSetId : id;
+  }
+
+  function renderFreeListPreservingPosition(id, focusSelector) {
+    var anchorId = freeRenderAnchorId(id);
+    var cardSelector = '.free-card[data-id="' + anchorId + '"]';
+    var card = el.freeList.querySelector(cardSelector);
+    var previousTop = card ? card.getBoundingClientRect().top : null;
+    var previousScrollY = window.scrollY;
+    renderFreeList();
+    var nextCard = el.freeList.querySelector(cardSelector);
+    if (nextCard && previousTop !== null) window.scrollBy(0, nextCard.getBoundingClientRect().top - previousTop);
+    else window.scrollTo(0, previousScrollY);
+    if (focusSelector && nextCard) {
+      var focusTarget = nextCard.querySelector(focusSelector);
+      if (focusTarget) focusTarget.focus({ preventScroll: true });
+    }
+  }
+
   function switchFreeMode(mode) {
     if (['catalog', 'lookup'].indexOf(mode) < 0) return;
     view.freeMode = mode; view.freeVisibleLimit = FREE_PAGE_SIZE;
@@ -1235,9 +1273,7 @@
 
   function toggleFreeSetParts(id) {
     view.expandedSets[id] = !view.expandedSets[id];
-    renderFreeList();
-    var nextButton = el.freeList.querySelector('.free-set-card[data-id="' + id + '"] [data-action="toggle-set-parts"]');
-    if (nextButton) nextButton.focus();
+    renderFreeListPreservingPosition(id, '[data-action="toggle-set-parts"]');
   }
 
   function toggleCategoryPanel() {
@@ -1331,7 +1367,7 @@
     var cleared = [];
     if (item.recordShape === '套装') setFreeOwned(item, target);
     else cleared = setFreeOwnedCount(item, target ? maxFreeCopies(item) : 0);
-    persist(); renderFreeList();
+    persist(); renderFreeListPreservingPosition(id, '[data-action="free-owned"][data-id="' + id + '"]');
     var delta = Math.abs(getFreeCharmProgress().allEarned - before);
     if (cleared.length) showToast('已改选为' + item.name + '，并取消' + cleared.join('、'));
     else showToast(target ? '已记录 +' + formatNumber(delta) + ' 图鉴风华' : '已取消 ' + formatNumber(delta) + ' 图鉴风华');
@@ -1342,7 +1378,7 @@
     var before = getFreeCharmProgress().allEarned;
     var current = getFreeOwnedCount(item);
     var target = checked ? Math.max(current, copyIndex) : Math.min(current, copyIndex - 1);
-    setFreeOwnedCount(item, target); persist(); renderFreeList();
+    setFreeOwnedCount(item, target); persist(); renderFreeListPreservingPosition(id, 'input[data-action="free-copy"][data-id="' + id + '"][data-copy-index="' + copyIndex + '"]');
     var delta = Math.abs(getFreeCharmProgress().allEarned - before);
     showToast((target > current ? '已记录 +' : '已取消 ') + formatNumber(delta) + ' 风华 · ' + target + '/' + maxFreeCopies(item) + ' 件');
   }
