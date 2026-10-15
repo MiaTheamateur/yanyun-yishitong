@@ -6,7 +6,7 @@
   if (appShell) appShell.classList.toggle('is-xhs-container', isXhsContainer);
 
   var STORAGE_KEY = 'yanyun-outfit-book-state-v3';
-  var STATUS = { bought: '已入手', notBought: '放弃 / 忍住', regret: '后悔买', missed: '求返场' };
+  var STATUS = { bought: '已入手', regret: '后悔买', wishlist: '心愿单', abandoned: '放弃' };
   var REVIEW_RED = '#9b3f45';
   var FREE_CATALOG_TYPE_ORDER = ['套装', '发型', '衣服', '首饰', '配饰', '帽子', '披挂', '武器'];
   var FREE_CATALOG_TYPE_LABELS = { '衣服': '服装' };
@@ -46,10 +46,11 @@
     mode: 'calendar', page: 'calendar', paidSearch: '', paidRange: 'all', paidStartDate: '', paidEndDate: '', paidStatus: 'all', paidRecordStatus: 'all', paidMethods: [], paidWheelIncludeVariantHair: true, paidListeningTypes: [], paidRetailPrices: [], paidHalfPricePrices: [], freeMode: 'catalog', freeLookupClassification: 'all', freeSearch: '', freeMissingOnly: false, freeCatalogFilter: 'all', freeAvailability: 'all', freeProgressScope: 'current', freeGender: state.freeGender === 'M' ? 'M' : 'F', freeVisibleLimit: FREE_PAGE_SIZE, selectedDate: '', editingPaid: {}, expandedSets: {},
     calendarYear: initialCalendarDate.getFullYear(), calendarMonth: initialCalendarDate.getMonth()
   };
-  var shareState = { page: 0, pages: [], dataUrls: [], filterLabel: '全部时间' };
+  var shareState = { page: 0, pages: [], dataUrls: [], filterLabel: '全部时间', filterRules: [] };
   var toastTimer = 0;
   var freeDateRefreshTimer = 0;
   var imagePreviewReturnFocus = null;
+  var backToTopFrame = 0;
 
   var el = {
     paidCount: document.getElementById('paidCount'), freeCount: document.getElementById('freeCount'), freeSetCount: document.getElementById('freeSetCount'),
@@ -80,7 +81,7 @@
     previousSharePage: document.getElementById('previousSharePage'),
     nextSharePage: document.getElementById('nextSharePage'), sharePageTitle: document.getElementById('sharePageTitle'),
     sharePageLabel: document.getElementById('sharePageLabel'), saveShareButton: document.getElementById('saveShareButton'),
-    saveAllShareButton: document.getElementById('saveAllShareButton'), toast: document.getElementById('toast'),
+    saveAllShareButton: document.getElementById('saveAllShareButton'), toast: document.getElementById('toast'), backToTopButton: document.getElementById('backToTopButton'),
     imagePreviewBackdrop: document.getElementById('imagePreviewBackdrop'), imagePreviewImage: document.getElementById('imagePreviewImage'),
     imagePreviewCaption: document.getElementById('imagePreviewCaption'), closeImagePreviewButton: document.getElementById('closeImagePreviewButton')
   };
@@ -88,15 +89,28 @@
   function loadState() {
     try {
       var parsed = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+      Object.keys(parsed.items || {}).forEach(function (id) {
+        var saved = parsed.items[id];
+        if (saved && saved.status === 'missed') saved.status = 'wishlist';
+      });
       return parsed && typeof parsed === 'object' ? parsed : { items: {} };
     } catch (error) { return { items: {} }; }
   }
 
   function ensureItemState(id) {
     if (!state.items) state.items = {};
-    if (!state.items[id]) state.items[id] = { status: '', review: '', freeOwned: false };
+    if (!state.items[id]) state.items[id] = { status: '', review: '', favorite: false, freeOwned: false };
     if (typeof state.items[id].freeOwned !== 'boolean') state.items[id].freeOwned = false;
+    if (typeof state.items[id].favorite !== 'boolean') state.items[id].favorite = false;
     return state.items[id];
+  }
+
+  function isSelectablePaidStatus(status) { return Object.prototype.hasOwnProperty.call(STATUS, status); }
+
+  function paidStatusLabel(status, item) {
+    if (status === 'notBought') return '待整理';
+    if (status === 'wishlist' && item && item.listingStatus === '已下架') return '求返场';
+    return STATUS[status] || status || '未选择';
   }
 
   function persist() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
@@ -357,9 +371,17 @@
 
   function createPaidCard(item, index, context, calendarEvent) {
     var saved = ensureItemState(item.id); var card = document.createElement('article'); card.className = 'outfit-card'; card.dataset.id = item.id;
-    var core = document.createElement('div'); core.className = 'outfit-core'; core.appendChild(imageOrPlaceholder(item, index));
+    var core = document.createElement('div'); core.className = 'outfit-core';
+    var visual = imageOrPlaceholder(item, index);
+    core.appendChild(visual);
+    var favoriteButton = document.createElement('button'); favoriteButton.type = 'button'; favoriteButton.className = 'favorite-button' + (saved.favorite ? ' is-active' : '');
+    favoriteButton.dataset.action = 'favorite'; favoriteButton.dataset.id = item.id; favoriteButton.setAttribute('aria-pressed', saved.favorite ? 'true' : 'false');
+    favoriteButton.setAttribute('aria-label', saved.favorite ? '取消心头好' : '标为心头好'); favoriteButton.textContent = saved.favorite ? '♥' : '♡';
     var info = document.createElement('div'); info.className = 'item-info'; var titleRow = document.createElement('div'); titleRow.className = 'item-title-row';
-    titleRow.innerHTML = '<h3>' + escapeHtml(item.name) + '</h3><span class="listing-pill' + listingClass(item.listingStatus) + '">' + escapeHtml(item.listingStatus) + '</span>'; info.appendChild(titleRow);
+    var title = document.createElement('h3'); title.textContent = item.name;
+    var titleActions = document.createElement('div'); titleActions.className = 'item-title-actions';
+    var listingPill = document.createElement('span'); listingPill.className = 'listing-pill' + listingClass(item.listingStatus); listingPill.textContent = item.listingStatus;
+    titleActions.appendChild(favoriteButton); titleActions.appendChild(listingPill); titleRow.appendChild(title); titleRow.appendChild(titleActions); info.appendChild(titleRow);
     var date = document.createElement('p'); date.className = 'item-date';
     var periodLines = paidPeriodLines(item);
     if (periodLines.length) periodLines.forEach(function (line) { var period = document.createElement('span'); period.textContent = line; date.appendChild(period); });
@@ -383,10 +405,13 @@
     if (saved.status && !view.editingPaid[item.id]) {
       var recordSummary = document.createElement('div'); recordSummary.className = 'paid-record-summary';
       var resultTags = document.createElement('div'); resultTags.className = 'paid-result-tags';
-      var statusTag = document.createElement('span'); statusTag.className = 'paid-result-tag is-status'; statusTag.textContent = STATUS[saved.status] || saved.status;
+      var statusTag = document.createElement('span'); statusTag.className = 'paid-result-tag is-status'; statusTag.textContent = paidStatusLabel(saved.status, item);
+      if (saved.status === 'notBought') statusTag.classList.add('is-pending');
+      var favoriteTag = null;
+      if (saved.favorite) { favoriteTag = document.createElement('span'); favoriteTag.className = 'paid-result-tag is-favorite'; favoriteTag.textContent = '♥ 心头好'; }
       var reviewTag = document.createElement('span'); reviewTag.className = 'paid-result-tag is-review' + (saved.review ? '' : ' is-empty'); reviewTag.textContent = saved.review || '未写短评';
       var editButton = document.createElement('button'); editButton.type = 'button'; editButton.className = 'paid-edit-button'; editButton.dataset.action = 'edit-record'; editButton.dataset.id = item.id; editButton.textContent = '修改';
-      resultTags.appendChild(statusTag); resultTags.appendChild(reviewTag); recordSummary.appendChild(resultTags); recordSummary.appendChild(editButton); card.appendChild(recordSummary); return card;
+      resultTags.appendChild(statusTag); if (favoriteTag) resultTags.appendChild(favoriteTag); resultTags.appendChild(reviewTag); recordSummary.appendChild(resultTags); recordSummary.appendChild(editButton); card.appendChild(recordSummary); return card;
     }
     view.editingPaid[item.id] = true;
     var choices = document.createElement('div'); choices.className = 'choice-row';
@@ -397,7 +422,7 @@
     card.appendChild(choices); var reviewRow = document.createElement('div'); reviewRow.className = 'review-row'; var inputId = 'review-' + context + '-' + item.id;
     reviewRow.innerHTML = '<label for="' + inputId + '">自定义短评</label><input id="' + inputId + '" maxlength="18" value="' + escapeAttribute(saved.review || '') + '" placeholder="例如：丑拒 / 误闯天家"><small>' + String((saved.review || '').length) + '/18</small>';
     reviewRow.querySelector('input').dataset.id = item.id;
-    var completeButton = document.createElement('button'); completeButton.type = 'button'; completeButton.className = 'paid-complete-button'; completeButton.dataset.action = 'complete-record'; completeButton.dataset.id = item.id; completeButton.textContent = '完成'; completeButton.disabled = !saved.status;
+    var completeButton = document.createElement('button'); completeButton.type = 'button'; completeButton.className = 'paid-complete-button'; completeButton.dataset.action = 'complete-record'; completeButton.dataset.id = item.id; completeButton.textContent = '完成'; completeButton.disabled = !isSelectablePaidStatus(saved.status);
     reviewRow.appendChild(completeButton); card.appendChild(reviewRow); return card;
   }
 
@@ -467,8 +492,11 @@
     var query = view.paidSearch.toLowerCase();
     return paidListItems.filter(function (item) {
       var searchable = [item.name, item.priceOriginal].concat(item.styleTags || []).filter(Boolean).join(' ').toLowerCase();
-      var matchesRecordStatus = ignoreRecordStatus || view.paidRecordStatus === 'all' || ensureItemState(item.id).status === view.paidRecordStatus;
-      return paidItemMatchesRange(item, view.paidRange) && (!query || searchable.indexOf(query) >= 0) && (view.paidStatus === 'all' || item.listingStatus === view.paidStatus) && matchesRecordStatus && (!view.paidMethods.length || view.paidMethods.indexOf(paidFilterMethod(item)) >= 0) && paidItemMatchesMethodRefinements(item);
+      var saved = ensureItemState(item.id);
+      var matchesListingStatus = view.paidStatus === 'all' || view.paidStatus === 'favorite' || item.listingStatus === view.paidStatus;
+      var matchesFavorite = view.paidStatus !== 'favorite' || saved.favorite;
+      var matchesRecordStatus = ignoreRecordStatus || view.paidRecordStatus === 'all' || saved.status === view.paidRecordStatus;
+      return paidItemMatchesRange(item, view.paidRange) && (!query || searchable.indexOf(query) >= 0) && matchesListingStatus && matchesFavorite && matchesRecordStatus && (!view.paidMethods.length || view.paidMethods.indexOf(paidFilterMethod(item)) >= 0) && paidItemMatchesMethodRefinements(item);
     }).sort(function (a, b) { return Number(b.sourceOrder || 0) - Number(a.sourceOrder || 0); });
   }
 
@@ -506,7 +534,7 @@
   function renderStatusSummary(items) {
     var scopedItems = items || paidItems;
     var counts = getCounts(scopedItems);
-    var recorded = Object.keys(counts).reduce(function (total, key) { return total + counts[key]; }, 0);
+    var recorded = counts.owned + counts.notOwned;
     el.recordProgress.textContent = recorded + '/' + scopedItems.length;
     el.statusSummary.replaceChildren();
     Object.keys(STATUS).forEach(function (key) {
@@ -518,21 +546,40 @@
 
   function setPaidMethodPanelOpen(open) {
     el.paidMethodPanel.hidden = !open;
-    el.generateShareButton.hidden = true;
+    updateShareButtonVisibility();
     el.paidMethodFilter.setAttribute('aria-expanded', open ? 'true' : 'false');
   }
 
-  function renderPaidMethodSummary() {
-    var labels = view.paidMethods.map(function (method) {
+  function updateShareButtonVisibility() {
+    el.generateShareButton.hidden = view.page !== 'calendar' || view.mode !== 'list' || !el.paidMethodPanel.hidden;
+  }
+
+  function paidMethodFilterLabels() {
+    return view.paidMethods.map(function (method) {
       if (method === '转盘' && !view.paidWheelIncludeVariantHair) return '转盘（不含异色发）';
       if (method === '聆音' && view.paidListeningTypes.length) return '聆音（' + view.paidListeningTypes.join('、') + '）';
       if (method === '原价直售' && view.paidRetailPrices.length) return '原价直售（' + view.paidRetailPrices.join('、') + '）';
       if (method === '限时半价' && view.paidHalfPricePrices.length) return '限时半价（' + view.paidHalfPricePrices.join('、') + '）';
       return method;
     });
+  }
+
+  function renderPaidMethodSummary() {
+    var labels = paidMethodFilterLabels();
     el.paidMethodSummary.hidden = !labels.length;
     el.paidMethodSummary.textContent = labels.length ? '获取：' + labels.join('；') : '';
     el.paidMethodFilter.classList.toggle('has-selection', view.paidMethods.length > 0);
+  }
+
+  function activePaidFilterRules() {
+    var rules = [];
+    if (view.paidRange !== 'all') rules.push('时间：' + paidRangeLabel(view.paidRange));
+    if (view.paidSearch) rules.push('搜索：“' + view.paidSearch + '”');
+    if (view.paidStatus === 'favorite') rules.push('记录：心头好');
+    else if (view.paidStatus !== 'all') rules.push('在架：' + view.paidStatus);
+    if (view.paidMethods.length) rules.push('获取：' + paidMethodFilterLabels().join('、'));
+    if (view.paidRecordStatus !== 'all') rules.push('态度：' + (STATUS[view.paidRecordStatus] || '待整理'));
+    return rules;
   }
 
   function renderPaidMethodRefinements() {
@@ -1198,23 +1245,71 @@
   }
 
   function setStatus(id, status) {
+    if (!isSelectablePaidStatus(status)) return;
     view.editingPaid[id] = true;
-    var saved = ensureItemState(id); saved.status = saved.status === status ? '' : status; persist(); renderPaidList(); renderCalendarSelection();
+    var saved = ensureItemState(id); saved.status = saved.status === status ? '' : status; persist();
+    if (view.mode === 'list' && view.paidRecordStatus !== 'all') {
+      renderPaidRecordsPreservingPosition(id);
+      return;
+    }
+    document.querySelectorAll('.outfit-card[data-id="' + id + '"]').forEach(function (card) {
+      card.querySelectorAll('[data-action="status"]').forEach(function (button) {
+        button.classList.toggle('is-active', button.dataset.status === saved.status);
+      });
+      var completeButton = card.querySelector('[data-action="complete-record"]');
+      if (completeButton) completeButton.disabled = !isSelectablePaidStatus(saved.status);
+    });
+    renderStatusSummary(getFilteredPaidItems(true));
+  }
+
+  function toggleFavorite(id) {
+    var saved = ensureItemState(id); saved.favorite = !saved.favorite; persist();
+    document.querySelectorAll('.outfit-card[data-id="' + id + '"]').forEach(function (card) {
+      var button = card.querySelector('[data-action="favorite"]');
+      if (button) {
+        button.classList.toggle('is-active', saved.favorite); button.textContent = saved.favorite ? '♥' : '♡';
+        button.setAttribute('aria-pressed', saved.favorite ? 'true' : 'false'); button.setAttribute('aria-label', saved.favorite ? '取消心头好' : '标为心头好');
+      }
+      var tags = card.querySelector('.paid-result-tags');
+      if (!tags) return;
+      var favoriteTag = tags.querySelector('.paid-result-tag.is-favorite');
+      if (saved.favorite && !favoriteTag) {
+        favoriteTag = document.createElement('span'); favoriteTag.className = 'paid-result-tag is-favorite'; favoriteTag.textContent = '♥ 心头好';
+        var reviewTag = tags.querySelector('.paid-result-tag.is-review'); tags.insertBefore(favoriteTag, reviewTag || null);
+      } else if (!saved.favorite && favoriteTag) favoriteTag.remove();
+    });
+    if (view.paidStatus === 'favorite') renderPaidRecordsPreservingPosition(id);
   }
 
   function completePaidRecord(id) {
-    if (!ensureItemState(id).status) { showToast('请先选择一项态度'); return; }
-    delete view.editingPaid[id]; renderPaidList(); renderCalendarSelection(); showToast('记录已保存');
+    if (!isSelectablePaidStatus(ensureItemState(id).status)) { showToast('请先选择一项态度'); return; }
+    delete view.editingPaid[id]; renderPaidRecordsPreservingPosition(id); showToast('记录已保存');
   }
 
   function editPaidRecord(id) {
-    view.editingPaid[id] = true; renderPaidList(); renderCalendarSelection();
-    window.setTimeout(function () { var input = document.querySelector('.outfit-card[data-id="' + id + '"] input[data-id="' + id + '"]'); if (input) input.focus(); }, 0);
+    view.editingPaid[id] = true; renderPaidRecordsPreservingPosition(id);
+    window.setTimeout(function () {
+      var container = view.mode === 'list' ? el.paidList : el.scheduleList;
+      var input = container.querySelector('.outfit-card[data-id="' + id + '"] input[data-id="' + id + '"]');
+      if (input) input.focus({ preventScroll: true });
+    }, 0);
+  }
+
+  function renderPaidRecordsPreservingPosition(id) {
+    var container = view.mode === 'list' ? el.paidList : el.scheduleList;
+    var card = container.querySelector('.outfit-card[data-id="' + id + '"]');
+    var previousTop = card ? card.getBoundingClientRect().top : null;
+    var previousScrollY = window.scrollY;
+    renderPaidList(); renderCalendarSelection();
+    var nextCard = container.querySelector('.outfit-card[data-id="' + id + '"]');
+    if (nextCard && previousTop !== null) window.scrollBy(0, nextCard.getBoundingClientRect().top - previousTop);
+    else window.scrollTo(0, previousScrollY);
   }
 
   function handlePaidCardAction(event) {
     var button = event.target.closest('[data-action]'); if (!button) return false;
     if (button.dataset.action === 'status') setStatus(button.dataset.id, button.dataset.status);
+    else if (button.dataset.action === 'favorite') toggleFavorite(button.dataset.id);
     else if (button.dataset.action === 'complete-record') completePaidRecord(button.dataset.id);
     else if (button.dataset.action === 'edit-record') editPaidRecord(button.dataset.id);
     else return false;
@@ -1287,7 +1382,9 @@
     document.querySelectorAll('.nav-item').forEach(function (button) { button.classList.toggle('is-active', button.dataset.tab === page); });
     document.querySelector('.app-shell').classList.toggle('is-free-active', page === 'free');
     document.querySelector('.app-shell').classList.toggle('is-paid-list-active', page === 'calendar' && view.mode === 'list');
+    updateShareButtonVisibility();
     window.scrollTo(0, 0);
+    scheduleBackToTopVisibility();
   }
 
   function switchMode(mode) {
@@ -1295,11 +1392,42 @@
     document.querySelector('.app-shell').classList.toggle('is-paid-list-active', view.page === 'calendar' && mode === 'list');
     el.viewSwitch.querySelectorAll('[data-view]').forEach(function (button) { button.classList.toggle('is-active', button.dataset.view === mode); });
     if (mode === 'list') renderPaidList();
+    updateShareButtonVisibility();
+    scheduleBackToTopVisibility();
+  }
+
+  function backToTopThreshold() {
+    return Math.max(420, Math.round(window.innerHeight * .72));
+  }
+
+  function syncBackToTopVisibility() {
+    backToTopFrame = 0;
+    var visible = view.page === 'calendar' && view.mode === 'list' && window.scrollY > backToTopThreshold();
+    el.backToTopButton.classList.toggle('is-visible', visible);
+    el.backToTopButton.setAttribute('aria-hidden', visible ? 'false' : 'true');
+    el.backToTopButton.tabIndex = visible ? 0 : -1;
+  }
+
+  function scheduleBackToTopVisibility() {
+    if (backToTopFrame) return;
+    backToTopFrame = window.requestAnimationFrame(syncBackToTopVisibility);
+  }
+
+  function returnToListTop() {
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
   }
 
   function getCounts(items) {
-    var counts = { bought: 0, notBought: 0, regret: 0, missed: 0 };
-    (items || paidItems).forEach(function (item) { var status = ensureItemState(item.id).status; if (status && counts[status] !== undefined) counts[status] += 1; });
+    var counts = { bought: 0, regret: 0, wishlist: 0, abandoned: 0, pending: 0, favorite: 0, owned: 0, notOwned: 0 };
+    (items || paidItems).forEach(function (item) {
+      var saved = ensureItemState(item.id); var status = saved.status;
+      if (Object.prototype.hasOwnProperty.call(STATUS, status)) counts[status] += 1;
+      else if (status === 'notBought') counts.pending += 1;
+      if (saved.favorite) counts.favorite += 1;
+    });
+    counts.owned = counts.bought + counts.regret;
+    counts.notOwned = counts.wishlist + counts.abandoned + counts.pending;
     return counts;
   }
 
@@ -1323,6 +1451,7 @@
   function buildSharePages() {
     var items = getFilteredPaidItems(); var details = [];
     shareState.filterLabel = paidRangeLabel(view.paidRange);
+    shareState.filterRules = activePaidFilterRules();
     for (var index = 0; index < items.length; index += 4) details.push(items.slice(index, index + 4));
     shareState.pages = [{ type: 'summary', items: items }].concat(details.map(function (pageItems, pageIndex) {
       return { type: 'detail', items: pageItems, detailIndex: pageIndex + 1, detailTotal: details.length };
@@ -1333,37 +1462,41 @@
 
   function paintShareBase(ctx) {
     var canvas = el.shareCanvas;
-    ctx.clearRect(0, 0, canvas.width, canvas.height); ctx.fillStyle = '#f5eee3'; ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = '#2b2722'; ctx.fillRect(54, 54, 972, 1332); ctx.fillStyle = '#fbf7ef'; ctx.fillRect(72, 72, 936, 1296);
+    ctx.clearRect(0, 0, canvas.width, canvas.height); ctx.fillStyle = '#f7f4ed'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+  }
+
+  function drawShareIdentity(ctx) {
+    ctx.fillStyle = '#1c3654'; ctx.font = '700 25px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('燕云衣事通', 52, 53);
+    ctx.fillStyle = '#77716a'; ctx.font = '20px sans-serif'; ctx.textAlign = 'right'; ctx.fillText('制作者：薄荷小鹿（燕云十六声）', 1028, 53); ctx.textAlign = 'left';
   }
 
   function drawShareSummary(items) {
     var canvas = el.shareCanvas; var ctx = canvas.getContext('2d'); var counts = getCounts(items);
-    var reviews = items.filter(function (item) { return Boolean(ensureItemState(item.id).review); });
     paintShareBase(ctx);
-    ctx.fillStyle = '#8f493b'; ctx.font = '700 28px sans-serif'; ctx.fillText('燕 云 衣 事 通', 118, 148);
-    ctx.fillStyle = '#2b2722'; ctx.font = '700 86px serif'; ctx.fillText('你孝了吗？', 116, 260);
-    ctx.fillStyle = '#867c6f'; ctx.font = '28px sans-serif'; ctx.fillText('我的付费服装记录 · ' + shareState.filterLabel, 118, 312);
-    var blocks = [[STATUS.bought, counts.bought, '#8f493b'], [STATUS.notBought, counts.notBought, '#557267'], [STATUS.regret, counts.regret, '#a8792f'], [STATUS.missed, counts.missed, '#625d55']];
-    blocks.forEach(function (block, index) {
-      var x = 116 + (index % 2) * 430; var y = 380 + Math.floor(index / 2) * 170;
-      ctx.fillStyle = '#eee5d8'; roundRect(ctx, x, y, 394, 138, 24); ctx.fill();
-      ctx.fillStyle = block[2]; ctx.font = '700 60px serif'; ctx.fillText(String(block[1]), x + 34, y + 78);
-      ctx.fillStyle = '#514b43'; ctx.font = '700 28px sans-serif'; ctx.fillText(block[0], x + 150, y + 76);
+    drawShareIdentity(ctx);
+    ctx.fillStyle = '#172637'; ctx.font = '700 78px serif'; ctx.fillText('我的衣橱总结', 86, 190);
+    ctx.fillStyle = '#716b63'; ctx.font = '26px sans-serif'; ctx.fillText((shareState.filterRules.length ? '当前筛选' : '全部服装') + ' · ' + items.length + ' 套', 90, 244);
+    [[90, '买了', counts.owned, '#1f5d91'], [550, '没买', counts.notOwned, '#6a746f']].forEach(function (block) {
+      ctx.fillStyle = '#fffdf8'; roundRect(ctx, block[0], 318, 440, 282, 24); ctx.fill();
+      ctx.strokeStyle = '#ddd3c5'; ctx.lineWidth = 2; roundRect(ctx, block[0], 318, 440, 282, 24); ctx.stroke();
+      ctx.fillStyle = block[3]; ctx.font = '700 118px serif'; ctx.fillText(String(block[2]), block[0] + 34, 466);
+      ctx.fillStyle = '#303a43'; ctx.font = '700 32px sans-serif'; ctx.fillText(block[1], block[0] + 40, 548);
     });
-    ctx.fillStyle = '#2b2722'; ctx.font = '700 34px sans-serif'; ctx.fillText('我想说', 116, 770);
-    ctx.fillStyle = '#cdbca4'; ctx.fillRect(116, 792, 848, 2);
-    if (!reviews.length) {
-      ctx.fillStyle = '#9b9287'; ctx.font = '28px sans-serif'; ctx.fillText('还没写短评，先去列表留下一句吧。', 116, 860);
-    } else {
-      reviews.slice(0, 4).forEach(function (item, index) {
-        var y = 858 + index * 92; ctx.fillStyle = '#8f493b'; ctx.font = '700 25px sans-serif'; ctx.fillText(item.name, 116, y);
-        ctx.fillStyle = '#514b43'; ctx.font = '27px sans-serif'; ctx.fillText('“' + ensureItemState(item.id).review + '”', 310, y);
-      });
+    var secondary = [['后悔买', counts.regret, '#9a6531'], ['心愿单', counts.wishlist, '#315d80'], ['心头好', counts.favorite, '#a23e49']];
+    secondary.forEach(function (block, index) {
+      var x = 90 + index * 306;
+      ctx.fillStyle = '#fffdf8'; roundRect(ctx, x, 648, 286, 206, 20); ctx.fill();
+      ctx.strokeStyle = '#e0d7ca'; ctx.lineWidth = 2; roundRect(ctx, x, 648, 286, 206, 20); ctx.stroke();
+      ctx.fillStyle = block[2]; ctx.font = '700 72px serif'; ctx.fillText(String(block[1]), x + 26, 752);
+      ctx.fillStyle = '#48443f'; ctx.font = '700 27px sans-serif'; ctx.fillText(block[0], x + 28, 814);
+    });
+    if (shareState.filterRules.length) {
+      var rulesTop = 914;
+      ctx.fillStyle = '#fffdf8'; roundRect(ctx, 90, rulesTop, 900, 164, 20); ctx.fill();
+      ctx.fillStyle = '#315d80'; ctx.font = '700 25px sans-serif'; ctx.fillText('筛选规则', 132, rulesTop + 46);
+      ctx.fillStyle = '#5f5a54'; ctx.font = '24px sans-serif';
+      wrapText(ctx, shareState.filterRules.join('　·　'), 132, rulesTop + 90, 816, 31, 3);
     }
-    ctx.fillStyle = '#8f493b'; ctx.fillRect(116, 1260, 78, 8); ctx.fillStyle = '#766e64'; ctx.font = '24px sans-serif';
-    ctx.fillText('本次筛选共 ' + items.length + ' 套外观', 116, 1320);
-    ctx.textAlign = 'right'; ctx.font = '22px sans-serif'; ctx.fillText('制作者：薄荷小鹿（燕云十六声）', 964, 1320); ctx.textAlign = 'left';
   }
 
   function loadCanvasImage(source) {
@@ -1416,31 +1549,54 @@
     });
   }
 
+  function drawSharePill(ctx, text, x, y, background, foreground, maxWidth) {
+    ctx.font = '700 19px sans-serif';
+    var display = fitText(ctx, text, Math.max(32, maxWidth - 24));
+    var width = Math.min(maxWidth, Math.ceil(ctx.measureText(display).width) + 24);
+    ctx.fillStyle = background; roundRect(ctx, x, y, width, 36, 18); ctx.fill();
+    ctx.fillStyle = foreground; ctx.fillText(display, x + 12, y + 25);
+    return width;
+  }
+
   async function drawShareDetail(page) {
     var canvas = el.shareCanvas; var ctx = canvas.getContext('2d'); paintShareBase(ctx);
-    ctx.fillStyle = '#8f493b'; ctx.font = '700 28px sans-serif'; ctx.fillText('燕 云 衣 事 通', 112, 142);
-    ctx.fillStyle = '#2b2722'; ctx.font = '700 58px serif'; ctx.fillText('我的外观态度', 112, 218);
-    ctx.fillStyle = '#867c6f'; ctx.font = '24px sans-serif'; ctx.fillText(shareState.filterLabel + ' · 明细 ' + page.detailIndex + '/' + page.detailTotal, 112, 262);
+    drawShareIdentity(ctx);
     for (var index = 0; index < page.items.length; index += 1) {
-      var item = page.items[index]; var saved = ensureItemState(item.id); var top = 305 + index * 248;
-      ctx.fillStyle = index % 2 ? '#f3ecdf' : '#eee4d5'; roundRect(ctx, 102, top, 876, 220, 20); ctx.fill();
-      ctx.fillStyle = '#8f493b'; ctx.font = '700 26px Georgia, serif'; ctx.fillText(formatDate(item.onSaleDate), 128, top + 48);
-      ctx.fillStyle = '#8c857b'; ctx.font = '20px sans-serif'; ctx.fillText(item.listingStatus || '状态待补', 128, top + 80);
-      await drawItemImages(ctx, item, 270, top + 18, 230, 184);
-      ctx.fillStyle = '#2b2722'; ctx.font = '700 34px sans-serif'; ctx.fillText(fitText(ctx, item.name, 245), 530, top + 48);
-      ctx.fillStyle = '#8c857b'; ctx.font = '21px sans-serif'; ctx.fillText(fitText(ctx, (item.type || '待补') + ' · ' + (item.priceTier || '价格待补'), 250), 530, top + 82);
-      var statusText = saved.status ? STATUS[saved.status] : '未选择';
-      ctx.fillStyle = saved.status ? '#a85045' : '#8c857b'; ctx.font = '700 38px serif'; ctx.textAlign = 'right'; ctx.fillText(statusText, 944, top + 50); ctx.textAlign = 'left';
-      ctx.strokeStyle = '#cdbca4'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(530, top + 108); ctx.lineTo(944, top + 108); ctx.stroke();
-      ctx.fillStyle = saved.review ? REVIEW_RED : '#9b9287'; ctx.font = '25px sans-serif';
-      wrapText(ctx, saved.review ? '“' + saved.review + '”' : '暂未填写短评', 530, top + 151, 400, 34, 2);
+      var item = page.items[index]; var saved = ensureItemState(item.id);
+      var left = 48; var top = 76 + index * 332;
+      var cardWidth = 984; var cardHeight = 312; var inset = 14; var imageWidth = 366; var contentWidth = 562;
+      ctx.fillStyle = '#fffdf9'; roundRect(ctx, left, top, cardWidth, cardHeight, 18); ctx.fill();
+      ctx.strokeStyle = '#e2d8ca'; ctx.lineWidth = 1.2; roundRect(ctx, left, top, cardWidth, cardHeight, 18); ctx.stroke();
+      await drawItemImages(ctx, item, left + inset, top + inset, imageWidth, 284);
+
+      var textLeft = left + 408; var textRight = left + cardWidth - 18;
+      ctx.font = '700 19px sans-serif';
+      var listingText = item.listingStatus || '';
+      var listingWidth = listingText ? Math.min(132, Math.ceil(ctx.measureText(listingText).width) + 24) : 0;
+      ctx.fillStyle = '#172637'; ctx.font = '700 32px sans-serif';
+      ctx.fillText(fitText(ctx, item.name, contentWidth - listingWidth - (listingWidth ? 14 : 0)), textLeft, top + 48);
+      if (listingText) drawSharePill(ctx, listingText, textRight - listingWidth, top + 20, '#eaf1f1', '#315d63', listingWidth);
+
+      ctx.fillStyle = '#716b63'; ctx.font = '20px sans-serif';
+      ctx.fillText(fitText(ctx, formatDate(item.onSaleDate), contentWidth), textLeft, top + 79);
+
+      if (saved.review) {
+        ctx.fillStyle = REVIEW_RED; ctx.font = '700 30px serif';
+        wrapText(ctx, '“' + saved.review + '”', textLeft, top + 128, contentWidth, 38, 3);
+      } else {
+        ctx.fillStyle = '#aaa39a'; ctx.font = '24px serif'; ctx.fillText('还没有留下点评', textLeft, top + 145);
+      }
+
+      var statusText = paidStatusLabel(saved.status, item);
+      var statusWidth = drawSharePill(ctx, statusText, textLeft, top + 224, saved.status ? '#f7e9e9' : '#f0ede7', saved.status ? '#9b3f45' : '#77716a', 132);
+      if (saved.favorite) {
+        drawSharePill(ctx, '♥ 心头好', textLeft + statusWidth + 12, top + 224, '#f8e8eb', '#a23e49', 132);
+      }
+
+      var saleText = visibleSaleMethod(item) || item.type || '';
+      var meta = [saleText, ((item.styleTags || []).join(' / ')), item.priceOriginal].filter(Boolean).join(' · ');
+      ctx.fillStyle = '#716b63'; ctx.font = '19px sans-serif'; ctx.fillText(fitText(ctx, meta, contentWidth), textLeft, top + 292);
     }
-    if (!page.items.length) {
-      ctx.fillStyle = '#8c857b'; ctx.textAlign = 'center'; ctx.font = '30px sans-serif'; ctx.fillText('这个日期范围内还没有服装记录', 540, 650); ctx.textAlign = 'left';
-    }
-    ctx.fillStyle = '#8f493b'; ctx.fillRect(112, 1300, 78, 8); ctx.fillStyle = '#766e64'; ctx.font = '22px sans-serif';
-    ctx.fillText('每一套外观，都留下一句自己的话', 112, 1350);
-    ctx.textAlign = 'right'; ctx.fillText('制作者：薄荷小鹿（燕云十六声）', 964, 1350); ctx.textAlign = 'left';
   }
 
   async function drawSharePage(pageIndex) {
@@ -1466,30 +1622,41 @@
   }
   function closeShare() { el.shareBackdrop.hidden = true; }
 
-  async function saveDataUrl(dataUrl) {
+  function shareFileName(pageIndex) {
+    var page = shareState.pages[pageIndex];
+    var suffix = page && page.type === 'summary' ? '衣橱总结' : '服装明细-' + ((page && page.detailIndex) || pageIndex);
+    return '燕云衣事通-' + suffix + '.png';
+  }
+
+  async function saveDataUrl(dataUrl, fileName) {
     var miniTool = window.xhs && window.xhs.miniTool;
     if (miniTool && typeof miniTool.writeTempFile === 'function' && typeof miniTool.saveImageToPhotosAlbum === 'function') {
-      var file = await miniTool.writeTempFile({ data: dataUrl }); await miniTool.saveImageToPhotosAlbum({ filePath: file.filePath || dataUrl }); return true;
+      var file = await miniTool.writeTempFile({ data: dataUrl }); await miniTool.saveImageToPhotosAlbum({ filePath: file.filePath || dataUrl }); return 'album';
     }
-    return false;
+    var link = document.createElement('a');
+    link.href = dataUrl; link.download = fileName; link.hidden = true;
+    document.body.appendChild(link); link.click(); link.remove();
+    return 'download';
   }
 
   async function saveShare() {
     try {
       var dataUrl = shareState.dataUrls[shareState.page] || await drawSharePage(shareState.page);
-      var saved = await saveDataUrl(dataUrl);
-      el.shareImage.src = dataUrl; el.shareImage.hidden = false; showToast(saved ? '当前分享图已保存' : '预览已生成，请在小红书内保存');
-    } catch (error) { showToast('保存失败，请检查相册权限'); }
+      var saveMode = await saveDataUrl(dataUrl, shareFileName(shareState.page));
+      el.shareImage.hidden = true; el.shareImage.removeAttribute('src');
+      showToast(saveMode === 'album' ? '已保存到系统相册' : '已发起当前页 PNG 下载');
+    } catch (error) { showToast('保存失败，请重试'); }
   }
 
   async function saveAllShares() {
     try {
-      var activePage = shareState.page;
+      var activePage = shareState.page; var saveMode = '';
       for (var index = 0; index < shareState.pages.length; index += 1) {
         var dataUrl = shareState.dataUrls[index] || await drawSharePage(index);
-        if (!await saveDataUrl(dataUrl)) { await drawSharePage(activePage); showToast('预览已生成，请在小红书内保存'); return; }
+        saveMode = await saveDataUrl(dataUrl, shareFileName(index));
       }
-      await drawSharePage(activePage); showToast('已保存全部 ' + shareState.pages.length + ' 张分享图');
+      await drawSharePage(activePage);
+      showToast(saveMode === 'album' ? '已保存全部 ' + shareState.pages.length + ' 张到系统相册' : '已发起 ' + shareState.pages.length + ' 张 PNG 下载，请允许多文件下载');
     } catch (error) { showToast('部分图片保存失败，请重试'); }
   }
 
@@ -1508,6 +1675,9 @@
   }
 
   el.viewSwitch.addEventListener('click', function (event) { var button = event.target.closest('[data-view]'); if (button) switchMode(button.dataset.view); });
+  window.addEventListener('scroll', scheduleBackToTopVisibility, { passive: true });
+  window.addEventListener('resize', scheduleBackToTopVisibility, { passive: true });
+  el.backToTopButton.addEventListener('click', returnToListTop);
   el.paidList.addEventListener('click', handlePaidCardAction);
   el.paidList.addEventListener('input', function (event) { if (event.target.matches('input[data-id]')) setReview(event.target.dataset.id, event.target.value); });
   el.paidSearchInput.addEventListener('input', function () { view.paidSearch = el.paidSearchInput.value.trim(); renderPaidList(); });
@@ -1641,11 +1811,11 @@
     var active = button.dataset.freeGender === view.freeGender;
     button.classList.toggle('is-active', active); button.setAttribute('aria-pressed', active ? 'true' : 'false');
   });
-  renderCalendar(); renderPaidList(); renderFreeList(); scheduleFreeDateRefresh();
+  renderCalendar(); renderPaidList(); renderFreeList(); updateShareButtonVisibility(); scheduleFreeDateRefresh(); syncBackToTopVisibility();
   window.__OUTFIT_APP__ = {
-    version: '1.0.0-formal-release', storageKey: STORAGE_KEY, paidCount: paidListItems.length, paidListCount: paidListItems.length, calendarPaidCount: paidItems.length, freeCount: freeCollectibles.length, freeDatabaseRows: freeItems.length, freeSetCount: freeSets.length,
+    version: '1.1.0-formal-release', storageKey: STORAGE_KEY, paidCount: paidListItems.length, paidListCount: paidListItems.length, calendarPaidCount: paidItems.length, freeCount: freeCollectibles.length, freeDatabaseRows: freeItems.length, freeSetCount: freeSets.length,
     getState: function () { return JSON.parse(JSON.stringify(state)); }, getCounts: getCounts,
-    setStatus: setStatus, setReview: setReview, switchMode: switchMode, switchPage: switchPage,
+    setStatus: setStatus, setReview: setReview, toggleFavorite: toggleFavorite, paidStatusLabel: paidStatusLabel, switchMode: switchMode, switchPage: switchPage,
     getScopedPaidItems: getScopedPaidItems, getFilteredPaidItems: getFilteredPaidItems, paidItemMatchesMethodRefinements: paidItemMatchesMethodRefinements, buildSharePages: buildSharePages, drawSharePage: drawSharePage,
     setCalendarMonth: setCalendarMonth, selectCalendarDate: selectCalendarDate, goToToday: goToToday, paidEventsForMonth: paidEventsForMonth, paidValueRank: paidValueRank, comparePaidSameDate: comparePaidSameDate, getPaidBundleMap: getPaidBundleMap, paidFilterMethod: paidFilterMethod, paidItemMatchesRange: paidItemMatchesRange, applyCustomPaidRange: applyCustomPaidRange, toggleFreeCategorySelection: toggleFreeCategorySelection,
     getVisibleFreeItems: getVisibleFreeItems, getFreeCharmProgress: getFreeCharmProgress, getFreeOwnedCount: getFreeOwnedCount, setFreeOwnedCount: setFreeOwnedCount, summarizeFreeItems: summarizeFreeItems, switchFreeMode: switchFreeMode, switchFreeProgressScope: switchFreeProgressScope, switchFreeGender: switchFreeGender, toggleFreeOwned: toggleFreeOwned, toggleFreeCopy: toggleFreeCopy, toggleFreeSetParts: toggleFreeSetParts, childrenForSet: childrenForSet, freeDaysRemaining: freeDaysRemaining, effectiveFreeStatus: effectiveFreeStatus, freeStatusLabel: freeStatusLabel,

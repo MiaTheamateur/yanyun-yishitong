@@ -2,12 +2,12 @@
   'use strict';
 
   window.OUTFIT_DATA_META = {
-  "version": "1.0.0-formal-release",
+  "version": "1.1.0-formal-release",
   "source": "飞书《燕云外观上架情况整理》＋《免费外观道具汇总_20261012》",
-  "sourceRevision": 1881,
-  "generatedAt": "2026-10-13T16:22:15.668Z",
-  "importedCount": 1003,
-  "paidCount": 203,
+  "sourceRevision": 1892,
+  "generatedAt": "2026-10-15T11:42:10.637Z",
+  "importedCount": 1004,
+  "paidCount": 204,
   "freeDatabaseRows": 800,
   "freeCollectibleCount": 730,
   "freeSetCount": 70,
@@ -35,11 +35,11 @@
     "currentCharm": 18200,
     "unavailableItems": 183
   },
-  "paidDatabaseRows": 202,
+  "paidDatabaseRows": 203,
   "paidLatestDate": "2026-10-23",
   "paidImagesEnabled": true,
-  "paidImageRecords": 202,
-  "paidImageAssets": 328,
+  "paidImageRecords": 203,
+  "paidImageAssets": 330,
   "freeSourceRevision": 1211
 };
 
@@ -81,11 +81,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0152",
@@ -122,11 +122,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/r4yAKOPSHxAsIDmKvtsvBA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0184",
@@ -163,11 +163,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0185",
@@ -204,11 +204,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0186",
@@ -245,11 +245,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0187",
@@ -286,11 +286,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0022",
@@ -329,11 +329,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0188",
@@ -370,11 +370,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0189",
@@ -411,11 +411,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0190",
@@ -452,11 +452,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0191",
@@ -493,11 +493,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0192",
@@ -534,11 +534,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0023",
@@ -577,11 +577,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0193",
@@ -618,11 +618,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0194",
@@ -659,11 +659,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0195",
@@ -700,11 +700,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0196",
@@ -741,11 +741,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0197",
@@ -782,11 +782,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0198",
@@ -823,11 +823,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0199",
@@ -864,11 +864,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0200",
@@ -902,11 +902,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0201",
@@ -943,11 +943,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0202",
@@ -984,11 +984,11 @@
     "charmValue": 0,
     "source": "",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0003",
@@ -1022,11 +1022,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/dtd53tN0vd0TaG4Lh2ysdA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0001",
@@ -1063,11 +1063,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/dtd53tN0vd0TaG4Lh2ysdA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时1280上架七天后恢复2580",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0002",
@@ -1104,11 +1104,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/dtd53tN0vd0TaG4Lh2ysdA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0004",
@@ -1142,11 +1142,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/XOsTM5sICn4AzDbV8E3SZw",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0005",
@@ -1183,11 +1183,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/a__S2y2VMODvvInshhiavg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0006",
@@ -1224,11 +1224,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/GcHVixsNs6EdkXVKU7oFBA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0007",
@@ -1265,11 +1265,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/GcHVixsNs6EdkXVKU7oFBA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0008",
@@ -1306,11 +1306,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/GcHVixsNs6EdkXVKU7oFBA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0009",
@@ -1349,11 +1349,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/GcHVixsNs6EdkXVKU7oFBA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "专属拾音券折扣，最高5折",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0010",
@@ -1390,11 +1390,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/GcHVixsNs6EdkXVKU7oFBA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0011",
@@ -1428,11 +1428,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/sZzNiYWOEl6tbKy7dRCcSg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0012",
@@ -1469,11 +1469,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/8bslGjaiIJvX3APRyWt9dA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0013",
@@ -1507,11 +1507,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/8bslGjaiIJvX3APRyWt9dA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0014",
@@ -1545,11 +1545,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/8bslGjaiIJvX3APRyWt9dA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0015",
@@ -1583,11 +1583,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/ltg5LdGrUVFA2ezhwFCrhw",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0016",
@@ -1624,11 +1624,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/hxovChmVRKrka4HMRslWNw",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0017",
@@ -1665,11 +1665,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/B7eaBgkOSMTnVtCb3ZTM9w",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0018",
@@ -1706,11 +1706,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/B7eaBgkOSMTnVtCb3ZTM9w",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0019",
@@ -1744,11 +1744,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/t_S99Pj-ZpBpZakEQnvM2g",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0020",
@@ -1782,11 +1782,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/t_S99Pj-ZpBpZakEQnvM2g",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0024",
@@ -1820,11 +1820,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/cPZZycs-14CTvjl3HUCs2A",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0025",
@@ -1861,11 +1861,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/_jxmP01sYx-OyTO3Ts0GNQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0026",
@@ -1902,11 +1902,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/_jxmP01sYx-OyTO3Ts0GNQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时90天上架   本期和鸣3月28号开启~5月23日结束，结束后仍然可以兑换，直到6月26日   后来有公告说：本期【和鸣-大音希声】将延长至5月30日5:00后更新下架",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0027",
@@ -1943,11 +1943,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/_jxmP01sYx-OyTO3Ts0GNQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0028",
@@ -1981,11 +1981,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/NQ28TyjSShsVhHR-abE7Tg",
     "secondarySource": "https://mp.weixin.qq.com/s/4jFe4uGRyGtAB6P5VJUA7A",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "返场了1次",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0029",
@@ -2019,11 +2019,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/_Txm9d72OGIgSJkee8ue7g",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0030",
@@ -2060,11 +2060,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/ENI05blcSHVjKu3x0TaY6Q",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时半价，2025年4月25日后恢复原价",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0031",
@@ -2098,11 +2098,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/yNiI3qwbjxbfNFm3wRIotg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0032",
@@ -2136,11 +2136,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/p3qiW5hTDyPqAy1rmwOfEg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时活动【鹤鸣九皋】",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0033",
@@ -2177,11 +2177,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/p3qiW5hTDyPqAy1rmwOfEg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时活动【鹤鸣九皋】",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0034",
@@ -2218,11 +2218,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/p3qiW5hTDyPqAy1rmwOfEg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0035",
@@ -2259,11 +2259,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/p3qiW5hTDyPqAy1rmwOfEg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0036",
@@ -2297,11 +2297,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/F_ffI1MM2vFcZdDZbDvIEw",
     "secondarySource": "https://mp.weixin.qq.com/s/J9PFUVfF9m6FeGf9E_hwCg",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "返场了1次",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0037",
@@ -2338,11 +2338,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/JxveADrZVaqkyhQtZ64n-A",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "原价680「长鸣珠」日常300「长鸣珠」折扣价购得",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0038",
@@ -2376,11 +2376,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/DJG5siXBFw7srpqpZgXyaA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0039",
@@ -2417,11 +2417,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/taoypHvAtZYJFs4BlhvZXQ",
     "secondarySource": "https://mp.weixin.qq.com/s/5AinVe8kC13dyFPdAL9EPQ",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "本期和鸣5月30号开启~8月15日结束，结束后仍然可以兑换，直到8月28日",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0040",
@@ -2458,11 +2458,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/taoypHvAtZYJFs4BlhvZXQ",
     "secondarySource": "https://mp.weixin.qq.com/s/5AinVe8kC13dyFPdAL9EPQ",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0041",
@@ -2499,11 +2499,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/lWkAgfXL0-6II68VRlns2g",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0042",
@@ -2540,11 +2540,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/lWkAgfXL0-6II68VRlns2g",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0043",
@@ -2581,11 +2581,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/os_-yWRlzum3wZu_KDlcMg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "原价680「长鸣珠」日常300「长鸣珠」折扣价购得",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0044",
@@ -2619,11 +2619,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/zM_9VsC8fZL4kzy7kaiyHw",
     "secondarySource": "https://mp.weixin.qq.com/s/MZiNEaXUMwwHGS6aj4R2WA",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0045",
@@ -2662,11 +2662,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/rMGD_9QvaBDVOiGEmFzogA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0046",
@@ -2700,11 +2700,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/s1C0OQkGrMBkWz91VpFfKw",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0047",
@@ -2738,11 +2738,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/3w8MJI2ls7qpW5F49NK0sw",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0048",
@@ -2779,11 +2779,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/3w8MJI2ls7qpW5F49NK0sw",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0049",
@@ -2820,11 +2820,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/hDEKCXME1GTC2CfrL-5F3w",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "「聆音惊蝉」活动   限时优惠价600「长鸣珠」购得，后续恢复原价1280「长鸣珠」",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0050",
@@ -2858,11 +2858,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/5k6pGuHsI9srcvKrLFwPxA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0051",
@@ -2899,11 +2899,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/eL6rOeonPx-o11vJzi3W7w",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0052",
@@ -2940,11 +2940,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/eL6rOeonPx-o11vJzi3W7w",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0053",
@@ -2981,11 +2981,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/nNSN_1qJgxbZ2J540pv7ew",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0054",
@@ -3019,11 +3019,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/nNSN_1qJgxbZ2J540pv7ew",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0055",
@@ -3060,11 +3060,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/nNSN_1qJgxbZ2J540pv7ew",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0056",
@@ -3098,11 +3098,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/LQ5WQlZMu0phwltpkfFFCA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0057",
@@ -3136,11 +3136,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/m3dT05O6OtoEr7RtY3L0Fg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "【商店】以折扣价300「长鸣珠」购得，两周后将恢复原价680「长鸣珠」",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0058",
@@ -3174,11 +3174,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/bezfjPUNfuFQgafek2TglA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0059",
@@ -3215,11 +3215,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/bezfjPUNfuFQgafek2TglA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0060",
@@ -3256,11 +3256,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/jLde7SdPisfLQ1LD0_ilpQ",
     "secondarySource": "https://mp.weixin.qq.com/s/MnemxhBgPNmNMoG5k9Hefw",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0061",
@@ -3297,11 +3297,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/jLde7SdPisfLQ1LD0_ilpQ",
     "secondarySource": "https://mp.weixin.qq.com/s/MnemxhBgPNmNMoG5k9Hefw",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0062",
@@ -3335,11 +3335,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/MnemxhBgPNmNMoG5k9Hefw",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0063",
@@ -3376,11 +3376,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/zzt9q60YSVns5nK7YKzGAQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0064",
@@ -3417,11 +3417,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/zzt9q60YSVns5nK7YKzGAQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0065",
@@ -3455,11 +3455,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/iQofMJN4dhxE45iGJB0Sjg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "价格存疑",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0066",
@@ -3493,11 +3493,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/ZSOVzjhJ01m8ZW4b-iYOJw",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0067",
@@ -3531,11 +3531,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/szC6m-bSXubDIzCl313BOg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "此优惠价将于2025年10月3日5:00结束",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0068",
@@ -3572,11 +3572,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/szC6m-bSXubDIzCl313BOg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0069",
@@ -3613,11 +3613,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/pjQwY4eXbcHS6dmoQrWRRw",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0070",
@@ -3651,11 +3651,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/pjQwY4eXbcHS6dmoQrWRRw",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0071",
@@ -3692,11 +3692,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/pjQwY4eXbcHS6dmoQrWRRw",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0072",
@@ -3730,11 +3730,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/7zAKmuDbUuq7vtBXyky8yQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0073",
@@ -3771,11 +3771,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/pjQwY4eXbcHS6dmoQrWRRw",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0074",
@@ -3812,11 +3812,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/BQ57p7vnWHGT2cqdpP7fpA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0075",
@@ -3853,11 +3853,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/BQ57p7vnWHGT2cqdpP7fpAv",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "10月6日5:00起限时上架30天",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0076",
@@ -3891,11 +3891,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/g4G9ZLrKWoUm1rd4IxQ4oQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时优惠价300「长鸣珠」购得。此优惠价将于2025年10月25日5:00结束，届时将恢复原价680「长鸣珠」",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0077",
@@ -3929,11 +3929,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/p7nphwCAYpwuZpZUzHJ8Ow",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0078",
@@ -3970,11 +3970,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/JMIcrmrrOhOtwy0pGZ8Qag",
     "secondarySource": "https://mp.weixin.qq.com/s/g1Hjz3QyJiv8sfd0rwd8OQ",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时87天上架",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0079",
@@ -4008,11 +4008,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/JMIcrmrrOhOtwy0pGZ8Qag",
     "secondarySource": "https://mp.weixin.qq.com/s/g1Hjz3QyJiv8sfd0rwd8OQ",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0080",
@@ -4049,11 +4049,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/JMIcrmrrOhOtwy0pGZ8Qag",
     "secondarySource": "https://mp.weixin.qq.com/s/g1Hjz3QyJiv8sfd0rwd8OQ",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时87天上架",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0081",
@@ -4090,11 +4090,11 @@
     "charmValue": 0,
     "source": "http://mp.weixin.qq.com/s?__biz=Mzk0NTQwMTA2Ng==&mid=2247493045&idx=1&sn=aeca0c8d2029fba120acfd3adf4b187d&chksm=c2ac8b460720ea8ac3bd09d3cda4ee041bb40805a185596008317278c5945b00efe8a17bb512&scene=126&sessionid=1791651932&subscene=7&clicktime=1791656597&enterid=1791656597#rd",
     "secondarySource": "https://mp.weixin.qq.com/s/bDHCV__31U7YqMzpu68x8Q",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0082",
@@ -4128,11 +4128,11 @@
     "charmValue": 0,
     "source": "http://mp.weixin.qq.com/s?__biz=Mzk0NTQwMTA2Ng==&mid=2247493045&idx=1&sn=aeca0c8d2029fba120acfd3adf4b187d&chksm=c2ac8b460720ea8ac3bd09d3cda4ee041bb40805a185596008317278c5945b00efe8a17bb512&scene=126&sessionid=1791651932&subscene=7&clicktime=1791656597&enterid=1791656597#rd",
     "secondarySource": "https://mp.weixin.qq.com/s/bDHCV__31U7YqMzpu68x8Q",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0083",
@@ -4166,11 +4166,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/IUW6MGTwpZnhOcUvh36Rlg",
     "secondarySource": "https://mp.weixin.qq.com/s/PUpUvRnUxIvJoWHApBqCZw",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "本期更新后，「战令购买」及「战令任务」的结束时间将延长至当前赛季最后一周的周五 4:59:59。",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0084",
@@ -4204,11 +4204,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/Yc9_DeA3p_7qSu_SDq3L0Q",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "此优惠价将于2025年11月28日5:00结束，届时将恢复原价680「长鸣珠」。",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0085",
@@ -4242,11 +4242,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/DX_4Mn0soyhryKEZgtPnCQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0086",
@@ -4283,11 +4283,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/DX_4Mn0soyhryKEZgtPnCQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0087",
@@ -4324,11 +4324,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/DX_4Mn0soyhryKEZgtPnCQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0088",
@@ -4362,11 +4362,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/Kvi6rS8SPyZRvwJ9IuaGSA",
     "secondarySource": "https://mp.weixin.qq.com/s/URN68q9KKv6A-KbNRT81_Q",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0089",
@@ -4400,11 +4400,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/v9kkasrXJyGGbri6xPiDSQ",
     "secondarySource": "https://mp.weixin.qq.com/s/TNwWQP5slLQJn7Hf9cmp1Q",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0090",
@@ -4441,11 +4441,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/EMjwoKUHxqfUe-P4jo2Grw",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0091",
@@ -4482,11 +4482,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/EcwZU0P8-Y69wGDMpxBz_A",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0092",
@@ -4520,11 +4520,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/EcwZU0P8-Y69wGDMpxBz_A",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0093",
@@ -4558,11 +4558,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/EcwZU0P8-Y69wGDMpxBz_A",
     "secondarySource": "http://mp.weixin.qq.com/s?__biz=Mzk0NTQwMTA2Ng==&mid=2247494522&idx=1&sn=d3a628f6d33485b56b7921602e9dd4f3&chksm=c2f26fbbd07c2a98531b766c88c48a8d0cc986b0d93c3f54c53f4a5879c9a78e1f5484825c0e&scene=126&sessionid=1791651923&subscene=7&clicktime=1791658536&enterid=1791658536#rd",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0094",
@@ -4599,11 +4599,11 @@
     "charmValue": 0,
     "source": "http://mp.weixin.qq.com/s?__biz=Mzk0NTQwMTA2Ng==&mid=2247494432&idx=1&sn=e337577385b64b6f19ee9442c92d3dc6&chksm=c2bd7fb860a73cfce12908983def87815d0088974f96bc57887925cb0762bc0a93188262761b&scene=126&sessionid=1791651923&subscene=7&clicktime=1791658532&enterid=1791658532#rd",
     "secondarySource": "https://mp.weixin.qq.com/s/EcwZU0P8-Y69wGDMpxBz_A",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "周年限定活动「清籁回响」",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0095",
@@ -4612,12 +4612,12 @@
     "name": "君临重霄",
     "type": "套装",
     "acquisitionType": "付费",
-    "femaleImage": "",
-    "maleImage": "",
-    "commonImage": "./assets/paid/paid-0095-common.webp",
-    "sourceFemaleImage": "",
-    "sourceMaleImage": "",
-    "sourceCommonImage": "没有男女区分的整张图/君临重霄.png",
+    "femaleImage": "./assets/paid/paid-0095-female.webp",
+    "maleImage": "./assets/paid/paid-0095-male.webp",
+    "commonImage": "",
+    "sourceFemaleImage": "F/衣服/君临重霄.jpg",
+    "sourceMaleImage": "M/衣服/君临重霄.jpg",
+    "sourceCommonImage": "",
     "onSaleDate": "2025-12-27",
     "offSaleDate": "",
     "returnStartDate": "",
@@ -4637,11 +4637,11 @@
     "charmValue": 0,
     "source": "http://mp.weixin.qq.com/s?__biz=Mzk0NTQwMTA2Ng==&mid=2247494432&idx=1&sn=e337577385b64b6f19ee9442c92d3dc6&chksm=c2bd7fb860a73cfce12908983def87815d0088974f96bc57887925cb0762bc0a93188262761b&scene=126&sessionid=1791651923&subscene=7&clicktime=1791658532&enterid=1791658532#rd",
     "secondarySource": "http://mp.weixin.qq.com/s?__biz=Mzk0NTQwMTA2Ng==&mid=2247494522&idx=1&sn=d3a628f6d33485b56b7921602e9dd4f3&chksm=c2f26fbbd07c2a98531b766c88c48a8d0cc986b0d93c3f54c53f4a5879c9a78e1f5484825c0e&scene=126&sessionid=1791651923&subscene=7&clicktime=1791658536&enterid=1791658536#rd",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
-    "imageMatchStatus": "已匹配（通用图）",
-    "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "imageMatchStatus": "已匹配（男女双图）",
+    "validationNote": "本地女号、男号索引图已唯一匹配",
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0096",
@@ -4678,11 +4678,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/JOVyqDeBNdrOOiD4gVTUCA",
     "secondarySource": "http://mp.weixin.qq.com/s?__biz=Mzk0NTQwMTA2Ng==&mid=2247494522&idx=1&sn=d3a628f6d33485b56b7921602e9dd4f3&chksm=c2f26fbbd07c2a98531b766c88c48a8d0cc986b0d93c3f54c53f4a5879c9a78e1f5484825c0e&scene=126&sessionid=1791651923&subscene=7&clicktime=1791658536&enterid=1791658536#rd",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0097",
@@ -4719,11 +4719,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/EcwZU0P8-Y69wGDMpxBz_A",
     "secondarySource": "http://mp.weixin.qq.com/s?__biz=Mzk0NTQwMTA2Ng==&mid=2247494522&idx=1&sn=d3a628f6d33485b56b7921602e9dd4f3&chksm=c2f26fbbd07c2a98531b766c88c48a8d0cc986b0d93c3f54c53f4a5879c9a78e1f5484825c0e&scene=126&sessionid=1791651923&subscene=7&clicktime=1791658536&enterid=1791658536#rd",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0098",
@@ -4757,11 +4757,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/EcwZU0P8-Y69wGDMpxBz_A",
     "secondarySource": "http://mp.weixin.qq.com/s?__biz=Mzk0NTQwMTA2Ng==&mid=2247494522&idx=1&sn=d3a628f6d33485b56b7921602e9dd4f3&chksm=c2f26fbbd07c2a98531b766c88c48a8d0cc986b0d93c3f54c53f4a5879c9a78e1f5484825c0e&scene=126&sessionid=1791651923&subscene=7&clicktime=1791658536&enterid=1791658536#rd",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0099",
@@ -4795,11 +4795,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/JOVyqDeBNdrOOiD4gVTUCA",
     "secondarySource": "http://mp.weixin.qq.com/s?__biz=Mzk0NTQwMTA2Ng==&mid=2247494522&idx=1&sn=d3a628f6d33485b56b7921602e9dd4f3&chksm=c2f26fbbd07c2a98531b766c88c48a8d0cc986b0d93c3f54c53f4a5879c9a78e1f5484825c0e&scene=126&sessionid=1791651923&subscene=7&clicktime=1791658536&enterid=1791658536#rd",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0100",
@@ -4836,11 +4836,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/EcwZU0P8-Y69wGDMpxBz_A",
     "secondarySource": "http://mp.weixin.qq.com/s?__biz=Mzk0NTQwMTA2Ng==&mid=2247494522&idx=1&sn=d3a628f6d33485b56b7921602e9dd4f3&chksm=c2f26fbbd07c2a98531b766c88c48a8d0cc986b0d93c3f54c53f4a5879c9a78e1f5484825c0e&scene=126&sessionid=1791651923&subscene=7&clicktime=1791658536&enterid=1791658536#rd",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0101",
@@ -4874,11 +4874,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/EcwZU0P8-Y69wGDMpxBz_A",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "原价680长鸣珠，届时游侠可前往【商店】以折扣价300长鸣珠购得，此优惠价将于2026年1月15日5:00:00结束。",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0102",
@@ -4915,11 +4915,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/GOI0TiVsLizg6_cfsdVhWw",
     "secondarySource": "https://mp.weixin.qq.com/s/RIzClVzrOwxIlf0fEYB0-A",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "「幽岚诡画」活动。限时优惠价600「长鸣珠」购得套装【百诡志异】。此优惠价将于2026年1月23日5:00:00结束，届时将上架【商店】，并恢复原价1280「长鸣珠」。",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0103",
@@ -4956,11 +4956,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/qyqiHQ7QBw2qWfAu8Lcsng",
     "secondarySource": "https://mp.weixin.qq.com/s/luVvBIUKW6K8a6oRf3VFXg",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0104",
@@ -4994,11 +4994,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/Ghs_BhbcAbdBl4cxZ2_7gA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时优惠价300长鸣珠购得。温馨提示，此优惠价将于2026年1月30日5:00:00结束，届时将恢复原价680长鸣珠。",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0105",
@@ -5032,11 +5032,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/OV8pZqx2E2KyDHds4gp6qg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0106",
@@ -5073,11 +5073,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/OV8pZqx2E2KyDHds4gp6qg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0107",
@@ -5114,11 +5114,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/soQSlZOP-xbhBxOm-TeHYg",
     "secondarySource": "https://mp.weixin.qq.com/s/EXC8dueilXO4hkQva9igCA",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0108",
@@ -5152,11 +5152,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/soQSlZOP-xbhBxOm-TeHYg",
     "secondarySource": "https://mp.weixin.qq.com/s/EXC8dueilXO4hkQva9igCA",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0109",
@@ -5193,11 +5193,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/soQSlZOP-xbhBxOm-TeHYg",
     "secondarySource": "https://mp.weixin.qq.com/s/EXC8dueilXO4hkQva9igCA",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0110",
@@ -5234,11 +5234,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/soQSlZOP-xbhBxOm-TeHYg",
     "secondarySource": "https://mp.weixin.qq.com/s/EXC8dueilXO4hkQva9igCA",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0111",
@@ -5275,11 +5275,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/EXC8dueilXO4hkQva9igCA",
     "secondarySource": "https://mp.weixin.qq.com/s/EXC8dueilXO4hkQva9igCA",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0112",
@@ -5316,11 +5316,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/0f4GDsh63pc7kEA2kRN0Ug",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0113",
@@ -5357,11 +5357,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/KIdb20bcGwpcNxaXXD3cvQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "专属拾音券折扣，最高5折",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0114",
@@ -5398,11 +5398,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/KIdb20bcGwpcNxaXXD3cvQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0115",
@@ -5439,11 +5439,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/0f4GDsh63pc7kEA2kRN0Ug",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0116",
@@ -5477,11 +5477,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/KIdb20bcGwpcNxaXXD3cvQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "初五",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0117",
@@ -5518,11 +5518,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/tqYlJxJcjcNoDDQtFC4arg",
     "secondarySource": "https://mp.weixin.qq.com/s/0HcIZywM-_3WRB7R9d8m1Q",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时87天上架",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0118",
@@ -5559,11 +5559,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/tqYlJxJcjcNoDDQtFC4arg",
     "secondarySource": "https://mp.weixin.qq.com/s/0HcIZywM-_3WRB7R9d8m1Q",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时87天上架",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0119",
@@ -5597,11 +5597,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/tqYlJxJcjcNoDDQtFC4arg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "原价680长鸣珠，届时游侠可前往商店以折扣价300长鸣珠购得。此优惠价将于2026年3月13日5:00:00结束。",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0120",
@@ -5638,11 +5638,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/eQanJ_2iceSaJy6oK5gcEA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0121",
@@ -5679,11 +5679,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/eQanJ_2iceSaJy6oK5gcEA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0122",
@@ -5717,11 +5717,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/L2TRJWKW3bIlRFSpxMTC8w",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0123",
@@ -5758,11 +5758,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/lriqBwdq0CrlisTy5LuIow",
     "secondarySource": "https://mp.weixin.qq.com/s/0uSHFV78H_fhk6D_741tcg",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时91天上架",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0124",
@@ -5799,11 +5799,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/lqUultaWL5QXOM4UcnBNDA",
     "secondarySource": "https://mp.weixin.qq.com/s/0uSHFV78H_fhk6D_741tcg",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0125",
@@ -5840,11 +5840,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/xZSfxGrZQKwFZNBhihDh2g",
     "secondarySource": "https://mp.weixin.qq.com/s/EvBQHzGK16XymS6UF7NQLw",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0126",
@@ -5881,11 +5881,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/xZSfxGrZQKwFZNBhihDh2g",
     "secondarySource": "https://mp.weixin.qq.com/s/EvBQHzGK16XymS6UF7NQLw",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0127",
@@ -5922,11 +5922,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/rKhW_QGdNqVvilH7q_q7TA",
     "secondarySource": "https://mp.weixin.qq.com/s/-jZilOGZtsyR8LQLAhWTbg",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "680【长鸣珠】购得肯德基活动主题套装【颂吉祥】，支持使用【折音券】或【销音券】，膨胀成【定向销音券】后只需 380【长鸣珠",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0128",
@@ -5960,11 +5960,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/ql5EaAX2L0FTeGByPLCnww",
     "secondarySource": "https://mp.weixin.qq.com/s/-jZilOGZtsyR8LQLAhWTbg",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0129",
@@ -5998,11 +5998,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/SqXErNSwKaf47583P9yIoQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0130",
@@ -6036,11 +6036,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/SsYaHohfaBZ3au8yS78fJQ",
     "secondarySource": "https://mp.weixin.qq.com/s/r69UErhLw0KYu-pLZqZWDw",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "新活动【祓禊流觞】",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0131",
@@ -6077,11 +6077,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/0BhJHu0ZB9VqaxKJJvdu7w",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0132",
@@ -6115,11 +6115,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/0BhJHu0ZB9VqaxKJJvdu7w",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0133",
@@ -6153,11 +6153,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/6hLyNVVjtyBxsvx0Losdtg",
     "secondarySource": "https://mp.weixin.qq.com/s/g62v6Q7M5fPsEXDHG2pDeA",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "此优惠价将于2026年5月8日5:00:00结束，届时将恢复原价680长鸣珠。",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0134",
@@ -6194,11 +6194,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/6hLyNVVjtyBxsvx0Losdtg",
     "secondarySource": "https://mp.weixin.qq.com/s/g62v6Q7M5fPsEXDHG2pDeA",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时94天上架",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0135",
@@ -6235,11 +6235,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/5SS4k8-0-E8gb1OefZCQSA",
     "secondarySource": "https://mp.weixin.qq.com/s/g62v6Q7M5fPsEXDHG2pDeA",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时94天上架",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0136",
@@ -6273,11 +6273,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/KNY5tr9PNg1Hk3bo5IqpiQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0137",
@@ -6314,11 +6314,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/KNY5tr9PNg1Hk3bo5IqpiQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0138",
@@ -6355,11 +6355,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/o8vn-JyI8cW1hueHrszcsA",
     "secondarySource": "https://mp.weixin.qq.com/s/KNY5tr9PNg1Hk3bo5IqpiQ",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0139",
@@ -6393,11 +6393,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/BQe7mbqHoPZCW9sfr64qLg",
     "secondarySource": "https://mp.weixin.qq.com/s/2bBKxr8QcJmYqGECkUBDew",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0140",
@@ -6431,11 +6431,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/TAGGp8d9d2zRKyZNljD5yg",
     "secondarySource": "https://mp.weixin.qq.com/s/f7kZXO_25R02BFbgZKeNzA",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0141",
@@ -6472,11 +6472,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/TAGGp8d9d2zRKyZNljD5yg",
     "secondarySource": "https://mp.weixin.qq.com/s/f7kZXO_25R02BFbgZKeNzA",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0142",
@@ -6510,11 +6510,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/f7kZXO_25R02BFbgZKeNzA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时上架30天  价680长鸣珠。届时游侠可前往商店，以折扣价60长鸣珠购得",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0143",
@@ -6551,11 +6551,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/xxwEsm9edDAg1cX3f83Vfg",
     "secondarySource": "https://mp.weixin.qq.com/s/IbZsJEbAdge6NCNL2D2drg",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "原价1280长鸣珠。届时游侠前往商店，即可以优惠价680长鸣珠购得。",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0144",
@@ -6592,11 +6592,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/xxwEsm9edDAg1cX3f83Vfg",
     "secondarySource": "https://mp.weixin.qq.com/s/IbZsJEbAdge6NCNL2D2drg",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "原价680长鸣珠，将支持上下装拆分和染色。届时游侠前往商店，即可以限时优惠价300长鸣珠购得，此优惠价将于6月15日0点结束。",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0145",
@@ -6633,11 +6633,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/81tSHc847CVSggy5yfTFFA",
     "secondarySource": "https://mp.weixin.qq.com/s/2jaF24_NXYAcYQ4VypLH5g",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "原价1280长鸣珠。届时游侠前往商店，即可以限时优惠价680长鸣珠购得。限时折扣持续两周，将于2026年6月19日05:00恢复原价。",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0146",
@@ -6674,11 +6674,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/CM6hibYOhy8N6xhcpcKUvQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0147",
@@ -6715,11 +6715,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/CoIx_uvuZ7S7WqO8yMPvTA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时94天上架",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0148",
@@ -6756,11 +6756,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/CM6hibYOhy8N6xhcpcKUvQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0149",
@@ -6797,11 +6797,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/enE13_VKXMuDh5sHUZGTWA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0150",
@@ -6838,11 +6838,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/9X1PGJmRsZTP6DThHTOQOA",
     "secondarySource": "https://mp.weixin.qq.com/s/KY1462xXTI8YluPd49bETQ",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时94天上架",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0151",
@@ -6876,11 +6876,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/9X1PGJmRsZTP6DThHTOQOA",
     "secondarySource": "https://mp.weixin.qq.com/s/KY1462xXTI8YluPd49bETQ",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0153",
@@ -6917,11 +6917,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/FoM3saU5nnqW9VLT0bgpkw",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0154",
@@ -6958,11 +6958,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/XqqxhXZAI674lCUxLB-U-w",
     "secondarySource": "https://mp.weixin.qq.com/s/4jFe4uGRyGtAB6P5VJUA7A",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0155",
@@ -6999,11 +6999,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/T24so7UlF75Ui1bu_QwZzA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "此优惠价将于8月17日5点结束，届时将上架商店，并恢复原价1280长鸣珠。",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0156",
@@ -7040,11 +7040,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/MXo-Pz22QoQEZer1fr4o6g",
     "secondarySource": "https://mp.weixin.qq.com/s/pEebNoX6Q_NjaqLeJG4G5A",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0157",
@@ -7081,11 +7081,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/pEebNoX6Q_NjaqLeJG4G5A",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0158",
@@ -7122,11 +7122,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/MXo-Pz22QoQEZer1fr4o6g",
     "secondarySource": "https://mp.weixin.qq.com/s/pEebNoX6Q_NjaqLeJG4G5A",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0159",
@@ -7160,11 +7160,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/MXo-Pz22QoQEZer1fr4o6g",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0160",
@@ -7201,11 +7201,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/GO30xuNnZY_1eCRtiD5USg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0161",
@@ -7242,11 +7242,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/GO30xuNnZY_1eCRtiD5USg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0162",
@@ -7283,11 +7283,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/GO30xuNnZY_1eCRtiD5USg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0163",
@@ -7324,11 +7324,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/GO30xuNnZY_1eCRtiD5USg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0164",
@@ -7362,11 +7362,11 @@
     "charmValue": 0,
     "source": "http://mp.weixin.qq.com/s?__biz=Mzk0NTQwMTA2Ng==&mid=2247498712&idx=1&sn=3b6fa2df89dd95e16fe792fbb1e20502&chksm=c2a745c4ba3cb74faa71a0ce8d5ae3ec393b61a08b90ab4d04f62540414ed6597dfe906264c9&scene=126&sessionid=1791651894&subscene=7&clicktime=1791667361&enterid=1791667361#rd",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0165",
@@ -7403,11 +7403,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/HVLyP_IjnTrdUlZS-wWpwg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "此优惠价将于2026年8月28日5点结束，届时将恢复原价2580长鸣珠。",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0166",
@@ -7444,11 +7444,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/HVLyP_IjnTrdUlZS-wWpwg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时90天",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0167",
@@ -7485,11 +7485,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/5x5Q_aR7O-1LiiD99WC0aw",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0168",
@@ -7523,11 +7523,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/r4yAKOPSHxAsIDmKvtsvBA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0169",
@@ -7549,8 +7549,8 @@
     "availabilityRaw": "已下架",
     "listingStatus": "已下架",
     "saleMethod": "限时折扣直售",
-    "priceOriginal": "300珠",
-    "priceTier": "300珠",
+    "priceOriginal": "680珠",
+    "priceTier": "680珠",
     "channel": "商城",
     "styleTags": [],
     "tags": [
@@ -7561,11 +7561,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/6BlSIJefCLHEPwUPR5w-wg",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "全新套装【怪无常】将于8月27日0点至9月26日5点期间限时上架，支持新版上下装拆分及染色，原价680长鸣珠。9月10日5点前游侠前往商店，即可以限时优惠价300长鸣珠购得。",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0170",
@@ -7602,11 +7602,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/SDDzk4_JYP69SmgUAVReUA",
     "secondarySource": "https://mp.weixin.qq.com/s/t3zzpEwbY4p2GcUEiAZh3g",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时87天上架",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0171",
@@ -7643,11 +7643,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/YRgck5YILKn9hyfRxtKcQQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时上架90天",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0172",
@@ -7681,11 +7681,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/YRgck5YILKn9hyfRxtKcQQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0173",
@@ -7722,11 +7722,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/4D6j10pfoGzQeDkQTK7TLA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时87天上架",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0174",
@@ -7763,11 +7763,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/4D6j10pfoGzQeDkQTK7TLA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0175",
@@ -7804,11 +7804,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/7Pg4rInd48DJTPh9dRQJHQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0176",
@@ -7845,11 +7845,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/7Pg4rInd48DJTPh9dRQJHQ",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0177",
@@ -7883,11 +7883,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/Zn_7q-bFo-uO_eGlc-Mi_w",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（活动海报）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0178",
@@ -7924,11 +7924,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/yNU9TYkX7BzQFdtxqdlNlA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0179",
@@ -7965,11 +7965,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/Zn_7q-bFo-uO_eGlc-Mi_w",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0180",
@@ -8003,11 +8003,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/Zn_7q-bFo-uO_eGlc-Mi_w",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0181",
@@ -8044,11 +8044,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/yNU9TYkX7BzQFdtxqdlNlA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "限时90天上架",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0182",
@@ -8085,11 +8085,52 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/vuVGt0tPSfJTwnhBqsAejA",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
+  },
+  {
+    "id": "paid-0204",
+    "sourceRecordId": "reczz28LrhC7zog5",
+    "sourceOrder": 204,
+    "name": "瑶空翩影",
+    "type": "发型",
+    "acquisitionType": "付费",
+    "femaleImage": "",
+    "maleImage": "",
+    "commonImage": "./assets/paid/paid-0204-common.webp",
+    "sourceFemaleImage": "",
+    "sourceMaleImage": "",
+    "sourceCommonImage": "和鸣聆音转盘/瑶空翩影.png",
+    "onSaleDate": "2026-10-16",
+    "offSaleDate": "2027-02-22",
+    "returnStartDate": "",
+    "returnEndDate": "",
+    "availabilityRaw": "限时在架",
+    "listingStatus": "限时在架",
+    "saleMethod": "八音发",
+    "priceOriginal": "",
+    "priceTier": "",
+    "channel": "和鸣商店",
+    "styleTags": [
+      "双八音发"
+    ],
+    "tags": [
+      "八音发",
+      "双八音发"
+    ],
+    "series": "双八音发",
+    "infoStatus": "已确认",
+    "charmValue": 0,
+    "source": "https://mp.weixin.qq.com/s/-MlFyzSO5vp9mQOIHhllfA",
+    "secondarySource": "",
+    "verifiedAt": "2026-10-15",
+    "note": "限时129天上架",
+    "imageMatchStatus": "已匹配（活动海报）",
+    "validationNote": "本地索引图已唯一匹配",
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0203",
@@ -8115,22 +8156,22 @@
     "priceTier": "1280珠",
     "channel": "商城",
     "styleTags": [
-      "重阳节主题"
+      "重阳主题"
     ],
     "tags": [
       "限时直售",
-      "重阳节主题"
+      "重阳主题"
     ],
-    "series": "重阳节主题",
+    "series": "重阳主题",
     "infoStatus": "已确认",
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/mpCaP1eLUQi3CGs56jDlAw",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "已匹配（F/M）",
     "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "paid-0183",
@@ -8164,11 +8205,11 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/rsljYYE7FPsIMKR87phG6A",
     "secondarySource": "",
-    "verifiedAt": "2026-10-14",
+    "verifiedAt": "2026-10-15",
     "note": "",
     "imageMatchStatus": "预告待补图",
     "validationNote": "仅日历展示，不进入服装列表",
-    "updatedAt": "2026-10-14"
+    "updatedAt": "2026-10-15"
   },
   {
     "id": "set-0001",

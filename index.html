@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#eef1f3">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob:; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'none'; media-src 'self' data: blob:; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
   <title>燕云衣事通</title>
-  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./styles.css?v=1.1.0">
 </head>
 <body>
   <div class="app-boot" id="appBoot" role="status" aria-live="polite" aria-label="资源加载中">
@@ -23,7 +23,7 @@
         <h1 class="brand-wordmark"><span>燕云</span><b>衣事通</b></h1>
       </div>
       <div class="tool-meta">
-      <p class="tool-version">V1.0.0</p>
+      <p class="tool-version">V1.1.0</p>
         <p class="tool-creator">制作者：薄荷小鹿（燕云十六声）</p>
       </div>
     </header>
@@ -39,9 +39,14 @@
 
         <div class="subview-toolbar">
           <span class="subview-label">浏览方式</span>
-          <div class="view-switch" id="viewSwitch" role="group" aria-label="服装日历浏览模式">
-            <button type="button" class="is-active" data-view="calendar"><i aria-hidden="true">◷</i>日历</button>
-            <button type="button" data-view="list"><i aria-hidden="true">☷</i>列表</button>
+          <div class="subview-actions">
+            <button class="share-toolbar-button" id="generateShareButton" type="button" aria-label="生成当前筛选的分享图" hidden>
+              <span>生成分享图</span>
+            </button>
+            <div class="view-switch" id="viewSwitch" role="group" aria-label="服装日历浏览模式">
+              <button type="button" class="is-active" data-view="calendar"><i aria-hidden="true">◷</i>日历</button>
+              <button type="button" data-view="list"><i aria-hidden="true">☷</i>列表</button>
+            </div>
           </div>
         </div>
 
@@ -92,7 +97,7 @@
           <div class="paid-list-tools">
             <label class="paid-search"><span class="sr-only">搜索服装名字、直售价格或风格</span><input id="paidSearchInput" type="search" placeholder="搜索名字、直售价格或风格"></label>
             <select id="paidRangeFilter" aria-label="筛选上架时间"><option value="all">全部时间</option><option value="month">本月</option><option value="quarter">本季度</option><option value="year">本年</option><option value="custom">自定义</option></select>
-            <select id="paidStatusFilter" aria-label="筛选在架状态"><option value="all">全部状态</option><option value="常驻">常驻</option><option value="返场中">返场中</option><option value="已下架">已下架</option></select>
+            <select id="paidStatusFilter" aria-label="筛选状态或心头好"><option value="all">全部状态</option><option value="常驻">常驻</option><option value="返场中">返场中</option><option value="已下架">已下架</option><option value="favorite">心头好</option></select>
             <div class="paid-method-picker">
               <button class="paid-method-trigger" id="paidMethodFilter" type="button" aria-label="筛选获取途径" aria-expanded="false" aria-controls="paidMethodPanel"><span>获取</span></button>
               <div class="paid-method-panel" id="paidMethodPanel" hidden>
@@ -137,9 +142,6 @@
             <div class="outfit-list" id="paidList"></div>
             <div class="empty-state paid-list-empty" id="paidListEmpty" hidden>这个时间范围暂时没有服装记录。</div>
           </div>
-<button class="share-filter-fab" id="generateShareButton" type="button" aria-label="分享本次筛选" hidden>
-            <i aria-hidden="true">↗</i><span>分享本次筛选</span>
-          </button>
         </section>
       </section>
 
@@ -243,6 +245,10 @@
         <span aria-hidden="true">✦</span><b>免费风华</b>
       </button>
     </nav>
+
+    <button class="back-to-top-fab" id="backToTopButton" type="button" aria-label="回到列表顶部" aria-hidden="true" tabindex="-1">
+      <span aria-hidden="true">↑</span><b>TOP</b>
+    </button>
   </div>
 
   <div class="sheet-backdrop" id="shareBackdrop" hidden>
@@ -252,7 +258,7 @@
         <div><p class="section-kicker">3:4 分享图</p><h2 id="shareTitle">分享本次筛选</h2></div>
         <button id="closeShareButton" class="icon-button" type="button" aria-label="关闭分享图">×</button>
       </div>
-      <p class="share-hint">严格使用当前列表的时间、状态、获取途径和搜索条件；首图为总结，后续逐页展示外观和评论。</p>
+      <p class="share-hint">使用当前列表筛选；首图为衣橱总结，后续页面集中展示服装、态度与短评。</p>
       <div class="share-page-bar">
         <button id="previousSharePage" class="share-page-button" type="button" aria-label="上一张">‹</button>
         <div><b id="sharePageTitle">总结报告</b><span id="sharePageLabel">1 / 1</span></div>
@@ -278,7 +284,7 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
-  <script src="./data.js"></script>
-  <script src="./app.js"></script>
+  <script src="./data.js?v=1.1.0"></script>
+  <script src="./app.js?v=1.1.0"></script>
 </body>
 </html>
