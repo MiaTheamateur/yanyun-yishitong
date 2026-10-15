@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#eef1f3">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob:; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'none'; media-src 'self' data: blob:; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
   <title>燕云衣事通</title>
-  <link rel="stylesheet" href="./styles.css?v=1.1.0">
+  <link rel="stylesheet" href="./styles.css?v=1.1.4">
 </head>
 <body>
   <div class="app-boot" id="appBoot" role="status" aria-live="polite" aria-label="资源加载中">
@@ -23,7 +23,7 @@
         <h1 class="brand-wordmark"><span>燕云</span><b>衣事通</b></h1>
       </div>
       <div class="tool-meta">
-      <p class="tool-version">V1.1.0</p>
+      <p class="tool-version">V1.1.4</p>
         <p class="tool-creator">制作者：薄荷小鹿（燕云十六声）</p>
       </div>
     </header>
@@ -140,6 +140,7 @@
           <div class="status-summary" id="statusSummary" aria-label="记录汇总"></div>
           <div class="paid-list-scroll-region">
             <div class="outfit-list" id="paidList"></div>
+            <button class="free-load-more" id="paidLoadMoreButton" type="button" hidden>继续加载</button>
             <div class="empty-state paid-list-empty" id="paidListEmpty" hidden>这个时间范围暂时没有服装记录。</div>
           </div>
         </section>
@@ -199,7 +200,6 @@
         </section>
         <div class="free-search-row" id="freeSearchRow" hidden>
           <label class="free-search-box"><span aria-hidden="true">⌕</span><input id="freeSearchInput" type="search" placeholder="搜索名字、套装或获取方式" autocomplete="off"></label>
-          <button class="free-missing-toggle is-active" id="freeMissingToggle" type="button" aria-pressed="true">仅看未获得</button>
         </div>
         <div class="free-availability-segment" id="freeAvailabilityFilters" role="group" aria-label="免费风华获取状态" hidden>
           <button type="button" class="is-active" data-free-availability="all">全部</button>
@@ -214,7 +214,7 @@
             <i aria-hidden="true">⌄</i>
           </button>
           <div class="free-result-actions">
-             <span id="freeFilterKindLabel">外观大类</span>
+            <button class="free-missing-toggle" id="freeMissingToggle" type="button" aria-pressed="false">显示未获得</button>
             <button id="selectFreeCategoryButton" type="button">全选当前</button>
           </div>
         </div>
@@ -284,7 +284,8 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
-  <script src="./data.js?v=1.1.0"></script>
-  <script src="./app.js?v=1.1.0"></script>
+  <script src="./boot-guard.js?v=1.1.4"></script>
+  <script src="./data.js?v=1.1.4"></script>
+  <script src="./app.js?v=1.1.4"></script>
 </body>
 </html>

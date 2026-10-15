@@ -27,7 +27,7 @@
   var REVIEW_RED = '#9b3f45';
   var FREE_CATALOG_TYPE_ORDER = ['套装', '发型', '衣服', '首饰', '配饰', '帽子', '披挂', '武器'];
   var FREE_CATALOG_TYPE_LABELS = { '衣服': '服装' };
-  var FREE_CLASSIFICATION_ALIASES = { '逐战商店': '常驻玩法', '2026/12/25': '野外首领' };
+  var FREE_CLASSIFICATION_ALIASES = { '2026/12/25': '野外首领' };
   var FREE_CLASSIFICATION_GROUPS = [
     { label: '不错小店', tags: ['不错小店'], children: [] },
     { label: '不肝商店', tags: ['不肝商店'], children: [] },
@@ -36,7 +36,7 @@
     { label: '和鸣', tags: ['和鸣累抽奖励', '和鸣池内奖励', '天精地华商店'], children: ['和鸣累抽奖励', '和鸣池内奖励', '天精地华商店'] },
     { label: '玉池', tags: ['常驻玉池', '限定玉池'], children: ['常驻玉池', '限定玉池'] },
     { label: '战斗', tags: ['PVE战斗', 'PVP战斗'], children: ['PVE战斗', 'PVP战斗'] },
-    { label: '常驻玩法', tags: ['常驻玩法', '门派玩法', '悬赏商店', '家业玩法'], children: ['门派玩法', '悬赏商店', '家业玩法'] },
+    { label: '常驻玩法', tags: ['常驻玩法', '逐战商店', '门派玩法', '悬赏商店', '家业玩法'], children: ['逐战商店', '门派玩法', '悬赏商店', '家业玩法'] },
     { label: '活动', tags: ['限时活动', '其他活动'], children: ['限时活动', '其他活动'] }
   ];
   var data = Array.isArray(window.OUTFIT_DATA) ? window.OUTFIT_DATA : [];
@@ -57,10 +57,11 @@
   });
   var state = loadState();
   var initialCalendarDate = getReferenceDate();
+  var PAID_PAGE_SIZE = 18;
   var FREE_PAGE_SIZE = 18;
   var CALENDAR_MINIMUM = '2024-12';
   var view = {
-    mode: 'calendar', page: 'calendar', paidSearch: '', paidRange: 'all', paidStartDate: '', paidEndDate: '', paidStatus: 'all', paidRecordStatus: 'all', paidMethods: [], paidWheelIncludeVariantHair: true, paidListeningTypes: [], paidRetailPrices: [], paidHalfPricePrices: [], freeMode: 'catalog', freeLookupClassification: 'all', freeSearch: '', freeMissingOnly: false, freeCatalogFilter: 'all', freeAvailability: 'all', freeProgressScope: 'current', freeGender: state.freeGender === 'M' ? 'M' : 'F', freeVisibleLimit: FREE_PAGE_SIZE, selectedDate: '', editingPaid: {}, expandedSets: {},
+    mode: 'calendar', page: 'calendar', paidSearch: '', paidRange: 'all', paidStartDate: '', paidEndDate: '', paidStatus: 'all', paidRecordStatus: 'all', paidMethods: [], paidWheelIncludeVariantHair: true, paidListeningTypes: [], paidRetailPrices: [], paidHalfPricePrices: [], paidVisibleLimit: PAID_PAGE_SIZE, freeMode: 'catalog', freeLookupClassification: 'all', freeSearch: '', freeMissingOnly: false, freeCatalogFilter: 'all', freeAvailability: 'all', freeProgressScope: 'current', freeGender: state.freeGender === 'M' ? 'M' : 'F', freeVisibleLimit: FREE_PAGE_SIZE, selectedDate: '', editingPaid: {}, expandedSets: {},
     calendarYear: initialCalendarDate.getFullYear(), calendarMonth: initialCalendarDate.getMonth()
   };
   var shareState = { page: 0, pages: [], dataUrls: [], filterLabel: '全部时间', filterRules: [] };
@@ -79,12 +80,12 @@
     calendarSelectionHint: document.getElementById('calendarSelectionHint'), calendarEmpty: document.getElementById('calendarEmpty'),
     scheduleList: document.getElementById('scheduleList'), paidList: document.getElementById('paidList'), paidSearchInput: document.getElementById('paidSearchInput'),
     paidRangeFilter: document.getElementById('paidRangeFilter'), paidStatusFilter: document.getElementById('paidStatusFilter'), paidMethodFilter: document.getElementById('paidMethodFilter'), paidMethodSummary: document.getElementById('paidMethodSummary'), paidMethodPanel: document.getElementById('paidMethodPanel'), paidMethodOptions: document.getElementById('paidMethodOptions'), clearPaidMethodsButton: document.getElementById('clearPaidMethodsButton'), paidMethodRefinements: document.getElementById('paidMethodRefinements'), paidWheelRefinement: document.getElementById('paidWheelRefinement'), paidWheelVariantHair: document.getElementById('paidWheelVariantHair'), paidListeningRefinement: document.getElementById('paidListeningRefinement'), paidListeningOptions: document.getElementById('paidListeningOptions'), paidRetailRefinement: document.getElementById('paidRetailRefinement'), paidRetailPriceOptions: document.getElementById('paidRetailPriceOptions'), paidHalfPriceRefinement: document.getElementById('paidHalfPriceRefinement'), paidHalfPriceOptions: document.getElementById('paidHalfPriceOptions'),
-    paidCustomRange: document.getElementById('paidCustomRange'), paidStartDate: document.getElementById('paidStartDate'), paidEndDate: document.getElementById('paidEndDate'), applyPaidRangeButton: document.getElementById('applyPaidRangeButton'), paidRangeError: document.getElementById('paidRangeError'), paidResultHint: document.getElementById('paidResultHint'), paidListEmpty: document.getElementById('paidListEmpty'),
+    paidCustomRange: document.getElementById('paidCustomRange'), paidStartDate: document.getElementById('paidStartDate'), paidEndDate: document.getElementById('paidEndDate'), applyPaidRangeButton: document.getElementById('applyPaidRangeButton'), paidRangeError: document.getElementById('paidRangeError'), paidResultHint: document.getElementById('paidResultHint'), paidListEmpty: document.getElementById('paidListEmpty'), paidLoadMoreButton: document.getElementById('paidLoadMoreButton'),
     monthStartCount: document.getElementById('monthStartCount'), monthEndCount: document.getElementById('monthEndCount'),
     recordProgress: document.getElementById('recordProgress'), statusSummary: document.getElementById('statusSummary'),
     freePage: document.getElementById('freePage'), freeModeSwitch: document.getElementById('freeModeSwitch'), freeMissionCard: document.getElementById('freeMissionCard'), freeMissionMissingCount: document.getElementById('freeMissionMissingCount'), freeMissionMissingCharm: document.getElementById('freeMissionMissingCharm'), freeMissionHint: document.getElementById('freeMissionHint'), freeProgressCard: document.getElementById('freeProgressCard'), freeRoutePanel: document.getElementById('freeRoutePanel'), freeRouteOptions: document.getElementById('freeRouteOptions'), freeRouteSubgroups: document.getElementById('freeRouteSubgroups'), freeSearchRow: document.getElementById('freeSearchRow'), freeSearchInput: document.getElementById('freeSearchInput'), freeMissingToggle: document.getElementById('freeMissingToggle'), freeCatalogToolbar: document.getElementById('freeCatalogToolbar'), freeResultTitle: document.getElementById('freeResultTitle'), freeResultSubtitle: document.getElementById('freeResultSubtitle'),
     freeFilters: document.getElementById('freeFilters'), freeAvailabilityFilters: document.getElementById('freeAvailabilityFilters'), freeGenderSwitch: document.getElementById('freeGenderSwitch'),
-    categoryPickerButton: document.getElementById('categoryPickerButton'), selectedFreeCategoryLabel: document.getElementById('selectedFreeCategoryLabel'), freeFilterKindLabel: document.getElementById('freeFilterKindLabel'), freeFilterNote: document.getElementById('freeFilterNote'),
+    categoryPickerButton: document.getElementById('categoryPickerButton'), selectedFreeCategoryLabel: document.getElementById('selectedFreeCategoryLabel'), freeFilterNote: document.getElementById('freeFilterNote'),
     freeResultCount: document.getElementById('freeResultCount'), categoryInlinePanel: document.getElementById('categoryInlinePanel'),
     selectFreeCategoryButton: document.getElementById('selectFreeCategoryButton'), freeList: document.getElementById('freeList'), freeLoadMoreButton: document.getElementById('freeLoadMoreButton'),
     freeCharmEarned: document.getElementById('freeCharmEarned'), freeCharmTotal: document.getElementById('freeCharmTotal'),
@@ -472,7 +473,7 @@
     var requestedMonth = match[1] + '-' + padNumber(monthNumber);
     var allowedMonth = requestedMonth < CALENDAR_MINIMUM ? CALENDAR_MINIMUM : requestedMonth;
     var allowedParts = /^(\d{4})-(\d{2})$/.exec(allowedMonth);
-    view.calendarYear = Number(allowedParts[1]); view.calendarMonth = Number(allowedParts[2]) - 1; view.selectedDate = ''; renderCalendar(); renderPaidList();
+    view.calendarYear = Number(allowedParts[1]); view.calendarMonth = Number(allowedParts[2]) - 1; view.selectedDate = ''; renderCalendar();
   }
 
   function shiftCalendarMonth(offset) {
@@ -482,7 +483,7 @@
   function goToToday() {
     var today = new Date();
     view.calendarYear = today.getFullYear(); view.calendarMonth = today.getMonth(); view.selectedDate = '';
-    renderCalendar(); renderPaidList(); showToast('已回到今天');
+    renderCalendar(); showToast('已回到今天');
   }
 
   function selectCalendarDate(key) {
@@ -498,11 +499,19 @@
   function renderPaidList() {
     el.paidList.replaceChildren();
     var visible = getFilteredPaidItems();
-    visible.forEach(function (item, index) { el.paidList.appendChild(createPaidCard(item, index, 'list')); });
-    el.paidResultHint.textContent = paidRangeLabel(view.paidRange) + ' · 显示 ' + visible.length + '/' + paidListItems.length + ' 项';
+    var rendered = visible.slice(0, view.paidVisibleLimit);
+    rendered.forEach(function (item, index) { el.paidList.appendChild(createPaidCard(item, index, 'list')); });
+    el.paidResultHint.textContent = paidRangeLabel(view.paidRange) + ' · 显示 ' + rendered.length + '/' + visible.length + ' 项';
     el.paidListEmpty.hidden = visible.length > 0;
+    var remaining = Math.max(0, visible.length - rendered.length);
+    el.paidLoadMoreButton.hidden = remaining === 0;
+    el.paidLoadMoreButton.textContent = remaining > 0 ? '继续加载 ' + Math.min(PAID_PAGE_SIZE, remaining) + ' 项 · 还剩 ' + remaining + ' 项' : '已显示全部';
     el.generateShareButton.disabled = visible.length === 0;
     renderStatusSummary(getFilteredPaidItems(true));
+  }
+
+  function resetPaidListPage() {
+    view.paidVisibleLimit = PAID_PAGE_SIZE;
   }
 
   function getFilteredPaidItems(ignoreRecordStatus) {
@@ -590,11 +599,25 @@
 
   function activePaidFilterRules() {
     var rules = [];
-    if (view.paidRange !== 'all') rules.push('时间：' + paidRangeLabel(view.paidRange));
-    if (view.paidSearch) rules.push('搜索：“' + view.paidSearch + '”');
+    if (view.paidRange !== 'all') rules.push('上架时间：' + paidRangeLabel(view.paidRange));
+    if (view.paidSearch) {
+      var searchQuery = view.paidSearch.trim();
+      var normalizedQuery = searchQuery.toLowerCase();
+      var priceSearch = /^\d+\s*(?:珠)?$/.test(searchQuery) && paidListItems.some(function (item) {
+        return String(item.priceOriginal || '').toLowerCase().indexOf(normalizedQuery) >= 0;
+      });
+      var styleSearch = !priceSearch && paidListItems.some(function (item) {
+        return (item.styleTags || []).some(function (tag) {
+          return String(tag).toLowerCase().indexOf(normalizedQuery) >= 0;
+        });
+      });
+      if (priceSearch) rules.push('直售价格：' + searchQuery);
+      else if (styleSearch) rules.push('风格标签：' + searchQuery);
+      else rules.push('搜索：“' + searchQuery + '”');
+    }
     if (view.paidStatus === 'favorite') rules.push('记录：心头好');
-    else if (view.paidStatus !== 'all') rules.push('在架：' + view.paidStatus);
-    if (view.paidMethods.length) rules.push('获取：' + paidMethodFilterLabels().join('、'));
+    else if (view.paidStatus !== 'all') rules.push('在架情况：' + view.paidStatus);
+    if (view.paidMethods.length) rules.push('售卖形式：' + paidMethodFilterLabels().join('、'));
     if (view.paidRecordStatus !== 'all') rules.push('态度：' + (STATUS[view.paidRecordStatus] || '待整理'));
     return rules;
   }
@@ -623,7 +646,7 @@
     if (start > end) {
       el.paidRangeError.textContent = '开始日期不能晚于结束日期'; el.paidRangeError.hidden = false; return;
     }
-    view.paidStartDate = start; view.paidEndDate = end; el.paidRangeError.hidden = true; renderPaidList();
+    view.paidStartDate = start; view.paidEndDate = end; el.paidRangeError.hidden = true; resetPaidListPage(); renderPaidList();
   }
 
   function hongKongDateKey(timestamp) {
@@ -677,6 +700,7 @@
   }
 
   function freeClassification(item) {
+    if (item && item.source === '不肝-逐战商店') return '逐战商店';
     var tags = (item && item.tags || []).filter(function (tag) { return tag && tag !== '套装' && tag !== '套装部件'; });
     var classification = tags[0] || '未分类';
     return FREE_CLASSIFICATION_ALIASES[classification] || classification;
@@ -839,10 +863,8 @@
     var todayKey = prioritiseDeadline ? hongKongDateKey() : '';
     return sourceItems.filter(function (item) {
       if (!matchesFreeGender(item) || !freeSearchMatches(item)) return false;
-      if (view.freeMode === 'lookup') {
-        if (!matchesFreeClassificationSelection(item, view.freeLookupClassification)) return false;
-        if (view.freeMissingOnly && isFreeRequirementComplete(item)) return false;
-      }
+      if (view.freeMode === 'lookup' && !matchesFreeClassificationSelection(item, view.freeLookupClassification)) return false;
+      if (view.freeMissingOnly && isFreeRequirementComplete(item)) return false;
       var selectedFilter = activeFreeFilter();
       var itemFilter = freeCatalogType(item);
       var matchesCategory = selectedFilter === 'all' || itemFilter === selectedFilter;
@@ -1140,7 +1162,6 @@
       button.innerHTML = '<span>' + escapeHtml(classification === 'all' ? '全部分类' : (FREE_CATALOG_TYPE_LABELS[classification] || classification)) + '</span><small>' + count + '</small><i>✓</i>';
       el.freeFilters.appendChild(button);
     });
-    el.freeFilterKindLabel.textContent = '外观大类';
     el.freeFilterNote.textContent = '套装内的组件不计入其他筛选';
     el.freeFilters.setAttribute('aria-label', '按外观大类筛选免费风华');
   }
@@ -1185,7 +1206,7 @@
       title: view.freeLookupClassification === 'all' ? selectedLabel : freeClassificationSelectionLabel(view.freeLookupClassification) + ' · ' + selectedLabel,
       subtitle: view.freeMissingOnly ? '仅显示尚未标记获得的结果' : '按分类标签、外观大类和状态快速查找'
     };
-    return { title: selectedFilter === 'all' ? '全部图鉴' : selectedLabel, subtitle: '按外观大类与风华值浏览已收录外观' };
+    return { title: selectedFilter === 'all' ? '全部图鉴' : selectedLabel, subtitle: view.freeMissingOnly ? '仅显示尚未标记获得的外观' : '按外观大类与风华值浏览已收录外观' };
   }
 
   function renderFreeModeChrome(visible) {
@@ -1195,7 +1216,7 @@
     el.freeProgressCard.hidden = !catalogMode;
     el.freeRoutePanel.hidden = view.freeMode !== 'lookup';
     el.freeSearchRow.hidden = view.freeMode !== 'lookup';
-    el.freeMissingToggle.hidden = view.freeMode !== 'lookup';
+    el.freeMissingToggle.hidden = false;
     el.freeAvailabilityFilters.hidden = false;
     el.freeCatalogToolbar.hidden = false;
     el.freeModeSwitch.querySelectorAll('[data-free-mode]').forEach(function (button) {
@@ -1204,7 +1225,7 @@
     });
     el.freeMissingToggle.classList.toggle('is-active', view.freeMissingOnly);
     el.freeMissingToggle.setAttribute('aria-pressed', view.freeMissingOnly ? 'true' : 'false');
-    el.freeMissingToggle.textContent = view.freeMissingOnly ? '仅看未获得' : '显示全部';
+    el.freeMissingToggle.textContent = view.freeMissingOnly ? '显示全部' : '显示未获得';
     var copy = freeModeCopy(visible);
     el.freeResultTitle.textContent = copy.title; el.freeResultSubtitle.textContent = copy.subtitle;
     renderFreeMissionSummary(); renderFreeRouteOptions();
@@ -1336,7 +1357,8 @@
     var card = container.querySelector('.outfit-card[data-id="' + id + '"]');
     var previousTop = card ? card.getBoundingClientRect().top : null;
     var previousScrollY = window.scrollY;
-    renderPaidList(); renderCalendarSelection();
+    if (view.mode === 'list') renderPaidList();
+    else renderCalendarSelection();
     var nextCard = container.querySelector('.outfit-card[data-id="' + id + '"]');
     if (nextCard && previousTop !== null) window.scrollBy(0, nextCard.getBoundingClientRect().top - previousTop);
     else window.scrollTo(0, previousScrollY);
@@ -1383,11 +1405,16 @@
     showToast((target > current ? '已记录 +' : '已取消 ') + formatNumber(delta) + ' 风华 · ' + target + '/' + maxFreeCopies(item) + ' 件');
   }
 
-  function toggleFreeCategorySelection() {
+  function toggleFreeCategorySelection(confirmed) {
     var visible = getVisibleFreeItems(); if (!visible.length) return;
     var before = getFreeCharmProgress().allEarned;
     var allOwnedBefore = visible.every(isFreeRequirementComplete);
     var targetOwned = !allOwnedBefore;
+    if (confirmed !== true) {
+      var actionLabel = targetOwned ? '全选当前' : '取消全选';
+      var confirmation = actionLabel + '会批量修改当前筛选下的 ' + visible.length + ' 项记录，确定继续吗？';
+      if (!window.confirm(confirmation)) return false;
+    }
     var processedGroups = {};
     visible.forEach(function (item) {
       var group = exclusiveGroupFor(item);
@@ -1410,6 +1437,7 @@
     var delta = Math.abs(getFreeCharmProgress().allEarned - before);
     if (targetOwned) showToast('本类已全选 · +' + formatNumber(delta) + ' 图鉴风华');
     else showToast('已取消本类 · ' + formatNumber(delta) + ' 图鉴风华');
+    return true;
   }
 
   function switchPage(page) {
@@ -1418,6 +1446,8 @@
     document.querySelectorAll('.nav-item').forEach(function (button) { button.classList.toggle('is-active', button.dataset.tab === page); });
     document.querySelector('.app-shell').classList.toggle('is-free-active', page === 'free');
     document.querySelector('.app-shell').classList.toggle('is-paid-list-active', page === 'calendar' && view.mode === 'list');
+    if (page === 'free') renderFreeList();
+    else if (view.mode === 'list') renderPaidList();
     updateShareButtonVisibility();
     window.scrollTo(0, 0);
     scheduleBackToTopVisibility();
@@ -1438,7 +1468,9 @@
 
   function syncBackToTopVisibility() {
     backToTopFrame = 0;
-    var visible = view.page === 'calendar' && view.mode === 'list' && window.scrollY > backToTopThreshold();
+    var supportedPage = (view.page === 'calendar' && view.mode === 'list') || view.page === 'free';
+    var visible = supportedPage && window.scrollY > backToTopThreshold();
+    el.backToTopButton.setAttribute('aria-label', view.page === 'free' ? '回到免费风华顶部' : '回到服装列表顶部');
     el.backToTopButton.classList.toggle('is-visible', visible);
     el.backToTopButton.setAttribute('aria-hidden', visible ? 'false' : 'true');
     el.backToTopButton.tabIndex = visible ? 0 : -1;
@@ -1506,6 +1538,42 @@
     ctx.fillStyle = '#77716a'; ctx.font = '20px sans-serif'; ctx.textAlign = 'right'; ctx.fillText('制作者：薄荷小鹿（燕云十六声）', 1028, 53); ctx.textAlign = 'left';
   }
 
+  function drawShareFilterRules(ctx, rules, top) {
+    var panelX = 90; var panelWidth = 900; var contentX = 132; var contentWidth = 816;
+    var chipHeight = 48; var rowGap = 12; var chipGap = 12;
+    var rows = []; var row = 0; var cursorX = 0;
+    ctx.font = '600 22px sans-serif';
+    rules.forEach(function (rule) {
+      var display = fitText(ctx, rule, contentWidth - 48);
+      var width = Math.min(contentWidth, Math.ceil(ctx.measureText(display).width) + 48);
+      if (cursorX > 0 && cursorX + width > contentWidth) { row += 1; cursorX = 0; }
+      rows.push({ text: display, row: row, offset: cursorX, width: width });
+      cursorX += width + chipGap;
+    });
+    var rowCount = Math.max(1, row + 1);
+    var panelHeight = 106 + rowCount * chipHeight + Math.max(0, rowCount - 1) * rowGap + 26;
+
+    ctx.fillStyle = '#e8eef2'; roundRect(ctx, panelX, top, panelWidth, panelHeight, 20); ctx.fill();
+    ctx.strokeStyle = '#c8d4dc'; ctx.lineWidth = 2; roundRect(ctx, panelX, top, panelWidth, panelHeight, 20); ctx.stroke();
+    ctx.fillStyle = '#1f5d91'; roundRect(ctx, panelX, top, 10, panelHeight, 5); ctx.fill();
+    ctx.fillStyle = '#172637'; ctx.font = '700 32px sans-serif'; ctx.fillText('筛选规则', contentX, top + 55);
+
+    var countText = rules.length + ' 项条件';
+    ctx.font = '700 20px sans-serif';
+    var countWidth = Math.ceil(ctx.measureText(countText).width) + 28;
+    var countX = panelX + panelWidth - countWidth - 30;
+    ctx.fillStyle = '#dbe6ed'; roundRect(ctx, countX, top + 23, countWidth, 42, 21); ctx.fill();
+    ctx.fillStyle = '#315d80'; ctx.fillText(countText, countX + 14, top + 51);
+
+    rows.forEach(function (item) {
+      var x = contentX + item.offset; var y = top + 88 + item.row * (chipHeight + rowGap);
+      ctx.fillStyle = '#fffdf8'; roundRect(ctx, x, y, item.width, chipHeight, 14); ctx.fill();
+      ctx.strokeStyle = '#c4d0d8'; ctx.lineWidth = 1.5; roundRect(ctx, x, y, item.width, chipHeight, 14); ctx.stroke();
+      ctx.fillStyle = '#1f5d91'; ctx.beginPath(); ctx.arc(x + 18, y + chipHeight / 2, 4, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = '#344757'; ctx.font = '600 22px sans-serif'; ctx.fillText(item.text, x + 32, y + 32);
+    });
+  }
+
   function drawShareSummary(items) {
     var canvas = el.shareCanvas; var ctx = canvas.getContext('2d'); var counts = getCounts(items);
     paintShareBase(ctx);
@@ -1527,11 +1595,7 @@
       ctx.fillStyle = '#48443f'; ctx.font = '700 27px sans-serif'; ctx.fillText(block[0], x + 28, 814);
     });
     if (shareState.filterRules.length) {
-      var rulesTop = 914;
-      ctx.fillStyle = '#fffdf8'; roundRect(ctx, 90, rulesTop, 900, 164, 20); ctx.fill();
-      ctx.fillStyle = '#315d80'; ctx.font = '700 25px sans-serif'; ctx.fillText('筛选规则', 132, rulesTop + 46);
-      ctx.fillStyle = '#5f5a54'; ctx.font = '24px sans-serif';
-      wrapText(ctx, shareState.filterRules.join('　·　'), 132, rulesTop + 90, 816, 31, 3);
+      drawShareFilterRules(ctx, shareState.filterRules, 914);
     }
   }
 
@@ -1614,7 +1678,7 @@
       if (listingText) drawSharePill(ctx, listingText, textRight - listingWidth, top + 20, '#eaf1f1', '#315d63', listingWidth);
 
       ctx.fillStyle = '#716b63'; ctx.font = '20px sans-serif';
-      ctx.fillText(fitText(ctx, formatDate(item.onSaleDate), contentWidth), textLeft, top + 79);
+      ctx.fillText(fitText(ctx, formatDate(item.onSaleDate) + ' 上架', contentWidth), textLeft, top + 79);
 
       if (saved.review) {
         ctx.fillStyle = REVIEW_RED; ctx.font = '700 30px serif';
@@ -1716,38 +1780,41 @@
   el.backToTopButton.addEventListener('click', returnToListTop);
   el.paidList.addEventListener('click', handlePaidCardAction);
   el.paidList.addEventListener('input', function (event) { if (event.target.matches('input[data-id]')) setReview(event.target.dataset.id, event.target.value); });
-  el.paidSearchInput.addEventListener('input', function () { view.paidSearch = el.paidSearchInput.value.trim(); renderPaidList(); });
+  el.paidSearchInput.addEventListener('input', function () { view.paidSearch = el.paidSearchInput.value.trim(); resetPaidListPage(); renderPaidList(); });
   el.paidRangeFilter.addEventListener('change', function () {
     view.paidRange = el.paidRangeFilter.value;
     el.paidCustomRange.hidden = view.paidRange !== 'custom'; el.paidRangeError.hidden = true;
+    resetPaidListPage();
     if (view.paidRange !== 'custom' || (view.paidStartDate && view.paidEndDate)) renderPaidList();
   });
-  el.paidStatusFilter.addEventListener('change', function () { view.paidStatus = el.paidStatusFilter.value; renderPaidList(); });
+  el.paidStatusFilter.addEventListener('change', function () { view.paidStatus = el.paidStatusFilter.value; resetPaidListPage(); renderPaidList(); });
   el.statusSummary.addEventListener('click', function (event) {
     var cell = event.target.closest('[data-status-filter]');
     if (!cell) return;
     var next = cell.dataset.statusFilter;
     view.paidRecordStatus = view.paidRecordStatus === next ? 'all' : next;
+    resetPaidListPage();
     renderPaidList();
   });
   el.paidMethodFilter.addEventListener('click', function () { setPaidMethodPanelOpen(el.paidMethodPanel.hidden); });
   el.paidMethodOptions.addEventListener('change', function () {
     view.paidMethods = Array.from(el.paidMethodOptions.querySelectorAll('input:checked')).map(function (input) { return input.value; });
-    renderPaidMethodSummary(); renderPaidMethodRefinements(); renderPaidList();
+    resetPaidListPage(); renderPaidMethodSummary(); renderPaidMethodRefinements(); renderPaidList();
   });
   el.paidMethodRefinements.addEventListener('change', function (event) {
     if (event.target === el.paidWheelVariantHair) view.paidWheelIncludeVariantHair = el.paidWheelVariantHair.checked;
     view.paidListeningTypes = Array.from(el.paidListeningOptions.querySelectorAll('input:checked')).map(function (input) { return input.value; });
     view.paidRetailPrices = Array.from(el.paidRetailPriceOptions.querySelectorAll('input:checked')).map(function (input) { return input.value; });
     view.paidHalfPricePrices = Array.from(el.paidHalfPriceOptions.querySelectorAll('input:checked')).map(function (input) { return input.value; });
-    renderPaidMethodSummary(); renderPaidList();
+    resetPaidListPage(); renderPaidMethodSummary(); renderPaidList();
   });
   el.clearPaidMethodsButton.addEventListener('click', function () {
     el.paidMethodOptions.querySelectorAll('input').forEach(function (input) { input.checked = false; });
     view.paidMethods = []; view.paidWheelIncludeVariantHair = true; view.paidListeningTypes = []; view.paidRetailPrices = []; view.paidHalfPricePrices = [];
-    renderPaidMethodSummary(); renderPaidMethodRefinements(); renderPaidList();
+    resetPaidListPage(); renderPaidMethodSummary(); renderPaidMethodRefinements(); renderPaidList();
   });
   el.applyPaidRangeButton.addEventListener('click', applyCustomPaidRange);
+  el.paidLoadMoreButton.addEventListener('click', function () { view.paidVisibleLimit += PAID_PAGE_SIZE; renderPaidList(); });
   [el.paidStartDate, el.paidEndDate].forEach(function (input) {
     input.addEventListener('change', function () { el.paidRangeError.hidden = true; });
   });
@@ -1847,9 +1914,9 @@
     var active = button.dataset.freeGender === view.freeGender;
     button.classList.toggle('is-active', active); button.setAttribute('aria-pressed', active ? 'true' : 'false');
   });
-  renderCalendar(); renderPaidList(); renderFreeList(); updateShareButtonVisibility(); scheduleFreeDateRefresh(); syncBackToTopVisibility();
+  renderCalendar(); updateShareButtonVisibility(); scheduleFreeDateRefresh(); syncBackToTopVisibility();
   window.__OUTFIT_APP__ = {
-    version: '1.1.0-formal-release', storageKey: STORAGE_KEY, paidCount: paidListItems.length, paidListCount: paidListItems.length, calendarPaidCount: paidItems.length, freeCount: freeCollectibles.length, freeDatabaseRows: freeItems.length, freeSetCount: freeSets.length,
+    version: '1.1.4', storageKey: STORAGE_KEY, paidCount: paidListItems.length, paidListCount: paidListItems.length, calendarPaidCount: paidItems.length, freeCount: freeCollectibles.length, freeDatabaseRows: freeItems.length, freeSetCount: freeSets.length,
     getState: function () { return JSON.parse(JSON.stringify(state)); }, getCounts: getCounts,
     setStatus: setStatus, setReview: setReview, toggleFavorite: toggleFavorite, paidStatusLabel: paidStatusLabel, switchMode: switchMode, switchPage: switchPage,
     getScopedPaidItems: getScopedPaidItems, getFilteredPaidItems: getFilteredPaidItems, paidItemMatchesMethodRefinements: paidItemMatchesMethodRefinements, buildSharePages: buildSharePages, drawSharePage: drawSharePage,
@@ -1859,4 +1926,5 @@
   };
   var appBoot = document.getElementById('appBoot');
   if (appBoot) appBoot.hidden = true;
+  if (window.__OUTFIT_BOOT_GUARD__) window.__OUTFIT_BOOT_GUARD__.complete();
 }());

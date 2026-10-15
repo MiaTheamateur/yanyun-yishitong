@@ -2,24 +2,24 @@
   'use strict';
 
   window.OUTFIT_DATA_META = {
-  "version": "1.1.0-formal-release",
+"version": "1.1.4",
   "source": "飞书《燕云外观上架情况整理》＋《免费外观道具汇总_20261012》",
   "sourceRevision": 1892,
-  "generatedAt": "2026-10-15T12:31:30.728Z",
+  "generatedAt": "2026-10-16T00:00:00.000Z",
   "importedCount": 1004,
   "paidCount": 204,
   "freeDatabaseRows": 800,
   "freeCollectibleCount": 730,
   "freeSetCount": 70,
   "statusCounts": {
-    "常驻": 589,
+    "常驻": 587,
     "不可获取": 195,
-    "限时": 16
+    "限时": 18
   },
   "collectibleStatusCounts": {
-    "常驻": 533,
+    "常驻": 531,
     "不可获取": 183,
-    "限时": 14
+    "限时": 16
   },
   "female": {
     "items": 728,
@@ -40,7 +40,9 @@
   "paidImagesEnabled": true,
   "paidImageRecords": 203,
   "paidImageAssets": 330,
-  "freeSourceRevision": 1211
+  "freeSourceRevision": 1211,
+  "freeSourceCheckedRevision": 1238,
+  "freeSourcePendingConfirmationCount": 4
 };
 
   window.OUTFIT_DATA = [
@@ -30643,12 +30645,12 @@
     "sourceMaleImage": "",
     "sourceCommonImage": "配饰/意度有神__颈饰__50.png",
     "onSaleDate": "",
-    "endDate": "",
-    "availabilityRaw": "常驻",
+    "endDate": "2026-10-22",
+    "availabilityRaw": "限时",
     "priceOriginal": "",
     "priceTier": "免费",
     "channel": "兑换",
-    "listingStatus": "常驻",
+    "listingStatus": "限时",
     "infoStatus": "已核验",
     "series": "",
     "tags": [
@@ -32049,12 +32051,12 @@
     "sourceMaleImage": "",
     "sourceCommonImage": "配饰/栖玉露__中型配饰__30.png",
     "onSaleDate": "",
-    "endDate": "",
-    "availabilityRaw": "常驻",
+    "endDate": "2026-10-22",
+    "availabilityRaw": "限时",
     "priceOriginal": "",
     "priceTier": "免费",
     "channel": "兑换",
-    "listingStatus": "常驻",
+    "listingStatus": "限时",
     "infoStatus": "已核验",
     "series": "",
     "tags": [

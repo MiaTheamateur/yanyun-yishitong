@@ -286,7 +286,7 @@ img, canvas { -webkit-user-select: none; user-select: none; -webkit-user-drag: n
 .category-picker-button i { margin-left: auto; color: var(--muted); font-style: normal; transition: transform .18s ease; }
 .category-picker-button.is-open { border-color: rgba(143,73,59,.45); background: rgba(143,73,59,.05); }
 .category-picker-button.is-open i { transform: rotate(180deg); }
-.free-result-actions { display: flex; align-items: center; gap: 9px; min-width: 0; }
+.free-result-actions { display: flex; align-items: center; gap: 6px; min-width: 0; }
 .free-result-actions > span { color: var(--muted); font-size: 10px; white-space: nowrap; }
 .free-result-actions button { min-height: 40px; padding: 0 11px; border: 1px solid var(--red); border-radius: 12px; background: rgba(143,73,59,.05); color: var(--red); font-size: 10px; font-weight: 700; cursor: pointer; }
 .free-result-actions button.is-complete { border-color: var(--jade); background: var(--jade-soft); color: var(--jade); }
@@ -903,6 +903,12 @@ img, canvas { -webkit-user-select: none; user-select: none; -webkit-user-drag: n
   white-space: nowrap;
 }
 .free-missing-toggle.is-active { border-color: #24589b; background: #17395f; color: #fff; }
+.free-result-actions .free-missing-toggle { border-color: rgba(36,88,155,.42); color: #24589b; }
+.free-result-actions .free-missing-toggle.is-active { border-color: #17395f; background: #17395f; color: #fff; }
+@media (max-width: 480px) {
+  .free-result-actions > span { display: none; }
+  .free-result-actions button { padding-right: 9px; padding-left: 9px; }
+}
 .free-context-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; margin: 1px 2px 7px; }
 .free-context-row span,
 .free-context-row small { display: block; }
