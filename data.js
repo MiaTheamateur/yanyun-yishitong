@@ -2,10 +2,10 @@
   'use strict';
 
   window.OUTFIT_DATA_META = {
-"version": "1.1.4",
+"version": "1.2.0",
   "source": "飞书《燕云外观上架情况整理》＋《免费外观道具汇总_20261012》",
   "sourceRevision": 1892,
-  "generatedAt": "2026-10-16T00:00:00.000Z",
+  "generatedAt": "2026-10-17T00:00:00.000Z",
   "importedCount": 1004,
   "paidCount": 204,
   "freeDatabaseRows": 800,

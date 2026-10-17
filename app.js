@@ -45,8 +45,10 @@
   var freeItems = data.filter(function (item) { return item.acquisitionType === '免费'; });
   var freeSets = freeItems.filter(function (item) { return item.recordShape === '套装'; });
   var freeCollectibles = freeItems.filter(function (item) { return item.recordShape !== '套装'; });
+  var paidItemById = {};
   var freeSetById = {};
   var freeItemById = {};
+  paidItems.forEach(function (item) { paidItemById[item.id] = item; });
   freeSets.forEach(function (item) { freeSetById[item.id] = item; });
   freeItems.forEach(function (item) { freeItemById[item.id] = item; });
   var FREE_EXCLUSIVE_GROUP_NAMES = [['藏锋·剑', '藏锋·枪']];
@@ -101,7 +103,12 @@
     sharePageLabel: document.getElementById('sharePageLabel'), saveShareButton: document.getElementById('saveShareButton'),
     saveAllShareButton: document.getElementById('saveAllShareButton'), toast: document.getElementById('toast'), backToTopButton: document.getElementById('backToTopButton'),
     imagePreviewBackdrop: document.getElementById('imagePreviewBackdrop'), imagePreviewImage: document.getElementById('imagePreviewImage'),
-    imagePreviewCaption: document.getElementById('imagePreviewCaption'), closeImagePreviewButton: document.getElementById('closeImagePreviewButton')
+    imagePreviewCaption: document.getElementById('imagePreviewCaption'), closeImagePreviewButton: document.getElementById('closeImagePreviewButton'),
+    recordProtectionButton: document.getElementById('recordProtectionButton'), recordProtectionBackdrop: document.getElementById('recordProtectionBackdrop'),
+    closeRecordProtectionButton: document.getElementById('closeRecordProtectionButton'), recordProtectionStatus: document.getElementById('recordProtectionStatus'),
+    recordProtectionEntryStatus: document.getElementById('recordProtectionEntryStatus'),
+    backupRecordsButton: document.getElementById('backupRecordsButton'), restoreRecordsButton: document.getElementById('restoreRecordsButton'),
+    backupFileInput: document.getElementById('backupFileInput')
   };
 
   function loadState() {
@@ -131,7 +138,10 @@
     return STATUS[status] || status || '未选择';
   }
 
-  function persist() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+  function persist() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    if (el && el.recordProtectionEntryStatus) updateRecordProtectionStatus();
+  }
 
   function hueFor(item, index) {
     var sum = String(item.id || item.name || index).split('').reduce(function (total, char) { return total + char.charCodeAt(0); }, 0);
@@ -1517,15 +1527,24 @@
   }
 
   function buildSharePages() {
-    var items = getFilteredPaidItems(); var details = [];
+    var items = getShareablePaidItems(); var details = [];
     shareState.filterLabel = paidRangeLabel(view.paidRange);
     shareState.filterRules = activePaidFilterRules();
-    for (var index = 0; index < items.length; index += 4) details.push(items.slice(index, index + 4));
+    for (var index = 0; index < items.length; index += 6) details.push(items.slice(index, index + 6));
     shareState.pages = [{ type: 'summary', items: items }].concat(details.map(function (pageItems, pageIndex) {
       return { type: 'detail', items: pageItems, detailIndex: pageIndex + 1, detailTotal: details.length };
     }));
     shareState.dataUrls = new Array(shareState.pages.length);
     if (shareState.page >= shareState.pages.length) shareState.page = shareState.pages.length - 1;
+  }
+
+  function getShareablePaidItems() {
+    return getFilteredPaidItems().filter(function (item) {
+      var saved = ensureItemState(item.id);
+      var hasReview = Boolean(String(saved.review || '').trim());
+      var hasStatus = Object.prototype.hasOwnProperty.call(STATUS, saved.status);
+      return hasReview || hasStatus;
+    });
   }
 
   function paintShareBase(ctx) {
@@ -1578,8 +1597,8 @@
     var canvas = el.shareCanvas; var ctx = canvas.getContext('2d'); var counts = getCounts(items);
     paintShareBase(ctx);
     drawShareIdentity(ctx);
-    ctx.fillStyle = '#172637'; ctx.font = '700 78px serif'; ctx.fillText('我的衣橱总结', 86, 190);
-    ctx.fillStyle = '#716b63'; ctx.font = '26px sans-serif'; ctx.fillText((shareState.filterRules.length ? '当前筛选' : '全部服装') + ' · ' + items.length + ' 套', 90, 244);
+    ctx.fillStyle = '#172637'; ctx.font = '700 78px serif'; ctx.fillText('燕云衣柜盘点', 86, 190);
+    ctx.fillStyle = '#716b63'; ctx.font = '26px sans-serif'; ctx.fillText((shareState.filterRules.length ? '当前筛选已记录' : '已记录服装') + ' · ' + items.length + ' 套', 90, 244);
     [[90, '买了', counts.owned, '#1f5d91'], [550, '没买', counts.notOwned, '#6a746f']].forEach(function (block) {
       ctx.fillStyle = '#fffdf8'; roundRect(ctx, block[0], 318, 440, 282, 24); ctx.fill();
       ctx.strokeStyle = '#ddd3c5'; ctx.lineWidth = 2; roundRect(ctx, block[0], 318, 440, 282, 24); ctx.stroke();
@@ -1606,10 +1625,18 @@
     });
   }
 
-  function drawCoverImage(ctx, image, x, y, width, height) {
+  function drawCoverImage(ctx, image, x, y, width, height, focusY) {
     var scale = Math.max(width / image.width, height / image.height); var sw = width / scale; var sh = height / scale;
-    var sx = (image.width - sw) / 2; var sy = (image.height - sh) / 2;
+    var sx = (image.width - sw) / 2;
+    var verticalFocus = typeof focusY === 'number' ? Math.max(0, Math.min(1, focusY)) : 0.5;
+    var sy = (image.height - sh) * verticalFocus;
     ctx.save(); roundRect(ctx, x, y, width, height, 12); ctx.clip(); ctx.drawImage(image, sx, sy, sw, sh, x, y, width, height); ctx.restore();
+  }
+
+  function commonShareFocusY(item, image) {
+    var sourcePath = String(item.sourceCommonImage || '').replace(/\\/g, '/');
+    var isLongCommonImage = sourcePath.indexOf('没有男女区分的整张图/') >= 0 && image.height > image.width;
+    return isLongCommonImage ? 0.18 : 0.5;
   }
 
   function drawImagePlaceholder(ctx, x, y, width, height, label) {
@@ -1621,13 +1648,14 @@
 
   async function drawItemImages(ctx, item, x, y, width, height) {
     var common = item.commonImage ? await loadCanvasImage(item.commonImage) : null;
-    if (common) { drawCoverImage(ctx, common, x, y, width, height); return; }
+    if (common) { drawCoverImage(ctx, common, x, y, width, height, commonShareFocusY(item, common)); return; }
     var female = item.femaleImage ? await loadCanvasImage(item.femaleImage) : null;
     var male = item.maleImage ? await loadCanvasImage(item.maleImage) : null;
     if (female || male) {
       var gap = 8; var slot = (width - gap) / 2;
-      if (female) drawCoverImage(ctx, female, x, y, slot, height); else drawImagePlaceholder(ctx, x, y, slot, height, '女号');
-      if (male) drawCoverImage(ctx, male, x + slot + gap, y, slot, height); else drawImagePlaceholder(ctx, x + slot + gap, y, slot, height, '男号');
+      var pairFocusY = ['和鸣', '聆音'].indexOf(item.saleMethod) >= 0 ? 0.5 : 0;
+      if (female) drawCoverImage(ctx, female, x, y, slot, height, pairFocusY); else drawImagePlaceholder(ctx, x, y, slot, height, '女号');
+      if (male) drawCoverImage(ctx, male, x + slot + gap, y, slot, height, pairFocusY); else drawImagePlaceholder(ctx, x + slot + gap, y, slot, height, '男号');
       return;
     }
     drawImagePlaceholder(ctx, x, y, width, height, '待补图');
@@ -1658,44 +1686,56 @@
     return width;
   }
 
+  function shareTypeLabel(item) {
+    var method = visibleSaleMethod(item) || item.type || '';
+    var subtype = (item.styleTags || []).find(function (tag) {
+      return ['大套', '小套', '异色发', '双八音发', '单八音发'].indexOf(tag) >= 0;
+    }) || '';
+    if (!subtype) return method;
+    if (/八音发$/.test(subtype)) return subtype;
+    return [method, subtype].filter(Boolean).join('·');
+  }
+
   async function drawShareDetail(page) {
     var canvas = el.shareCanvas; var ctx = canvas.getContext('2d'); paintShareBase(ctx);
     drawShareIdentity(ctx);
     for (var index = 0; index < page.items.length; index += 1) {
       var item = page.items[index]; var saved = ensureItemState(item.id);
-      var left = 48; var top = 76 + index * 332;
-      var cardWidth = 984; var cardHeight = 312; var inset = 14; var imageWidth = 366; var contentWidth = 562;
+      var column = index % 2; var row = Math.floor(index / 2);
+      var cardWidth = 483; var cardHeight = 430; var inset = 14;
+      var left = 48 + column * 501; var top = 78 + row * 448;
+      var contentLeft = left + inset; var contentRight = left + cardWidth - inset; var contentWidth = contentRight - contentLeft;
       ctx.fillStyle = '#fffdf9'; roundRect(ctx, left, top, cardWidth, cardHeight, 18); ctx.fill();
       ctx.strokeStyle = '#e2d8ca'; ctx.lineWidth = 1.2; roundRect(ctx, left, top, cardWidth, cardHeight, 18); ctx.stroke();
-      await drawItemImages(ctx, item, left + inset, top + inset, imageWidth, 284);
+      await drawItemImages(ctx, item, contentLeft, top + inset, contentWidth, 220);
 
-      var textLeft = left + 408; var textRight = left + cardWidth - 18;
       ctx.font = '700 19px sans-serif';
       var listingText = item.listingStatus || '';
-      var listingWidth = listingText ? Math.min(132, Math.ceil(ctx.measureText(listingText).width) + 24) : 0;
-      ctx.fillStyle = '#172637'; ctx.font = '700 32px sans-serif';
-      ctx.fillText(fitText(ctx, item.name, contentWidth - listingWidth - (listingWidth ? 14 : 0)), textLeft, top + 48);
-      if (listingText) drawSharePill(ctx, listingText, textRight - listingWidth, top + 20, '#eaf1f1', '#315d63', listingWidth);
+      var listingWidth = listingText ? Math.min(110, Math.ceil(ctx.measureText(listingText).width) + 24) : 0;
+      var favoriteWidth = saved.favorite ? 106 : 0;
+      var nameMaxWidth = contentWidth - listingWidth - favoriteWidth - (listingWidth ? 12 : 0) - (favoriteWidth ? 10 : 0);
+      ctx.fillStyle = '#172637'; ctx.font = '700 30px sans-serif';
+      var nameText = fitText(ctx, item.name, Math.max(86, nameMaxWidth));
+      ctx.fillText(nameText, contentLeft, top + 270);
+      var nameWidth = Math.ceil(ctx.measureText(nameText).width);
+      if (saved.favorite) drawSharePill(ctx, '♥ 心头好', contentLeft + nameWidth + 10, top + 242, '#f8e8eb', '#a23e49', favoriteWidth);
+      if (listingText) drawSharePill(ctx, listingText, contentRight - listingWidth, top + 242, '#eaf1f1', '#315d63', listingWidth);
 
       ctx.fillStyle = '#716b63'; ctx.font = '20px sans-serif';
-      ctx.fillText(fitText(ctx, formatDate(item.onSaleDate) + ' 上架', contentWidth), textLeft, top + 79);
+      var meta = [formatDate(item.onSaleDate) + '上架', shareTypeLabel(item)].filter(Boolean).join('  ·  ');
+      ctx.fillText(fitText(ctx, meta, contentWidth), contentLeft, top + 307);
 
-      if (saved.review) {
-        ctx.fillStyle = REVIEW_RED; ctx.font = '700 30px serif';
-        wrapText(ctx, '“' + saved.review + '”', textLeft, top + 128, contentWidth, 38, 3);
-      } else {
-        ctx.fillStyle = '#aaa39a'; ctx.font = '24px serif'; ctx.fillText('还没有留下点评', textLeft, top + 145);
-      }
-
+      ctx.fillStyle = saved.review ? '#fbf0f1' : '#f4f1eb';
+      roundRect(ctx, contentLeft, top + 326, contentWidth, 88, 14); ctx.fill();
       var statusText = paidStatusLabel(saved.status, item);
-      var statusWidth = drawSharePill(ctx, statusText, textLeft, top + 224, saved.status ? '#f7e9e9' : '#f0ede7', saved.status ? '#9b3f45' : '#77716a', 132);
-      if (saved.favorite) {
-        drawSharePill(ctx, '♥ 心头好', textLeft + statusWidth + 12, top + 224, '#f8e8eb', '#a23e49', 132);
+      var statusWidth = drawSharePill(ctx, statusText, contentLeft + 12, top + 342, saved.status ? '#f2ead8' : '#e9e5de', saved.status ? '#806329' : '#77716a', 106);
+      var reviewLeft = contentLeft + statusWidth + 26; var reviewWidth = contentRight - reviewLeft - 12;
+      if (saved.review) {
+        ctx.fillStyle = REVIEW_RED; ctx.font = '700 24px sans-serif';
+        wrapText(ctx, '“' + saved.review + '”', reviewLeft, top + 368, reviewWidth, 28, 2);
+      } else {
+        ctx.fillStyle = '#aaa39a'; ctx.font = '21px sans-serif'; ctx.fillText('还没有留下点评', reviewLeft, top + 370);
       }
-
-      var saleText = visibleSaleMethod(item) || item.type || '';
-      var meta = [saleText, ((item.styleTags || []).join(' / ')), item.priceOriginal].filter(Boolean).join(' · ');
-      ctx.fillStyle = '#716b63'; ctx.font = '19px sans-serif'; ctx.fillText(fitText(ctx, meta, contentWidth), textLeft, top + 292);
     }
   }
 
@@ -1717,7 +1757,7 @@
   }
 
   async function openShare() {
-    if (!getFilteredPaidItems().length) { showToast('当前筛选没有可分享的服装'); return; }
+    if (!getShareablePaidItems().length) { showToast('当前筛选没有已记录的服装'); return; }
     buildSharePages(); shareState.page = 0; el.shareBackdrop.hidden = false; await drawSharePage(0);
   }
   function closeShare() { el.shareBackdrop.hidden = true; }
@@ -1774,6 +1814,167 @@
     toastTimer = window.setTimeout(function () { el.toast.hidden = true; }, 2200);
   }
 
+  function formatBackupTime(timestamp) {
+    if (!timestamp) return '尚未备份';
+    var date = new Date(timestamp);
+    return String(date.getMonth() + 1).padStart(2, '0') + '-' + String(date.getDate()).padStart(2, '0') + ' ' + String(date.getHours()).padStart(2, '0') + ':' + String(date.getMinutes()).padStart(2, '0');
+  }
+
+  function collectBackupRecords(createdAt) {
+    var paidRecords = [];
+    paidItems.forEach(function (item) {
+      var saved = ensureItemState(item.id);
+      var review = String(saved.review || '').trim().slice(0, 18);
+      var status = isSelectablePaidStatus(saved.status) ? saved.status : '';
+      if (!status && !review && !saved.favorite) return;
+      paidRecords.push({ id: item.id, status: status, review: review, favorite: Boolean(saved.favorite) });
+    });
+    var freeRecords = [];
+    freeCollectibles.forEach(function (item) {
+      var count = getFreeOwnedCount(item);
+      if (count > 0) freeRecords.push({ id: item.id, count: count });
+    });
+    return { createdAt: Number(createdAt) || 0, paidRecords: paidRecords, freeRecords: freeRecords, freeGender: view.freeGender };
+  }
+
+  function backupFingerprint(records) {
+    return window.YANYUN_BACKUP ? window.YANYUN_BACKUP.fingerprint(records || collectBackupRecords(0)) : '';
+  }
+
+  function updateRecordProtectionStatus() {
+    if (!el.recordProtectionStatus) return;
+    var records = collectBackupRecords(0);
+    var total = records.paidRecords.length + records.freeRecords.length;
+    var backup = state.backupProtection || {};
+    var isCurrent = Boolean(total && backup.lastAt && backup.lastFingerprint === backupFingerprint(records));
+    if (!total) el.recordProtectionStatus.textContent = '暂无需要备份的记录';
+    else if (isCurrent) el.recordProtectionStatus.textContent = '已保护 · ' + formatBackupTime(backup.lastAt);
+    else if (backup.lastAt) el.recordProtectionStatus.textContent = '记录有变化，建议重新备份';
+    else el.recordProtectionStatus.textContent = '已有 ' + total + ' 项本机记录，建议备份';
+    el.recordProtectionStatus.classList.toggle('is-safe', isCurrent);
+    el.recordProtectionStatus.classList.toggle('needs-backup', total > 0 && !isCurrent);
+    if (el.recordProtectionEntryStatus) {
+      if (isCurrent) el.recordProtectionEntryStatus.textContent = '最近备份 ' + formatBackupTime(backup.lastAt);
+      else if (backup.lastAt) el.recordProtectionEntryStatus.textContent = '记录有变化，建议重新备份';
+      else el.recordProtectionEntryStatus.textContent = '大量修改后记得备份';
+      el.recordProtectionEntryStatus.classList.toggle('is-safe', isCurrent);
+      el.recordProtectionEntryStatus.classList.toggle('needs-backup', Boolean(backup.lastAt) && !isCurrent);
+      el.recordProtectionEntryStatus.classList.toggle('is-reminder', !backup.lastAt);
+    }
+    el.backupRecordsButton.disabled = total === 0 || !window.YANYUN_BACKUP;
+  }
+
+  function openRecordProtection() {
+    updateRecordProtectionStatus();
+    el.recordProtectionBackdrop.hidden = false;
+    document.body.classList.add('dialog-open');
+    el.closeRecordProtectionButton.focus();
+  }
+
+  function closeRecordProtection() {
+    if (el.recordProtectionBackdrop.hidden) return;
+    el.recordProtectionBackdrop.hidden = true;
+    document.body.classList.remove('dialog-open');
+    el.recordProtectionButton.focus();
+  }
+
+  async function backupRecords() {
+    if (!window.YANYUN_BACKUP) { showToast('备份组件未加载，请重新打开'); return; }
+    var createdAt = Date.now();
+    var records = collectBackupRecords(createdAt);
+    if (!records.paidRecords.length && !records.freeRecords.length) { showToast('暂无需要备份的记录'); return; }
+    try {
+      el.backupRecordsButton.disabled = true;
+      el.backupRecordsButton.textContent = '正在生成…';
+      var encoded = window.YANYUN_BACKUP.encode(records);
+      var imageUrl = window.YANYUN_BACKUP.drawBackupImage(encoded, {
+        paidCount: records.paidRecords.length,
+        freeCount: records.freeRecords.length,
+        createdAtLabel: formatBackupTime(createdAt),
+      });
+      var date = new Date(createdAt);
+      var fileName = '燕云衣事通_记录备份_' + date.getFullYear() + String(date.getMonth() + 1).padStart(2, '0') + String(date.getDate()).padStart(2, '0') + '_' + String(date.getHours()).padStart(2, '0') + String(date.getMinutes()).padStart(2, '0') + '.png';
+      var saveMode = await saveDataUrl(imageUrl, fileName);
+      state.backupProtection = { lastAt: createdAt, lastFingerprint: backupFingerprint(records) };
+      persist();
+      updateRecordProtectionStatus();
+      showToast(saveMode === 'album' ? '备份图已保存到系统相册' : '已生成并下载 PNG 备份图');
+    } catch (error) {
+      showToast(error && error.message ? error.message : '备份生成失败，请重试');
+    } finally {
+      el.backupRecordsButton.textContent = '备份记录';
+      updateRecordProtectionStatus();
+    }
+  }
+
+  function restoreRecordsFromData(restored) {
+    var changedItems = {};
+    var changedFields = 0;
+    (restored.paidRecords || []).forEach(function (record) {
+      if (!paidItemById[record.id]) return;
+      var saved = ensureItemState(record.id);
+      if (!isSelectablePaidStatus(saved.status) && isSelectablePaidStatus(record.status)) {
+        saved.status = record.status; changedFields += 1; changedItems[record.id] = true;
+      }
+      if (!String(saved.review || '').trim() && String(record.review || '').trim()) {
+        saved.review = String(record.review).slice(0, 18); changedFields += 1; changedItems[record.id] = true;
+      }
+      if (!saved.favorite && record.favorite) {
+        saved.favorite = true; changedFields += 1; changedItems[record.id] = true;
+      }
+    });
+    (restored.freeRecords || []).forEach(function (record) {
+      var item = freeItemById[record.id];
+      if (!item || item.recordShape === '套装') return;
+      var current = getFreeOwnedCount(item);
+      var target = Math.min(maxFreeCopies(item), Math.max(current, Math.floor(Number(record.count) || 0)));
+      if (target <= current) return;
+      var selected = exclusiveSelectedItem(item);
+      if (selected && selected.id !== item.id) return;
+      setFreeOwnedCount(item, target); changedFields += 1; changedItems[item.id] = true;
+    });
+    var importedFingerprint = backupFingerprint({
+      createdAt: 0,
+      paidRecords: restored.paidRecords || [],
+      freeRecords: restored.freeRecords || [],
+      freeGender: restored.freeGender,
+    });
+    var mergedFingerprint = backupFingerprint(collectBackupRecords(0));
+    state.backupProtection = {
+      lastAt: Number(restored.createdAt) || Date.now(),
+      lastFingerprint: importedFingerprint === mergedFingerprint ? mergedFingerprint : '',
+    };
+    persist();
+    renderCalendar();
+    if (view.mode === 'list') renderPaidList();
+    renderFreeList();
+    updateRecordProtectionStatus();
+    var itemCount = Object.keys(changedItems).length;
+    showToast(itemCount ? '已合并 ' + itemCount + ' 项记录 · 补充 ' + changedFields + ' 处内容' : '恢复完成，本机记录已包含这些内容');
+  }
+
+  function restoreRecordsFromFile(file) {
+    if (!window.YANYUN_BACKUP) { showToast('备份组件未加载，请重新打开'); return; }
+    showToast('正在识别备份图…');
+    window.YANYUN_BACKUP.decodeImageFile(file).then(function (restored) {
+      var total = restored.paidRecords.length + restored.freeRecords.length;
+      var message = '识别到 ' + total + ' 项记录。恢复会保留本机已有内容，只补充空白记录和更高的免费获得数量，是否继续？';
+      if (window.confirm(message)) restoreRecordsFromData(restored);
+    }).catch(function (error) {
+      showToast(error && error.message ? error.message : '恢复失败，请选择清晰的 PNG 原图');
+    });
+  }
+
+  el.recordProtectionButton.addEventListener('click', openRecordProtection);
+  el.closeRecordProtectionButton.addEventListener('click', closeRecordProtection);
+  el.recordProtectionBackdrop.addEventListener('click', function (event) { if (event.target === el.recordProtectionBackdrop) closeRecordProtection(); });
+  el.backupRecordsButton.addEventListener('click', backupRecords);
+  el.restoreRecordsButton.addEventListener('click', function () { el.backupFileInput.click(); });
+  el.backupFileInput.addEventListener('change', function () {
+    var file = el.backupFileInput.files && el.backupFileInput.files[0];
+    el.backupFileInput.value = '';
+    if (file) restoreRecordsFromFile(file);
+  });
   el.viewSwitch.addEventListener('click', function (event) { var button = event.target.closest('[data-view]'); if (button) switchMode(button.dataset.view); });
   window.addEventListener('scroll', scheduleBackToTopVisibility, { passive: true });
   window.addEventListener('resize', scheduleBackToTopVisibility, { passive: true });
@@ -1891,6 +2092,7 @@
   document.addEventListener('keydown', function (event) {
     if (event.key !== 'Escape') return;
     if (!el.imagePreviewBackdrop.hidden) closeImagePreview();
+    else if (!el.recordProtectionBackdrop.hidden) closeRecordProtection();
     else if (!el.paidMethodPanel.hidden) { setPaidMethodPanelOpen(false); el.paidMethodFilter.focus(); }
     else if (!el.categoryInlinePanel.hidden) { setCategoryPanelOpen(false); el.categoryPickerButton.focus(); }
   });
@@ -1914,15 +2116,16 @@
     var active = button.dataset.freeGender === view.freeGender;
     button.classList.toggle('is-active', active); button.setAttribute('aria-pressed', active ? 'true' : 'false');
   });
-  renderCalendar(); updateShareButtonVisibility(); scheduleFreeDateRefresh(); syncBackToTopVisibility();
+  renderCalendar(); updateShareButtonVisibility(); scheduleFreeDateRefresh(); syncBackToTopVisibility(); updateRecordProtectionStatus();
   window.__OUTFIT_APP__ = {
-    version: '1.1.4', storageKey: STORAGE_KEY, paidCount: paidListItems.length, paidListCount: paidListItems.length, calendarPaidCount: paidItems.length, freeCount: freeCollectibles.length, freeDatabaseRows: freeItems.length, freeSetCount: freeSets.length,
+    version: '1.2.0', storageKey: STORAGE_KEY, paidCount: paidListItems.length, paidListCount: paidListItems.length, calendarPaidCount: paidItems.length, freeCount: freeCollectibles.length, freeDatabaseRows: freeItems.length, freeSetCount: freeSets.length,
     getState: function () { return JSON.parse(JSON.stringify(state)); }, getCounts: getCounts,
     setStatus: setStatus, setReview: setReview, toggleFavorite: toggleFavorite, paidStatusLabel: paidStatusLabel, switchMode: switchMode, switchPage: switchPage,
-    getScopedPaidItems: getScopedPaidItems, getFilteredPaidItems: getFilteredPaidItems, paidItemMatchesMethodRefinements: paidItemMatchesMethodRefinements, buildSharePages: buildSharePages, drawSharePage: drawSharePage,
+    getScopedPaidItems: getScopedPaidItems, getFilteredPaidItems: getFilteredPaidItems, getShareablePaidItems: getShareablePaidItems, paidItemMatchesMethodRefinements: paidItemMatchesMethodRefinements, buildSharePages: buildSharePages, drawSharePage: drawSharePage,
     setCalendarMonth: setCalendarMonth, selectCalendarDate: selectCalendarDate, goToToday: goToToday, paidEventsForMonth: paidEventsForMonth, paidValueRank: paidValueRank, comparePaidSameDate: comparePaidSameDate, getPaidBundleMap: getPaidBundleMap, paidFilterMethod: paidFilterMethod, paidItemMatchesRange: paidItemMatchesRange, applyCustomPaidRange: applyCustomPaidRange, toggleFreeCategorySelection: toggleFreeCategorySelection,
     getVisibleFreeItems: getVisibleFreeItems, getFreeCharmProgress: getFreeCharmProgress, getFreeOwnedCount: getFreeOwnedCount, setFreeOwnedCount: setFreeOwnedCount, summarizeFreeItems: summarizeFreeItems, switchFreeMode: switchFreeMode, switchFreeProgressScope: switchFreeProgressScope, switchFreeGender: switchFreeGender, toggleFreeOwned: toggleFreeOwned, toggleFreeCopy: toggleFreeCopy, toggleFreeSetParts: toggleFreeSetParts, childrenForSet: childrenForSet, freeDaysRemaining: freeDaysRemaining, effectiveFreeStatus: effectiveFreeStatus, freeStatusLabel: freeStatusLabel,
-    completePaidRecord: completePaidRecord, editPaidRecord: editPaidRecord, openImagePreview: openImagePreview, closeImagePreview: closeImagePreview
+    completePaidRecord: completePaidRecord, editPaidRecord: editPaidRecord, openImagePreview: openImagePreview, closeImagePreview: closeImagePreview,
+    collectBackupRecords: collectBackupRecords, backupFingerprint: backupFingerprint, restoreRecordsFromData: restoreRecordsFromData, openRecordProtection: openRecordProtection
   };
   var appBoot = document.getElementById('appBoot');
   if (appBoot) appBoot.hidden = true;

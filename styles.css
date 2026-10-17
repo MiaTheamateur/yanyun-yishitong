@@ -260,22 +260,23 @@ img, canvas { -webkit-user-select: none; user-select: none; -webkit-user-drag: n
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  min-width: 78px;
   min-height: 44px;
-  padding: 0 6px;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
+  padding: 0 10px;
+  border: 1px solid rgba(36,88,155,.24);
+  border-radius: 10px;
+  background: rgba(255,253,248,.68);
   color: var(--brand-blue, #24589b);
   box-shadow: none;
   cursor: pointer;
-  transition: color .16s ease, opacity .16s ease, transform .16s ease;
+  transition: border-color .16s ease, background .16s ease, color .16s ease, opacity .16s ease, transform .16s ease;
 }
 .share-toolbar-button::after { content: none; }
 .share-toolbar-button span { font-size: 11.5px; font-weight: 700; line-height: 1; white-space: nowrap; }
-.share-toolbar-button:hover { color: var(--brand-blue-deep, #17385f); }
+.share-toolbar-button:hover { border-color: rgba(36,88,155,.4); background: rgba(238,244,249,.82); color: var(--brand-blue-deep, #17385f); }
 .share-toolbar-button:focus-visible { outline: 2px solid rgba(36,88,155,.4); outline-offset: 1px; }
-.share-toolbar-button:active { transform: translateY(1px); opacity: .72; }
-.share-toolbar-button:disabled { opacity: .36; cursor: default; }
+.share-toolbar-button:active { border-color: rgba(36,88,155,.48); background: #e8eef4; transform: translateY(1px); }
+.share-toolbar-button:disabled { border-color: rgba(75,86,96,.14); background: rgba(255,253,248,.42); opacity: .42; cursor: default; }
 
 .free-availability-segment { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3px; margin: 4px 0 14px; padding: 4px; border: 1px solid var(--line); border-radius: 15px; background: #ebe4d8; }
 .free-availability-segment button { min-width: 0; min-height: 40px; padding: 0 4px; border: 0; border-radius: 11px; background: transparent; color: var(--muted); font-size: 10px; font-weight: 700; cursor: pointer; transition: background .18s ease, color .18s ease, box-shadow .18s ease; }
@@ -432,6 +433,100 @@ img, canvas { -webkit-user-select: none; user-select: none; -webkit-user-drag: n
   .choice-button { font-size: 10px; }
   .character-gender-card { align-items: stretch; flex-direction: column; }
   .character-gender-switch { grid-template-columns: repeat(2, 1fr); width: 100%; }
+}
+
+/* V1.1.4 preview — 跨端记录保护。 */
+.tool-meta-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+}
+.record-protection-entry {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 44px;
+  padding: 0 9px;
+  border: 1px solid rgba(36,88,155,.22);
+  border-radius: 999px;
+  background: rgba(255,255,255,.62);
+  color: #24589b;
+  font: inherit;
+  cursor: pointer;
+}
+.record-protection-entry span { font-size: 15px; line-height: 1; }
+.record-protection-entry b { font-size: 10.5px; white-space: nowrap; }
+.record-protection-entry:active { background: #e7edf5; }
+.record-protection-entry:focus-visible { outline: 2px solid rgba(36,88,155,.7); outline-offset: 2px; }
+body.dialog-open { overflow: hidden; }
+.record-protection-backdrop { z-index: 36; }
+.record-protection-sheet {
+  width: min(100%, 470px);
+  max-height: 92vh;
+  overflow-y: auto;
+  padding: 10px 18px calc(20px + env(safe-area-inset-bottom));
+  border: 1px solid rgba(36,88,155,.16);
+  border-radius: 26px 26px 16px 16px;
+  background: #f7f5ef;
+  box-shadow: 0 -20px 60px rgba(25,43,63,.22);
+}
+.record-protection-sheet .sheet-title-row h2 {
+  margin: 0;
+  color: #172943;
+  font: 700 25px/1.2 "Songti SC", SimSun, serif;
+}
+.record-protection-intro {
+  margin: 10px 0 14px;
+  color: #68727c;
+  font-size: 12px;
+  line-height: 1.7;
+}
+.record-protection-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 58px;
+  padding: 10px 13px;
+  border: 1px solid #d9d4c9;
+  border-radius: 14px;
+  background: rgba(255,255,255,.66);
+}
+.record-protection-status span { color: #7a8188; font-size: 11px; }
+.record-protection-status strong { color: #5a6672; font-size: 12px; text-align: right; }
+.record-protection-status strong.is-safe { color: #2d755e; }
+.record-protection-status strong.needs-backup { color: #9a681e; }
+.record-protection-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+.record-protection-actions button { min-height: 48px; }
+.record-protection-actions button:disabled { opacity: .45; cursor: not-allowed; }
+.record-protection-notes {
+  margin: 15px 0 0;
+  padding: 13px;
+  border-radius: 13px;
+  background: #edf1f6;
+  color: #66717c;
+  font-size: 11.5px;
+  line-height: 1.65;
+}
+.backup-file-input { position: fixed; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none; }
+
+@media (max-width: 390px) {
+  .topbar-compact { gap: 8px; }
+  .tool-meta-actions { gap: 4px; }
+  .record-protection-entry { padding-right: 7px; padding-left: 7px; }
+  .record-protection-entry b { font-size: 9.5px; }
+}
+
+@media (max-width: 350px) {
+  .record-protection-entry b { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+  .record-protection-entry { width: 44px; padding: 0; }
 }
 
 /* V0.15 — 免费风华双模式：图鉴展示 / 快速查找。 */
@@ -1354,7 +1449,7 @@ h1 { margin-bottom: 5px; color: #18201d; font: 700 29px/1.08 var(--display); let
   .topbar-compact h1 { font-size: 23px; }
   .tool-creator { font-size: 7px; }
   .subview-actions { gap: 6px; }
-  .share-toolbar-button { min-height: 44px; padding: 0 2px; }
+  .share-toolbar-button { min-width: 74px; min-height: 44px; padding: 0 7px; }
   .calendar-card { padding-right: 12px; padding-left: 12px; }
   .free-card { grid-template-columns: 104px minmax(0, 1fr); }
   .free-set-hero { grid-template-columns: 98px minmax(0, 1fr); }
@@ -2365,4 +2460,90 @@ body {
   .free-route-option.is-group small { font-size: 7.5px; }
   .free-route-subgroups { margin-top: 5px; padding-top: 5px; }
   .free-route-suboption { min-height: 32px; font-size: 8.5px; }
+}
+
+/* r114: 关键操作避开部分机型右上角的平台悬浮层。 */
+.topbar-compact { align-items: flex-start; }
+.topbar-compact .brand-identity {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+}
+.topbar-compact .record-protection-entry {
+  position: static;
+  width: auto;
+  min-width: 88px;
+  min-height: 44px;
+  margin: 1px 0 -7px -5px;
+  padding: 0 6px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #24589b;
+  box-shadow: none;
+  letter-spacing: .04em;
+}
+.topbar-compact .record-protection-entry b {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  color: inherit;
+  font-size: 11.5px;
+  line-height: 1;
+}
+.topbar-compact .record-protection-entry span {
+  color: #8a7042;
+  font-size: 18px;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+.topbar-compact .record-protection-entry:active {
+  background: rgba(36,88,155,.08);
+  transform: scale(.98);
+}
+.topbar-compact .tool-meta { flex: 0 1 auto; padding-top: 1px; }
+
+@media (max-width: 360px) {
+  .topbar-compact .record-protection-entry { min-width: 82px; }
+  .topbar-compact .record-protection-entry b { font-size: 11px; }
+}
+
+/* r117: 在标题旁同步显示备份状态提醒，并收紧入口与提示的横向间距。 */
+.record-protection-inline {
+  display: flex;
+  width: min(100%, 250px);
+  min-height: 44px;
+  align-items: center;
+  gap: 0;
+  margin: 1px 0 -7px -5px;
+  white-space: nowrap;
+}
+.topbar-compact .record-protection-inline .record-protection-entry {
+  flex: 0 0 auto;
+  min-width: 74px;
+  margin: 0;
+  padding-right: 2px;
+}
+.record-protection-entry-status {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  color: #7b8187;
+  font-size: 9.5px;
+  font-weight: 600;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.record-protection-entry-status.needs-backup { color: #b44736; }
+.record-protection-entry-status.is-reminder { color: #9a681e; }
+.record-protection-entry-status.is-safe { color: #2d755e; }
+
+@media (max-width: 360px) {
+  .record-protection-inline { width: min(100%, 224px); gap: 0; }
+  .record-protection-entry-status { font-size: 9px; }
 }

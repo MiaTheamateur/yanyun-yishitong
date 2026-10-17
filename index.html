@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#eef1f3">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob:; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'none'; media-src 'self' data: blob:; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
   <title>燕云衣事通</title>
-  <link rel="stylesheet" href="./styles.css?v=1.1.4">
+  <link rel="stylesheet" href="./styles.css?v=20261017-r121">
 </head>
 <body>
   <div class="app-boot" id="appBoot" role="status" aria-live="polite" aria-label="资源加载中">
@@ -21,9 +21,15 @@
     <header class="topbar topbar-compact">
       <div class="brand-identity">
         <h1 class="brand-wordmark"><span>燕云</span><b>衣事通</b></h1>
+        <div class="record-protection-inline">
+          <button class="record-protection-entry" id="recordProtectionButton" type="button" aria-haspopup="dialog" aria-controls="recordProtectionBackdrop">
+            <b>记录保护</b><span aria-hidden="true">›</span>
+          </button>
+          <small class="record-protection-entry-status" id="recordProtectionEntryStatus" aria-live="polite">大量修改后记得备份</small>
+        </div>
       </div>
       <div class="tool-meta">
-      <p class="tool-version">V1.1.4</p>
+        <p class="tool-version">V1.2.0</p>
         <p class="tool-creator">制作者：薄荷小鹿（燕云十六声）</p>
       </div>
     </header>
@@ -273,6 +279,27 @@
     </article>
   </div>
 
+  <div class="sheet-backdrop record-protection-backdrop" id="recordProtectionBackdrop" hidden>
+    <article class="record-protection-sheet" role="dialog" aria-modal="true" aria-labelledby="recordProtectionTitle">
+      <div class="sheet-handle" aria-hidden="true"></div>
+      <div class="sheet-title-row">
+        <div><p class="section-kicker">跨端数据保护</p><h2 id="recordProtectionTitle">记录保护</h2></div>
+        <button id="closeRecordProtectionButton" class="icon-button" type="button" aria-label="关闭记录保护">×</button>
+      </div>
+      <p class="record-protection-intro">清理浏览器网站数据、平台缓存或更换设备可能影响本机记录，建议定期保存备份图。</p>
+      <div class="record-protection-status">
+        <span>当前状态</span>
+        <strong id="recordProtectionStatus">正在检查记录…</strong>
+      </div>
+      <div class="record-protection-actions">
+        <button class="primary-button" id="backupRecordsButton" type="button">备份记录</button>
+        <button class="secondary-button" id="restoreRecordsButton" type="button">恢复记录</button>
+      </div>
+      <p class="record-protection-notes">备份图只包含衣柜记录，不读取平台账号信息。恢复时会与当前记录合并，请保留 PNG 原图。</p>
+      <input id="backupFileInput" class="backup-file-input" type="file" accept="image/png,image/*" tabindex="-1" aria-hidden="true">
+    </article>
+  </div>
+
   <div class="image-preview-backdrop" id="imagePreviewBackdrop" role="dialog" aria-modal="true" aria-labelledby="imagePreviewCaption" hidden>
     <button class="image-preview-close" id="closeImagePreviewButton" type="button" aria-label="关闭大图">×</button>
     <figure class="image-preview-figure">
@@ -284,8 +311,11 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
-  <script src="./boot-guard.js?v=1.1.4"></script>
-  <script src="./data.js?v=1.1.4"></script>
-  <script src="./app.js?v=1.1.4"></script>
+  <script src="./boot-guard.js?v=20261017-r112"></script>
+  <script src="./data.js?v=20261017-r121"></script>
+  <script src="./qrcode.js?v=20261017-r113"></script>
+  <script src="./jsqr.js?v=20261017-r113"></script>
+  <script src="./backup.js?v=20261017-r113"></script>
+  <script src="./app.js?v=20261017-r121"></script>
 </body>
 </html>
