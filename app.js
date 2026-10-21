@@ -40,7 +40,8 @@
     { label: '活动', tags: ['限时活动', '其他活动'], children: ['限时活动', '其他活动'] }
   ];
   var data = Array.isArray(window.OUTFIT_DATA) ? window.OUTFIT_DATA : [];
-  var paidItems = data.filter(function (item) { return item.acquisitionType === '付费'; });
+  var paidSourceItems = data.filter(function (item) { return item.acquisitionType === '付费'; });
+  var paidItems = paidSourceItems.filter(function (item) { return item.listingStatus !== '过期留档'; });
   var paidListItems = paidItems.filter(function (item) { return item.listingStatus !== '预告'; });
   var freeItems = data.filter(function (item) { return item.acquisitionType === '免费'; });
   var freeSets = freeItems.filter(function (item) { return item.recordShape === '套装'; });
@@ -2181,7 +2182,7 @@
   });
   renderCalendar(); updateShareButtonVisibility(); scheduleFreeDateRefresh(); syncBackToTopVisibility(); updateRecordProtectionStatus();
   window.__OUTFIT_APP__ = {
-    version: '1.2.2', storageKey: STORAGE_KEY, paidCount: paidListItems.length, paidListCount: paidListItems.length, calendarPaidCount: paidItems.length, freeCount: freeCollectibles.length, freeDatabaseRows: freeItems.length, freeSetCount: freeSets.length,
+    version: '1.2.3', storageKey: STORAGE_KEY, paidCount: paidListItems.length, paidListCount: paidListItems.length, calendarPaidCount: paidItems.length, freeCount: freeCollectibles.length, freeDatabaseRows: freeItems.length, freeSetCount: freeSets.length,
     getState: function () { return JSON.parse(JSON.stringify(state)); }, getCounts: getCounts,
     setStatus: setStatus, setReview: setReview, toggleFavorite: toggleFavorite, paidStatusLabel: paidStatusLabel, switchMode: switchMode, switchPage: switchPage,
     getScopedPaidItems: getScopedPaidItems, getFilteredPaidItems: getFilteredPaidItems, getShareablePaidItems: getShareablePaidItems, paidItemMatchesMethodRefinements: paidItemMatchesMethodRefinements, buildSharePages: buildSharePages, drawSharePage: drawSharePage,
