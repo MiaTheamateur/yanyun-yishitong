@@ -1062,8 +1062,10 @@ body.dialog-open { overflow: hidden; }
 .calendar-month-stats strong { display: block; color: var(--red); font: 700 18px/1 var(--display); }
 .calendar-month-stats span { display: block; margin-top: 5px; color: var(--muted); font-size: 8px; }
 .schedule-item.event-end .schedule-state,
-.schedule-item.event-return-end .schedule-state { background: #e4ebe7; color: #52685f; }
-.schedule-item.event-return .schedule-state { background: #f0dfb6; color: #72521e; }
+.schedule-item.event-return-end .schedule-state,
+.listing-pill.event-return-end { background: #e4ebe7; color: #52685f; }
+.schedule-item.event-return .schedule-state,
+.listing-pill.event-return { background: #f0dfb6; color: #72521e; }
 .paid-list-tools { display: grid; grid-template-columns: minmax(0, 1fr) repeat(3, 86px); gap: 7px; margin: 10px 0 6px; }
 .paid-list-tools input,
 .paid-list-tools select { width: 100%; min-height: 42px; border: 1px solid var(--line); border-radius: 9px; background: #fffdf8; color: var(--ink); font: inherit; font-size: 10px; }

@@ -70,7 +70,10 @@
   var toastTimer = 0;
   var freeDateRefreshTimer = 0;
   var imagePreviewReturnFocus = null;
+  var BACK_TO_TOP_IDLE_DELAY = 2200;
   var backToTopFrame = 0;
+  var backToTopIdleTimer = 0;
+  var backToTopActive = false;
 
   var el = {
     paidCount: document.getElementById('paidCount'), freeCount: document.getElementById('freeCount'), freeSetCount: document.getElementById('freeSetCount'),
@@ -207,10 +210,23 @@
     button.appendChild(image); return button;
   }
 
+  function resolvePreviewImageSource(source) {
+    var packagedPlatform = appShell && appShell.dataset.packagePlatform || '';
+    if (!source || (packagedPlatform !== 'bilibili' && packagedPlatform !== 'web')) return source;
+    try {
+      var url = new URL(source, window.location.href);
+      if (!/\/assets\/(paid|free)\//.test(url.pathname)) return source;
+      url.pathname = url.pathname.replace(/\/assets\/(paid|free)\//, '/assets/detail/$1/');
+      return url.href;
+    } catch (error) {
+      return source;
+    }
+  }
+
   function openImagePreview(source, label, trigger) {
     if (!source) return;
     imagePreviewReturnFocus = trigger || document.activeElement;
-    el.imagePreviewImage.src = source; el.imagePreviewImage.alt = label || '外观大图';
+    el.imagePreviewImage.src = resolvePreviewImageSource(source); el.imagePreviewImage.alt = label || '外观大图';
     el.imagePreviewCaption.textContent = label || '外观大图';
     el.imagePreviewBackdrop.hidden = false; document.body.classList.add('is-previewing-image');
     el.closeImagePreviewButton.focus();
@@ -270,7 +286,22 @@
   }
 
   function paidEventsForItem(item) {
-    return item.onSaleDate ? [{ date: item.onSaleDate, type: item.listingStatus === '预告' ? 'preview' : 'launch', item: item }] : [];
+    var events = [];
+    if (item.onSaleDate) events.push({ date: item.onSaleDate, type: item.listingStatus === '预告' ? 'preview' : 'launch', item: item });
+    if (item.returnStartDate) events.push({ date: item.returnStartDate, type: 'return', item: item });
+    if (item.returnEndDate) events.push({ date: item.returnEndDate, type: 'return-end', item: item });
+    return events;
+  }
+
+  function calendarEventLabel(event) {
+    if (!event) return '';
+    if (event.type === 'return') return '返场上架';
+    if (event.type === 'return-end') return '返场下架';
+    return '';
+  }
+
+  function isOriginalLaunchEvent(event) {
+    return event.type === 'launch' || event.type === 'preview';
   }
 
   // 同一天档期较多时，使用固定的“价值／活动捆绑”顺序，避免每次加载顺序漂移。
@@ -363,9 +394,10 @@
   function renderCalendar() {
     var year = view.calendarYear; var month = view.calendarMonth; var monthEvents = paidEventsForMonth(year, month); var eventsByDate = {};
     monthEvents.forEach(function (event) { if (!eventsByDate[event.date]) eventsByDate[event.date] = []; eventsByDate[event.date].push(event); });
-    el.monthStartCount.textContent = monthEvents.length;
+    var originalLaunchEvents = monthEvents.filter(isOriginalLaunchEvent);
+    el.monthStartCount.textContent = originalLaunchEvents.length;
     var endedItemIds = {};
-    monthEvents.forEach(function (event) {
+    originalLaunchEvents.forEach(function (event) {
       if (event.item.listingStatus === '已下架') endedItemIds[event.item.id] = true;
     });
     el.monthEndCount.textContent = Object.keys(endedItemIds).length;
@@ -408,7 +440,8 @@
     var info = document.createElement('div'); info.className = 'item-info'; var titleRow = document.createElement('div'); titleRow.className = 'item-title-row';
     var title = document.createElement('h3'); title.textContent = item.name;
     var titleActions = document.createElement('div'); titleActions.className = 'item-title-actions';
-    var listingPill = document.createElement('span'); listingPill.className = 'listing-pill' + listingClass(item.listingStatus); listingPill.textContent = item.listingStatus;
+    var eventLabel = calendarEventLabel(calendarEvent);
+    var listingPill = document.createElement('span'); listingPill.className = 'listing-pill' + (eventLabel ? ' event-' + calendarEvent.type : listingClass(item.listingStatus)); listingPill.textContent = eventLabel || item.listingStatus;
     titleActions.appendChild(favoriteButton); titleActions.appendChild(listingPill); titleRow.appendChild(title); titleRow.appendChild(titleActions); info.appendChild(titleRow);
     var date = document.createElement('p'); date.className = 'item-date';
     var periodLines = paidPeriodLines(item);
@@ -467,11 +500,12 @@
       monthEvents.forEach(function (event) {
         var item = event.item; var row = document.createElement('button'); row.type = 'button'; row.className = 'schedule-item event-' + event.type; row.dataset.scheduleDate = event.date;
         var parts = parseItemDate(event.date);
+        var eventLabel = calendarEventLabel(event);
         var compactFacts = Array.from(new Set([visibleSaleMethod(item) || item.type, item.priceTier].filter(Boolean))).join(' · ');
         var compactPeriods = paidPeriodLines(item);
         row.innerHTML = '<div class="date-block"><strong>' + parts.day + '</strong><span>' + (parts.month + 1) + '月</span></div>' +
-          '<div class="schedule-copy"><strong>' + escapeHtml(item.name) + '</strong><span>' + escapeHtml(compactFacts) + '</span>' + (compactPeriods.length ? '<small class="schedule-period">' + escapeHtml(compactPeriods.join('；')) + '</small>' : '') + '</div>' +
-          '<span class="schedule-state' + listingClass(item.listingStatus) + '">' + escapeHtml(item.listingStatus) + '</span>'; el.scheduleList.appendChild(row);
+          '<div class="schedule-copy"><strong>' + escapeHtml(item.name) + '</strong><span>' + escapeHtml(compactFacts) + '</span>' + compactPeriods.map(function (period) { return '<small class="schedule-period">' + escapeHtml(period) + '</small>'; }).join('') + '</div>' +
+          '<span class="schedule-state' + (eventLabel ? ' event-' + event.type : listingClass(item.listingStatus)) + '">' + escapeHtml(eventLabel || item.listingStatus) + '</span>'; el.scheduleList.appendChild(row);
       });
     }
     el.calendarEmpty.hidden = visible.length > 0;
@@ -1476,10 +1510,37 @@
     return Math.max(420, Math.round(window.innerHeight * .72));
   }
 
+  function clearBackToTopIdleTimer() {
+    if (!backToTopIdleTimer) return;
+    window.clearTimeout(backToTopIdleTimer);
+    backToTopIdleTimer = 0;
+  }
+
+  function scheduleBackToTopIdle() {
+    clearBackToTopIdleTimer();
+    backToTopIdleTimer = window.setTimeout(function () {
+      backToTopIdleTimer = 0;
+      if (document.activeElement === el.backToTopButton) return;
+      backToTopActive = false;
+      scheduleBackToTopVisibility();
+    }, BACK_TO_TOP_IDLE_DELAY);
+  }
+
+  function noteBackToTopActivity() {
+    backToTopActive = true;
+    scheduleBackToTopVisibility();
+    scheduleBackToTopIdle();
+  }
+
   function syncBackToTopVisibility() {
     backToTopFrame = 0;
     var supportedPage = (view.page === 'calendar' && view.mode === 'list') || view.page === 'free';
-    var visible = supportedPage && window.scrollY > backToTopThreshold();
+    var eligible = supportedPage && window.scrollY > backToTopThreshold();
+    if (!eligible) {
+      backToTopActive = false;
+      clearBackToTopIdleTimer();
+    }
+    var visible = eligible && backToTopActive;
     el.backToTopButton.setAttribute('aria-label', view.page === 'free' ? '回到免费风华顶部' : '回到服装列表顶部');
     el.backToTopButton.classList.toggle('is-visible', visible);
     el.backToTopButton.setAttribute('aria-hidden', visible ? 'false' : 'true');
@@ -1976,9 +2037,11 @@
     if (file) restoreRecordsFromFile(file);
   });
   el.viewSwitch.addEventListener('click', function (event) { var button = event.target.closest('[data-view]'); if (button) switchMode(button.dataset.view); });
-  window.addEventListener('scroll', scheduleBackToTopVisibility, { passive: true });
+  window.addEventListener('scroll', noteBackToTopActivity, { passive: true });
   window.addEventListener('resize', scheduleBackToTopVisibility, { passive: true });
   el.backToTopButton.addEventListener('click', returnToListTop);
+  el.backToTopButton.addEventListener('focus', clearBackToTopIdleTimer);
+  el.backToTopButton.addEventListener('blur', scheduleBackToTopIdle);
   el.paidList.addEventListener('click', handlePaidCardAction);
   el.paidList.addEventListener('input', function (event) { if (event.target.matches('input[data-id]')) setReview(event.target.dataset.id, event.target.value); });
   el.paidSearchInput.addEventListener('input', function () { view.paidSearch = el.paidSearchInput.value.trim(); resetPaidListPage(); renderPaidList(); });
@@ -2118,7 +2181,7 @@
   });
   renderCalendar(); updateShareButtonVisibility(); scheduleFreeDateRefresh(); syncBackToTopVisibility(); updateRecordProtectionStatus();
   window.__OUTFIT_APP__ = {
-    version: '1.2.0', storageKey: STORAGE_KEY, paidCount: paidListItems.length, paidListCount: paidListItems.length, calendarPaidCount: paidItems.length, freeCount: freeCollectibles.length, freeDatabaseRows: freeItems.length, freeSetCount: freeSets.length,
+    version: '1.2.2', storageKey: STORAGE_KEY, paidCount: paidListItems.length, paidListCount: paidListItems.length, calendarPaidCount: paidItems.length, freeCount: freeCollectibles.length, freeDatabaseRows: freeItems.length, freeSetCount: freeSets.length,
     getState: function () { return JSON.parse(JSON.stringify(state)); }, getCounts: getCounts,
     setStatus: setStatus, setReview: setReview, toggleFavorite: toggleFavorite, paidStatusLabel: paidStatusLabel, switchMode: switchMode, switchPage: switchPage,
     getScopedPaidItems: getScopedPaidItems, getFilteredPaidItems: getFilteredPaidItems, getShareablePaidItems: getShareablePaidItems, paidItemMatchesMethodRefinements: paidItemMatchesMethodRefinements, buildSharePages: buildSharePages, drawSharePage: drawSharePage,
