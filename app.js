@@ -40,6 +40,7 @@
     { label: '活动', tags: ['限时活动', '其他活动'], children: ['限时活动', '其他活动'] }
   ];
   var data = Array.isArray(window.OUTFIT_DATA) ? window.OUTFIT_DATA : [];
+  var freeVersions = window.OUTFIT_DATA_META && window.OUTFIT_DATA_META.freeVersions || [];
   var paidSourceItems = data.filter(function (item) { return item.acquisitionType === '付费'; });
   var paidItems = paidSourceItems.filter(function (item) { return item.listingStatus !== '过期留档'; });
   var paidListItems = paidItems.filter(function (item) { return item.listingStatus !== '预告'; });
@@ -71,6 +72,8 @@
   var toastTimer = 0;
   var freeDateRefreshTimer = 0;
   var imagePreviewReturnFocus = null;
+  var confirmationResolver = null;
+  var confirmationReturnFocus = null;
   var BACK_TO_TOP_IDLE_DELAY = 2200;
   var backToTopFrame = 0;
   var backToTopIdleTimer = 0;
@@ -91,6 +94,7 @@
     recordProgress: document.getElementById('recordProgress'), statusSummary: document.getElementById('statusSummary'),
     freePage: document.getElementById('freePage'), freeModeSwitch: document.getElementById('freeModeSwitch'), freeMissionCard: document.getElementById('freeMissionCard'), freeMissionMissingCount: document.getElementById('freeMissionMissingCount'), freeMissionMissingCharm: document.getElementById('freeMissionMissingCharm'), freeMissionHint: document.getElementById('freeMissionHint'), freeProgressCard: document.getElementById('freeProgressCard'), freeRoutePanel: document.getElementById('freeRoutePanel'), freeRouteOptions: document.getElementById('freeRouteOptions'), freeRouteSubgroups: document.getElementById('freeRouteSubgroups'), freeSearchRow: document.getElementById('freeSearchRow'), freeSearchInput: document.getElementById('freeSearchInput'), freeMissingToggle: document.getElementById('freeMissingToggle'), freeCatalogToolbar: document.getElementById('freeCatalogToolbar'), freeResultTitle: document.getElementById('freeResultTitle'), freeResultSubtitle: document.getElementById('freeResultSubtitle'),
     freeFilters: document.getElementById('freeFilters'), freeAvailabilityFilters: document.getElementById('freeAvailabilityFilters'), freeGenderSwitch: document.getElementById('freeGenderSwitch'),
+    freeVersionOptions: document.getElementById('freeVersionOptions'),
     categoryPickerButton: document.getElementById('categoryPickerButton'), selectedFreeCategoryLabel: document.getElementById('selectedFreeCategoryLabel'), freeFilterNote: document.getElementById('freeFilterNote'),
     freeResultCount: document.getElementById('freeResultCount'), categoryInlinePanel: document.getElementById('categoryInlinePanel'),
     selectFreeCategoryButton: document.getElementById('selectFreeCategoryButton'), freeList: document.getElementById('freeList'), freeLoadMoreButton: document.getElementById('freeLoadMoreButton'),
@@ -112,8 +116,40 @@
     closeRecordProtectionButton: document.getElementById('closeRecordProtectionButton'), recordProtectionStatus: document.getElementById('recordProtectionStatus'),
     recordProtectionEntryStatus: document.getElementById('recordProtectionEntryStatus'),
     backupRecordsButton: document.getElementById('backupRecordsButton'), restoreRecordsButton: document.getElementById('restoreRecordsButton'),
-    backupFileInput: document.getElementById('backupFileInput')
+    backupFileInput: document.getElementById('backupFileInput'),
+    confirmationBackdrop: document.getElementById('confirmationBackdrop'), confirmationKicker: document.getElementById('confirmationKicker'),
+    confirmationTitle: document.getElementById('confirmationTitle'), confirmationMessage: document.getElementById('confirmationMessage'),
+    confirmationCancelButton: document.getElementById('confirmationCancelButton'), confirmationConfirmButton: document.getElementById('confirmationConfirmButton')
   };
+
+  function closeConfirmation(confirmed) {
+    if (!el.confirmationBackdrop || el.confirmationBackdrop.hidden) return;
+    el.confirmationBackdrop.hidden = true;
+    document.body.classList.remove('confirmation-open');
+    var resolve = confirmationResolver;
+    var returnFocus = confirmationReturnFocus;
+    confirmationResolver = null;
+    confirmationReturnFocus = null;
+    if (returnFocus && returnFocus.isConnected) returnFocus.focus({ preventScroll: true });
+    if (resolve) resolve(confirmed === true);
+  }
+
+  function requestConfirmation(options) {
+    if (!el.confirmationBackdrop) return Promise.resolve(false);
+    if (confirmationResolver) closeConfirmation(false);
+    options = options || {};
+    confirmationReturnFocus = document.activeElement;
+    el.confirmationKicker.textContent = options.kicker || '操作确认';
+    el.confirmationTitle.textContent = options.title || '确定继续吗？';
+    el.confirmationMessage.textContent = options.message || '';
+    el.confirmationConfirmButton.textContent = options.confirmLabel || '确定';
+    el.confirmationBackdrop.hidden = false;
+    document.body.classList.add('confirmation-open');
+    return new Promise(function (resolve) {
+      confirmationResolver = resolve;
+      el.confirmationCancelButton.focus({ preventScroll: true });
+    });
+  }
 
   function loadState() {
     try {
@@ -765,6 +801,10 @@
 
   function matchesFreeClassificationSelection(item, selection) {
     if (!selection || selection === 'all') return true;
+    if (selection.indexOf('version:') === 0) {
+      var version = freeVersions.find(function (entry) { return 'version:' + entry.id === selection; });
+      return !!version && item.series === version.series;
+    }
     var classification = freeClassification(item);
     if (selection.indexOf('group:') !== 0) return classification === selection;
     var group = freeClassificationGroupForSelection(selection);
@@ -773,6 +813,8 @@
 
   function freeClassificationSelectionLabel(selection) {
     if (!selection || selection === 'all') return '全部分类组';
+    var version = freeVersions.find(function (entry) { return 'version:' + entry.id === selection; });
+    if (version) return version.label;
     var group = freeClassificationGroupForSelection(selection);
     return selection.indexOf('group:') === 0 && group ? group.label : selection;
   }
@@ -1213,6 +1255,20 @@
 
   function renderFreeRouteOptions() {
     var missing = currentMissingFreeItems();
+    el.freeVersionOptions.replaceChildren();
+    freeVersions.forEach(function (version) {
+      var value = 'version:' + version.id;
+      var remaining = summarizeFreeItems(missing.filter(function (item) { return matchesFreeClassificationSelection(item, value); })).remainingCount;
+      var active = view.freeLookupClassification === value;
+      var button = document.createElement('button'); button.type = 'button';
+      button.dataset.freeClassification = value;
+      button.className = 'free-version-button' + (active ? ' is-active' : '');
+      button.setAttribute('aria-pressed', active ? 'true' : 'false');
+      button.setAttribute('aria-label', version.label + '，当前未获得' + remaining + '件');
+      button.innerHTML = '<b>' + escapeHtml(version.label) + '</b><small>' + remaining + '</small>';
+      el.freeVersionOptions.appendChild(button);
+    });
+    el.freeVersionOptions.hidden = !freeVersions.length;
     var selectedGroup = freeClassificationGroupForSelection(view.freeLookupClassification);
     el.freeRouteOptions.replaceChildren();
     [{ label: '全部', value: 'all' }].concat(FREE_CLASSIFICATION_GROUPS.map(function (group) {
@@ -1450,7 +1506,7 @@
     showToast((target > current ? '已记录 +' : '已取消 ') + formatNumber(delta) + ' 风华 · ' + target + '/' + maxFreeCopies(item) + ' 件');
   }
 
-  function toggleFreeCategorySelection(confirmed) {
+  async function toggleFreeCategorySelection(confirmed) {
     var visible = getVisibleFreeItems(); if (!visible.length) return;
     var before = getFreeCharmProgress().allEarned;
     var allOwnedBefore = visible.every(isFreeRequirementComplete);
@@ -1458,7 +1514,13 @@
     if (confirmed !== true) {
       var actionLabel = targetOwned ? '全选当前' : '取消全选';
       var confirmation = actionLabel + '会批量修改当前筛选下的 ' + visible.length + ' 项记录，确定继续吗？';
-      if (!window.confirm(confirmation)) return false;
+      var accepted = await requestConfirmation({
+        kicker: '批量记录确认',
+        title: actionLabel,
+        message: confirmation,
+        confirmLabel: actionLabel
+      });
+      if (!accepted) return false;
     }
     var processedGroups = {};
     visible.forEach(function (item) {
@@ -2021,7 +2083,14 @@
     window.YANYUN_BACKUP.decodeImageFile(file).then(function (restored) {
       var total = restored.paidRecords.length + restored.freeRecords.length;
       var message = '识别到 ' + total + ' 项记录。恢复会保留本机已有内容，只补充空白记录和更高的免费获得数量，是否继续？';
-      if (window.confirm(message)) restoreRecordsFromData(restored);
+      requestConfirmation({
+        kicker: '恢复记录确认',
+        title: '合并这份备份吗？',
+        message: message,
+        confirmLabel: '确认恢复'
+      }).then(function (confirmed) {
+        if (confirmed) restoreRecordsFromData(restored);
+      });
     }).catch(function (error) {
       showToast(error && error.message ? error.message : '恢复失败，请选择清晰的 PNG 原图');
     });
@@ -2037,6 +2106,9 @@
     el.backupFileInput.value = '';
     if (file) restoreRecordsFromFile(file);
   });
+  el.confirmationCancelButton.addEventListener('click', function () { closeConfirmation(false); });
+  el.confirmationConfirmButton.addEventListener('click', function () { closeConfirmation(true); });
+  el.confirmationBackdrop.addEventListener('click', function (event) { if (event.target === el.confirmationBackdrop) closeConfirmation(false); });
   el.viewSwitch.addEventListener('click', function (event) { var button = event.target.closest('[data-view]'); if (button) switchMode(button.dataset.view); });
   window.addEventListener('scroll', noteBackToTopActivity, { passive: true });
   window.addEventListener('resize', scheduleBackToTopVisibility, { passive: true });
@@ -2099,7 +2171,19 @@
   });
   el.freeRoutePanel.addEventListener('click', function (event) {
     var button = event.target.closest('[data-free-classification]'); if (!button) return;
-    view.freeLookupClassification = button.dataset.freeClassification; view.freeVisibleLimit = FREE_PAGE_SIZE; renderFreeList();
+    var selection = button.dataset.freeClassification;
+    if (selection.indexOf('version:') === 0) {
+      if (view.freeLookupClassification === selection) selection = 'all';
+      else {
+        view.freeCatalogFilter = 'all'; view.freeAvailability = 'all'; view.freeSearch = '';
+        el.freeSearchInput.value = '';
+        el.freeAvailabilityFilters.querySelectorAll('[data-free-availability]').forEach(function (entry) {
+          var active = entry.dataset.freeAvailability === 'all';
+          entry.classList.toggle('is-active', active); entry.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+      }
+    }
+    view.freeLookupClassification = selection; view.freeVisibleLimit = FREE_PAGE_SIZE; renderFreeList();
   });
   el.freeSearchInput.addEventListener('input', function () {
     view.freeSearch = el.freeSearchInput.value.trim(); view.freeVisibleLimit = FREE_PAGE_SIZE; renderFreeList();
@@ -2155,7 +2239,8 @@
   el.saveShareButton.addEventListener('click', saveShare); el.saveAllShareButton.addEventListener('click', saveAllShares);
   document.addEventListener('keydown', function (event) {
     if (event.key !== 'Escape') return;
-    if (!el.imagePreviewBackdrop.hidden) closeImagePreview();
+    if (!el.confirmationBackdrop.hidden) closeConfirmation(false);
+    else if (!el.imagePreviewBackdrop.hidden) closeImagePreview();
     else if (!el.recordProtectionBackdrop.hidden) closeRecordProtection();
     else if (!el.paidMethodPanel.hidden) { setPaidMethodPanelOpen(false); el.paidMethodFilter.focus(); }
     else if (!el.categoryInlinePanel.hidden) { setCategoryPanelOpen(false); el.categoryPickerButton.focus(); }
@@ -2182,7 +2267,7 @@
   });
   renderCalendar(); updateShareButtonVisibility(); scheduleFreeDateRefresh(); syncBackToTopVisibility(); updateRecordProtectionStatus();
   window.__OUTFIT_APP__ = {
-    version: '1.2.3', storageKey: STORAGE_KEY, paidCount: paidListItems.length, paidListCount: paidListItems.length, calendarPaidCount: paidItems.length, freeCount: freeCollectibles.length, freeDatabaseRows: freeItems.length, freeSetCount: freeSets.length,
+    version: '1.3', storageKey: STORAGE_KEY, paidCount: paidListItems.length, paidListCount: paidListItems.length, calendarPaidCount: paidItems.length, freeCount: freeCollectibles.length, freeDatabaseRows: freeItems.length, freeSetCount: freeSets.length,
     getState: function () { return JSON.parse(JSON.stringify(state)); }, getCounts: getCounts,
     setStatus: setStatus, setReview: setReview, toggleFavorite: toggleFavorite, paidStatusLabel: paidStatusLabel, switchMode: switchMode, switchPage: switchPage,
     getScopedPaidItems: getScopedPaidItems, getFilteredPaidItems: getFilteredPaidItems, getShareablePaidItems: getShareablePaidItems, paidItemMatchesMethodRefinements: paidItemMatchesMethodRefinements, buildSharePages: buildSharePages, drawSharePage: drawSharePage,

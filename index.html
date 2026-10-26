@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#eef1f3">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob:; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'none'; media-src 'self' data: blob:; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
   <title>燕云衣事通</title>
-  <link rel="stylesheet" href="./styles.css?v=1.2.3">
+  <link rel="stylesheet" href="./styles.css?v=1.3">
 </head>
 <body>
   <div class="app-boot" id="appBoot" role="status" aria-live="polite" aria-label="资源加载中">
@@ -29,7 +29,7 @@
         </div>
       </div>
       <div class="tool-meta">
-        <p class="tool-version">V1.2.3</p>
+        <p class="tool-version">V1.3</p>
         <p class="tool-creator">制作者：薄荷小鹿（燕云十六声）</p>
       </div>
     </header>
@@ -200,7 +200,7 @@
           <div class="free-progress-footer"><span class="free-progress-earned"><span>已获得风华</span><b id="freeCharmEarned">0</b></span><span id="freeProgressPercent">当前进度 0%</span></div>
         </section>
         <section class="free-route-panel" id="freeRoutePanel" aria-labelledby="freeRouteTitle">
-          <div class="free-route-heading"><div><span>快速查找</span><h3 id="freeRouteTitle">从分类组开始找</h3></div><small>数字为当前未获得</small></div>
+          <div class="free-route-heading"><div><span>快速查找</span><h3 id="freeRouteTitle">从分类组开始找</h3></div><div class="free-version-options" id="freeVersionOptions" role="group" aria-label="按版本查缺补漏"></div><small>数字为当前未获得</small></div>
           <div class="free-route-grid is-grouped" id="freeRouteOptions" role="group" aria-label="选择分类组"></div>
           <div class="free-route-subgroups" id="freeRouteSubgroups" role="group" aria-label="选择子分类" hidden></div>
         </section>
@@ -300,6 +300,18 @@
     </article>
   </div>
 
+  <div class="confirmation-backdrop" id="confirmationBackdrop" hidden>
+    <section class="confirmation-card" role="dialog" aria-modal="true" aria-labelledby="confirmationTitle" aria-describedby="confirmationMessage">
+      <p class="section-kicker" id="confirmationKicker">操作确认</p>
+      <h2 id="confirmationTitle">确定继续吗？</h2>
+      <p class="confirmation-message" id="confirmationMessage"></p>
+      <div class="confirmation-actions">
+        <button class="secondary-button" id="confirmationCancelButton" type="button">取消</button>
+        <button class="primary-button" id="confirmationConfirmButton" type="button">确定</button>
+      </div>
+    </section>
+  </div>
+
   <div class="image-preview-backdrop" id="imagePreviewBackdrop" role="dialog" aria-modal="true" aria-labelledby="imagePreviewCaption" hidden>
     <button class="image-preview-close" id="closeImagePreviewButton" type="button" aria-label="关闭大图">×</button>
     <figure class="image-preview-figure">
@@ -311,11 +323,11 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
-  <script src="./boot-guard.js?v=1.2.3"></script>
-  <script src="./data.js?v=1.2.3"></script>
-  <script src="./qrcode.js?v=1.2.3"></script>
-  <script src="./jsqr.js?v=1.2.3"></script>
-  <script src="./backup.js?v=1.2.3"></script>
-  <script src="./app.js?v=1.2.3"></script>
+  <script src="./boot-guard.js?v=1.3"></script>
+  <script src="./data.js?v=1.3"></script>
+  <script src="./qrcode.js?v=1.3"></script>
+  <script src="./jsqr.js?v=1.3"></script>
+  <script src="./backup.js?v=1.3"></script>
+  <script src="./app.js?v=1.3"></script>
 </body>
 </html>
