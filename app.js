@@ -1787,8 +1787,10 @@
 
   function fitText(ctx, text, maxWidth) {
     var value = String(text || '');
-    while (value.length > 1 && ctx.measureText(value).width > maxWidth) value = value.slice(0, -1);
-    return value === String(text || '') ? value : value.slice(0, -1) + '…';
+    if (ctx.measureText(value).width <= maxWidth) return value;
+    if (ctx.measureText('…').width > maxWidth) return '';
+    while (value.length && ctx.measureText(value + '…').width > maxWidth) value = value.slice(0, -1);
+    return value + '…';
   }
 
   function wrapText(ctx, text, x, y, maxWidth, lineHeight, maxLines) {
@@ -1836,18 +1838,27 @@
       ctx.font = '700 19px sans-serif';
       var listingText = item.listingStatus || '';
       var listingWidth = listingText ? Math.min(110, Math.ceil(ctx.measureText(listingText).width) + 24) : 0;
-      var favoriteWidth = saved.favorite ? 106 : 0;
+      var favoriteText = '♥ 心头好';
+      var favoriteWidth = saved.favorite ? Math.ceil(ctx.measureText(favoriteText).width) + 28 : 0;
       var nameMaxWidth = contentWidth - listingWidth - favoriteWidth - (listingWidth ? 12 : 0) - (favoriteWidth ? 10 : 0);
       ctx.fillStyle = '#172637'; ctx.font = '700 30px sans-serif';
       var nameText = fitText(ctx, item.name, Math.max(86, nameMaxWidth));
       ctx.fillText(nameText, contentLeft, top + 270);
       var nameWidth = Math.ceil(ctx.measureText(nameText).width);
-      if (saved.favorite) drawSharePill(ctx, '♥ 心头好', contentLeft + nameWidth + 10, top + 242, '#f8e8eb', '#a23e49', favoriteWidth);
+      if (saved.favorite) drawSharePill(ctx, favoriteText, contentLeft + nameWidth + 10, top + 242, '#f8e8eb', '#a23e49', favoriteWidth);
       if (listingText) drawSharePill(ctx, listingText, contentRight - listingWidth, top + 242, '#eaf1f1', '#315d63', listingWidth);
 
+      var priceText = String(item.priceOriginal || '').trim();
+      ctx.font = '700 20px sans-serif';
+      var priceWidth = priceText ? Math.ceil(ctx.measureText(priceText).width) : 0;
+      var metaWidth = contentWidth - priceWidth - (priceText ? 16 : 0);
       ctx.fillStyle = '#716b63'; ctx.font = '20px sans-serif';
       var meta = [formatDate(item.onSaleDate) + '上架', shareTypeLabel(item)].filter(Boolean).join('  ·  ');
-      ctx.fillText(fitText(ctx, meta, contentWidth), contentLeft, top + 307);
+      ctx.fillText(fitText(ctx, meta, metaWidth), contentLeft, top + 307);
+      if (priceText) {
+        ctx.fillStyle = '#806329'; ctx.font = '700 20px sans-serif';
+        ctx.fillText(priceText, contentRight - priceWidth, top + 307);
+      }
 
       ctx.fillStyle = saved.review ? '#fbf0f1' : '#f4f1eb';
       roundRect(ctx, contentLeft, top + 326, contentWidth, 88, 14); ctx.fill();
@@ -2267,7 +2278,7 @@
   });
   renderCalendar(); updateShareButtonVisibility(); scheduleFreeDateRefresh(); syncBackToTopVisibility(); updateRecordProtectionStatus();
   window.__OUTFIT_APP__ = {
-    version: '1.3', storageKey: STORAGE_KEY, paidCount: paidListItems.length, paidListCount: paidListItems.length, calendarPaidCount: paidItems.length, freeCount: freeCollectibles.length, freeDatabaseRows: freeItems.length, freeSetCount: freeSets.length,
+    version: '1.3.1', storageKey: STORAGE_KEY, paidCount: paidListItems.length, paidListCount: paidListItems.length, calendarPaidCount: paidItems.length, freeCount: freeCollectibles.length, freeDatabaseRows: freeItems.length, freeSetCount: freeSets.length,
     getState: function () { return JSON.parse(JSON.stringify(state)); }, getCounts: getCounts,
     setStatus: setStatus, setReview: setReview, toggleFavorite: toggleFavorite, paidStatusLabel: paidStatusLabel, switchMode: switchMode, switchPage: switchPage,
     getScopedPaidItems: getScopedPaidItems, getFilteredPaidItems: getFilteredPaidItems, getShareablePaidItems: getShareablePaidItems, paidItemMatchesMethodRefinements: paidItemMatchesMethodRefinements, buildSharePages: buildSharePages, drawSharePage: drawSharePage,

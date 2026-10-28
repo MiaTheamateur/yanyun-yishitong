@@ -2,12 +2,12 @@
   'use strict';
 
   window.OUTFIT_DATA_META = {
-  "version": "1.3",
+  "version": "1.3.1",
   "source": "飞书《燕云外观上架情况整理》＋《免费外观道具汇总_20261012》",
-  "sourceRevision": 1937,
-  "generatedAt": "2026-10-26T13:27:06.329Z",
-  "importedCount": 1020,
-  "paidCount": 207,
+  "sourceRevision": 1963,
+  "generatedAt": "2026-10-28T14:53:22.794Z",
+  "importedCount": 1023,
+  "paidCount": 210,
   "freeDatabaseRows": 813,
   "freeCollectibleCount": 743,
   "freeSetCount": 70,
@@ -35,18 +35,18 @@
     "currentCharm": 18280,
     "unavailableItems": 188
   },
-  "paidDatabaseRows": 206,
+  "paidDatabaseRows": 209,
   "paidLatestDate": "2026-10-23",
   "paidImagesEnabled": true,
-  "paidImageRecords": 206,
-  "paidImageAssets": 335,
-  "freeSourceRevision": 1257,
-  "freeSourceCheckedRevision": 1257,
+  "paidImageRecords": 209,
+  "paidImageAssets": 337,
+  "freeSourceRevision": 1259,
+  "freeSourceCheckedRevision": 1259,
   "freeSourcePendingConfirmationCount": 4,
   "paidPreviewRows": 0,
   "paidArchivedRows": 1,
   "freeBaselineSourceRevision": 1211,
-  "freeSourceSyncScope": "保留既有正式基线；未央城新增13件及10月26日五件限时到期状态；历史四条待确认变更保留",
+  "freeSourceSyncScope": "保留既有正式基线及历史待确认差异；追加未央城13件、五件到期状态及10月28日两件获取途径勘误",
   "freeVersions": [
     {
       "id": "weiyang-v1.3",
@@ -60,7 +60,7 @@
   {
     "id": "paid-0021",
     "sourceRecordId": "reczz28LoR5zzKvj",
-    "sourceOrder": 19,
+    "sourceOrder": 22,
     "name": "赤沙",
     "type": "外观",
     "acquisitionType": "付费",
@@ -103,7 +103,7 @@
   {
     "id": "paid-0152",
     "sourceRecordId": "reczz28LoRBSi66Z",
-    "sourceOrder": 20,
+    "sourceOrder": 23,
     "name": "山水一砚",
     "type": "外观",
     "acquisitionType": "付费",
@@ -259,7 +259,7 @@
     "source": "",
     "secondarySource": "",
     "verifiedAt": "2026-10-21",
-    "note": "",
+    "note": "限时90天上架",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
     "updatedAt": "2026-10-21"
@@ -308,7 +308,7 @@
   {
     "id": "paid-0022",
     "sourceRecordId": "reczz28MAIkaE267",
-    "sourceOrder": 14,
+    "sourceOrder": 15,
     "name": "金鳞阙",
     "type": "外观",
     "acquisitionType": "付费",
@@ -343,7 +343,7 @@
     "source": "",
     "secondarySource": "",
     "verifiedAt": "2026-10-21",
-    "note": "",
+    "note": "限时90天上架",
     "imageMatchStatus": "已匹配（通用图）",
     "validationNote": "本地索引图已唯一匹配",
     "updatedAt": "2026-10-21"
@@ -392,7 +392,7 @@
   {
     "id": "paid-0189",
     "sourceRecordId": "reczz28MAIkaEmAX",
-    "sourceOrder": 15,
+    "sourceOrder": 17,
     "name": "西凉鬼啸",
     "type": "外观",
     "acquisitionType": "付费",
@@ -556,7 +556,7 @@
   {
     "id": "paid-0023",
     "sourceRecordId": "reczz28MAIkaFIbo",
-    "sourceOrder": 16,
+    "sourceOrder": 18,
     "name": "龙凤缠",
     "type": "外观",
     "acquisitionType": "付费",
@@ -722,7 +722,7 @@
   {
     "id": "paid-0196",
     "sourceRecordId": "reczz28MAIkaG20h",
-    "sourceOrder": 18,
+    "sourceOrder": 21,
     "name": "风花雾",
     "type": "外观",
     "acquisitionType": "付费",
@@ -763,7 +763,7 @@
   {
     "id": "paid-0197",
     "sourceRecordId": "reczz28MAIkaG2TY",
-    "sourceOrder": 17,
+    "sourceOrder": 20,
     "name": "阮郎归",
     "type": "外观",
     "acquisitionType": "付费",
@@ -886,7 +886,7 @@
   {
     "id": "paid-0200",
     "sourceRecordId": "reczz28MEei6Wt25",
-    "sourceOrder": 23,
+    "sourceOrder": 26,
     "name": "人间仙",
     "type": "套装",
     "acquisitionType": "付费",
@@ -924,7 +924,7 @@
   {
     "id": "paid-0201",
     "sourceRecordId": "reczz28Mo8gK0M7S",
-    "sourceOrder": 22,
+    "sourceOrder": 25,
     "name": "无间无相",
     "type": "套装",
     "acquisitionType": "付费",
@@ -965,7 +965,7 @@
   {
     "id": "paid-0202",
     "sourceRecordId": "reczz28Mo8gK4Fek",
-    "sourceOrder": 21,
+    "sourceOrder": 24,
     "name": "乐神师延",
     "type": "套装",
     "acquisitionType": "付费",
@@ -1006,7 +1006,7 @@
   {
     "id": "paid-0003",
     "sourceRecordId": "reczz28Ld1So9ah8",
-    "sourceOrder": 26,
+    "sourceOrder": 29,
     "name": "翠羽顾",
     "type": "外观",
     "acquisitionType": "付费",
@@ -1044,7 +1044,7 @@
   {
     "id": "paid-0001",
     "sourceRecordId": "reczz28Ld1So9NfK",
-    "sourceOrder": 24,
+    "sourceOrder": 27,
     "name": "九间当铺",
     "type": "外观",
     "acquisitionType": "付费",
@@ -1085,7 +1085,7 @@
   {
     "id": "paid-0002",
     "sourceRecordId": "reczz28Ld1So9YaP",
-    "sourceOrder": 25,
+    "sourceOrder": 28,
     "name": "燃金明",
     "type": "外观",
     "acquisitionType": "付费",
@@ -1126,7 +1126,7 @@
   {
     "id": "paid-0004",
     "sourceRecordId": "reczz28Ld1So9dGI",
-    "sourceOrder": 27,
+    "sourceOrder": 30,
     "name": "南疆秘语",
     "type": "外观",
     "acquisitionType": "付费",
@@ -1164,7 +1164,7 @@
   {
     "id": "paid-0005",
     "sourceRecordId": "reczz28Ld1So9eLq",
-    "sourceOrder": 28,
+    "sourceOrder": 31,
     "name": "穿云游雪",
     "type": "外观",
     "acquisitionType": "付费",
@@ -1205,7 +1205,7 @@
   {
     "id": "paid-0006",
     "sourceRecordId": "reczz28LfC5keamj",
-    "sourceOrder": 29,
+    "sourceOrder": 32,
     "name": "丹雀",
     "type": "套装",
     "acquisitionType": "付费",
@@ -1246,7 +1246,7 @@
   {
     "id": "paid-0007",
     "sourceRecordId": "reczz28LfCeXbcXp",
-    "sourceOrder": 30,
+    "sourceOrder": 33,
     "name": "沧海龙吟",
     "type": "套装",
     "acquisitionType": "付费",
@@ -1287,7 +1287,7 @@
   {
     "id": "paid-0008",
     "sourceRecordId": "reczz28LfCfQzeTq",
-    "sourceOrder": 31,
+    "sourceOrder": 34,
     "name": "西极坠日",
     "type": "套装",
     "acquisitionType": "付费",
@@ -1328,7 +1328,7 @@
   {
     "id": "paid-0009",
     "sourceRecordId": "reczz28LfCg9H6Aa",
-    "sourceOrder": 32,
+    "sourceOrder": 35,
     "name": "蜀戏春",
     "type": "外观",
     "acquisitionType": "付费",
@@ -1371,7 +1371,7 @@
   {
     "id": "paid-0010",
     "sourceRecordId": "reczz28LfIcAZ7Fg",
-    "sourceOrder": 33,
+    "sourceOrder": 36,
     "name": "朔风雪",
     "type": "发型",
     "acquisitionType": "付费",
@@ -1412,7 +1412,7 @@
   {
     "id": "paid-0011",
     "sourceRecordId": "reczz28LfId4gvov",
-    "sourceOrder": 34,
+    "sourceOrder": 37,
     "name": "上青云",
     "type": "外观",
     "acquisitionType": "付费",
@@ -1450,7 +1450,7 @@
   {
     "id": "paid-0012",
     "sourceRecordId": "reczz28LfIdv7hVX",
-    "sourceOrder": 35,
+    "sourceOrder": 38,
     "name": "鹊衔夜",
     "type": "外观",
     "acquisitionType": "付费",
@@ -1491,7 +1491,7 @@
   {
     "id": "paid-0013",
     "sourceRecordId": "reczz28LfIfEr6Cf",
-    "sourceOrder": 36,
+    "sourceOrder": 39,
     "name": "封侯",
     "type": "外观",
     "acquisitionType": "付费",
@@ -1529,7 +1529,7 @@
   {
     "id": "paid-0014",
     "sourceRecordId": "reczz28LfIgF2P2S",
-    "sourceOrder": 37,
+    "sourceOrder": 40,
     "name": "云遥鹤影",
     "type": "外观",
     "acquisitionType": "付费",
@@ -1567,7 +1567,7 @@
   {
     "id": "paid-0015",
     "sourceRecordId": "reczz28LfIh1zoaz",
-    "sourceOrder": 38,
+    "sourceOrder": 41,
     "name": "白衣修罗",
     "type": "外观",
     "acquisitionType": "付费",
@@ -1605,7 +1605,7 @@
   {
     "id": "paid-0016",
     "sourceRecordId": "reczz28LfIhpu1rZ",
-    "sourceOrder": 39,
+    "sourceOrder": 42,
     "name": "白龙",
     "type": "外观",
     "acquisitionType": "付费",
@@ -1646,7 +1646,7 @@
   {
     "id": "paid-0017",
     "sourceRecordId": "reczz28LfIikUwas",
-    "sourceOrder": 40,
+    "sourceOrder": 43,
     "name": "瀚海千山",
     "type": "发型",
     "acquisitionType": "付费",
@@ -1687,7 +1687,7 @@
   {
     "id": "paid-0018",
     "sourceRecordId": "reczz28LfIjWerh5",
-    "sourceOrder": 41,
+    "sourceOrder": 44,
     "name": "雪满川",
     "type": "套装",
     "acquisitionType": "付费",
@@ -1728,7 +1728,7 @@
   {
     "id": "paid-0019",
     "sourceRecordId": "reczz28Lfki5xKqg",
-    "sourceOrder": 42,
+    "sourceOrder": 45,
     "name": "松花玉兰",
     "type": "外观",
     "acquisitionType": "付费",
@@ -1766,7 +1766,7 @@
   {
     "id": "paid-0020",
     "sourceRecordId": "reczz28LflGXd9oZ",
-    "sourceOrder": 43,
+    "sourceOrder": 46,
     "name": "浣溪沙",
     "type": "外观",
     "acquisitionType": "付费",
@@ -1804,7 +1804,7 @@
   {
     "id": "paid-0024",
     "sourceRecordId": "reczz28Lgi9IxpRT",
-    "sourceOrder": 44,
+    "sourceOrder": 47,
     "name": "清音晓",
     "type": "外观",
     "acquisitionType": "付费",
@@ -1842,7 +1842,7 @@
   {
     "id": "paid-0025",
     "sourceRecordId": "reczz28LgiAGECzw",
-    "sourceOrder": 45,
+    "sourceOrder": 48,
     "name": "铁马金戈",
     "type": "外观",
     "acquisitionType": "付费",
@@ -1883,7 +1883,7 @@
   {
     "id": "paid-0026",
     "sourceRecordId": "reczz28LgiB0QYzH",
-    "sourceOrder": 46,
+    "sourceOrder": 49,
     "name": "青丘千岁",
     "type": "套装",
     "acquisitionType": "付费",
@@ -1924,7 +1924,7 @@
   {
     "id": "paid-0027",
     "sourceRecordId": "reczz28LgiBp6hJ6",
-    "sourceOrder": 47,
+    "sourceOrder": 50,
     "name": "弄清影",
     "type": "发型",
     "acquisitionType": "付费",
@@ -1965,7 +1965,7 @@
   {
     "id": "paid-0028",
     "sourceRecordId": "reczz28LgiCZXY0k",
-    "sourceOrder": 48,
+    "sourceOrder": 51,
     "name": "青玉案",
     "type": "外观",
     "acquisitionType": "付费",
@@ -2003,7 +2003,7 @@
   {
     "id": "paid-0029",
     "sourceRecordId": "reczz28LgiDQ167W",
-    "sourceOrder": 49,
+    "sourceOrder": 52,
     "name": "紫薇阙",
     "type": "外观",
     "acquisitionType": "付费",
@@ -2041,7 +2041,7 @@
   {
     "id": "paid-0030",
     "sourceRecordId": "reczz28LgiES7hFz",
-    "sourceOrder": 50,
+    "sourceOrder": 53,
     "name": "蝎心蛟影",
     "type": "外观",
     "acquisitionType": "付费",
@@ -2082,7 +2082,7 @@
   {
     "id": "paid-0031",
     "sourceRecordId": "reczz28LhT1jwUzH",
-    "sourceOrder": 51,
+    "sourceOrder": 54,
     "name": "芳时歇",
     "type": "外观",
     "acquisitionType": "付费",
@@ -2120,7 +2120,7 @@
   {
     "id": "paid-0032",
     "sourceRecordId": "reczz28LhXBz9Kxc",
-    "sourceOrder": 54,
+    "sourceOrder": 57,
     "name": "瑞鹤仙",
     "type": "套装",
     "acquisitionType": "付费",
@@ -2158,7 +2158,7 @@
   {
     "id": "paid-0033",
     "sourceRecordId": "reczz28LhXCkm8EB",
-    "sourceOrder": 55,
+    "sourceOrder": 58,
     "name": "玉霜翎",
     "type": "发型",
     "acquisitionType": "付费",
@@ -2199,7 +2199,7 @@
   {
     "id": "paid-0034",
     "sourceRecordId": "reczz28LhT2xNyFu",
-    "sourceOrder": 52,
+    "sourceOrder": 55,
     "name": "夜郎幽问",
     "type": "外观",
     "acquisitionType": "付费",
@@ -2240,7 +2240,7 @@
   {
     "id": "paid-0035",
     "sourceRecordId": "reczz28LhXB8WpTY",
-    "sourceOrder": 53,
+    "sourceOrder": 56,
     "name": "栖彤霞",
     "type": "发型",
     "acquisitionType": "付费",
@@ -2281,7 +2281,7 @@
   {
     "id": "paid-0036",
     "sourceRecordId": "reczz28LhikgHvls",
-    "sourceOrder": 56,
+    "sourceOrder": 59,
     "name": "鹊踏枝",
     "type": "外观",
     "acquisitionType": "付费",
@@ -2319,7 +2319,7 @@
   {
     "id": "paid-0037",
     "sourceRecordId": "reczz28Lhildl3O8",
-    "sourceOrder": 57,
+    "sourceOrder": 60,
     "name": "贺新词",
     "type": "外观",
     "acquisitionType": "付费",
@@ -2360,7 +2360,7 @@
   {
     "id": "paid-0038",
     "sourceRecordId": "reczz28LhimYmlIm",
-    "sourceOrder": 58,
+    "sourceOrder": 61,
     "name": "螭骨",
     "type": "外观",
     "acquisitionType": "付费",
@@ -2398,7 +2398,7 @@
   {
     "id": "paid-0039",
     "sourceRecordId": "reczz28LhinKRKjg",
-    "sourceOrder": 59,
+    "sourceOrder": 62,
     "name": "月中天阙",
     "type": "套装",
     "acquisitionType": "付费",
@@ -2439,7 +2439,7 @@
   {
     "id": "paid-0040",
     "sourceRecordId": "reczz28LhioEjdNf",
-    "sourceOrder": 60,
+    "sourceOrder": 63,
     "name": "午风清",
     "type": "外观",
     "acquisitionType": "付费",
@@ -2480,7 +2480,7 @@
   {
     "id": "paid-0041",
     "sourceRecordId": "reczz28Lhiq9svpN",
-    "sourceOrder": 61,
+    "sourceOrder": 64,
     "name": "花月天真",
     "type": "外观",
     "acquisitionType": "付费",
@@ -2521,7 +2521,7 @@
   {
     "id": "paid-0042",
     "sourceRecordId": "reczz28Li7T48mF7",
-    "sourceOrder": 62,
+    "sourceOrder": 65,
     "name": "梦鎏金",
     "type": "发型",
     "acquisitionType": "付费",
@@ -2562,7 +2562,7 @@
   {
     "id": "paid-0043",
     "sourceRecordId": "reczz28Li7WXKeLY",
-    "sourceOrder": 63,
+    "sourceOrder": 66,
     "name": "雁还乡",
     "type": "外观",
     "acquisitionType": "付费",
@@ -2603,7 +2603,7 @@
   {
     "id": "paid-0044",
     "sourceRecordId": "reczz28Li7YQpEKV",
-    "sourceOrder": 64,
+    "sourceOrder": 67,
     "name": "射虎南山",
     "type": "外观",
     "acquisitionType": "付费",
@@ -2641,7 +2641,7 @@
   {
     "id": "paid-0045",
     "sourceRecordId": "reczz28Li7iwALCr",
-    "sourceOrder": 65,
+    "sourceOrder": 68,
     "name": "宿露轻盈",
     "type": "外观",
     "acquisitionType": "付费",
@@ -2684,7 +2684,7 @@
   {
     "id": "paid-0046",
     "sourceRecordId": "reczz28Li7k7nDYp",
-    "sourceOrder": 66,
+    "sourceOrder": 69,
     "name": "雨停荷",
     "type": "外观",
     "acquisitionType": "付费",
@@ -2722,7 +2722,7 @@
   {
     "id": "paid-0047",
     "sourceRecordId": "reczz28LiNCsWxk2",
-    "sourceOrder": 67,
+    "sourceOrder": 70,
     "name": "青草原",
     "type": "外观",
     "acquisitionType": "付费",
@@ -2760,7 +2760,7 @@
   {
     "id": "paid-0048",
     "sourceRecordId": "reczz28LmjpDeDA9",
-    "sourceOrder": 68,
+    "sourceOrder": 71,
     "name": "云深归处",
     "type": "发型",
     "acquisitionType": "付费",
@@ -2801,7 +2801,7 @@
   {
     "id": "paid-0049",
     "sourceRecordId": "reczz28LmjtJXJap",
-    "sourceOrder": 69,
+    "sourceOrder": 72,
     "name": "快哉风",
     "type": "套装",
     "acquisitionType": "付费",
@@ -2842,7 +2842,7 @@
   {
     "id": "paid-0050",
     "sourceRecordId": "reczz28LmjuY5pOS",
-    "sourceOrder": 70,
+    "sourceOrder": 73,
     "name": "南风熏",
     "type": "外观",
     "acquisitionType": "付费",
@@ -2880,7 +2880,7 @@
   {
     "id": "paid-0051",
     "sourceRecordId": "reczz28Lmk0QzI8u",
-    "sourceOrder": 72,
+    "sourceOrder": 75,
     "name": "将星入命",
     "type": "套装",
     "acquisitionType": "付费",
@@ -2921,7 +2921,7 @@
   {
     "id": "paid-0052",
     "sourceRecordId": "reczz28Lmk1VU1LN",
-    "sourceOrder": 73,
+    "sourceOrder": 76,
     "name": "我自擎天",
     "type": "发型",
     "acquisitionType": "付费",
@@ -2962,7 +2962,7 @@
   {
     "id": "paid-0053",
     "sourceRecordId": "reczz28Ln0oSAUxf",
-    "sourceOrder": 71,
+    "sourceOrder": 74,
     "name": "天上白玉京",
     "type": "套装",
     "acquisitionType": "付费",
@@ -3003,7 +3003,7 @@
   {
     "id": "paid-0054",
     "sourceRecordId": "reczz28Lmk5hQ06G",
-    "sourceOrder": 74,
+    "sourceOrder": 77,
     "name": "鲤传尺素",
     "type": "外观",
     "acquisitionType": "付费",
@@ -3041,7 +3041,7 @@
   {
     "id": "paid-0055",
     "sourceRecordId": "reczz28Lmk8VDvZz",
-    "sourceOrder": 75,
+    "sourceOrder": 78,
     "name": "芙蓉泣露",
     "type": "发型",
     "acquisitionType": "付费",
@@ -3082,7 +3082,7 @@
   {
     "id": "paid-0056",
     "sourceRecordId": "reczz28Lmk9M4dAx",
-    "sourceOrder": 76,
+    "sourceOrder": 79,
     "name": "驰走西风",
     "type": "外观",
     "acquisitionType": "付费",
@@ -3120,7 +3120,7 @@
   {
     "id": "paid-0057",
     "sourceRecordId": "reczz28LmkAVfJSD",
-    "sourceOrder": 77,
+    "sourceOrder": 80,
     "name": "月如银",
     "type": "外观",
     "acquisitionType": "付费",
@@ -3158,7 +3158,7 @@
   {
     "id": "paid-0058",
     "sourceRecordId": "reczz28LmkBPz1ly",
-    "sourceOrder": 78,
+    "sourceOrder": 81,
     "name": "梦寻虎跑",
     "type": "外观",
     "acquisitionType": "付费",
@@ -3196,7 +3196,7 @@
   {
     "id": "paid-0059",
     "sourceRecordId": "reczz28LmkCNUPsy",
-    "sourceOrder": 79,
+    "sourceOrder": 82,
     "name": "浮云卷霭",
     "type": "发型",
     "acquisitionType": "付费",
@@ -3237,7 +3237,7 @@
   {
     "id": "paid-0060",
     "sourceRecordId": "reczz28LmkDMZviP",
-    "sourceOrder": 80,
+    "sourceOrder": 83,
     "name": "如碎霜天",
     "type": "套装",
     "acquisitionType": "付费",
@@ -3278,7 +3278,7 @@
   {
     "id": "paid-0061",
     "sourceRecordId": "reczz28LmkE0wYiU",
-    "sourceOrder": 81,
+    "sourceOrder": 84,
     "name": "风吟彼岸",
     "type": "套装",
     "acquisitionType": "付费",
@@ -3319,7 +3319,7 @@
   {
     "id": "paid-0062",
     "sourceRecordId": "reczz28LmkEleqRn",
-    "sourceOrder": 82,
+    "sourceOrder": 85,
     "name": "相思曲",
     "type": "外观",
     "acquisitionType": "付费",
@@ -3357,7 +3357,7 @@
   {
     "id": "paid-0063",
     "sourceRecordId": "reczz28LmkK42LfH",
-    "sourceOrder": 84,
+    "sourceOrder": 87,
     "name": "鹊桥仙",
     "type": "发型",
     "acquisitionType": "付费",
@@ -3398,7 +3398,7 @@
   {
     "id": "paid-0064",
     "sourceRecordId": "reczz28LmkK44gU7",
-    "sourceOrder": 83,
+    "sourceOrder": 86,
     "name": "卿知吾心",
     "type": "外观",
     "acquisitionType": "付费",
@@ -3439,7 +3439,7 @@
   {
     "id": "paid-0065",
     "sourceRecordId": "reczz28LmkK42IHa",
-    "sourceOrder": 85,
+    "sourceOrder": 88,
     "name": "岁时安",
     "type": "外观",
     "acquisitionType": "付费",
@@ -3477,7 +3477,7 @@
   {
     "id": "paid-0066",
     "sourceRecordId": "reczz28LmkK41lVz",
-    "sourceOrder": 86,
+    "sourceOrder": 89,
     "name": "望乡客",
     "type": "外观",
     "acquisitionType": "付费",
@@ -3515,7 +3515,7 @@
   {
     "id": "paid-0067",
     "sourceRecordId": "reczz28LmkK41PSC",
-    "sourceOrder": 87,
+    "sourceOrder": 90,
     "name": "啸月",
     "type": "外观",
     "acquisitionType": "付费",
@@ -3553,7 +3553,7 @@
   {
     "id": "paid-0068",
     "sourceRecordId": "reczz28LmkK43O6s",
-    "sourceOrder": 88,
+    "sourceOrder": 91,
     "name": "赤霄",
     "type": "发型",
     "acquisitionType": "付费",
@@ -3594,7 +3594,7 @@
   {
     "id": "paid-0069",
     "sourceRecordId": "reczz28LmkK431P5",
-    "sourceOrder": 92,
+    "sourceOrder": 95,
     "name": "句芒",
     "type": "外观",
     "acquisitionType": "付费",
@@ -3635,7 +3635,7 @@
   {
     "id": "paid-0070",
     "sourceRecordId": "reczz28LmkK43o1g",
-    "sourceOrder": 90,
+    "sourceOrder": 93,
     "name": "醉蓬莱",
     "type": "套装",
     "acquisitionType": "付费",
@@ -3673,7 +3673,7 @@
   {
     "id": "paid-0071",
     "sourceRecordId": "reczz28LmkK44nvk",
-    "sourceOrder": 91,
+    "sourceOrder": 94,
     "name": "倾芳樽",
     "type": "发型",
     "acquisitionType": "付费",
@@ -3714,7 +3714,7 @@
   {
     "id": "paid-0072",
     "sourceRecordId": "reczz28LmkK44yEL",
-    "sourceOrder": 89,
+    "sourceOrder": 92,
     "name": "云中锦书",
     "type": "外观",
     "acquisitionType": "付费",
@@ -3752,7 +3752,7 @@
   {
     "id": "paid-0073",
     "sourceRecordId": "reczz28LndkwbiVT",
-    "sourceOrder": 93,
+    "sourceOrder": 96,
     "name": "天志明鬼",
     "type": "发型",
     "acquisitionType": "付费",
@@ -3793,7 +3793,7 @@
   {
     "id": "paid-0074",
     "sourceRecordId": "reczz28LndpIMKNp",
-    "sourceOrder": 95,
+    "sourceOrder": 98,
     "name": "扶光",
     "type": "发型",
     "acquisitionType": "付费",
@@ -3834,7 +3834,7 @@
   {
     "id": "paid-0075",
     "sourceRecordId": "reczz28LndpIPNbl",
-    "sourceOrder": 94,
+    "sourceOrder": 97,
     "name": "金滟玉团",
     "type": "外观",
     "acquisitionType": "付费",
@@ -3875,7 +3875,7 @@
   {
     "id": "paid-0076",
     "sourceRecordId": "reczz28LndpIMrqM",
-    "sourceOrder": 96,
+    "sourceOrder": 99,
     "name": "寂夜铃",
     "type": "外观",
     "acquisitionType": "付费",
@@ -3913,7 +3913,7 @@
   {
     "id": "paid-0077",
     "sourceRecordId": "reczz28LndpIODET",
-    "sourceOrder": 97,
+    "sourceOrder": 100,
     "name": "惜芳时",
     "type": "外观",
     "acquisitionType": "付费",
@@ -3951,7 +3951,7 @@
   {
     "id": "paid-0078",
     "sourceRecordId": "reczz28LndpIMqlN",
-    "sourceOrder": 99,
+    "sourceOrder": 102,
     "name": "万顷琉璃",
     "type": "发型",
     "acquisitionType": "付费",
@@ -3992,7 +3992,7 @@
   {
     "id": "paid-0079",
     "sourceRecordId": "reczz28LndpIMqt2",
-    "sourceOrder": 100,
+    "sourceOrder": 103,
     "name": "风入画",
     "type": "外观",
     "acquisitionType": "付费",
@@ -4030,7 +4030,7 @@
   {
     "id": "paid-0080",
     "sourceRecordId": "reczz28LndpINE08",
-    "sourceOrder": 98,
+    "sourceOrder": 101,
     "name": "有狐绥绥",
     "type": "套装",
     "acquisitionType": "付费",
@@ -4071,7 +4071,7 @@
   {
     "id": "paid-0081",
     "sourceRecordId": "reczz28LndpIP8pB",
-    "sourceOrder": 102,
+    "sourceOrder": 105,
     "name": "祭火",
     "type": "发型",
     "acquisitionType": "付费",
@@ -4112,7 +4112,7 @@
   {
     "id": "paid-0082",
     "sourceRecordId": "reczz28LndpIPzgp",
-    "sourceOrder": 101,
+    "sourceOrder": 104,
     "name": "幽明既通",
     "type": "外观",
     "acquisitionType": "付费",
@@ -4150,7 +4150,7 @@
   {
     "id": "paid-0083",
     "sourceRecordId": "reczz28LndpINgQf",
-    "sourceOrder": 103,
+    "sourceOrder": 106,
     "name": "山君啸林",
     "type": "外观",
     "acquisitionType": "付费",
@@ -4188,7 +4188,7 @@
   {
     "id": "paid-0084",
     "sourceRecordId": "reczz28LndpIQDZf",
-    "sourceOrder": 104,
+    "sourceOrder": 107,
     "name": "天地行",
     "type": "外观",
     "acquisitionType": "付费",
@@ -4226,7 +4226,7 @@
   {
     "id": "paid-0085",
     "sourceRecordId": "reczz28LndpIN76n",
-    "sourceOrder": 106,
+    "sourceOrder": 109,
     "name": "醉云醒雨",
     "type": "外观",
     "acquisitionType": "付费",
@@ -4264,7 +4264,7 @@
   {
     "id": "paid-0086",
     "sourceRecordId": "reczz28LndpINkqE",
-    "sourceOrder": 105,
+    "sourceOrder": 108,
     "name": "蓬山万重",
     "type": "套装",
     "acquisitionType": "付费",
@@ -4305,7 +4305,7 @@
   {
     "id": "paid-0087",
     "sourceRecordId": "reczz28LndpIPj53",
-    "sourceOrder": 107,
+    "sourceOrder": 110,
     "name": "浮岚",
     "type": "发型",
     "acquisitionType": "付费",
@@ -4346,7 +4346,7 @@
   {
     "id": "paid-0088",
     "sourceRecordId": "reczz28LndpIPsqX",
-    "sourceOrder": 108,
+    "sourceOrder": 111,
     "name": "剑羽雕翎",
     "type": "外观",
     "acquisitionType": "付费",
@@ -4384,7 +4384,7 @@
   {
     "id": "paid-0089",
     "sourceRecordId": "reczz28LndpIMew0",
-    "sourceOrder": 109,
+    "sourceOrder": 112,
     "name": "燕燕于飞",
     "type": "外观",
     "acquisitionType": "付费",
@@ -4422,7 +4422,7 @@
   {
     "id": "paid-0090",
     "sourceRecordId": "reczz28LndpIOpr5",
-    "sourceOrder": 110,
+    "sourceOrder": 113,
     "name": "孔雀谣",
     "type": "外观",
     "acquisitionType": "付费",
@@ -4463,7 +4463,7 @@
   {
     "id": "paid-0091",
     "sourceRecordId": "reczz28LndpIPq5f",
-    "sourceOrder": 112,
+    "sourceOrder": 115,
     "name": "露华",
     "type": "发型",
     "acquisitionType": "付费",
@@ -4504,7 +4504,7 @@
   {
     "id": "paid-0092",
     "sourceRecordId": "reczz28LndpIPUSS",
-    "sourceOrder": 111,
+    "sourceOrder": 114,
     "name": "飞白成诗",
     "type": "外观",
     "acquisitionType": "付费",
@@ -4542,7 +4542,7 @@
   {
     "id": "paid-0093",
     "sourceRecordId": "reczz28LndpINydP",
-    "sourceOrder": 113,
+    "sourceOrder": 116,
     "name": "游子衣",
     "type": "外观",
     "acquisitionType": "付费",
@@ -4580,7 +4580,7 @@
   {
     "id": "paid-0094",
     "sourceRecordId": "reczz28LndpIOCnY",
-    "sourceOrder": 119,
+    "sourceOrder": 122,
     "name": "岁华·瑶天悬光",
     "type": "套装",
     "acquisitionType": "付费",
@@ -4621,7 +4621,7 @@
   {
     "id": "paid-0095",
     "sourceRecordId": "reczz28LndpIP0rk",
-    "sourceOrder": 120,
+    "sourceOrder": 123,
     "name": "君临重霄",
     "type": "套装",
     "acquisitionType": "付费",
@@ -4659,7 +4659,7 @@
   {
     "id": "paid-0096",
     "sourceRecordId": "reczz28LndpIP1mJ",
-    "sourceOrder": 118,
+    "sourceOrder": 121,
     "name": "灵鲛织梦",
     "type": "套装",
     "acquisitionType": "付费",
@@ -4700,7 +4700,7 @@
   {
     "id": "paid-0097",
     "sourceRecordId": "reczz28LndpIPOhH",
-    "sourceOrder": 115,
+    "sourceOrder": 118,
     "name": "雀临华台",
     "type": "外观",
     "acquisitionType": "付费",
@@ -4741,7 +4741,7 @@
   {
     "id": "paid-0098",
     "sourceRecordId": "reczz28LndpIPUaW",
-    "sourceOrder": 114,
+    "sourceOrder": 117,
     "name": "焰卷残夜",
     "type": "外观",
     "acquisitionType": "付费",
@@ -4779,7 +4779,7 @@
   {
     "id": "paid-0099",
     "sourceRecordId": "reczz28LndpIPVmz",
-    "sourceOrder": 117,
+    "sourceOrder": 120,
     "name": "柿柿如意",
     "type": "外观",
     "acquisitionType": "付费",
@@ -4817,7 +4817,7 @@
   {
     "id": "paid-0100",
     "sourceRecordId": "reczz28LohRbjYDI",
-    "sourceOrder": 116,
+    "sourceOrder": 119,
     "name": "束华年",
     "type": "发型",
     "acquisitionType": "付费",
@@ -4858,7 +4858,7 @@
   {
     "id": "paid-0101",
     "sourceRecordId": "reczz28LndpIMsYZ",
-    "sourceOrder": 121,
+    "sourceOrder": 124,
     "name": "岁寒香",
     "type": "外观",
     "acquisitionType": "付费",
@@ -4896,7 +4896,7 @@
   {
     "id": "paid-0102",
     "sourceRecordId": "reczz28LndpIPsUl",
-    "sourceOrder": 122,
+    "sourceOrder": 125,
     "name": "百诡志异",
     "type": "外观",
     "acquisitionType": "付费",
@@ -4937,7 +4937,7 @@
   {
     "id": "paid-0103",
     "sourceRecordId": "reczz28LndpIPY1Z",
-    "sourceOrder": 126,
+    "sourceOrder": 129,
     "name": "赤心一寸",
     "type": "套装",
     "acquisitionType": "付费",
@@ -4978,7 +4978,7 @@
   {
     "id": "paid-0104",
     "sourceRecordId": "reczz28LndpIMzY8",
-    "sourceOrder": 123,
+    "sourceOrder": 126,
     "name": "猎白羽",
     "type": "外观",
     "acquisitionType": "付费",
@@ -5016,7 +5016,7 @@
   {
     "id": "paid-0105",
     "sourceRecordId": "reczz28LndpIMkNZ",
-    "sourceOrder": 124,
+    "sourceOrder": 127,
     "name": "明河载雪",
     "type": "外观",
     "acquisitionType": "付费",
@@ -5054,7 +5054,7 @@
   {
     "id": "paid-0106",
     "sourceRecordId": "reczz28LndpIO1q0",
-    "sourceOrder": 125,
+    "sourceOrder": 128,
     "name": "寒英",
     "type": "发型",
     "acquisitionType": "付费",
@@ -5095,7 +5095,7 @@
   {
     "id": "paid-0107",
     "sourceRecordId": "reczz28LndpIMval",
-    "sourceOrder": 127,
+    "sourceOrder": 130,
     "name": "龙腾岁宴",
     "type": "套装",
     "acquisitionType": "付费",
@@ -5136,7 +5136,7 @@
   {
     "id": "paid-0108",
     "sourceRecordId": "reczz28LndpIN2W9",
-    "sourceOrder": 131,
+    "sourceOrder": 134,
     "name": "青锋映雪",
     "type": "外观",
     "acquisitionType": "付费",
@@ -5174,7 +5174,7 @@
   {
     "id": "paid-0109",
     "sourceRecordId": "reczz28LndpIOlzy",
-    "sourceOrder": 128,
+    "sourceOrder": 131,
     "name": "鸣鹿寻春",
     "type": "套装",
     "acquisitionType": "付费",
@@ -5215,16 +5215,16 @@
   {
     "id": "paid-0110",
     "sourceRecordId": "reczz28LndpIQ1SX",
-    "sourceOrder": 130,
+    "sourceOrder": 133,
     "name": "丹渊寰宇",
     "type": "外观",
     "acquisitionType": "付费",
-    "femaleImage": "./assets/paid/paid-0110-female.webp",
-    "maleImage": "./assets/paid/paid-0110-male.webp",
-    "commonImage": "",
-    "sourceFemaleImage": "F/衣服/丹渊寰宇.jpg",
-    "sourceMaleImage": "M/衣服/丹渊寰宇.jpg",
-    "sourceCommonImage": "",
+    "femaleImage": "",
+    "maleImage": "",
+    "commonImage": "./assets/paid/paid-0110-common.webp",
+    "sourceFemaleImage": "",
+    "sourceMaleImage": "",
+    "sourceCommonImage": "和鸣聆音转盘/丹渊寰宇.png",
     "onSaleDate": "2026-02-06",
     "offSaleDate": "",
     "returnStartDate": "",
@@ -5247,16 +5247,16 @@
     "charmValue": 0,
     "source": "https://mp.weixin.qq.com/s/soQSlZOP-xbhBxOm-TeHYg",
     "secondarySource": "https://mp.weixin.qq.com/s/EXC8dueilXO4hkQva9igCA",
-    "verifiedAt": "2026-10-21",
+    "verifiedAt": "2026-10-28",
     "note": "",
-    "imageMatchStatus": "已匹配（F/M）",
-    "validationNote": "本地索引图已唯一匹配",
-    "updatedAt": "2026-10-21"
+    "imageMatchStatus": "已匹配（通用图）",
+    "validationNote": "按小鹿指定改用双人大海报",
+    "updatedAt": "2026-10-28"
   },
   {
     "id": "paid-0111",
     "sourceRecordId": "reczz28LpJOyAnwz",
-    "sourceOrder": 129,
+    "sourceOrder": 132,
     "name": "轻霞",
     "type": "发型",
     "acquisitionType": "付费",
@@ -5297,7 +5297,7 @@
   {
     "id": "paid-0112",
     "sourceRecordId": "reczz28LndpIO1mm",
-    "sourceOrder": 132,
+    "sourceOrder": 135,
     "name": "探梅逢春",
     "type": "外观",
     "acquisitionType": "付费",
@@ -5338,7 +5338,7 @@
   {
     "id": "paid-0113",
     "sourceRecordId": "reczz28LndpIOpC2",
-    "sourceOrder": 134,
+    "sourceOrder": 137,
     "name": "马上有乾",
     "type": "外观",
     "acquisitionType": "付费",
@@ -5379,7 +5379,7 @@
   {
     "id": "paid-0114",
     "sourceRecordId": "reczz28LndpIPzdy",
-    "sourceOrder": 135,
+    "sourceOrder": 138,
     "name": "聆春声",
     "type": "发型",
     "acquisitionType": "付费",
@@ -5420,7 +5420,7 @@
   {
     "id": "paid-0115",
     "sourceRecordId": "reczz28LndpIQ1yT",
-    "sourceOrder": 133,
+    "sourceOrder": 136,
     "name": "空山寻梅",
     "type": "发型",
     "acquisitionType": "付费",
@@ -5461,7 +5461,7 @@
   {
     "id": "paid-0116",
     "sourceRecordId": "reczz28LndpIP02j",
-    "sourceOrder": 136,
+    "sourceOrder": 139,
     "name": "财星高照",
     "type": "外观",
     "acquisitionType": "付费",
@@ -5499,7 +5499,7 @@
   {
     "id": "paid-0117",
     "sourceRecordId": "reczz28LndpIMSw4",
-    "sourceOrder": 138,
+    "sourceOrder": 141,
     "name": "青鸾瑶音",
     "type": "发型",
     "acquisitionType": "付费",
@@ -5540,7 +5540,7 @@
   {
     "id": "paid-0118",
     "sourceRecordId": "reczz28LndpINWc2",
-    "sourceOrder": 137,
+    "sourceOrder": 140,
     "name": "莲渡幽罗",
     "type": "套装",
     "acquisitionType": "付费",
@@ -5581,7 +5581,7 @@
   {
     "id": "paid-0119",
     "sourceRecordId": "reczz28LndpIOoSk",
-    "sourceOrder": 139,
+    "sourceOrder": 142,
     "name": "万壑清响",
     "type": "外观",
     "acquisitionType": "付费",
@@ -5619,7 +5619,7 @@
   {
     "id": "paid-0120",
     "sourceRecordId": "reczz28LndpININk",
-    "sourceOrder": 141,
+    "sourceOrder": 144,
     "name": "金风玉露",
     "type": "发型",
     "acquisitionType": "付费",
@@ -5660,7 +5660,7 @@
   {
     "id": "paid-0121",
     "sourceRecordId": "reczz28LndpIQNeU",
-    "sourceOrder": 140,
+    "sourceOrder": 143,
     "name": "锦鳞送瑞",
     "type": "外观",
     "acquisitionType": "付费",
@@ -5701,7 +5701,7 @@
   {
     "id": "paid-0122",
     "sourceRecordId": "reczz28LndpIPAtf",
-    "sourceOrder": 142,
+    "sourceOrder": 145,
     "name": "幽夜尘影",
     "type": "外观",
     "acquisitionType": "付费",
@@ -5739,7 +5739,7 @@
   {
     "id": "paid-0123",
     "sourceRecordId": "reczz28LndpIO7iK",
-    "sourceOrder": 143,
+    "sourceOrder": 146,
     "name": "天曜肃威",
     "type": "套装",
     "acquisitionType": "付费",
@@ -5780,7 +5780,7 @@
   {
     "id": "paid-0124",
     "sourceRecordId": "reczz28LndpIO9oc",
-    "sourceOrder": 144,
+    "sourceOrder": 147,
     "name": "流沙问蛊",
     "type": "外观",
     "acquisitionType": "付费",
@@ -5821,7 +5821,7 @@
   {
     "id": "paid-0125",
     "sourceRecordId": "reczz28LpdnPL0Ul",
-    "sourceOrder": 146,
+    "sourceOrder": 149,
     "name": "武陵春",
     "type": "发型",
     "acquisitionType": "付费",
@@ -5862,7 +5862,7 @@
   {
     "id": "paid-0126",
     "sourceRecordId": "reczz28LpdnPNzc8",
-    "sourceOrder": 145,
+    "sourceOrder": 148,
     "name": "芳菲春华",
     "type": "外观",
     "acquisitionType": "付费",
@@ -5903,7 +5903,7 @@
   {
     "id": "paid-0127",
     "sourceRecordId": "reczz28LpdnPMW2t",
-    "sourceOrder": 147,
+    "sourceOrder": 150,
     "name": "颂吉呈祥",
     "type": "外观",
     "acquisitionType": "付费",
@@ -5944,7 +5944,7 @@
   {
     "id": "paid-0128",
     "sourceRecordId": "reczz28LpdnPNMOH",
-    "sourceOrder": 148,
+    "sourceOrder": 151,
     "name": "忆春山",
     "type": "外观",
     "acquisitionType": "付费",
@@ -5982,7 +5982,7 @@
   {
     "id": "paid-0129",
     "sourceRecordId": "reczz28LpdnPKgsf",
-    "sourceOrder": 149,
+    "sourceOrder": 152,
     "name": "青霄掠影",
     "type": "外观",
     "acquisitionType": "付费",
@@ -6020,7 +6020,7 @@
   {
     "id": "paid-0130",
     "sourceRecordId": "reczz28LpdnPNvKt",
-    "sourceOrder": 150,
+    "sourceOrder": 153,
     "name": "洗素华",
     "type": "外观",
     "acquisitionType": "付费",
@@ -6058,7 +6058,7 @@
   {
     "id": "paid-0131",
     "sourceRecordId": "reczz28LpdnPMww0",
-    "sourceOrder": 152,
+    "sourceOrder": 155,
     "name": "春鸢",
     "type": "发型",
     "acquisitionType": "付费",
@@ -6099,7 +6099,7 @@
   {
     "id": "paid-0132",
     "sourceRecordId": "reczz28LpdnPMwxn",
-    "sourceOrder": 151,
+    "sourceOrder": 154,
     "name": "轻鸢入画",
     "type": "外观",
     "acquisitionType": "付费",
@@ -6137,7 +6137,7 @@
   {
     "id": "paid-0133",
     "sourceRecordId": "reczz28LpdnPKarA",
-    "sourceOrder": 154,
+    "sourceOrder": 157,
     "name": "少年行",
     "type": "外观",
     "acquisitionType": "付费",
@@ -6175,7 +6175,7 @@
   {
     "id": "paid-0134",
     "sourceRecordId": "reczz28LpdnPKmzI",
-    "sourceOrder": 153,
+    "sourceOrder": 156,
     "name": "玄骨在渊",
     "type": "套装",
     "acquisitionType": "付费",
@@ -6216,7 +6216,7 @@
   {
     "id": "paid-0135",
     "sourceRecordId": "reczz28LpdnPNBgd",
-    "sourceOrder": 155,
+    "sourceOrder": 158,
     "name": "无生蛊",
     "type": "发型",
     "acquisitionType": "付费",
@@ -6257,7 +6257,7 @@
   {
     "id": "paid-0136",
     "sourceRecordId": "reczz28LpdnPMinj",
-    "sourceOrder": 156,
+    "sourceOrder": 159,
     "name": "渡瑶津",
     "type": "套装",
     "acquisitionType": "付费",
@@ -6295,7 +6295,7 @@
   {
     "id": "paid-0137",
     "sourceRecordId": "reczz28Lq9njCMY4",
-    "sourceOrder": 157,
+    "sourceOrder": 160,
     "name": "清涟",
     "type": "发型",
     "acquisitionType": "付费",
@@ -6336,7 +6336,7 @@
   {
     "id": "paid-0138",
     "sourceRecordId": "reczz28LpdnPLgk1",
-    "sourceOrder": 158,
+    "sourceOrder": 161,
     "name": "点春瓯",
     "type": "外观",
     "acquisitionType": "付费",
@@ -6377,7 +6377,7 @@
   {
     "id": "paid-0139",
     "sourceRecordId": "reczz28LpdnPLM1O",
-    "sourceOrder": 159,
+    "sourceOrder": 162,
     "name": "芝兰自芳",
     "type": "外观",
     "acquisitionType": "付费",
@@ -6415,7 +6415,7 @@
   {
     "id": "paid-0140",
     "sourceRecordId": "reczz28LpdnPMGs6",
-    "sourceOrder": 160,
+    "sourceOrder": 163,
     "name": "南冥幽梦",
     "type": "外观",
     "acquisitionType": "付费",
@@ -6453,7 +6453,7 @@
   {
     "id": "paid-0141",
     "sourceRecordId": "reczz28LpdnPOKJs",
-    "sourceOrder": 161,
+    "sourceOrder": 164,
     "name": "渡尘华",
     "type": "发型",
     "acquisitionType": "付费",
@@ -6494,7 +6494,7 @@
   {
     "id": "paid-0142",
     "sourceRecordId": "reczz28LpdnPLXkl",
-    "sourceOrder": 162,
+    "sourceOrder": 165,
     "name": "熊有成竹",
     "type": "外观",
     "acquisitionType": "付费",
@@ -6532,7 +6532,7 @@
   {
     "id": "paid-0143",
     "sourceRecordId": "reczz28LpdnPLPlC",
-    "sourceOrder": 163,
+    "sourceOrder": 166,
     "name": "茯尘无寄",
     "type": "外观",
     "acquisitionType": "付费",
@@ -6573,7 +6573,7 @@
   {
     "id": "paid-0144",
     "sourceRecordId": "reczz28LpdnPOfbT",
-    "sourceOrder": 164,
+    "sourceOrder": 167,
     "name": "卧思鹅",
     "type": "外观",
     "acquisitionType": "付费",
@@ -6614,7 +6614,7 @@
   {
     "id": "paid-0145",
     "sourceRecordId": "reczz28LpdnPLhcj",
-    "sourceOrder": 165,
+    "sourceOrder": 168,
     "name": "一举夺魁",
     "type": "外观",
     "acquisitionType": "付费",
@@ -6655,7 +6655,7 @@
   {
     "id": "paid-0146",
     "sourceRecordId": "reczz28LpdnPMx1R",
-    "sourceOrder": 167,
+    "sourceOrder": 170,
     "name": "金缕生兰",
     "type": "外观",
     "acquisitionType": "付费",
@@ -6696,7 +6696,7 @@
   {
     "id": "paid-0147",
     "sourceRecordId": "reczz28LpdnPO1fQ",
-    "sourceOrder": 166,
+    "sourceOrder": 169,
     "name": "鬼手焚莲",
     "type": "套装",
     "acquisitionType": "付费",
@@ -6737,7 +6737,7 @@
   {
     "id": "paid-0148",
     "sourceRecordId": "reczz28LpdnPOi34",
-    "sourceOrder": 168,
+    "sourceOrder": 171,
     "name": "霜月引",
     "type": "发型",
     "acquisitionType": "付费",
@@ -6778,7 +6778,7 @@
   {
     "id": "paid-0149",
     "sourceRecordId": "reczz28LpdnPMnDb",
-    "sourceOrder": 169,
+    "sourceOrder": 172,
     "name": "粽叶青黄",
     "type": "外观",
     "acquisitionType": "付费",
@@ -6819,7 +6819,7 @@
   {
     "id": "paid-0150",
     "sourceRecordId": "reczz28LpdnPNm25",
-    "sourceOrder": 170,
+    "sourceOrder": 173,
     "name": "金乌御日",
     "type": "套装",
     "acquisitionType": "付费",
@@ -6860,7 +6860,7 @@
   {
     "id": "paid-0151",
     "sourceRecordId": "reczz28LpdnPOVB4",
-    "sourceOrder": 171,
+    "sourceOrder": 174,
     "name": "翰墨丹青",
     "type": "外观",
     "acquisitionType": "付费",
@@ -6898,7 +6898,7 @@
   {
     "id": "paid-0153",
     "sourceRecordId": "reczz28LpdnPLwe0",
-    "sourceOrder": 172,
+    "sourceOrder": 175,
     "name": "莲台鹤",
     "type": "外观",
     "acquisitionType": "付费",
@@ -6939,7 +6939,7 @@
   {
     "id": "paid-0154",
     "sourceRecordId": "reczz28LpdnPMtWz",
-    "sourceOrder": 173,
+    "sourceOrder": 176,
     "name": "渡风涛",
     "type": "外观",
     "acquisitionType": "付费",
@@ -6980,7 +6980,7 @@
   {
     "id": "paid-0155",
     "sourceRecordId": "reczz28LpdnPKqLV",
-    "sourceOrder": 174,
+    "sourceOrder": 177,
     "name": "丹心",
     "type": "套装",
     "acquisitionType": "付费",
@@ -7021,7 +7021,7 @@
   {
     "id": "paid-0156",
     "sourceRecordId": "reczz28LpdnPKwGU",
-    "sourceOrder": 177,
+    "sourceOrder": 180,
     "name": "一庐烟霞",
     "type": "发型",
     "acquisitionType": "付费",
@@ -7062,7 +7062,7 @@
   {
     "id": "paid-0157",
     "sourceRecordId": "reczz28LpdnPMf9p",
-    "sourceOrder": 175,
+    "sourceOrder": 178,
     "name": "银浦流云",
     "type": "套装",
     "acquisitionType": "付费",
@@ -7103,7 +7103,7 @@
   {
     "id": "paid-0158",
     "sourceRecordId": "reczz28LpdnPMmgG",
-    "sourceOrder": 176,
+    "sourceOrder": 179,
     "name": "遥思汉阙",
     "type": "套装",
     "acquisitionType": "付费",
@@ -7144,7 +7144,7 @@
   {
     "id": "paid-0159",
     "sourceRecordId": "reczz28LpdnPM6mR",
-    "sourceOrder": 178,
+    "sourceOrder": 181,
     "name": "紫萸香慢",
     "type": "外观",
     "acquisitionType": "付费",
@@ -7182,7 +7182,7 @@
   {
     "id": "paid-0160",
     "sourceRecordId": "reczz28LpdnPLkaN",
-    "sourceOrder": 179,
+    "sourceOrder": 182,
     "name": "千年有待",
     "type": "外观",
     "acquisitionType": "付费",
@@ -7223,7 +7223,7 @@
   {
     "id": "paid-0161",
     "sourceRecordId": "reczz28LpdnPLmEc",
-    "sourceOrder": 180,
+    "sourceOrder": 183,
     "name": "白首同舟",
     "type": "发型",
     "acquisitionType": "付费",
@@ -7264,7 +7264,7 @@
   {
     "id": "paid-0162",
     "sourceRecordId": "reczz28LpdnPN3CG",
-    "sourceOrder": 181,
+    "sourceOrder": 184,
     "name": "青鳞拂雨",
     "type": "外观",
     "acquisitionType": "付费",
@@ -7305,7 +7305,7 @@
   {
     "id": "paid-0163",
     "sourceRecordId": "reczz28LpdnPNAKZ",
-    "sourceOrder": 182,
+    "sourceOrder": 185,
     "name": "青波棹歌",
     "type": "发型",
     "acquisitionType": "付费",
@@ -7346,7 +7346,7 @@
   {
     "id": "paid-0164",
     "sourceRecordId": "reczz28LpdnPMINy",
-    "sourceOrder": 183,
+    "sourceOrder": 186,
     "name": "枕寒流",
     "type": "外观",
     "acquisitionType": "付费",
@@ -7384,7 +7384,7 @@
   {
     "id": "paid-0165",
     "sourceRecordId": "reczz28LpdnPLD6c",
-    "sourceOrder": 184,
+    "sourceOrder": 187,
     "name": "疏桐流响",
     "type": "外观",
     "acquisitionType": "付费",
@@ -7425,7 +7425,7 @@
   {
     "id": "paid-0166",
     "sourceRecordId": "reczz28LpdnPLfG6",
-    "sourceOrder": 185,
+    "sourceOrder": 188,
     "name": "秋露晴",
     "type": "发型",
     "acquisitionType": "付费",
@@ -7466,7 +7466,7 @@
   {
     "id": "paid-0167",
     "sourceRecordId": "reczz28LpdnPLNmV",
-    "sourceOrder": 186,
+    "sourceOrder": 189,
     "name": "梧桐引凤",
     "type": "外观",
     "acquisitionType": "付费",
@@ -7507,7 +7507,7 @@
   {
     "id": "paid-0168",
     "sourceRecordId": "reczz28LpdnPMAN2",
-    "sourceOrder": 187,
+    "sourceOrder": 190,
     "name": "半卷风烟",
     "type": "外观",
     "acquisitionType": "付费",
@@ -7545,7 +7545,7 @@
   {
     "id": "paid-0169",
     "sourceRecordId": "reczz28LpdnPNTuL",
-    "sourceOrder": 188,
+    "sourceOrder": 191,
     "name": "怪无常",
     "type": "外观",
     "acquisitionType": "付费",
@@ -7583,7 +7583,7 @@
   {
     "id": "paid-0170",
     "sourceRecordId": "reczz28LpdnPM9Ox",
-    "sourceOrder": 189,
+    "sourceOrder": 192,
     "name": "飞容清响",
     "type": "套装",
     "acquisitionType": "付费",
@@ -7624,7 +7624,7 @@
   {
     "id": "paid-0171",
     "sourceRecordId": "reczz28LpdnPLxZ3",
-    "sourceOrder": 191,
+    "sourceOrder": 194,
     "name": "萦空",
     "type": "发型",
     "acquisitionType": "付费",
@@ -7665,7 +7665,7 @@
   {
     "id": "paid-0172",
     "sourceRecordId": "reczz28LpdnPM2bD",
-    "sourceOrder": 190,
+    "sourceOrder": 193,
     "name": "如是愿",
     "type": "外观",
     "acquisitionType": "付费",
@@ -7703,7 +7703,7 @@
   {
     "id": "paid-0173",
     "sourceRecordId": "reczz28LpdnPL2qM",
-    "sourceOrder": 192,
+    "sourceOrder": 195,
     "name": "醉魂濯玉",
     "type": "套装",
     "acquisitionType": "付费",
@@ -7744,7 +7744,7 @@
   {
     "id": "paid-0174",
     "sourceRecordId": "reczz28LpdnPOlKk",
-    "sourceOrder": 193,
+    "sourceOrder": 196,
     "name": "步秋庭",
     "type": "外观",
     "acquisitionType": "付费",
@@ -7785,7 +7785,7 @@
   {
     "id": "paid-0175",
     "sourceRecordId": "reczz28LpdnPLV6s",
-    "sourceOrder": 195,
+    "sourceOrder": 198,
     "name": "拟形·京华流芳",
     "type": "外观",
     "acquisitionType": "付费",
@@ -7826,7 +7826,7 @@
   {
     "id": "paid-0176",
     "sourceRecordId": "reczz28LpdnPO8j3",
-    "sourceOrder": 194,
+    "sourceOrder": 197,
     "name": "拟形·匡定千秋",
     "type": "外观",
     "acquisitionType": "付费",
@@ -7867,7 +7867,7 @@
   {
     "id": "paid-0177",
     "sourceRecordId": "reczz28LndpIO62m",
-    "sourceOrder": 196,
+    "sourceOrder": 199,
     "name": "金昭玉",
     "type": "套装",
     "acquisitionType": "付费",
@@ -7905,7 +7905,7 @@
   {
     "id": "paid-0178",
     "sourceRecordId": "reczz28LrhC7zjpf",
-    "sourceOrder": 199,
+    "sourceOrder": 202,
     "name": "玉桂珊珊",
     "type": "外观",
     "acquisitionType": "付费",
@@ -7946,7 +7946,7 @@
   {
     "id": "paid-0179",
     "sourceRecordId": "reczz28LrhC80esi",
-    "sourceOrder": 197,
+    "sourceOrder": 200,
     "name": "金玉梦",
     "type": "发型",
     "acquisitionType": "付费",
@@ -7987,7 +7987,7 @@
   {
     "id": "paid-0180",
     "sourceRecordId": "reczz28LrhC817OF",
-    "sourceOrder": 198,
+    "sourceOrder": 201,
     "name": "红叶萧萧",
     "type": "外观",
     "acquisitionType": "付费",
@@ -8025,7 +8025,7 @@
   {
     "id": "paid-0181",
     "sourceRecordId": "reczz28LrhC82XWy",
-    "sourceOrder": 200,
+    "sourceOrder": 203,
     "name": "舜华",
     "type": "发型",
     "acquisitionType": "付费",
@@ -8066,7 +8066,7 @@
   {
     "id": "paid-0182",
     "sourceRecordId": "reczz28LrhC83Hqd",
-    "sourceOrder": 201,
+    "sourceOrder": 204,
     "name": "朱鸾顾晴",
     "type": "外观",
     "acquisitionType": "付费",
@@ -8107,7 +8107,7 @@
   {
     "id": "paid-0204",
     "sourceRecordId": "reczz28LrhC7zog5",
-    "sourceOrder": 204,
+    "sourceOrder": 207,
     "name": "瑶空翩影",
     "type": "发型",
     "acquisitionType": "付费",
@@ -8148,7 +8148,7 @@
   {
     "id": "paid-0203",
     "sourceRecordId": "reczz28LrhC832Eb",
-    "sourceOrder": 203,
+    "sourceOrder": 206,
     "name": "江涵秋影",
     "type": "外观",
     "acquisitionType": "付费",
@@ -8189,7 +8189,7 @@
   {
     "id": "paid-0205",
     "sourceRecordId": "reczz28LrhC80Zh3",
-    "sourceOrder": 205,
+    "sourceOrder": 208,
     "name": "岁星方朔",
     "type": "套装",
     "acquisitionType": "付费",
@@ -8230,7 +8230,7 @@
   {
     "id": "paid-0206",
     "sourceRecordId": "reczz28LrhC81Gan",
-    "sourceOrder": 207,
+    "sourceOrder": 210,
     "name": "说与无常",
     "type": "发型",
     "acquisitionType": "付费",
@@ -8271,7 +8271,7 @@
   {
     "id": "paid-0207",
     "sourceRecordId": "reczz28LrhC81zp6",
-    "sourceOrder": 206,
+    "sourceOrder": 209,
     "name": "渡无常",
     "type": "外观",
     "acquisitionType": "付费",
@@ -8312,7 +8312,7 @@
   {
     "id": "paid-0183",
     "sourceRecordId": "reczz28LrhC83cUc",
-    "sourceOrder": 202,
+    "sourceOrder": 205,
     "name": "版本纪念套装",
     "type": "外观",
     "acquisitionType": "付费",
@@ -38378,7 +38378,7 @@
       "未央城版本新增"
     ],
     "charmValue": 10,
-    "source": "击败野外首领妙算获取奖励",
+    "source": "击败野外首领妙算获取奖励（暂不可得）",
     "verifiedAt": "2026-10-26",
     "note": "",
     "description": "海潮冲刷后留于滩上的骨刺，当铺掌柜将其用作兵器。枯朽遗骸，潮余残响。",
@@ -38682,7 +38682,7 @@
       "未央城版本新增"
     ],
     "charmValue": 10,
-    "source": "未央城探索度获取",
+    "source": "未央城【贵客凭引】商店",
     "verifiedAt": "2026-10-26",
     "note": "",
     "description": "月下飞天镜，云生结海楼。",
@@ -38803,6 +38803,135 @@
     "maxObtainableCount": 1,
     "imageMatchStatus": "已匹配",
     "validationNote": "男女通用图；按勘误后源表同步"
+  },
+  {
+    "id": "paid-0208",
+    "sourceRecordId": "reczz28Srlv5PHn9",
+    "sourceOrder": 14,
+    "name": "掩残红",
+    "type": "发型",
+    "acquisitionType": "付费",
+    "femaleImage": "",
+    "maleImage": "",
+    "commonImage": "./assets/paid/paid-0208-common.webp",
+    "sourceFemaleImage": "",
+    "sourceMaleImage": "",
+    "sourceCommonImage": "没有男女区分的整张图/需要右移处理/掩残红.png",
+    "onSaleDate": "2024-12-27",
+    "offSaleDate": "2025-03-27",
+    "returnStartDate": "",
+    "returnEndDate": "",
+    "availabilityRaw": "已下架",
+    "listingStatus": "已下架",
+    "saleMethod": "八音发",
+    "priceOriginal": "",
+    "priceTier": "",
+    "channel": "和鸣商店",
+    "styleTags": [
+      "开服时装",
+      "单八音发"
+    ],
+    "tags": [
+      "八音发",
+      "开服时装",
+      "单八音发"
+    ],
+    "series": "开服时装",
+    "infoStatus": "已确认",
+    "charmValue": 0,
+    "source": "",
+    "secondarySource": "",
+    "verifiedAt": "2026-10-28",
+    "note": "",
+    "imageMatchStatus": "已匹配（通用图）",
+    "validationNote": "本地索引图已唯一匹配",
+    "updatedAt": "2026-10-28"
+  },
+  {
+    "id": "paid-0209",
+    "sourceRecordId": "reczz28SrlyB5TbQ",
+    "sourceOrder": 16,
+    "name": "赤金缕",
+    "type": "发型",
+    "acquisitionType": "付费",
+    "femaleImage": "",
+    "maleImage": "",
+    "commonImage": "./assets/paid/paid-0209-common.webp",
+    "sourceFemaleImage": "",
+    "sourceMaleImage": "",
+    "sourceCommonImage": "没有男女区分的整张图/需要右移处理/赤金缕.png",
+    "onSaleDate": "2024-12-27",
+    "offSaleDate": "2025-03-27",
+    "returnStartDate": "",
+    "returnEndDate": "",
+    "availabilityRaw": "已下架",
+    "listingStatus": "已下架",
+    "saleMethod": "八音发",
+    "priceOriginal": "",
+    "priceTier": "",
+    "channel": "和鸣商店",
+    "styleTags": [
+      "开服时装",
+      "单八音发"
+    ],
+    "tags": [
+      "八音发",
+      "开服时装",
+      "单八音发"
+    ],
+    "series": "开服时装",
+    "infoStatus": "已确认",
+    "charmValue": 0,
+    "source": "",
+    "secondarySource": "",
+    "verifiedAt": "2026-10-28",
+    "note": "",
+    "imageMatchStatus": "已匹配（通用图）",
+    "validationNote": "本地索引图已唯一匹配",
+    "updatedAt": "2026-10-28"
+  },
+  {
+    "id": "paid-0210",
+    "sourceRecordId": "reczz28Srm4IPoGR",
+    "sourceOrder": 19,
+    "name": "千年化梦",
+    "type": "发型",
+    "acquisitionType": "付费",
+    "femaleImage": "",
+    "maleImage": "",
+    "commonImage": "./assets/paid/paid-0210-common.webp",
+    "sourceFemaleImage": "",
+    "sourceMaleImage": "",
+    "sourceCommonImage": "没有男女区分的整张图/需要右移处理/千年化梦.png",
+    "onSaleDate": "2024-12-27",
+    "offSaleDate": "2025-03-27",
+    "returnStartDate": "",
+    "returnEndDate": "",
+    "availabilityRaw": "已下架",
+    "listingStatus": "已下架",
+    "saleMethod": "八音发",
+    "priceOriginal": "",
+    "priceTier": "",
+    "channel": "和鸣商店",
+    "styleTags": [
+      "开服时装",
+      "单八音发"
+    ],
+    "tags": [
+      "八音发",
+      "开服时装",
+      "单八音发"
+    ],
+    "series": "开服时装",
+    "infoStatus": "已确认",
+    "charmValue": 0,
+    "source": "",
+    "secondarySource": "",
+    "verifiedAt": "2026-10-28",
+    "note": "限时90天上架",
+    "imageMatchStatus": "已匹配（通用图）",
+    "validationNote": "本地索引图已唯一匹配",
+    "updatedAt": "2026-10-28"
   }
 ];
 }());
