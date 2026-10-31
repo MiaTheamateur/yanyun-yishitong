@@ -2,10 +2,10 @@
   'use strict';
 
   window.OUTFIT_DATA_META = {
-  "version": "1.3.2",
+  "version": "1.3.3",
   "source": "飞书《燕云外观上架情况整理》＋《免费外观道具汇总_20261012》",
   "sourceRevision": 1982,
-  "generatedAt": "2026-10-30T07:29:56.646Z",
+  "generatedAt": "2026-10-31T11:45:27.282Z",
   "importedCount": 1025,
   "paidCount": 212,
   "freeDatabaseRows": 813,
@@ -40,13 +40,13 @@
   "paidImagesEnabled": true,
   "paidImageRecords": 211,
   "paidImageAssets": 340,
-  "freeSourceRevision": 1259,
-  "freeSourceCheckedRevision": 1259,
+  "freeSourceRevision": 1261,
+  "freeSourceCheckedRevision": 1261,
   "freeSourcePendingConfirmationCount": 4,
   "paidPreviewRows": 0,
   "paidArchivedRows": 1,
   "freeBaselineSourceRevision": 1211,
-  "freeSourceSyncScope": "保留既有正式基线及历史待确认差异；追加未央城13件、五件到期状态及10月28日两件获取途径勘误",
+  "freeSourceSyncScope": "保留既有正式基线及历史待确认差异；追加未央城13件、五件到期状态及10月28日两件获取途径勘误；2026-10-31 潮余获取途径与PVE战斗分类最终勘误",
   "freeVersions": [
     {
       "id": "weiyang-v1.3",
@@ -1380,7 +1380,7 @@
     "commonImage": "./assets/paid/paid-0010-common.webp",
     "sourceFemaleImage": "",
     "sourceMaleImage": "",
-    "sourceCommonImage": "没有男女区分的整张图/朔风雪.png",
+    "sourceCommonImage": "没有男女区分的整张图/需要右移处理/朔风雪.png",
     "onSaleDate": "2025-01-28",
     "offSaleDate": "2025-04-28",
     "returnStartDate": "",
@@ -8397,7 +8397,7 @@
     "commonImage": "./assets/paid/paid-0212-common.webp",
     "sourceFemaleImage": "",
     "sourceMaleImage": "",
-    "sourceCommonImage": "没有男女区分的整张图/逐月华.jpg",
+    "sourceCommonImage": "没有男女区分的整张图/需要右移处理/逐月华.jpg",
     "onSaleDate": "2025-01-24",
     "offSaleDate": "2025-02-14",
     "returnStartDate": "",
@@ -38453,12 +38453,12 @@
     "infoStatus": "已核验",
     "series": "V1.3未央城版本",
     "tags": [
-      "野外首领",
+      "PVE战斗",
       "未央城版本新增"
     ],
     "charmValue": 10,
-    "source": "击败野外首领妙算获取奖励（暂不可得）",
-    "verifiedAt": "2026-10-26",
+    "source": "未央城试炼·5块金牌",
+    "verifiedAt": "2026-10-31",
     "note": "",
     "description": "海潮冲刷后留于滩上的骨刺，当铺掌柜将其用作兵器。枯朽遗骸，潮余残响。",
     "maxObtainableCount": 1,
