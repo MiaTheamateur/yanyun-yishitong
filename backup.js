@@ -58,6 +58,9 @@
     var createdAt = Number(options.createdAt);
     if (!Number.isFinite(createdAt)) createdAt = Date.now();
     var compact = [1, createdAt, paid, free, options.freeGender === 'M' ? 'M' : 'F'];
+    if (Array.isArray(options.swordChoices) && options.swordChoices.some(Boolean)) {
+      compact.push(options.swordChoices.slice(0, 4).map(function (id) { return id ? idToToken(id) || 0 : 0; }));
+    }
     return bytesToBase64(new TextEncoder().encode(JSON.stringify(compact)));
   }
 
@@ -86,6 +89,8 @@
         return { id: tokenToId(entry[0]), count: Math.max(0, Math.floor(Number(entry[1]) || 0)) };
       }).filter(function (record) { return Boolean(record.id) && record.count > 0; }),
       freeGender: compact[4] === 'M' ? 'M' : 'F',
+      swordChoices: Array.isArray(compact[5]) && compact[5].length === 4
+        ? compact[5].map(function (token) { return token ? tokenToId(token) || '' : ''; }) : undefined,
     };
   }
 

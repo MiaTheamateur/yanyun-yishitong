@@ -54,6 +54,7 @@
   freeSets.forEach(function (item) { freeSetById[item.id] = item; });
   freeItems.forEach(function (item) { freeItemById[item.id] = item; });
   var FREE_EXCLUSIVE_GROUP_NAMES = [['藏锋·剑', '藏锋·枪']];
+  var FREE_SWORD_LOCATIONS = ['清河·佛光顶', '开封·角门里', '河西·白头城', '不见山·墨城'];
   var freeExclusiveGroupById = {};
   FREE_EXCLUSIVE_GROUP_NAMES.forEach(function (names, groupIndex) {
     var groupId = 'exclusive-' + groupIndex;
@@ -237,6 +238,21 @@
       var label = document.createElement('small'); label.textContent = '待补图';
       wrap.appendChild(mark); wrap.appendChild(label);
     }
+    return wrap;
+  }
+
+  function swordPairVisual(index) {
+    var wrap = document.createElement('div');
+    wrap.className = 'item-visual is-dual free-sword-visual';
+    wrap.style.setProperty('--hue', hueFor(freeItemById['free-0303'], index));
+    ['free-0303', 'free-0416'].forEach(function (id) {
+      var item = freeItemById[id];
+      var image = document.createElement('img');
+      image.src = item.commonImage;
+      image.alt = item.name + '外观图';
+      prepareListImage(image, index);
+      wrap.appendChild(createImagePreviewButton(image, item.commonImage, image.alt));
+    });
     return wrap;
   }
 
@@ -859,6 +875,13 @@
 
   function getFreeOwnedCount(item) {
     if (!item || item.recordShape === '套装') return 0;
+    if (exclusiveGroupFor(item)) {
+      var swordCount = swordChoices().filter(function (id) { return id === item.id; }).length;
+      var swordState = ensureItemState(item.id);
+      swordState.freeOwnedCount = swordCount;
+      swordState.freeOwned = swordCount > 0;
+      return swordCount;
+    }
     var itemState = ensureItemState(item.id);
     var count = Number(itemState.freeOwnedCount);
     if (!Number.isFinite(count)) count = itemState.freeOwned ? 1 : 0;
@@ -878,23 +901,49 @@
     return freeCollectibles.filter(function (entry) { return freeExclusiveGroupById[entry.id] === group; });
   }
 
-  function exclusiveSelectedItem(item) {
-    return exclusiveGroupItems(item).find(function (entry) { return getFreeOwnedCount(entry) > 0; }) || null;
+  function swordChoices() {
+    if (!Array.isArray(state.swordChoices) || state.swordChoices.length !== FREE_SWORD_LOCATIONS.length) {
+      var choices = FREE_EXCLUSIVE_GROUP_NAMES[0].map(function (name) {
+        return freeCollectibles.find(function (item) { return item.name === name; });
+      }).filter(Boolean);
+      state.swordChoices = FREE_SWORD_LOCATIONS.map(function () { return ''; });
+      var next = 0;
+      choices.forEach(function (item) {
+        var saved = ensureItemState(item.id);
+        var count = Math.max(0, Math.min(4, Math.floor(Number(saved.freeOwnedCount) || (saved.freeOwned ? 1 : 0))));
+        for (var index = 0; index < count && next < 4; index += 1) state.swordChoices[next++] = item.id;
+      });
+    }
+    return state.swordChoices;
+  }
+
+  function setSwordChoice(index, itemId) {
+    if (!Number.isInteger(index) || index < 0 || index >= FREE_SWORD_LOCATIONS.length) return false;
+    if (itemId && !freeExclusiveGroupById[itemId]) return false;
+    swordChoices()[index] = itemId;
+    exclusiveGroupItems(freeItemById['free-0303']).forEach(getFreeOwnedCount);
+    return true;
   }
 
   function setFreeOwnedCount(item, nextCount) {
     if (!item || item.recordShape === '套装') return [];
     var count = Math.max(0, Math.min(maxFreeCopies(item), Math.floor(Number(nextCount) || 0)));
-    var cleared = [];
-    if (count > 0 && exclusiveGroupFor(item)) {
-      exclusiveGroupItems(item).forEach(function (peer) {
-        if (peer.id === item.id || getFreeOwnedCount(peer) === 0) return;
-        var peerState = ensureItemState(peer.id);
-        peerState.freeOwnedCount = 0;
-        peerState.freeOwned = false;
-        cleared.push(peer.name);
-      });
+    if (exclusiveGroupFor(item)) {
+      var slots = swordChoices();
+      var owned = slots.filter(function (id) { return id === item.id; }).length;
+      if (count < owned) {
+        for (var remove = slots.length - 1; remove >= 0 && owned > count; remove -= 1) {
+          if (slots[remove] === item.id) { slots[remove] = ''; owned -= 1; }
+        }
+      } else if (count > owned) {
+        for (var add = 0; add < slots.length && owned < count; add += 1) {
+          if (!slots[add]) { slots[add] = item.id; owned += 1; }
+        }
+      }
+      exclusiveGroupItems(item).forEach(getFreeOwnedCount);
+      return [];
     }
+    var cleared = [];
     var itemState = ensureItemState(item.id);
     itemState.freeOwnedCount = count;
     itemState.freeOwned = count > 0;
@@ -910,15 +959,16 @@
   }
 
   function isFreeRequirementComplete(item) {
+    if (exclusiveGroupFor(item)) return swordChoices().every(Boolean);
     if (isFreeOwned(item)) return true;
-    return Boolean(exclusiveGroupFor(item) && exclusiveSelectedItem(item));
+    return false;
   }
 
   function hasAnyFreeOwnership(item) {
     if (item.recordShape === '套装') {
       return childrenForSet(item.id, true).some(function (child) { return getFreeOwnedCount(child) > 0; });
     }
-    return getFreeOwnedCount(item) > 0 || Boolean(exclusiveGroupFor(item) && exclusiveSelectedItem(item));
+    return getFreeOwnedCount(item) > 0 || Boolean(exclusiveGroupFor(item) && swordChoices().some(Boolean));
   }
 
   function setFreeOwned(item, target) {
@@ -932,7 +982,10 @@
   function freeSearchMatches(item) {
     if (!view.freeSearch) return true;
     var parentSet = item.parentSetId ? freeSetById[item.parentSetId] : null;
-    var searchable = [item.name, item.type, item.rawType, item.channel, item.source, item.note, parentSet && parentSet.name].concat(item.tags || []).filter(Boolean).join(' ').toLowerCase();
+    var groupItems = item.id === 'free-0303' ? exclusiveGroupItems(item) : [item];
+    var searchable = groupItems.reduce(function (parts, entry) {
+      return parts.concat([entry.name, entry.type, entry.rawType, entry.channel, entry.source, entry.note].concat(entry.tags || []));
+    }, [parentSet && parentSet.name]).filter(Boolean).join(' ').toLowerCase();
     return searchable.indexOf(view.freeSearch.toLowerCase()) >= 0;
   }
 
@@ -945,7 +998,7 @@
   }
 
   function getVisibleFreeItems() {
-    var sourceItems = freeItems.filter(function (item) { return item.recordShape !== '套装部件'; });
+    var sourceItems = freeItems.filter(function (item) { return item.recordShape !== '套装部件' && item.id !== 'free-0416'; });
     var prioritiseDeadline = view.freeAvailability === 'limited';
     var todayKey = prioritiseDeadline ? hongKongDateKey() : '';
     return sourceItems.filter(function (item) {
@@ -1017,17 +1070,14 @@
         if (seenGroups[group]) return;
         seenGroups[group] = true;
         var choices = items.filter(function (entry) { return exclusiveGroupFor(entry) === group; });
-        var selected = choices.find(function (entry) { return getFreeOwnedCount(entry) > 0; });
+        var selectedCount = swordChoices().filter(Boolean).length;
         var groupCharm = choices.reduce(function (best, entry) { return Math.max(best, charmValue(entry)); }, 0);
-        summary.totalCount += 1;
-        summary.totalCharm += groupCharm;
-        if (selected) {
-          summary.ownedCount += 1;
-          summary.earnedCharm += charmValue(selected);
-        } else {
-          summary.remainingCount += 1;
-          summary.remainingCharm += groupCharm;
-        }
+        summary.totalCount += FREE_SWORD_LOCATIONS.length;
+        summary.totalCharm += groupCharm * FREE_SWORD_LOCATIONS.length;
+        summary.ownedCount += selectedCount;
+        summary.earnedCharm += groupCharm * selectedCount;
+        summary.remainingCount += FREE_SWORD_LOCATIONS.length - selectedCount;
+        summary.remainingCharm += groupCharm * (FREE_SWORD_LOCATIONS.length - selectedCount);
         return;
       }
       var max = maxFreeCopies(item);
@@ -1114,13 +1164,12 @@
 
   function createFreeToggle(item, labelWhenOff, labelWhenOn, extraClass) {
     var owned = isFreeOwned(item);
-    var exclusiveSelected = exclusiveSelectedItem(item);
     var toggle = document.createElement('button');
     toggle.type = 'button';
-    toggle.className = 'choice-button free-owned-button' + (extraClass ? ' ' + extraClass : '') + (owned ? ' is-active' : '') + (exclusiveGroupFor(item) ? ' is-exclusive-choice' : '');
+    toggle.className = 'choice-button free-owned-button' + (extraClass ? ' ' + extraClass : '') + (owned ? ' is-active' : '');
     toggle.dataset.action = 'free-owned'; toggle.dataset.id = item.id;
     toggle.setAttribute('aria-pressed', owned ? 'true' : 'false');
-    toggle.textContent = exclusiveGroupFor(item) ? (owned ? '已选择 ✓' : (exclusiveSelected ? '改选此武器' : '选择此武器')) : (owned ? labelWhenOn : labelWhenOff);
+    toggle.textContent = owned ? labelWhenOn : labelWhenOff;
     return toggle;
   }
 
@@ -1149,10 +1198,28 @@
 
   function createExclusiveChoiceNote(item) {
     if (!exclusiveGroupFor(item)) return null;
-    var selected = exclusiveSelectedItem(item);
     var note = document.createElement('p'); note.className = 'free-exclusive-note';
-    note.textContent = selected ? '剑枪二选一 · 当前选择：' + selected.name : '剑枪二选一 · 只能选择其中一把';
+    note.textContent = '藏锋之意 · 四处各选剑或枪，已记录 ' + swordChoices().filter(Boolean).length + '/4 次';
     return note;
+  }
+
+  function createSwordChoicesControl() {
+    var slots = swordChoices();
+    var wrap = document.createElement('fieldset'); wrap.className = 'free-sword-control';
+    var legend = document.createElement('legend'); legend.textContent = '四处选择进度'; wrap.appendChild(legend);
+    FREE_SWORD_LOCATIONS.forEach(function (location, index) {
+      var row = document.createElement('div'); row.className = 'free-sword-row';
+      var name = document.createElement('span'); name.textContent = location; row.appendChild(name);
+      [['', '未获得'], ['free-0303', '剑'], ['free-0416', '枪']].forEach(function (choice) {
+        var button = document.createElement('button'); button.type = 'button';
+        button.className = 'free-sword-option' + (slots[index] === choice[0] ? ' is-active' : '');
+        button.dataset.action = 'sword-choice'; button.dataset.slot = String(index); button.dataset.choice = choice[0];
+        button.setAttribute('aria-pressed', slots[index] === choice[0] ? 'true' : 'false');
+        button.setAttribute('aria-label', location + '选择' + choice[1]); button.textContent = choice[1]; row.appendChild(button);
+      });
+      wrap.appendChild(row);
+    });
+    return wrap;
   }
 
   function createFreeSetCard(item, index) {
@@ -1203,20 +1270,22 @@
   }
 
   function createFreeItemCard(item, index) {
+    var swordPair = item.id === 'free-0303';
     var multiCopy = maxFreeCopies(item) > 1;
-    var card = document.createElement('article'); card.className = 'free-card' + (multiCopy ? ' is-multi-copy' : '') + (getFreeOwnedCount(item) > 0 && !isFreeOwned(item) ? ' is-partially-owned' : ''); card.dataset.id = item.id; card.appendChild(imageOrPlaceholder(item, index, view.freeGender));
+    var card = document.createElement('article'); card.className = 'free-card' + (swordPair ? ' free-sword-card' : '') + (multiCopy ? ' is-multi-copy' : '') + ((swordPair ? swordChoices().some(Boolean) && !swordChoices().every(Boolean) : getFreeOwnedCount(item) > 0 && !isFreeOwned(item)) ? ' is-partially-owned' : ''); card.dataset.id = item.id; card.appendChild(swordPair ? swordPairVisual(index) : imageOrPlaceholder(item, index, view.freeGender));
     var info = document.createElement('div'); info.className = 'item-info';
-    info.innerHTML = '<div class="item-title-row"><h3>' + escapeHtml(item.name) + '</h3><span class="listing-pill' + freeStatusPillClass(item) + '">' + freeStatusLabel(item) + '</span></div>';
+    info.innerHTML = '<div class="item-title-row"><h3>' + escapeHtml(swordPair ? '藏锋·剑/藏锋·枪' : item.name) + '</h3><span class="listing-pill' + freeStatusPillClass(item) + '">' + freeStatusLabel(item) + '</span></div>';
     var meta = document.createElement('div'); meta.className = 'meta-row';
-    var charm = document.createElement('span'); charm.className = 'free-charm-pill'; charm.textContent = '✦ ' + formatNumber(charmValue(item)) + ' 风华'; meta.appendChild(charm);
-    meta.appendChild(makeMeta(item.rawType || item.type));
+    var charm = document.createElement('span'); charm.className = 'free-charm-pill'; charm.textContent = '✦ ' + formatNumber(charmValue(item)) + (swordPair ? ' 风华/件' : ' 风华'); meta.appendChild(charm);
+    meta.appendChild(makeMeta(swordPair ? '剑枪配饰' : item.rawType || item.type));
     meta.appendChild(makeMeta(freeClassification(item)));
     info.appendChild(meta);
     var acquisitionPath = document.createElement('p'); acquisitionPath.className = 'free-path'; acquisitionPath.textContent = '获取方式：' + (item.source || item.note || item.channel || '待补充'); info.appendChild(acquisitionPath);
     var exclusiveNote = createExclusiveChoiceNote(item); if (exclusiveNote) info.appendChild(exclusiveNote);
     if (!multiCopy) info.appendChild(createFreeToggle(item, '标记已获得', '已获得 ✓'));
     card.appendChild(info);
-    if (multiCopy) card.appendChild(createFreeCopiesControl(item));
+    if (exclusiveGroupFor(item)) card.appendChild(createSwordChoicesControl());
+    else if (multiCopy) card.appendChild(createFreeCopiesControl(item));
     return card;
   }
 
@@ -1232,7 +1301,7 @@
   }
 
   function renderFreeFilterOptions() {
-    var sourceItems = freeItems.filter(function (item) { return item.recordShape !== '套装部件' && matchesFreeGender(item); });
+    var sourceItems = freeItems.filter(function (item) { return item.recordShape !== '套装部件' && item.id !== 'free-0416' && matchesFreeGender(item); });
     if (view.freeMode === 'lookup' && view.freeLookupClassification !== 'all') {
       sourceItems = sourceItems.filter(function (item) { return matchesFreeClassificationSelection(item, view.freeLookupClassification); });
     }
@@ -1506,6 +1575,14 @@
     showToast((target > current ? '已记录 +' : '已取消 ') + formatNumber(delta) + ' 风华 · ' + target + '/' + maxFreeCopies(item) + ' 件');
   }
 
+  function chooseSword(slot, choice, cardId) {
+    var before = swordChoices()[slot];
+    if (!setSwordChoice(slot, choice) || before === choice) return;
+    persist();
+    renderFreeListPreservingPosition(cardId, '[data-action="sword-choice"][data-slot="' + slot + '"][data-choice="' + choice + '"]');
+    showToast(FREE_SWORD_LOCATIONS[slot] + (choice ? '已选择' + freeItemById[choice].name : '已标记未获得'));
+  }
+
   async function toggleFreeCategorySelection(confirmed) {
     var visible = getVisibleFreeItems(); if (!visible.length) return;
     var before = getFreeCharmProgress().allEarned;
@@ -1528,9 +1605,8 @@
       if (group) {
         if (processedGroups[group]) return;
         processedGroups[group] = true;
-        var selected = exclusiveSelectedItem(item);
-        if (targetOwned && !selected) setFreeOwned(item, true);
-        if (!targetOwned && selected) setFreeOwned(selected, false);
+        if (targetOwned) setFreeOwnedCount(item, maxFreeCopies(item));
+        else swordChoices().forEach(function (_, index) { setSwordChoice(index, ''); });
         return;
       }
       if (item.recordShape === '套装') {
@@ -1969,7 +2045,7 @@
       var count = getFreeOwnedCount(item);
       if (count > 0) freeRecords.push({ id: item.id, count: count });
     });
-    return { createdAt: Number(createdAt) || 0, paidRecords: paidRecords, freeRecords: freeRecords, freeGender: view.freeGender };
+    return { createdAt: Number(createdAt) || 0, paidRecords: paidRecords, freeRecords: freeRecords, freeGender: view.freeGender, swordChoices: swordChoices().slice() };
   }
 
   function backupFingerprint(records) {
@@ -2058,14 +2134,19 @@
         saved.favorite = true; changedFields += 1; changedItems[record.id] = true;
       }
     });
+    if (Array.isArray(restored.swordChoices) && restored.swordChoices.length === FREE_SWORD_LOCATIONS.length) {
+      restored.swordChoices.forEach(function (choice, index) {
+        if (choice && !swordChoices()[index] && setSwordChoice(index, choice)) {
+          changedFields += 1; changedItems[choice] = true;
+        }
+      });
+    }
     (restored.freeRecords || []).forEach(function (record) {
       var item = freeItemById[record.id];
       if (!item || item.recordShape === '套装') return;
       var current = getFreeOwnedCount(item);
       var target = Math.min(maxFreeCopies(item), Math.max(current, Math.floor(Number(record.count) || 0)));
       if (target <= current) return;
-      var selected = exclusiveSelectedItem(item);
-      if (selected && selected.id !== item.id) return;
       setFreeOwnedCount(item, target); changedFields += 1; changedItems[item.id] = true;
     });
     var importedFingerprint = backupFingerprint({
@@ -2073,6 +2154,7 @@
       paidRecords: restored.paidRecords || [],
       freeRecords: restored.freeRecords || [],
       freeGender: restored.freeGender,
+      swordChoices: restored.swordChoices,
     });
     var mergedFingerprint = backupFingerprint(collectBackupRecords(0));
     state.backupProtection = {
@@ -2237,6 +2319,7 @@
     var button = event.target.closest('[data-action]'); if (!button) return;
     if (button.dataset.action === 'free-owned') toggleFreeOwned(button.dataset.id);
     if (button.dataset.action === 'toggle-set-parts') toggleFreeSetParts(button.dataset.id);
+    if (button.dataset.action === 'sword-choice') chooseSword(Number(button.dataset.slot), button.dataset.choice, button.closest('.free-card').dataset.id);
   });
   el.freeList.addEventListener('change', function (event) {
     var input = event.target.closest('input[data-action="free-copy"]'); if (!input) return;
@@ -2278,7 +2361,7 @@
   });
   renderCalendar(); updateShareButtonVisibility(); scheduleFreeDateRefresh(); syncBackToTopVisibility(); updateRecordProtectionStatus();
   window.__OUTFIT_APP__ = {
-    version: '1.3.3', storageKey: STORAGE_KEY, paidCount: paidListItems.length, paidListCount: paidListItems.length, calendarPaidCount: paidItems.length, freeCount: freeCollectibles.length, freeDatabaseRows: freeItems.length, freeSetCount: freeSets.length,
+    version: '1.3.4', storageKey: STORAGE_KEY, paidCount: paidListItems.length, paidListCount: paidListItems.length, calendarPaidCount: paidItems.length, freeCount: freeCollectibles.length, freeDatabaseRows: freeItems.length, freeSetCount: freeSets.length,
     getState: function () { return JSON.parse(JSON.stringify(state)); }, getCounts: getCounts,
     setStatus: setStatus, setReview: setReview, toggleFavorite: toggleFavorite, paidStatusLabel: paidStatusLabel, switchMode: switchMode, switchPage: switchPage,
     getScopedPaidItems: getScopedPaidItems, getFilteredPaidItems: getFilteredPaidItems, getShareablePaidItems: getShareablePaidItems, paidItemMatchesMethodRefinements: paidItemMatchesMethodRefinements, buildSharePages: buildSharePages, drawSharePage: drawSharePage,

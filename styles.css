@@ -877,6 +877,17 @@ body.dialog-open { overflow: hidden; }
 .free-copy-checks label:active span { transform: scale(.97); }
 .free-copy-control > small { display: block; margin-top: 6px; color: #737b80; font-size: 10.5px; line-height: 1.4; }
 .free-exclusive-note { margin: 8px 0 0; padding: 7px 9px; border-left: 3px solid #b88436; border-radius: 4px 8px 8px 4px; background: #f7eedb; color: #725622; font-size: 11px; line-height: 1.45; }
+.free-card.is-multi-copy > .free-sword-control { grid-column: 1 / -1; }
+.free-card.free-sword-card { grid-template-columns: minmax(0, 1fr); }
+.free-card.free-sword-card .free-sword-visual { width: 100%; height: 150px; min-height: 150px; }
+.free-sword-visual .image-preview-button img { object-fit: cover; object-position: center 10%; }
+.free-sword-control { min-width: 0; margin: 9px 0 0; padding: 9px; border: 1px solid rgba(184,136,54,.3); border-radius: 10px; background: rgba(247,241,225,.86); }
+.free-sword-control legend { padding: 0 3px 6px; color: #725622; font-size: 11.5px; font-weight: 700; }
+.free-sword-row { display: grid; grid-template-columns: minmax(75px,1.4fr) repeat(3,minmax(52px,1fr)); gap: 5px; align-items: center; margin: 5px 0; }
+.free-sword-row > span { color: #53606a; font-size: 11px; font-weight: 700; }
+.free-sword-option { min-height: 34px; border: 1px solid #d6ccbd; border-radius: 8px; background: #fcfaf5; color: #53606a; font-size: 11px; cursor: pointer; }
+.free-sword-option.is-active { border-color: #315f91; background: #e4edf7; color: #163b64; font-weight: 700; }
+.free-sword-option:focus-visible { outline: 3px solid rgba(36,88,155,.22); outline-offset: 2px; }
 .free-owned-button.is-exclusive-choice { border-color: rgba(184,136,54,.58); color: #75551e; }
 .free-owned-button.is-exclusive-choice.is-active { border-color: #315f91; background: #315f91; color: #fff; }
 .set-summary-copies { margin-top: auto; padding: 7px; }
