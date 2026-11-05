@@ -1091,18 +1091,8 @@ body.dialog-open { overflow: hidden; }
   .free-missing-toggle { padding-right: 8px; padding-left: 8px; font-size: 10px; }
 }
 
-/* V0.13.3 calendar preview state: restrained mist-blue against confirmed gold. */
 .calendar-legend-keys { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 13px; }
 .calendar-day.has-event::after { left: 50%; transform: translateX(-50%); }
-.calendar-day.has-preview::before { content: ""; position: absolute; bottom: 1px; left: 50%; width: 7px; height: 7px; border: 2px solid #f8faf9; border-radius: 50%; background: #54788b; box-shadow: 0 0 0 1px rgba(84,120,139,.32); transform: translateX(-50%); }
-.calendar-day.has-preview:not(.has-confirmed)::after { display: none; }
-.calendar-day.has-preview.has-confirmed::before { transform: translateX(-8px); }
-.calendar-day.has-preview.has-confirmed::after { width: 8px; transform: translateX(2px); }
-.calendar-legend .preview-info-legend i { width: 7px; height: 7px; border: 1px solid rgba(84,120,139,.35); border-radius: 50%; background: #54788b; }
-.schedule-item.event-preview { border-color: rgba(84,120,139,.38); background: linear-gradient(105deg, rgba(226,237,241,.74), rgba(255,253,248,.94) 42%); }
-.schedule-item.event-preview .date-block strong { color: #42687a; }
-.schedule-state.is-preview,
-.listing-pill.is-preview { border: 1px solid rgba(84,120,139,.22); background: #dfeaf0; color: #355f73; }
 
 /* 0.8.0 · 模块一完整档期 */
 .calendar-month-stats {
@@ -2606,3 +2596,52 @@ body {
   .record-protection-inline { width: min(100%, 224px); gap: 0; }
   .record-protection-entry-status { font-size: 9px; }
 }
+
+/* XHS Chrome 61 baseline: keep controls and dialogs in view when min(),
+   inset, env() and dynamic viewport units are unavailable. */
+.app-boot, .sheet-backdrop, .confirmation-backdrop, .image-preview-backdrop {
+  top: 0; right: 0; bottom: 0; left: 0;
+}
+.app-shell {
+  width: 100%; max-width: 468px;
+  padding: 18px 16px 94px;
+  padding: calc(18px + var(--container-top-inset, 0px)) 16px calc(94px + env(safe-area-inset-bottom));
+}
+.app-shell.is-xhs-container {
+  padding-top: 42px;
+  padding-top: calc(18px + var(--container-top-inset, 24px));
+}
+.bottom-nav {
+  width: 100%; max-width: 468px;
+  padding: 7px 16px 8px;
+  padding: 7px 16px calc(8px + env(safe-area-inset-bottom));
+}
+.app-boot-card { width: 100%; max-width: 280px; }
+.share-sheet, .record-protection-sheet { width: 100%; max-width: 470px; }
+.confirmation-card { width: 100%; max-width: 360px; }
+.paid-method-panel { width: 342px; max-width: calc(100vw - 34px); max-height: 72vh; }
+.record-protection-inline { width: 100%; max-width: 250px; }
+.back-to-top-fab { left: 10px; left: max(10px, calc((100vw - 480px) / 2 + 10px)); }
+.free-copy-checks input { top: 0; right: 0; bottom: 0; left: 0; }
+.item-visual::after { top: 5px; right: 5px; bottom: 5px; left: 5px; }
+.set-part-summary .set-part-summary-visual::after,
+.brand-icon-frame::after { top: 4px; right: 4px; bottom: 4px; left: 4px; }
+.share-sheet { padding: 10px 16px 18px; padding: 10px 16px calc(18px + env(safe-area-inset-bottom)); }
+.confirmation-backdrop { padding: 18px; padding: calc(18px + env(safe-area-inset-top)) 18px calc(18px + env(safe-area-inset-bottom)); }
+.image-preview-backdrop { padding: 58px 18px 54px; padding: calc(58px + env(safe-area-inset-top)) 18px calc(54px + env(safe-area-inset-bottom)); }
+.image-preview-close { top: 14px; top: calc(14px + env(safe-area-inset-top)); }
+.image-preview-figure img { max-height: calc(100vh - 150px); max-height: calc(100vh - 150px - env(safe-area-inset-top) - env(safe-area-inset-bottom)); }
+.image-preview-tip { bottom: 18px; bottom: calc(18px + env(safe-area-inset-bottom)); }
+.toast { bottom: 84px; bottom: calc(84px + env(safe-area-inset-bottom)); }
+@media (max-width: 600px) {
+  .app-shell, .app-shell.is-paid-list-active, .app-shell.is-free-active {
+    max-width: none;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 7px 10px 66px;
+    padding: calc(7px + var(--container-top-inset, 0px)) 10px calc(66px + env(safe-area-inset-bottom));
+  }
+  .app-shell.is-xhs-container { padding-top: 31px; padding-top: calc(7px + var(--container-top-inset, 24px)); }
+  .bottom-nav { max-width: none; padding: 4px 10px; padding: 4px 10px calc(4px + env(safe-area-inset-bottom)); }
+}
+@media (max-width: 360px) { .record-protection-inline { max-width: 224px; } }

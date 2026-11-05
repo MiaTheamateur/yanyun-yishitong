@@ -42,8 +42,10 @@
   var data = Array.isArray(window.OUTFIT_DATA) ? window.OUTFIT_DATA : [];
   var freeVersions = window.OUTFIT_DATA_META && window.OUTFIT_DATA_META.freeVersions || [];
   var paidSourceItems = data.filter(function (item) { return item.acquisitionType === '付费'; });
-  var paidItems = paidSourceItems.filter(function (item) { return item.listingStatus !== '过期留档'; });
-  var paidListItems = paidItems.filter(function (item) { return item.listingStatus !== '预告'; });
+  var initialPaidDateKey = hongKongDateKey();
+  paidSourceItems.forEach(function (item) { item.listingStatus = effectivePaidStatus(item, initialPaidDateKey); });
+  var paidItems = paidSourceItems.filter(function (item) { return item.listingStatus !== '过期留档' && item.listingStatus !== '预告'; });
+  var paidListItems = paidItems;
   var freeItems = data.filter(function (item) { return item.acquisitionType === '免费'; });
   var freeSets = freeItems.filter(function (item) { return item.recordShape === '套装'; });
   var freeCollectibles = freeItems.filter(function (item) { return item.recordShape !== '套装'; });
@@ -296,7 +298,6 @@
   function listingClass(status) {
     if (status === '已下架' || status === '不可获取') return ' is-ended';
     if (status === '即将下架') return ' is-urgent';
-    if (status === '预告') return ' is-preview';
     return '';
   }
 
@@ -327,7 +328,7 @@
   function paidPeriodLines(item) {
     if (!isLimitedPaidItem(item)) return [];
     var firstEnd = item.offSaleDate ? compactDate(item.offSaleDate) : (item.listingStatus === '已下架' ? '下架日期待补' : '截止待定');
-    var lines = [(item.listingStatus === '预告' ? '预计在架 ' : '在架周期 ') + compactDate(item.onSaleDate) + '—' + firstEnd];
+    var lines = ['在架周期 ' + compactDate(item.onSaleDate) + '—' + firstEnd];
     if (item.returnStartDate || item.returnEndDate) {
       lines.push('返场周期 ' + (item.returnStartDate ? compactDate(item.returnStartDate) : '开始待定') + '—' + (item.returnEndDate ? compactDate(item.returnEndDate) : '截止待定'));
     }
@@ -340,7 +341,7 @@
 
   function paidEventsForItem(item) {
     var events = [];
-    if (item.onSaleDate) events.push({ date: item.onSaleDate, type: item.listingStatus === '预告' ? 'preview' : 'launch', item: item });
+    if (item.onSaleDate) events.push({ date: item.onSaleDate, type: 'launch', item: item });
     if (item.returnStartDate) events.push({ date: item.returnStartDate, type: 'return', item: item });
     if (item.returnEndDate) events.push({ date: item.returnEndDate, type: 'return-end', item: item });
     return events;
@@ -354,7 +355,7 @@
   }
 
   function isOriginalLaunchEvent(event) {
-    return event.type === 'launch' || event.type === 'preview';
+    return event.type === 'launch';
   }
 
   // 同一天档期较多时，使用固定的“价值／活动捆绑”顺序，避免每次加载顺序漂移。
@@ -474,11 +475,9 @@
 
   function makeDay(day, key, muted, events, isToday) {
     var eventCount = events.length;
-    var previewCount = events.filter(function (event) { return event.item.listingStatus === '预告'; }).length;
-    var confirmedCount = eventCount - previewCount;
     var cell = document.createElement('button'); cell.type = 'button'; cell.dataset.date = key;
-    cell.className = 'calendar-day' + (muted ? ' is-muted' : '') + (eventCount ? ' has-event' : '') + (previewCount ? ' has-preview' : '') + (confirmedCount ? ' has-confirmed' : '') + (isToday ? ' is-today' : '') + (view.selectedDate === key ? ' is-selected' : '');
-    cell.setAttribute('aria-label', key.replace(/-(\d{2})-(\d{2})$/, '年$1月$2日') + (eventCount ? '，有' + eventCount + '条服装信息' + (previewCount ? '，其中预告' + previewCount + '条' : '') : '，无服装信息'));
+    cell.className = 'calendar-day' + (muted ? ' is-muted' : '') + (eventCount ? ' has-event' : '') + (isToday ? ' is-today' : '') + (view.selectedDate === key ? ' is-selected' : '');
+    cell.setAttribute('aria-label', key.replace(/-(\d{2})-(\d{2})$/, '年$1月$2日') + (eventCount ? '，有' + eventCount + '条服装信息' : '，无服装信息'));
     var span = document.createElement('span'); span.textContent = day; cell.appendChild(span); return cell;
   }
 
@@ -761,6 +760,32 @@
     return parts ? Math.floor(Date.UTC(parts.year, parts.month, parts.day) / 86400000) : null;
   }
 
+  function effectivePaidStatus(item, todayKey) {
+    if (!item) return '';
+    var status = item.availabilityRaw === '返厂中' ? '返场中' : (item.availabilityRaw || item.listingStatus || '');
+    if (status !== '限时在架' && status !== '返场中') return status;
+    var today = dateKeyDayNumber(todayKey || hongKongDateKey());
+    var firstEnd = dateKeyDayNumber(item.offSaleDate);
+    var returnStart = dateKeyDayNumber(item.returnStartDate);
+    var returnEnd = dateKeyDayNumber(item.returnEndDate);
+    if (today == null) return status;
+    if (status === '返场中') return returnEnd != null && returnEnd < today ? '已下架' : status;
+    var returningNow = returnStart != null && returnStart <= today && (returnEnd == null || returnEnd >= today);
+    return firstEnd != null && firstEnd < today && !returningNow ? '已下架' : status;
+  }
+
+  function refreshPaidStatuses() {
+    var todayKey = hongKongDateKey();
+    var changed = false;
+    paidSourceItems.forEach(function (item) {
+      var status = effectivePaidStatus(item, todayKey);
+      if (item.listingStatus === status) return;
+      item.listingStatus = status;
+      changed = true;
+    });
+    if (changed) { renderCalendar(); renderPaidList(); }
+  }
+
   function freeDaysRemaining(item, todayKey) {
     if (!item || item.listingStatus !== '限时') return null;
     var endDay = dateKeyDayNumber(item.endDate);
@@ -791,6 +816,7 @@
     var shifted = new Date(now + 8 * 60 * 60 * 1000);
     var nextHongKongMidnight = Date.UTC(shifted.getUTCFullYear(), shifted.getUTCMonth(), shifted.getUTCDate() + 1) - 8 * 60 * 60 * 1000;
     freeDateRefreshTimer = setTimeout(function () {
+      refreshPaidStatuses();
       renderFreeList();
       scheduleFreeDateRefresh();
     }, Math.max(1000, nextHongKongMidnight - now + 1000));
@@ -2340,7 +2366,7 @@
     else if (!el.categoryInlinePanel.hidden) { setCategoryPanelOpen(false); el.categoryPickerButton.focus(); }
   });
 
-  // 预告只进入日历，不计入最终外观总数。
+  // 开发留档与预告均不进入用户端数据源。
   el.paidCount.textContent = paidListItems.length;
   PAID_FILTER_ORDER.filter(function (method) { return paidListItems.some(function (item) { return paidFilterMethod(item) === method; }); }).forEach(function (method) {
     var label = document.createElement('label'); var input = document.createElement('input'); var text = document.createElement('span');
@@ -2360,13 +2386,16 @@
     button.classList.toggle('is-active', active); button.setAttribute('aria-pressed', active ? 'true' : 'false');
   });
   renderCalendar(); updateShareButtonVisibility(); scheduleFreeDateRefresh(); syncBackToTopVisibility(); updateRecordProtectionStatus();
+  window.addEventListener('pageshow', refreshPaidStatuses);
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) { refreshPaidStatuses(); scheduleFreeDateRefresh(); } });
   window.__OUTFIT_APP__ = {
-    version: '1.3.4', storageKey: STORAGE_KEY, paidCount: paidListItems.length, paidListCount: paidListItems.length, calendarPaidCount: paidItems.length, freeCount: freeCollectibles.length, freeDatabaseRows: freeItems.length, freeSetCount: freeSets.length,
+    version: '1.4.0', storageKey: STORAGE_KEY, paidCount: paidListItems.length, paidListCount: paidListItems.length, calendarPaidCount: paidItems.length, freeCount: freeCollectibles.length, freeDatabaseRows: freeItems.length, freeSetCount: freeSets.length,
     getState: function () { return JSON.parse(JSON.stringify(state)); }, getCounts: getCounts,
     setStatus: setStatus, setReview: setReview, toggleFavorite: toggleFavorite, paidStatusLabel: paidStatusLabel, switchMode: switchMode, switchPage: switchPage,
     getScopedPaidItems: getScopedPaidItems, getFilteredPaidItems: getFilteredPaidItems, getShareablePaidItems: getShareablePaidItems, paidItemMatchesMethodRefinements: paidItemMatchesMethodRefinements, buildSharePages: buildSharePages, drawSharePage: drawSharePage,
     setCalendarMonth: setCalendarMonth, selectCalendarDate: selectCalendarDate, goToToday: goToToday, paidEventsForMonth: paidEventsForMonth, paidValueRank: paidValueRank, comparePaidSameDate: comparePaidSameDate, getPaidBundleMap: getPaidBundleMap, paidFilterMethod: paidFilterMethod, paidItemMatchesRange: paidItemMatchesRange, applyCustomPaidRange: applyCustomPaidRange, toggleFreeCategorySelection: toggleFreeCategorySelection,
     getVisibleFreeItems: getVisibleFreeItems, getFreeCharmProgress: getFreeCharmProgress, getFreeOwnedCount: getFreeOwnedCount, setFreeOwnedCount: setFreeOwnedCount, summarizeFreeItems: summarizeFreeItems, switchFreeMode: switchFreeMode, switchFreeProgressScope: switchFreeProgressScope, switchFreeGender: switchFreeGender, toggleFreeOwned: toggleFreeOwned, toggleFreeCopy: toggleFreeCopy, toggleFreeSetParts: toggleFreeSetParts, childrenForSet: childrenForSet, freeDaysRemaining: freeDaysRemaining, effectiveFreeStatus: effectiveFreeStatus, freeStatusLabel: freeStatusLabel,
+    effectivePaidStatus: effectivePaidStatus, refreshPaidStatuses: refreshPaidStatuses,
     completePaidRecord: completePaidRecord, editPaidRecord: editPaidRecord, openImagePreview: openImagePreview, closeImagePreview: closeImagePreview,
     collectBackupRecords: collectBackupRecords, backupFingerprint: backupFingerprint, restoreRecordsFromData: restoreRecordsFromData, openRecordProtection: openRecordProtection
   };
