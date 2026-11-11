@@ -114,7 +114,7 @@
     sharePageLabel: document.getElementById('sharePageLabel'), saveShareButton: document.getElementById('saveShareButton'),
     saveAllShareButton: document.getElementById('saveAllShareButton'), toast: document.getElementById('toast'), backToTopButton: document.getElementById('backToTopButton'),
     imagePreviewBackdrop: document.getElementById('imagePreviewBackdrop'), imagePreviewImage: document.getElementById('imagePreviewImage'),
-    imagePreviewCaption: document.getElementById('imagePreviewCaption'), closeImagePreviewButton: document.getElementById('closeImagePreviewButton'),
+    imagePreviewCaption: document.getElementById('imagePreviewCaption'),
     recordProtectionButton: document.getElementById('recordProtectionButton'), recordProtectionBackdrop: document.getElementById('recordProtectionBackdrop'),
     closeRecordProtectionButton: document.getElementById('closeRecordProtectionButton'), recordProtectionStatus: document.getElementById('recordProtectionStatus'),
     recordProtectionEntryStatus: document.getElementById('recordProtectionEntryStatus'),
@@ -284,7 +284,7 @@
     el.imagePreviewImage.src = resolvePreviewImageSource(source); el.imagePreviewImage.alt = label || '外观大图';
     el.imagePreviewCaption.textContent = label || '外观大图';
     el.imagePreviewBackdrop.hidden = false; document.body.classList.add('is-previewing-image');
-    el.closeImagePreviewButton.focus();
+    el.imagePreviewBackdrop.focus();
   }
 
   function closeImagePreview() {
@@ -2353,7 +2353,6 @@
   document.addEventListener('dragstart', function (event) {
     if (event.target.closest('img, canvas, .image-preview-button, .item-visual')) event.preventDefault();
   }, true);
-  el.closeImagePreviewButton.addEventListener('click', closeImagePreview);
   el.imagePreviewBackdrop.addEventListener('click', function (event) { if (event.target === el.imagePreviewBackdrop) closeImagePreview(); });
   el.categoryPickerButton.addEventListener('click', toggleCategoryPanel);
   el.selectFreeCategoryButton.addEventListener('click', toggleFreeCategorySelection);
@@ -2406,7 +2405,7 @@
   window.addEventListener('pageshow', refreshPaidStatuses);
   document.addEventListener('visibilitychange', function () { if (!document.hidden) { refreshPaidStatuses(); scheduleFreeDateRefresh(); } });
   window.__OUTFIT_APP__ = {
-    version: '1.4.1', storageKey: STORAGE_KEY, paidCount: paidListItems.length, paidListCount: paidListItems.length, calendarPaidCount: paidItems.length, freeCount: freeCollectibles.length, freeDatabaseRows: freeItems.length, freeSetCount: freeSets.length,
+    version: '1.4.2', storageKey: STORAGE_KEY, paidCount: paidListItems.length, paidListCount: paidListItems.length, calendarPaidCount: paidItems.length, freeCount: freeCollectibles.length, freeDatabaseRows: freeItems.length, freeSetCount: freeSets.length,
     getState: function () { return JSON.parse(JSON.stringify(state)); }, getCounts: getCounts,
     setStatus: setStatus, setReview: setReview, toggleFavorite: toggleFavorite, paidStatusLabel: paidStatusLabel, switchMode: switchMode, switchPage: switchPage,
     getScopedPaidItems: getScopedPaidItems, getFilteredPaidItems: getFilteredPaidItems, getShareablePaidItems: getShareablePaidItems, paidItemMatchesMethodRefinements: paidItemMatchesMethodRefinements, buildSharePages: buildSharePages, drawSharePage: drawSharePage,

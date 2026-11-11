@@ -431,8 +431,6 @@ body.confirmation-open { overflow: hidden; }
 .confirmation-actions button:focus-visible { outline: 2px solid rgba(36,88,155,.7); outline-offset: 2px; }
 .is-previewing-image { overflow: hidden; }
 .image-preview-backdrop { position: fixed; z-index: 60; inset: 0; display: grid; place-items: center; padding: calc(58px + env(safe-area-inset-top)) 18px calc(54px + env(safe-area-inset-bottom)); background: rgba(20,17,14,.94); animation: image-preview-in .16s ease-out; }
-.image-preview-close { position: absolute; z-index: 2; top: calc(14px + env(safe-area-inset-top)); right: 16px; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid rgba(255,255,255,.22); border-radius: 50%; background: rgba(255,255,255,.08); color: #fff; font-size: 28px; line-height: 1; cursor: pointer; }
-.image-preview-close:focus-visible { outline: 2px solid #f0d39a; outline-offset: 3px; }
 .image-preview-figure { display: grid; justify-items: center; gap: 12px; max-width: 100%; max-height: 100%; margin: 0; }
 .image-preview-figure img { display: block; max-width: 100%; max-height: calc(100vh - 150px - env(safe-area-inset-top) - env(safe-area-inset-bottom)); border-radius: 14px; object-fit: contain; box-shadow: 0 18px 60px rgba(0,0,0,.42); }
 .image-preview-figure figcaption { max-width: 300px; overflow: hidden; color: rgba(255,255,255,.86); font-size: 12px; text-align: center; text-overflow: ellipsis; white-space: nowrap; }
@@ -2629,7 +2627,6 @@ body {
 .share-sheet { padding: 10px 16px 18px; padding: 10px 16px calc(18px + env(safe-area-inset-bottom)); }
 .confirmation-backdrop { padding: 18px; padding: calc(18px + env(safe-area-inset-top)) 18px calc(18px + env(safe-area-inset-bottom)); }
 .image-preview-backdrop { padding: 58px 18px 54px; padding: calc(58px + env(safe-area-inset-top)) 18px calc(54px + env(safe-area-inset-bottom)); }
-.image-preview-close { top: 14px; top: calc(14px + env(safe-area-inset-top)); }
 .image-preview-figure img { max-height: calc(100vh - 150px); max-height: calc(100vh - 150px - env(safe-area-inset-top) - env(safe-area-inset-bottom)); }
 .image-preview-tip { bottom: 18px; bottom: calc(18px + env(safe-area-inset-bottom)); }
 .toast { bottom: 84px; bottom: calc(84px + env(safe-area-inset-bottom)); }
