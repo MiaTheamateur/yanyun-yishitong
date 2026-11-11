@@ -2,6 +2,7 @@
   'use strict';
 
   var PREFIX = 'YYYS1';
+  var COMPACT_PREFIX = 'YYYS2';
   var CHUNK_SIZE = 1150;
   var STATUS_TO_CODE = { bought: 1, regret: 2, wishlist: 3, abandoned: 4 };
   var CODE_TO_STATUS = { 1: 'bought', 2: 'regret', 3: 'wishlist', 4: 'abandoned' };
@@ -94,7 +95,153 @@
     };
   }
 
+  function writeNumber(bytes, value) {
+    value = Math.floor(Number(value) || 0);
+    do {
+      var digit = value % 128;
+      value = Math.floor(value / 128);
+      bytes.push(digit | (value ? 128 : 0));
+    } while (value);
+  }
+
+  function readNumber(bytes, cursor) {
+    var value = 0;
+    var scale = 1;
+    for (var count = 0; count < 8; count += 1) {
+      if (cursor.index >= bytes.length) throw new Error('备份内容不完整');
+      var digit = bytes[cursor.index++];
+      value += (digit & 127) * scale;
+      if (!(digit & 128)) return value;
+      scale *= 128;
+    }
+    throw new Error('备份数字无法识别');
+  }
+
+  function serialOf(id, kind) {
+    var match = new RegExp('^' + kind + '-(\\d+)$').exec(String(id || ''));
+    return match ? Number(match[1]) : -1;
+  }
+
+  function encodeCompactData(options) {
+    var paid = options.paidRecords || [];
+    var free = options.freeRecords || [];
+    var paidMax = 0;
+    var freeMax = 0;
+    var reviews = [];
+    paid.forEach(function (record) {
+      var serial = serialOf(record.id, 'paid');
+      if (serial < 1 || serial > 4096) throw new Error('无法压缩服装编号');
+      paidMax = Math.max(paidMax, serial);
+    });
+    free.forEach(function (record) {
+      var serial = serialOf(record.id, 'free');
+      if (serial < 1 || serial > 4096 || Number(record.count) > 254) throw new Error('无法压缩免费记录');
+      freeMax = Math.max(freeMax, serial);
+    });
+    var paidBytes = new Uint8Array(paidMax);
+    var freeBytes = new Uint8Array(freeMax);
+    paid.forEach(function (record) {
+      var serial = serialOf(record.id, 'paid');
+      paidBytes[serial - 1] = (STATUS_TO_CODE[record.status] || 0) | (record.favorite ? 8 : 0);
+      var review = String(record.review || '').slice(0, 18);
+      if (review) reviews.push([serial, review]);
+    });
+    free.forEach(function (record) {
+      freeBytes[serialOf(record.id, 'free') - 1] = Math.max(0, Math.floor(Number(record.count) || 0));
+    });
+    var bytes = [2];
+    writeNumber(bytes, Number(options.createdAt) || Date.now());
+    bytes.push(options.freeGender === 'M' ? 1 : 0);
+    writeNumber(bytes, paidMax);
+    writeNumber(bytes, freeMax);
+    for (var index = 0; index < paidBytes.length; index += 2) bytes.push(paidBytes[index] | ((paidBytes[index + 1] || 0) << 4));
+    for (var freeIndex = 0; freeIndex < freeBytes.length; freeIndex += 1) bytes.push(freeBytes[freeIndex]);
+    writeNumber(bytes, reviews.length);
+    reviews.forEach(function (entry) {
+      var textBytes = new TextEncoder().encode(entry[1]);
+      writeNumber(bytes, entry[0]);
+      writeNumber(bytes, textBytes.length);
+      for (var i = 0; i < textBytes.length; i += 1) bytes.push(textBytes[i]);
+    });
+    var choices = Array.isArray(options.swordChoices) ? options.swordChoices : [];
+    for (var choice = 0; choice < 4; choice += 1) {
+      var selected = choices[choice] ? serialOf(choices[choice], 'free') : 0;
+      if (selected < 0) throw new Error('无法压缩藏锋记录');
+      writeNumber(bytes, selected);
+    }
+    return bytesToBase64(new Uint8Array(bytes));
+  }
+
+  function decodeCompactData(encoded) {
+    var bytes = base64ToBytes(encoded);
+    var cursor = { index: 0 };
+    if (bytes[cursor.index++] !== 2) throw new Error('备份版本无法识别');
+    var createdAt = readNumber(bytes, cursor);
+    var gender = bytes[cursor.index++] === 1 ? 'M' : 'F';
+    var paidMax = readNumber(bytes, cursor);
+    var freeMax = readNumber(bytes, cursor);
+    if (paidMax > 4096 || freeMax > 4096 || cursor.index + Math.ceil(paidMax / 2) + freeMax > bytes.length) throw new Error('备份内容不完整');
+    var paidRecords = [];
+    for (var paidIndex = 1; paidIndex <= paidMax; paidIndex += 1) {
+      var packed = bytes[cursor.index + Math.floor((paidIndex - 1) / 2)];
+      var value = paidIndex % 2 ? packed & 15 : packed >> 4;
+      if (value) paidRecords.push({ id: 'paid-' + String(paidIndex).padStart(4, '0'), status: CODE_TO_STATUS[value & 7] || '', favorite: Boolean(value & 8), review: '' });
+    }
+    cursor.index += Math.ceil(paidMax / 2);
+    var freeRecords = [];
+    for (var freeIndex = 1; freeIndex <= freeMax; freeIndex += 1) {
+      var count = bytes[cursor.index++];
+      if (count) freeRecords.push({ id: 'free-' + String(freeIndex).padStart(4, '0'), count: count });
+    }
+    var reviewCount = readNumber(bytes, cursor);
+    if (reviewCount > paidMax) throw new Error('备份短评数量异常');
+    var paidById = {};
+    paidRecords.forEach(function (record) { paidById[record.id] = record; });
+    for (var reviewIndex = 0; reviewIndex < reviewCount; reviewIndex += 1) {
+      var serial = readNumber(bytes, cursor);
+      var length = readNumber(bytes, cursor);
+      if (length > 72 || cursor.index + length > bytes.length) throw new Error('备份短评不完整');
+      var id = 'paid-' + String(serial).padStart(4, '0');
+      var review = new TextDecoder().decode(bytes.subarray(cursor.index, cursor.index + length)).slice(0, 18);
+      cursor.index += length;
+      if (paidById[id]) paidById[id].review = review;
+      else if (serial >= 1 && serial <= paidMax) {
+        var record = { id: id, status: '', favorite: false, review: review };
+        paidRecords.push(record);
+        paidById[id] = record;
+      }
+    }
+    var swordChoices = [];
+    for (var choice = 0; choice < 4; choice += 1) {
+      var selected = readNumber(bytes, cursor);
+      swordChoices.push(selected ? 'free-' + String(selected).padStart(4, '0') : '');
+    }
+    if (cursor.index !== bytes.length) throw new Error('备份内容存在多余数据');
+    return { schemaVersion: 2, createdAt: createdAt, paidRecords: paidRecords, freeRecords: freeRecords, freeGender: gender, swordChoices: swordChoices };
+  }
+
   function encode(options) {
+    var compact = '';
+    try {
+      compact = encodeCompactData(options || {});
+      var singlePayload = [COMPACT_PREFIX, checksum(compact), compact].join('|');
+      if (typeof window.qrcode === 'function') {
+        var singleQr = window.qrcode(0, 'M');
+        singleQr.addData(singlePayload, 'Byte');
+        singleQr.make();
+        return { chunks: [singlePayload], digest: checksum(compact), encodedLength: compact.length, format: 2 };
+      }
+    } catch (error) { /* A single QR has a fixed capacity. */ }
+    if (compact && typeof window.qrcode === 'function') {
+      var compactDigest = checksum(compact);
+      var compactSize = 1400;
+      var compactTotal = Math.ceil(compact.length / compactSize);
+      var compactChunks = [];
+      for (var part = 0; part < compactTotal; part += 1) {
+        compactChunks.push([COMPACT_PREFIX, part.toString(36), compactTotal.toString(36), compactDigest, compact.slice(part * compactSize, (part + 1) * compactSize)].join('|'));
+      }
+      return { chunks: compactChunks, digest: compactDigest, encodedLength: compact.length, format: 2 };
+    }
     var encoded = encodeData(options || {});
     var digest = checksum(encoded);
     var total = Math.max(1, Math.ceil(encoded.length / CHUNK_SIZE));
@@ -107,19 +254,25 @@
 
   function parseChunk(payload) {
     var parts = String(payload || '').trim().split('|');
-    if (parts.length !== 5 || parts[0] !== PREFIX) throw new Error('这不是燕云衣事通生成的备份图');
+    if (parts.length === 3 && parts[0] === COMPACT_PREFIX) return { index: 0, total: 1, digest: parts[1], data: parts[2], format: 2 };
+    if (parts.length !== 5 || (parts[0] !== PREFIX && parts[0] !== COMPACT_PREFIX)) throw new Error('这不是燕云衣事通生成的备份图');
     var index = Number.parseInt(parts[1], 36);
     var total = Number.parseInt(parts[2], 36);
     if (!Number.isFinite(index) || !Number.isFinite(total) || total < 1 || index < 0 || index >= total) throw new Error('备份分片信息损坏');
-    return { index: index, total: total, digest: parts[3], data: parts[4] };
+    return { index: index, total: total, digest: parts[3], data: parts[4], format: parts[0] === COMPACT_PREFIX ? 2 : 1 };
   }
 
   function decodeChunks(payloads) {
+    if (payloads.length === 1 && String(payloads[0]).indexOf(COMPACT_PREFIX + '|') === 0) {
+      var compactParts = String(payloads[0]).trim().split('|');
+      if (compactParts.length !== 3 || checksum(compactParts[2]) !== compactParts[1]) throw new Error('备份图校验失败，请选择未裁剪的原图');
+      return decodeCompactData(compactParts[2]);
+    }
     var parsed = payloads.map(parseChunk);
     var first = parsed[0];
     var byIndex = {};
     parsed.forEach(function (part) {
-      if (part.total !== first.total || part.digest !== first.digest) throw new Error('所选备份图内容不完整');
+      if (part.total !== first.total || part.digest !== first.digest || part.format !== first.format) throw new Error('所选备份图内容不完整');
       byIndex[part.index] = part.data;
     });
     var parts = [];
@@ -129,7 +282,7 @@
     }
     var encoded = parts.join('');
     if (checksum(encoded) !== first.digest) throw new Error('备份图校验失败，请选择未裁剪的原图');
-    return decodeData(encoded);
+    return first.format === 2 ? decodeCompactData(encoded) : decodeData(encoded);
   }
 
   function fingerprint(options) {

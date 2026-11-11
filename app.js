@@ -2147,6 +2147,15 @@
   function restoreRecordsFromData(restored) {
     var changedItems = {};
     var changedFields = 0;
+    if (restored.freeGender === 'F' || restored.freeGender === 'M') {
+      view.freeGender = restored.freeGender;
+      state.freeGender = restored.freeGender;
+      el.freeGenderSwitch.querySelectorAll('[data-free-gender]').forEach(function (button) {
+        var active = button.dataset.freeGender === restored.freeGender;
+        button.classList.toggle('is-active', active);
+        button.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+    }
     (restored.paidRecords || []).forEach(function (record) {
       if (!paidItemById[record.id]) return;
       var saved = ensureItemState(record.id);
@@ -2182,10 +2191,18 @@
       freeGender: restored.freeGender,
       swordChoices: restored.swordChoices,
     });
-    var mergedFingerprint = backupFingerprint(collectBackupRecords(0));
+    var mergedRecords = collectBackupRecords(0);
+    var mergedFingerprint = backupFingerprint(mergedRecords);
+    var sameContent = importedFingerprint === mergedFingerprint;
+    if (!sameContent && restored.schemaVersion === 2) {
+      var ordered = function (records) { return records.slice().sort(function (left, right) { return left.id < right.id ? -1 : left.id > right.id ? 1 : 0; }); };
+      var importedSorted = backupFingerprint({ createdAt: 0, paidRecords: ordered(restored.paidRecords || []), freeRecords: ordered(restored.freeRecords || []), freeGender: restored.freeGender, swordChoices: restored.swordChoices });
+      var mergedSorted = backupFingerprint({ createdAt: 0, paidRecords: ordered(mergedRecords.paidRecords), freeRecords: ordered(mergedRecords.freeRecords), freeGender: mergedRecords.freeGender, swordChoices: mergedRecords.swordChoices });
+      sameContent = importedSorted === mergedSorted;
+    }
     state.backupProtection = {
       lastAt: Number(restored.createdAt) || Date.now(),
-      lastFingerprint: importedFingerprint === mergedFingerprint ? mergedFingerprint : '',
+      lastFingerprint: sameContent ? mergedFingerprint : '',
     };
     persist();
     renderCalendar();
@@ -2389,7 +2406,7 @@
   window.addEventListener('pageshow', refreshPaidStatuses);
   document.addEventListener('visibilitychange', function () { if (!document.hidden) { refreshPaidStatuses(); scheduleFreeDateRefresh(); } });
   window.__OUTFIT_APP__ = {
-    version: '1.4.0', storageKey: STORAGE_KEY, paidCount: paidListItems.length, paidListCount: paidListItems.length, calendarPaidCount: paidItems.length, freeCount: freeCollectibles.length, freeDatabaseRows: freeItems.length, freeSetCount: freeSets.length,
+    version: '1.4.1', storageKey: STORAGE_KEY, paidCount: paidListItems.length, paidListCount: paidListItems.length, calendarPaidCount: paidItems.length, freeCount: freeCollectibles.length, freeDatabaseRows: freeItems.length, freeSetCount: freeSets.length,
     getState: function () { return JSON.parse(JSON.stringify(state)); }, getCounts: getCounts,
     setStatus: setStatus, setReview: setReview, toggleFavorite: toggleFavorite, paidStatusLabel: paidStatusLabel, switchMode: switchMode, switchPage: switchPage,
     getScopedPaidItems: getScopedPaidItems, getFilteredPaidItems: getFilteredPaidItems, getShareablePaidItems: getShareablePaidItems, paidItemMatchesMethodRefinements: paidItemMatchesMethodRefinements, buildSharePages: buildSharePages, drawSharePage: drawSharePage,

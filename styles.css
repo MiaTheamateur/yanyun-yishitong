@@ -2645,3 +2645,34 @@ body {
   .bottom-nav { max-width: none; padding: 4px 10px; padding: 4px 10px calc(4px + env(safe-area-inset-bottom)); }
 }
 @media (max-width: 360px) { .record-protection-inline { max-width: 224px; } }
+
+/* Keep both character choices inside the card when text scaling or narrow webviews reduce space. */
+.free-command-panel .free-heading-tools .character-gender-switch {
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.free-command-panel .free-heading-tools .character-gender-switch button {
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 44px;
+}
+@media (max-width: 600px) {
+  .free-command-panel .free-page-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 6px;
+  }
+  .free-command-panel .free-heading-tools { min-width: 0; }
+  .free-command-panel .free-heading-tools .character-gender-switch {
+    width: 104px;
+    flex: 0 0 104px;
+  }
+}
+@media (max-width: 360px) {
+  .free-command-panel .free-heading-tools .character-gender-switch {
+    width: 100px;
+    flex-basis: 100px;
+  }
+}
