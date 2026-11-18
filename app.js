@@ -619,7 +619,9 @@
       var matchesFavorite = view.paidStatus !== 'favorite' || saved.favorite;
       var matchesRecordStatus = ignoreRecordStatus || view.paidRecordStatus === 'all' || saved.status === view.paidRecordStatus;
       return paidItemMatchesRange(item, view.paidRange) && (!query || searchable.indexOf(query) >= 0) && matchesListingStatus && matchesFavorite && matchesRecordStatus && (!view.paidMethods.length || view.paidMethods.indexOf(paidFilterMethod(item)) >= 0) && paidItemMatchesMethodRefinements(item);
-    }).sort(function (a, b) { return Number(b.sourceOrder || 0) - Number(a.sourceOrder || 0); });
+    }).sort(function (a, b) {
+      return String(b.onSaleDate || '').localeCompare(String(a.onSaleDate || '')) || Number(b.sourceOrder || 0) - Number(a.sourceOrder || 0);
+    });
   }
 
   function paidItemMatchesMethodRefinements(item) {
@@ -2405,7 +2407,7 @@
   window.addEventListener('pageshow', refreshPaidStatuses);
   document.addEventListener('visibilitychange', function () { if (!document.hidden) { refreshPaidStatuses(); scheduleFreeDateRefresh(); } });
   window.__OUTFIT_APP__ = {
-    version: '1.4.2', storageKey: STORAGE_KEY, paidCount: paidListItems.length, paidListCount: paidListItems.length, calendarPaidCount: paidItems.length, freeCount: freeCollectibles.length, freeDatabaseRows: freeItems.length, freeSetCount: freeSets.length,
+    version: '1.4.3', storageKey: STORAGE_KEY, paidCount: paidListItems.length, paidListCount: paidListItems.length, calendarPaidCount: paidItems.length, freeCount: freeCollectibles.length, freeDatabaseRows: freeItems.length, freeSetCount: freeSets.length,
     getState: function () { return JSON.parse(JSON.stringify(state)); }, getCounts: getCounts,
     setStatus: setStatus, setReview: setReview, toggleFavorite: toggleFavorite, paidStatusLabel: paidStatusLabel, switchMode: switchMode, switchPage: switchPage,
     getScopedPaidItems: getScopedPaidItems, getFilteredPaidItems: getFilteredPaidItems, getShareablePaidItems: getShareablePaidItems, paidItemMatchesMethodRefinements: paidItemMatchesMethodRefinements, buildSharePages: buildSharePages, drawSharePage: drawSharePage,
